@@ -15,6 +15,7 @@ function toggleLang() {
           <Button @click="toggleLang">
             切换语言
           </Button>
+          <HomeSwiper />
         </div>
       </ClientOnly>
       <template #fallback>
