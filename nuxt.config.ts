@@ -1,3 +1,4 @@
+import { defaultResource } from './@types/default-resource'
 import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
 
@@ -14,6 +15,8 @@ export default defineNuxtConfig({
     '@nuxtjs/device',
     'nuxt-svgo',
     '@nuxt/image',
+    '@nuxtjs/i18n',
+
   ],
 
   devtools: {
@@ -82,6 +85,12 @@ export default defineNuxtConfig({
     },
   },
 
+  i18n: {
+    locales: defaultResource,
+    lazy: true,
+    defaultLocale: 'en',
+  },
+
   macros: {
     defineProp: {
       edition: 'johnsonEdition',
@@ -93,7 +102,6 @@ export default defineNuxtConfig({
   shadcn: {
     prefix: '',
   },
-
   svgo: {
     componentPrefix: 'i',
     defaultImport: 'component',

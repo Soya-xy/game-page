@@ -1,4 +1,9 @@
 <script setup lang="ts">
+const { setLocale, locale, setLocaleCookie } = useI18n()
+function toggleLang() {
+  setLocale(locale.value === 'zh-CN' ? 'en' : 'zh-CN')
+  setLocaleCookie(locale.value === 'zh-CN' ? 'en' : 'zh-CN')
+}
 </script>
 
 <template>
@@ -6,7 +11,10 @@
     <Suspense>
       <ClientOnly>
         <div text-gray:80>
-          You're offline
+          You're offline {{ $t('lang.name') }}
+          <Button @click="toggleLang">
+            切换语言
+          </Button>
         </div>
       </ClientOnly>
       <template #fallback>
