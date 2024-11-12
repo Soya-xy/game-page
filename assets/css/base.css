@@ -8,11 +8,13 @@ body,
   @apply h-screen;
   @apply cursor-default;
   @apply select-none;
-  /* @apply bg-white; */
-
-  /* @apply font-theme; */
-
   overscroll-behavior: none;
+}
+
+body *,
+body *::before,
+body *::after {
+  box-sizing: border-box;
 }
 
 :focus-visible {

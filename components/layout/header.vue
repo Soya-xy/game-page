@@ -8,12 +8,33 @@ const { toggleMenu, isOpen } = useMenu()
 <template>
   <header
     :class="cn(
-      'h-[60px] fixed top-0 left-0 right-0 z-[100]',
-      'bg-header flex-item-center shdow-[0_4px_20px_#00000060]',
+      'h-[60px] fixed top-0 left-0 right-0 z-[100] w-full',
+      'bg-header flex items-center justify-between shdow-[0_4px_20px_#00000060]',
     )
     "
   >
-    <BaseToggleMenu :class="isOpen ? 'rotate-180' : ''" @click="toggleMenu" />
+    <div class="flex items-center gap-[27px] ml-[22px]">
+      <BaseToggleMenu :class="isOpen ? 'rotate-180' : ''" @click="toggleMenu" />
+      <BaseImage src="/images/logo.avif" class="h-[44px]" />
+    </div>
+    <div class="flex items-center px-[12px] gap-[12px]">
+      <BaseIconButton>
+        <i-svg-search class="w-[25px] h-[24px]" />
+      </BaseIconButton>
+
+      <BaseButton>
+        Sign in
+      </BaseButton>
+      <BaseButton class="bg-button-linear">
+        Sign Up
+      </BaseButton>
+      <BaseIconButton>
+        <i-svg-chat class="w-[25px] h-[24px]" />
+      </BaseIconButton>
+      <BaseIconButton>
+        <i class="i-carbon-earth w-[25px] h-[24px]" />
+      </BaseIconButton>
+    </div>
   </header>
 </template>
 

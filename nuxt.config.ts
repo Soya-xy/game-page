@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     '@vue-macros/nuxt',
     '@nuxtjs/device',
     'nuxt-svgo',
+    '@nuxt/image',
   ],
 
   devtools: {
@@ -68,7 +69,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: false,
       routes: ['/'],
-      ignore: ['/hi'],
+      // ignore: ['/hi'],
     },
   },
 

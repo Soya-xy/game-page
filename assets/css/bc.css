@@ -1,6 +1,7 @@
 html {
   --bc-bgColor: #202222;
   --bc-textColor: #bec7ca;
+  --bc-fontColor: #292d2e;
   --bc-buttonColor: #ffffff1a;
   --bc-hoverButtonColor: linear-gradient(90deg, #2dee881a, #2dee8800), #ffffff0d;
   --bc-headerColor: #292c2b;
@@ -14,6 +15,7 @@ html {
 html[data-theme="dark"] {
   --bc-bgColor: #fff;
   --bc-textColor: #171a1a;
+  --bc-fontColor: #292d2e;
   --bc-headerColor: #fff;
   --bc-activeColor: #2dee88;
   --bc-linearColor: linear-gradient(90deg, #2dee88, #96e974);
@@ -35,6 +37,11 @@ html[data-theme="dark"] {
 
 .bg-button:hover path.need-active {
   fill: #fff
+}
+
+.bg-button-linear {
+  background: var(--bc-linearColor) !important;
+  color: var(--bc-fontColor) !important;
 }
 
 .bg-button {
