@@ -11,4 +11,7 @@ export default nuxt(
       },
     },
   ),
+  {
+    ignores: ['scripts/**/*', 'i18n/**/*'],
+  },
 )
