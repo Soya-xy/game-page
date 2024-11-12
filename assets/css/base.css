@@ -1,6 +1,6 @@
 html,
 #shadow-html {
-  --fo-font-family: "SN Pro", system-ui, sans-serif;
+  --fo-font-family: 'SN Pro', system-ui, sans-serif;
 }
 
 body,
@@ -30,7 +30,7 @@ button {
   @apply cursor-pointer;
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   color-scheme: dark;
 }
 

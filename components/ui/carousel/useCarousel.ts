@@ -9,8 +9,6 @@ const [useProvideCarousel, useInjectCarousel] = createInjectionState(
     orientation,
     plugins,
   }: CarouselProps, emits: CarouselEmits) => {
-    console.log('%c🤪 ~ file: useCarousel.ts:8 [createInjectionState] -> opts : ', 'color: #3c37e', opts)
-
     const [emblaNode, emblaApi] = emblaCarouselVue({
       ...opts,
       axis: orientation === 'horizontal' ? 'x' : 'y',
