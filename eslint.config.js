@@ -6,6 +6,9 @@ export default nuxt(
   antfu(
     {
       formatters: true,
+      rules: {
+        'no-console': 'warn',
+      },
     },
   ),
 )

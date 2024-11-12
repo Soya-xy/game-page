@@ -2,7 +2,6 @@
   "files.associations": {
     "*.css": "css"
   },
-
   // Disable the default formatter, use eslint instead
   "prettier.enable": false,
   "editor.formatOnSave": false,

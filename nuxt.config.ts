@@ -1,5 +1,5 @@
-import { pwa } from './app/config/pwa'
-import { appDescription } from './app/constants/index'
+import { pwa } from './config/pwa'
+import { appDescription } from './constants/index'
 
 export default defineNuxtConfig({
   modules: [
@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     'shadcn-nuxt',
     '@vue-macros/nuxt',
     '@nuxtjs/device',
+    'nuxt-svgo',
   ],
 
   devtools: {
@@ -41,7 +42,7 @@ export default defineNuxtConfig({
   ],
 
   colorMode: {
-    classSuffix: '',
+    dataValue: 'theme',
   },
 
   future: {
@@ -89,14 +90,22 @@ export default defineNuxtConfig({
   pwa,
 
   shadcn: {
-    /**
-     * Prefix for all the imported component
-     */
     prefix: '',
-    /**
-     * Directory that the component lives in.
-     * @default "./components/ui"
-     */
-    componentDir: './components/ui',
+  },
+
+  svgo: {
+    componentPrefix: 'i',
+    defaultImport: 'component',
+    svgoConfig: {
+      multipass: true,
+      plugins: [{
+        name: 'preset-default',
+        params: {
+          overrides: {
+            removeViewBox: false,
+          },
+        },
+      }],
+    },
   },
 })
