@@ -1,56 +1,58 @@
-<script lang="ts" setup>
-import { cn } from '@/lib/utils'
+<script setup>
+const { isOpen } = useMenu()
 
-const { menuOpen, isOpen, isTransition } = useMenu()
+const menuItems = [
+  { name: '首页', href: '/' },
+  { name: '用户管理', href: '/users' },
+  { name: '文件管理', href: '/files' },
+  { name: '日程安排', href: '/calendar' },
+  { name: '数据统计', href: '/analytics' },
+]
 </script>
 
 <template>
-  <transition
-    name="slide-fade" mode="out-in"
-    @before-leave="isTransition = true"
-  >
+  <div class="relative">
+    <!-- 展开状态的侧边栏 -->
     <div
-      v-if="isOpen" :class="cn(
-        'transition-all h-full bg-color shadow-bc',
-        'w-[var(--bc-menuOpen)]',
-      )"
+      class="fixed top-[60px] bottom-0 left-0 w-[var(--bc-menuOpen)] bg-color shadow-bc transform transition-transform duration-300 ease-in-out"
+      :class="{ '-translate-x-full': !isOpen }"
     >
-      <div>
-        123
-      </div>
+      <nav class="mt-5 px-2">
+        <a
+          v-for="item in menuItems"
+          :key="item.name"
+          :href="item.href"
+          class="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white"
+        >
+          {{ item.name }}
+        </a>
+      </nav>
     </div>
-  </transition>
-  <transition
-    name="fade-up" mode="in-out"
-    @before-enter="isTransition = false"
-  >
+
+    <!-- 收起状态的侧边栏 -->
     <div
-      v-if="menuOpen" :class="cn(
-        'h-full bg-color shadow-bc ',
-      )"
+      class="fixed top-[60px] bottom-0 left-0 w-[var(--bc-menuClose)] bg-color shadow-bc transform transition-all duration-300 ease-in-out"
+      :class="{
+        'opacity-0 translate-y-full': isOpen,
+        'opacity-100 translate-y-0': !isOpen,
+      }"
     >
-      <div>
-        321444
-      </div>
+      <nav class="mt-5">
+        <div
+          v-for="item in menuItems"
+          :key="item.name"
+          class="flex justify-center"
+        >
+          <a
+            :href="item.href"
+            class="p-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
+            :title="item.name"
+          >
+            {{ item.name }}
+
+          </a>
+        </div>
+      </nav>
     </div>
-  </transition>
+  </div>
 </template>
-
-<style scoped>
-.slide-fade-enter,
-.slide-fade-leave-to {
-  opacity: 0;
-  transform: translateX(-280px);
-}
-
-.fade-up-enter-active,
-.fade-up-leave-active {
-  transition: all 0.3s;
-}
-
-.fade-up-enter-from,
-.fade-up-leave-to {
-  opacity: 0;
-  transform: translateY(20px);
-}
-</style>

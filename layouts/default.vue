@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { cn } from '@/lib/utils'
-
-const { isOpen, isTransition } = useMenu()
+const { isOpen } = useMenu()
 </script>
 
 <template>
@@ -9,14 +7,15 @@ const { isOpen, isTransition } = useMenu()
     <LayoutHeader />
     <div class="relative bottom-0 top-[60px] overflow-hidden flex h-[calc(100svh-60px)]">
       <LayoutSlidebar />
-      <div
-        :class="cn(
-          'h-full',
-          (!isOpen && isTransition) && 'pl-2',
-        )"
+      <main
+        class="flex-1 p-6 transition-all duration-300 ease-in-out"
+        :class="{
+          'ml-[var(--bc-menuOpen)]': isOpen,
+          'ml-[var(--bc-menuClose)]': !isOpen,
+        }"
       >
         <slot />
-      </div>
+      </main>
     </div>
   </div>
 </template>
