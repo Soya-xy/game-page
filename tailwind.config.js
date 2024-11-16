@@ -25,6 +25,9 @@ export default resolveConfig({
       },
       backgroundColor: {
         color: 'var(--bc-bgColor)',
+        color2: 'var(--bc-bgColor2)',
+        color4: 'var(--bc-bgColor4)',
+        active: 'var(--bc-activeColor)',
         header: 'var(--bc-headerColor)',
       },
       colors: {
