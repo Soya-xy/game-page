@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     'nuxt-svgo',
     '@nuxt/image',
     '@nuxtjs/i18n',
-
+    '@nuxtjs/google-fonts',
   ],
 
   devtools: {
@@ -46,7 +46,7 @@ export default defineNuxtConfig({
   ],
 
   colorMode: {
-    dataValue: 'theme',
+    dataValue: 'dark',
   },
 
   future: {
@@ -85,6 +85,12 @@ export default defineNuxtConfig({
     },
   },
 
+  googleFonts: {
+    families: {
+      Inter: true,
+    },
+  },
+
   i18n: {
     locales: defaultResource,
     lazy: true,
@@ -92,6 +98,7 @@ export default defineNuxtConfig({
   },
 
   macros: {
+    setupSFC: true,
     defineProp: {
       edition: 'johnsonEdition',
     },

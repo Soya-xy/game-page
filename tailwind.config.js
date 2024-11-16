@@ -2,6 +2,7 @@ import { resolve } from 'node:path'
 import { getIconCollections, iconsPlugin } from '@egoist/tailwindcss-icons'
 import { cleanupSVG, importDirectorySync, isEmptyColor, parseColors, runSVGO } from '@iconify/tools'
 import { compareColors, stringToColor } from '@iconify/utils/lib/colors'
+import containerQueries from '@tailwindcss/container-queries'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import animate from 'tailwindcss-animate'
 
@@ -14,9 +15,10 @@ export default resolveConfig({
   theme: {
     container: {
       center: true,
-      padding: '2rem',
+      padding: '24px',
       screens: {
-        '2xl': '1400px',
+        'xl': '1248px',
+        '2xl': '1248px',
       },
     },
     extend: {
@@ -100,6 +102,7 @@ export default resolveConfig({
   },
   plugins: [
     animate,
+    containerQueries,
     iconsPlugin({
       collections: {
         ...getIconCollections(['carbon']),

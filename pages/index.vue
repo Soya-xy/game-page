@@ -5,7 +5,7 @@
   <div>
     <Suspense>
       <ClientOnly>
-        <div class="container flex flex-col gap-[24px]  relative z-[20]">
+        <div class="container @container flex flex-col gap-y-[24px] px relative z-[20]">
           <HomeBanner />
           <HomeRecent />
         </div>

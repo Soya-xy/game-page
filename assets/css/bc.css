@@ -41,7 +41,7 @@ html[data-theme='dark'] {
 }
 
 .bg-button-linear {
-  background: var(--bc-linearColor) !important;
+  background-image: var(--bc-linearColor) !important;
   color: var(--bc-fontColor) !important;
 }
 
@@ -53,7 +53,7 @@ html[data-theme='dark'] {
 }
 
 .bg-color3-linear {
-  background: var(--bc-bgColor3) !important;
+  background-image: var(--bc-bgColor3) !important;
 }
 
 .bg-button {
@@ -66,6 +66,6 @@ html[data-theme='dark'] {
 }
 
 .main-color-btn {
-  background: var(--bc-linearColor);
+  background-image: var(--bc-linearColor);
   box-shadow: inset 0 -2px var(--bc-activeColor);
 }

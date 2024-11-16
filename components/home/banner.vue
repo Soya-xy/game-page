@@ -7,10 +7,11 @@
     <!-- css 渐变 -->
     <div class="bg-color2 rounded overflow-hidden">
       <div
-        class="h-[261px] py-[30px] rounded-[inherit] font-extrabold text-white flex flex-col justify-center bg-color3-linear relative bg-no-repeat bg-cover pl-[clamp(20px,10%,100px)] pr-[clamp(20px,10%,100px)]"
+        class="h-[261px] py-[30px] rounded-[inherit] font-extrabold text-white flex flex-col justify-center bg-color3-linear relative bg-no-repeat bg-cover pl-[clamp(20px,10%,100px)]"
       >
         <NuxtImg
-          src="/images/afun/banner.avif" alt="" class="h-full absolute top-0 left-[41%] max-lg:left-[25%]"
+          src="/images/afun/banner.avif" alt="" class="h-full absolute top-0
+          right-[-25%] md:right-[-15%] xl:right-0"
           lazy=""
         />
         <h3 class="text-[26px] leading-[36px] z-[1]">

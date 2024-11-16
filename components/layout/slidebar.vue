@@ -1,4 +1,6 @@
 <script setup>
+import { isClient } from '@vueuse/core'
+
 const { isOpen } = useMenu()
 
 const menuItems = [
@@ -8,6 +10,20 @@ const menuItems = [
   { name: '日程安排', href: '/calendar' },
   { name: '数据统计', href: '/analytics' },
 ]
+
+onMounted(() => {
+  if (window.innerWidth < 768) {
+    isOpen.value = false
+  }
+})
+
+if (isClient) {
+  window.addEventListener('resize', () => {
+    if (window.innerWidth < 768) {
+      isOpen.value = false
+    }
+  })
+}
 </script>
 
 <template>
@@ -19,9 +35,7 @@ const menuItems = [
     >
       <nav class="mt-5 px-2">
         <a
-          v-for="item in menuItems"
-          :key="item.name"
-          :href="item.href"
+          v-for="item in menuItems" :key="item.name" :href="item.href"
           class="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white"
         >
           {{ item.name }}
@@ -38,14 +52,9 @@ const menuItems = [
       }"
     >
       <nav class="mt-5">
-        <div
-          v-for="item in menuItems"
-          :key="item.name"
-          class="flex justify-center"
-        >
+        <div v-for="item in menuItems" :key="item.name" class="flex justify-center">
           <a
-            :href="item.href"
-            class="p-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
+            :href="item.href" class="p-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
             :title="item.name"
           >
             {{ item.name }}
