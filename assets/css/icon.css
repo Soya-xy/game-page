@@ -1,0 +1,1241 @@
+@font-face {
+  font-display: block;
+  font-family: icon;
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url(/fonts/icon.ttf) format('truetype'),
+    url(/fonts/icon.svg) format('svg');
+}
+
+[class*=' icon-'],
+[class^='icon-'] {
+  font-family: icon !important;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-new_bd_tips:before {
+  content: '';
+}
+
+.icon-new_bd_fail:before {
+  content: '';
+}
+
+.icon-new_bd_succ:before {
+  content: '';
+}
+
+.icon-n-TotalbetAmount:before {
+  content: '';
+}
+
+.icon-n-NumberofBets:before {
+  content: '';
+}
+
+.icon-n-Statistics:before {
+  content: '';
+}
+
+.icon-n-info-tip:before {
+  content: '';
+}
+
+.icon-new-responsible:before {
+  content: '';
+}
+
+.icon-n-countdown:before {
+  content: '';
+}
+
+.icon-n-back:before {
+  content: '';
+}
+
+.icon-n-lang1:before {
+  content: '';
+}
+
+.icon-new-unionl:before {
+  content: '';
+}
+
+.icon-new-unionr:before {
+  content: '';
+}
+
+.icon-n-free:before {
+  content: '';
+}
+
+.icon-n-sign-out:before {
+  content: '';
+}
+
+.icon-n-wallet:before {
+  content: '';
+}
+
+.icon-n-bet-history:before {
+  content: '';
+}
+
+.icon-n-personal:before {
+  content: '';
+}
+
+.icon-n-transaction-history:before {
+  content: '';
+}
+
+.icon-n-withdraw:before {
+  content: '';
+}
+
+.icon-n-security-settings:before {
+  content: '';
+}
+
+.icon-n-swap:before {
+  content: '';
+}
+
+.icon-n-recent:before {
+  content: '';
+}
+
+.icon-n-favorites:before {
+  content: '';
+}
+
+.icon-n-recommend:before {
+  content: '';
+}
+
+.icon-n-affiliate:before {
+  content: '';
+}
+
+.icon-n-livechat:before {
+  content: '';
+}
+
+.icon-n-install:before {
+  content: '';
+}
+
+.icon-n-bonus:before {
+  content: '';
+}
+
+.icon-n-tournament:before {
+  content: '';
+}
+
+.icon-n-vip:before {
+  content: '';
+}
+
+.icon-n-lang:before {
+  content: '';
+}
+
+.icon-n-country:before {
+  content: '';
+}
+
+.icon-n-special:before {
+  content: '';
+}
+
+.icon-n-live:before {
+  content: '';
+}
+
+.icon-n-show:before {
+  content: '';
+}
+
+.icon-n-lottery:before {
+  content: '';
+}
+
+.icon-n-providers:before {
+  content: '';
+}
+
+.icon-n-casual:before {
+  content: '';
+}
+
+.icon-n-sport:before {
+  content: '';
+}
+
+.icon-n-slot:before {
+  content: '';
+}
+
+.icon-n-originals:before {
+  content: '';
+}
+
+.icon-n-lobby:before {
+  content: '';
+}
+
+.icon-new-sport-germany:before {
+  content: '';
+}
+
+.icon-new-sport-france:before {
+  content: '';
+}
+
+.icon-new-sport-nigeria:before {
+  content: '';
+}
+
+.icon-new-sport-spain:before {
+  content: '';
+}
+
+.icon-new-sport-italy:before {
+  content: '';
+}
+
+.icon-new-star:before {
+  content: '';
+}
+
+.icon-new-play:before {
+  content: '';
+}
+
+.icon-new-down:before {
+  content: '';
+}
+
+.icon-new-help:before {
+  content: '';
+}
+
+.icon-new-arrow-4:before {
+  content: '';
+}
+
+.icon-new-chat-video:before {
+  content: '';
+}
+
+.icon-new-chat-image:before {
+  content: '';
+}
+
+.icon-new-chat-rank:before {
+  content: '';
+}
+
+.icon-new-game-close:before {
+  content: '';
+}
+
+.icon-new-deposit-arrow:before {
+  content: '';
+}
+
+.icon-new-bonus-gift:before {
+  content: '';
+}
+
+.icon-new-bonus-special:before {
+  content: '';
+}
+
+.icon-new-bonus-vip:before {
+  content: '';
+}
+
+.icon-new-props:before {
+  content: '';
+}
+
+.icon-new-fast-unlock:before {
+  content: '';
+}
+
+.icon-new-reg-date:before {
+  content: '';
+}
+
+.icon-new-wenhao-1:before {
+  content: '';
+}
+
+.icon-new-wenhao-square:before {
+  content: '';
+}
+
+.icon-new-wenhao:before {
+  content: '';
+}
+
+.icon-new-jump:before {
+  content: '';
+}
+
+.icon-account-tutorial:before {
+  content: '';
+}
+
+.icon-platform-introduction:before {
+  content: '';
+}
+
+.icon-new-site-switching:before {
+  content: '';
+}
+
+.icon-new-profile:before {
+  content: '';
+}
+
+.icon-new-android-option:before {
+  content: '';
+}
+
+.icon-new-ios-setting:before {
+  content: '';
+}
+
+.icon-new-ios-more:before {
+  content: '';
+}
+
+.icon-new-android-more:before {
+  content: '';
+}
+
+.icon-new-currency:before {
+  content: '';
+}
+
+.icon-new-vip:before {
+  content: '';
+}
+
+.icon-new-chat-chips:before {
+  content: '';
+}
+
+.icon-new-lottery-x:before {
+  content: '';
+}
+
+.icon-new-license:before {
+  content: '';
+}
+
+.icon-new-safety:before {
+  content: '';
+}
+
+.icon-new-world:before {
+  content: '';
+}
+
+.icon-new-task:before {
+  content: '';
+}
+
+.icon-new-agent-lv:before {
+  content: '';
+}
+
+.icon-new-download:before {
+  content: '';
+}
+
+.icon-new-position:before {
+  content: '';
+}
+
+.icon-new-server-time:before {
+  content: '';
+}
+
+.icon-new-android2:before {
+  content: '';
+}
+
+.icon-new-android1:before {
+  content: '';
+}
+
+.icon-new-android:before {
+  content: '';
+}
+
+.icon-new-ios:before {
+  content: '';
+}
+
+.icon-new-web:before {
+  content: '';
+}
+
+.icon-new-lottery:before {
+  content: '';
+}
+
+.icon-new-arrow-3:before {
+  content: '';
+}
+
+.icon-new-swap:before {
+  content: '';
+}
+
+.icon-new-arrow-2:before {
+  content: '';
+}
+
+.icon-new-chat-giftmoney:before {
+  content: '';
+}
+
+.icon-new-chat-packet:before {
+  content: '';
+}
+
+.icon-c04-new-sign-out:before {
+  content: '';
+}
+
+.icon-c04-new-security-settings:before {
+  content: '';
+}
+
+.icon-c04-new-free:before {
+  content: '';
+}
+
+.icon-c04-new-bet-history:before {
+  content: '';
+}
+
+.icon-c04-new-transaction-history:before {
+  content: '';
+}
+
+.icon-c04-new-withdraw:before {
+  content: '';
+}
+
+.icon-c04-wallet:before {
+  content: '';
+}
+
+.icon-c04-new-love:before {
+  content: '';
+}
+
+.icon-c04-new-favorites-soild:before {
+  content: '';
+}
+
+.icon-c04-new-5013:before {
+  content: '';
+}
+
+.icon-c04-new-5010:before {
+  content: '';
+}
+
+.icon-c04-new-5015:before {
+  content: '';
+}
+
+.icon-c04-new-5011:before {
+  content: '';
+}
+
+.icon-c04-new-5021:before {
+  content: '';
+}
+
+.icon-c04-new-5020:before {
+  content: '';
+}
+
+.icon-c04-new-1025:before {
+  content: '';
+}
+
+.icon-c04-new-5012:before {
+  content: '';
+}
+
+.icon-c04-new-5008:before {
+  content: '';
+}
+
+.icon-c04-new-5019:before {
+  content: '';
+}
+
+.icon-c04-new-5018:before {
+  content: '';
+}
+
+.icon-c04-new-1027:before {
+  content: '';
+}
+
+.icon-c04-new-1028:before {
+  content: '';
+}
+
+.icon-c04-new-1029:before {
+  content: '';
+}
+
+.icon-c04-new-5022:before {
+  content: '';
+}
+
+.icon-c04-new-5017:before {
+  content: '';
+}
+
+.icon-c04-new-5016:before {
+  content: '';
+}
+
+.icon-c04-new-install:before {
+  content: '';
+}
+
+.icon-c04-new-promotions:before {
+  content: '';
+}
+
+.icon-c04-new-special:before {
+  content: '';
+}
+
+.icon-c04-new-show:before {
+  content: '';
+}
+
+.icon-c04-new-live-casino:before {
+  content: '';
+}
+
+.icon-c04-new-slot:before {
+  content: '';
+}
+
+.icon-c04-new-orignals:before {
+  content: '';
+}
+
+.icon-c04-lobby:before {
+  content: '';
+}
+
+.icon-c04-new-a-bonus:before {
+  content: '';
+}
+
+.icon-c04-new-live-support:before {
+  content: '';
+}
+
+.icon-c04-new-search:before {
+  content: '';
+}
+
+.icon-c04-new-search-max:before {
+  content: '';
+}
+
+.icon-c04-new-recommend-max:before {
+  content: '';
+}
+
+.icon-c04-new-provider-max:before {
+  content: '';
+}
+
+.icon-c04-new-exp:before {
+  content: '';
+}
+
+.icon-c04-new-theme-max:before {
+  content: '';
+}
+
+.icon-c04-new-newgames:before {
+  content: '';
+}
+
+.icon-c04-fire:before {
+  content: '';
+}
+
+.icon-c04-new-top:before {
+  content: '';
+}
+
+.icon-c04-new-recent-useless:before {
+  content: '';
+}
+
+.icon-c04-new-expand:before {
+  content: '';
+}
+
+.icon-c04-new-sports:before {
+  content: '';
+}
+
+.icon-c04-new-gaming:before {
+  content: '';
+}
+
+.icon-c04-new-personal:before {
+  content: '';
+}
+
+.icon-c04-deposit:before {
+  content: '';
+}
+
+.icon-c04-new-affiliate:before {
+  content: '';
+}
+
+.icon-c04-new-bonus:before {
+  content: '';
+}
+
+.icon-c04-new-home:before {
+  content: '';
+}
+
+.icon-new-keyboard:before {
+  content: '';
+}
+
+.icon-new-emoji-delete:before {
+  content: '';
+}
+
+.icon-new-chat-gif:before {
+  content: '';
+}
+
+.icon-new-chat-emoji:before {
+  content: '';
+}
+
+.icon-new-send:before {
+  content: '';
+}
+
+.icon-new-reply:before {
+  content: '';
+}
+
+.icon-new-ban:before {
+  content: '';
+}
+
+.icon-new-aite:before {
+  content: '';
+}
+
+.icon-new-info-circle:before {
+  content: '';
+}
+
+.icon-new-service:before {
+  content: '';
+}
+
+.icon-new-exit:before {
+  content: '';
+}
+
+.icon-new-down1:before {
+  content: '';
+}
+
+.icon-new-waiting:before {
+  content: '';
+}
+
+.icon-new-free:before {
+  content: '';
+}
+
+.icon-new-mobile:before {
+  content: '';
+}
+
+.icon-new-affiliate:before {
+  content: '';
+}
+
+.icon-new-great-wins:before {
+  content: '';
+}
+
+.icon-new-a-bonus:before {
+  content: '';
+}
+
+.icon-new-orignals:before {
+  content: '';
+}
+
+.icon-new-exp:before {
+  content: '';
+}
+
+.icon-new-gaming:before {
+  content: '';
+}
+
+.icon-new-clean-6:before {
+  content: '';
+}
+
+.icon-new-clean-5:before {
+  content: '';
+}
+
+.icon-close:before {
+  content: '';
+}
+
+.icon-new-clean-3:before {
+  content: '';
+}
+
+.icon-new-clean-2:before {
+  content: '';
+}
+
+.icon-new-clean-1:before {
+  content: '';
+}
+
+.icon-new-hook:before {
+  content: '';
+}
+
+.icon-new-completed:before {
+  content: '';
+}
+
+.icon-new-checked:before {
+  content: '';
+}
+
+.icon-new-check:before {
+  content: '';
+}
+
+.icon-new-arrow-1:before {
+  content: '';
+}
+
+.icon-new-arrow-strong:before {
+  content: '';
+}
+
+.icon-new-arrow:before {
+  content: '';
+}
+
+.icon-new-back:before {
+  content: '';
+}
+
+.icon-new-home:before {
+  content: '';
+}
+
+.icon-new-personal:before {
+  content: '';
+}
+
+.icon-new-security-settings:before {
+  content: '';
+}
+
+.icon-new-lang:before {
+  content: '';
+}
+
+.icon-new-bet-history-hollow:before {
+  content: '';
+}
+
+.icon-new-transaction-hollow:before {
+  content: '';
+}
+
+.icon-new-withdraw-hollow:before {
+  content: '';
+}
+
+.icon-new-deposit-hollow:before {
+  content: '';
+}
+
+.icon-new-loading:before {
+  content: '';
+}
+
+.icon-new-expand-m:before {
+  content: '';
+}
+
+.icon-new-trumpet1:before {
+  content: '';
+}
+
+.icon-new-trumpet:before {
+  content: '';
+}
+
+.icon-new-expand:before {
+  content: '';
+}
+
+.icon-new-show:before {
+  content: '';
+}
+
+.icon-new-task-progress-left:before {
+  content: '';
+}
+
+.icon-new-task-progress:before {
+  content: '';
+}
+
+.icon-new-copy:before {
+  content: '';
+}
+
+.icon-new-edit:before {
+  content: '';
+}
+
+.icon-new-play-demo:before {
+  content: '';
+}
+
+.icon-new-search:before {
+  content: '';
+}
+
+.icon-new-search-max:before {
+  content: '';
+}
+
+.icon-new-recommend-max:before {
+  content: '';
+}
+
+.icon-new-provider-max:before {
+  content: '';
+}
+
+.icon-new-theme-max:before {
+  content: '';
+}
+
+.icon-new-newgames:before {
+  content: '';
+}
+
+.icon-new-hot-max:before {
+  content: '';
+}
+
+.icon-new-top:before {
+  content: '';
+}
+
+.icon-new-live-support:before {
+  content: '';
+}
+
+.icon-new-lock:before {
+  content: '';
+}
+
+.icon-new-delete-all:before {
+  content: '';
+}
+
+.icon-new-wheel1:before {
+  content: '';
+}
+
+.icon-new-eyes-close:before {
+  content: '';
+}
+
+.icon-new-eyes-open:before {
+  content: '';
+}
+
+.icon-new-100001001:before {
+  content: '';
+}
+
+.icon-new-1028:before {
+  content: '';
+}
+
+.icon-new-5016:before {
+  content: '';
+}
+
+.icon-new-5017:before {
+  content: '';
+}
+
+.icon-new-5013:before {
+  content: '';
+}
+
+.icon-new-5010:before {
+  content: '';
+}
+
+.icon-new-5015:before {
+  content: '';
+}
+
+.icon-new-5011:before {
+  content: '';
+}
+
+.icon-new-5021:before {
+  content: '';
+}
+
+.icon-new-5020:before {
+  content: '';
+}
+
+.icon-new-5018:before {
+  content: '';
+}
+
+.icon-new-1027:before {
+  content: '';
+}
+
+.icon-new-1025:before {
+  content: '';
+}
+
+.icon-new-5012:before {
+  content: '';
+}
+
+.icon-new-5008:before {
+  content: '';
+}
+
+.icon-new-5022:before {
+  content: '';
+}
+
+.icon-new-1029:before {
+  content: '';
+}
+
+.icon-new-5019:before {
+  content: '';
+}
+
+.icon-new-game:before {
+  content: '';
+}
+
+.icon-new-share:before {
+  content: '';
+}
+
+.icon-new-emoji:before {
+  content: '';
+}
+
+.icon-new-counter-strike:before {
+  content: '';
+}
+
+.icon-new-dota2:before {
+  content: '';
+}
+
+.icon-new-badminton:before {
+  content: '';
+}
+
+.icon-new-american-football:before {
+  content: '';
+}
+
+.icon-new-fifa:before {
+  content: '';
+}
+
+.icon-new-soccer:before {
+  content: '';
+}
+
+.icon-new-premier-league:before {
+  content: '';
+}
+
+.icon-new-brasileiro-serie:before {
+  content: '';
+}
+
+.icon-new-upcoming-events:before {
+  content: '';
+}
+
+.icon-new-live-events:before {
+  content: '';
+}
+
+.icon-new-bets-normal:before {
+  content: '';
+}
+
+.icon-new-special:before {
+  content: '';
+}
+
+.icon-new-live-casino:before {
+  content: '';
+}
+
+.icon-new-slot:before {
+  content: '';
+}
+
+.icon-new-sign-out:before {
+  content: '';
+}
+
+.icon-new-setting:before {
+  content: '';
+}
+
+.icon-new-bet-history:before {
+  content: '';
+}
+
+.icon-new-withdraw:before {
+  content: '';
+}
+
+.icon-new-transaction-history:before {
+  content: '';
+}
+
+.icon-new-sports:before {
+  content: '';
+}
+
+.icon-new-chat:before {
+  content: '';
+}
+
+.icon-new-message:before {
+  content: '';
+}
+
+.icon-new-install:before {
+  content: '';
+}
+
+.icon-new-promotions:before {
+  content: '';
+}
+
+.icon-new-deposit:before {
+  content: '';
+}
+
+.icon-deposit:before {
+  content: '';
+}
+
+.icon-new-bonus:before {
+  content: '';
+}
+
+.icon-new-bonus-x:before {
+  content: '';
+}
+
+.icon-new-recent-useless:before {
+  content: '';
+}
+
+.icon-new-favorites:before {
+  content: '';
+}
+
+.icon-new-hot:before {
+  content: '';
+}
+
+.icon-new-recommend:before {
+  content: '';
+}
+
+.icon-new-info-normal:before {
+  content: '';
+}
+
+.icon-pdd-share:before {
+  content: '';
+}
+
+.icon-pdd-sms:before {
+  content: '';
+}
+
+.icon-tournament:before {
+  content: '';
+}
+
+.icon-dl-copy:before {
+  content: '';
+}
+
+.icon-dl-date:before {
+  content: '';
+}
+
+.icon-emoji-delete:before {
+  content: '';
+}
+
+.icon-lobby:before {
+  content: '';
+}
+
+.icon-reward:before {
+  content: '';
+}
+
+.icon-wallet:before {
+  content: '';
+}
+
+.icon-marker:before {
+  content: '';
+}
+
+.icon-new-love:before {
+  content: '';
+}
+
+.icon-new-favorites-soild:before {
+  content: '';
+}
+
+.icon-reg-account:before {
+  content: '';
+}
+
+.icon-lock:before {
+  content: '';
+}
+
+.icon-full-screen:before {
+  content: '';
+}
+
+.icon-triangle-right:before {
+  content: '';
+}
+
+.icon-mail-outbox:before {
+  content: '';
+}
+
+.icon-tel-outbox:before {
+  content: '';
+}
+
+.icon-alert-error:before {
+  content: '';
+}
+
+.icon-new-claimed:before {
+  content: '';
+}
+
+.icon-new-success:before {
+  content: '';
+}
+
+.icon-alert-success:before {
+  content: '';
+}
+
+.icon-alert-warning:before {
+  content: '';
+}
+
+.icon-refresh:before {
+  content: '';
+}
+
+.icon-cherry:before {
+  content: '';
+}
+
+.icon-5018:before {
+  content: '';
+}
+
+.icon-sport-upcoming:before {
+  content: '';
+}
+
+.icon-sport-dota:before {
+  content: '';
+}
+
+.icon-crown:before {
+  content: '';
+}
+
+.icon-fire:before {
+  content: '';
+}

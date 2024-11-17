@@ -4,16 +4,21 @@ html {
   --bc-bgColor4: #dedede33;
   --bc-bgColor5: #4b5455;
   --bc-bgColor6: #363838;
-  --bc-bgColor3: linear-gradient(90deg, #2dee8866, #2dee8800 40%);
+  --bc-tabColor: #323838;
   --bc-textColor: #bec7ca;
   --bc-fontColor: #292d2e;
   --bc-buttonColor: #ffffff1a;
-  --bc-hoverButtonColor: linear-gradient(90deg, #2dee881a, #2dee8800), #ffffff0d;
   --bc-headerColor: #292c2b;
   --bc-activeColor: #2dee88;
+  --bc-noActiveColor: #2dee881a;
+  --bc-noActiveColor2: #2dee8866;
   --bc-greenColor: #25d276;
   --bc-linearColor: linear-gradient(90deg, var(--bc-activeColor), #96e974);
+  --bc-linearColor2: linear-gradient(75deg, var(--bc-noActiveColor) 42.49%, var(--bc-activeColor) 97.18%);
+  --bc-linearColor3: linear-gradient(90deg, var(--bc-noActiveColor), #2dee8800), #ffffff0d;
   --bc-shadow: 8px 0 8px #00000040;
+  --bc-hoverButtonColor: linear-gradient(90deg, var(--bc-noActiveColor), #2dee8800), #ffffff0d;
+  --bc-bgColor3: linear-gradient(90deg, var(--bc-noActiveColor2), #2dee8800 40%);
   --bc-shadow2: 0 4px 4px #14141480;
   --bc-menuOpen: 240px;
   --bc-menuClose: 73px;
@@ -44,6 +49,10 @@ html {
 
 .bg-button:hover path.need-active {
   fill: #fff;
+}
+
+.bg-linear-color-2 {
+  background-image: var(--bc-linearColor2) !important;
 }
 
 .bg-button-linear {
@@ -106,4 +115,12 @@ html {
   background: linear-gradient(90deg, #286aff, #00dbe9);
   background-clip: text;
   color: transparent !important;
+}
+
+.bg-linear-3 {
+  background: var(--bc-linearColor3);
+}
+
+.hover-bg-linear-3:hover {
+  background: var(--bc-linearColor3);
 }

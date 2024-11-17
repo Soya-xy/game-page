@@ -8,7 +8,7 @@ const { isOpen } = useMenu()
     <div class="relative bottom-0 top-[60px] overflow-auto flex flex-col h-[calc(100svh-60px)]">
       <LayoutSlidebar />
       <main
-        class="flex-1 py-6 transition-all duration-300 ease-in-out"
+        class="flex-1 pt-6 transition-all duration-300 ease-in-out"
         :class="{
           'ml-[var(--bc-menuOpen)]': isOpen,
           'ml-[var(--bc-menuClose)]': !isOpen,
