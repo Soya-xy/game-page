@@ -5,5 +5,5 @@ defineProps<{
 </script>
 
 <template>
-  <NuxtImg :src class="w-full h-full" v-bind="$attrs" />
+  <NuxtImg :src class="max-w-full h-full" v-bind="$attrs" />
 </template>

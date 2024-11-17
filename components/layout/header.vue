@@ -9,7 +9,7 @@ const { toggleMenu, isOpen } = useMenu()
   <header
     :class="cn(
       'h-[60px] fixed top-0 left-0 right-0 z-[100] w-full',
-      'bg-header flex items-center justify-between shdow-[0_4px_20px_#00000060]',
+      'bg-header flex items-center justify-between shadow-[0_4px_20px_#00000060]',
     )
     "
   >

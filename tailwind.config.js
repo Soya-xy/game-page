@@ -8,7 +8,7 @@ import animate from 'tailwindcss-animate'
 
 /** @type {import('tailwindcss').Config} */
 export default resolveConfig({
-  darkMode: ['class'],
+  darkMode: ['class', '[data-theme="dark"]'],
   safelist: ['dark'],
   prefix: '',
 
@@ -24,15 +24,20 @@ export default resolveConfig({
     extend: {
       boxShadow: {
         bc: 'var(--bc-shadow)',
+        bc2: 'var(--bc-shadow2)',
       },
       backgroundColor: {
         color: 'var(--bc-bgColor)',
         color2: 'var(--bc-bgColor2)',
         color4: 'var(--bc-bgColor4)',
+        color5: 'var(--bc-bgColor5)',
+        color6: 'var(--bc-bgColor6)',
         active: 'var(--bc-activeColor)',
         header: 'var(--bc-headerColor)',
+        page: 'var(--bc-pageColor)',
       },
       colors: {
+        font: 'var(--bc-fontColor)',
         color: 'var(--bc-textColor)',
         active: 'var(--bc-activeColor)',
         green: 'var(--bc-greenColor)',
@@ -107,7 +112,7 @@ export default resolveConfig({
     containerQueries,
     iconsPlugin({
       collections: {
-        ...getIconCollections(['carbon']),
+        ...getIconCollections(['carbon', 'mdi']),
         svg: getCollections(resolve(__dirname, './assets/icons/svg')),
       },
     }),

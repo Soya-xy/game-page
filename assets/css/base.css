@@ -37,3 +37,8 @@ button {
 ::selection {
   @apply bg-accent/80 text-white;
 }
+
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+  display: none;
+}

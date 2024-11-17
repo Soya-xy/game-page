@@ -9,6 +9,9 @@
           <HomeBanner />
           <HomeRecent />
           <HomeCard />
+          <BaseGameList title="Recommendar" />
+          <BaseGameList title="AFun Originals" />
+          <HomePrizePool />
         </div>
       </ClientOnly>
       <template #fallback>

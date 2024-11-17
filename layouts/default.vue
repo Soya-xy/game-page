@@ -5,7 +5,7 @@ const { isOpen } = useMenu()
 <template>
   <div class="h-[100svh] text-color bg-color">
     <LayoutHeader />
-    <div class="relative bottom-0 top-[60px] overflow-hidden flex h-[calc(100svh-60px)]">
+    <div class="relative bottom-0 top-[60px] overflow-auto flex flex-col h-[calc(100svh-60px)]">
       <LayoutSlidebar />
       <main
         class="flex-1 py-6 transition-all duration-300 ease-in-out"
@@ -15,6 +15,7 @@ const { isOpen } = useMenu()
         }"
       >
         <slot />
+        <LayoutFooter />
       </main>
     </div>
   </div>

@@ -30,7 +30,7 @@ if (isClient) {
   <div class="relative">
     <!-- 展开状态的侧边栏 -->
     <div
-      class="fixed top-[60px] bottom-0 left-0 w-[var(--bc-menuOpen)] bg-color shadow-bc transform transition-transform duration-300 ease-in-out"
+      class="fixed top-[60px] bottom-0 left-0 w-[var(--bc-menuOpen)] bg-color2 shadow-bc transform transition-transform duration-300 ease-in-out"
       :class="{ '-translate-x-full': !isOpen }"
     >
       <nav class="mt-5 px-2">
@@ -45,7 +45,7 @@ if (isClient) {
 
     <!-- 收起状态的侧边栏 -->
     <div
-      class="fixed top-[60px] bottom-0 left-0 w-[var(--bc-menuClose)] bg-color shadow-bc transform transition-all duration-300 ease-in-out"
+      class="fixed top-[60px] bottom-0 left-0 w-[var(--bc-menuClose)] bg-color2 shadow-bc transform transition-all duration-300 ease-in-out"
       :class="{
         'opacity-0 translate-y-full': isOpen,
         'opacity-100 translate-y-0': !isOpen,

@@ -47,7 +47,8 @@ export default defineNuxtConfig({
   ],
 
   colorMode: {
-    dataValue: 'dark',
+    fallback: 'dark',
+    dataValue: 'theme',
   },
 
   future: {
