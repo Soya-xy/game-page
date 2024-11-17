@@ -34,6 +34,7 @@ export default resolveConfig({
       },
       colors: {
         color: 'var(--bc-textColor)',
+        active: 'var(--bc-activeColor)',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

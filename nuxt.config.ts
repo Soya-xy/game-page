@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxtjs/i18n',
     '@nuxtjs/google-fonts',
+    'nuxt-swiper',
   ],
 
   devtools: {

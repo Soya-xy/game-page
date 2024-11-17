@@ -15,7 +15,7 @@ const { toggleMenu, isOpen } = useMenu()
   >
     <div class="flex items-center gap-[27px] ml-[22px]">
       <BaseToggleMenu :class="isOpen ? 'rotate-180' : ''" @click="toggleMenu" />
-      <Image src="/images/logo.avif" class="h-[44px]" />
+      <Image src="/images/logo.avif" class="!h-[44px]" />
     </div>
     <div class="flex items-center px-[12px] gap-[12px]">
       <BaseIconButton>

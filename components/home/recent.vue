@@ -1,33 +1,39 @@
 <script lang="ts" setup>
-import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
-import Autoplay from 'embla-carousel-autoplay'
+const containerRef = ref(null)
+const games = ref(Array.from({ length: 20 }))
+useSwiper(containerRef, {
+  // effect: 'creative',
+  loop: true,
+  slidesPerView: 'auto',
+  spaceBetween: 12,
+  autoplay: {
+    delay: 1000,
+    disableOnInteraction: false,
+  },
+})
 </script>
 
 <template>
   <div>
     <BaseTitle name="Recent Big Wins" icon />
     <div>
-      <Carousel
-        class="w-ful" :opts="{
-          loop: true,
-        }" :plugins="[
-          Autoplay({
-            delay: 50000,
-            stopOnInteraction: false,
-            stopOnMouseEnter: true,
-          }),
-        ]"
-      >
-        <CarouselContent class="w-full">
-          <CarouselItem v-for="(_, index) in 20" :key="index" class="basis-[57px]">
-            <div class="p-1">
-              <span class="text-3xl font-semibold">{{ index + 1 }}</span>
+      <ClientOnly>
+        <swiper-container ref="containerRef" :init="false" class="w-full flex">
+          <swiper-slide v-for="(game, index) in games" :key="index" class="w-auto">
+            <div class="w-[57px] h-[75px]">
+              <Image src="https://avatars.githubusercontent.com/u/56671014?s=40&v=4" lazy class="rounded" />
             </div>
-          </CarouselItem>
-        </CarouselContent>
-      </Carousel>
+            <div class="text-center text-sm leading-[1rem] mt-[2px]">
+              <p class="text-white">
+                123
+              </p>
+              <p class="text-active">
+                123
+              </p>
+            </div>
+          </swiper-slide>
+        </swiper-container>
+      </ClientOnly>
     </div>
   </div>
 </template>
-
-<style></style>

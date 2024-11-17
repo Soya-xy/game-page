@@ -9,7 +9,7 @@
       <div
         class="h-[261px] py-[30px] rounded-[inherit] font-extrabold text-white flex flex-col justify-center bg-color3-linear relative bg-no-repeat bg-cover pl-[clamp(20px,10%,100px)]"
       >
-        <NuxtImg
+        <Image
           src="/images/afun/banner.avif" alt="" class="h-full absolute top-0
           right-[-25%] md:right-[-15%] xl:right-0"
           lazy=""
