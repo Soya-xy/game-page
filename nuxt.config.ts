@@ -116,11 +116,11 @@ export default defineNuxtConfig({
     svgoConfig: {
       multipass: true,
       plugins: [{
-        name: 'preset-default',
+        name: 'removeUselessStrokeAndFill',
         params: {
-          overrides: {
-            removeViewBox: false,
-          },
+          stroke: false,
+          fill: false,
+          removeNone: false,
         },
       }],
     },

@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { replaceMiddle } from '~/lib/utils'
+
 const containerRef = ref(null)
 const games = ref(Array.from({ length: 20 }))
 useSwiper(containerRef, {
@@ -7,7 +9,7 @@ useSwiper(containerRef, {
   slidesPerView: 'auto',
   spaceBetween: 12,
   autoplay: {
-    delay: 70000,
+    delay: 700,
     disableOnInteraction: false,
     pauseOnMouseEnter: true,
   },
@@ -32,7 +34,7 @@ useSwiper(containerRef, {
             </div>
             <div class="text-center text-[10px] mt-[2px]  flex flex-col items-center">
               <span class="text-color font-[600]">
-                123
+                {{ replaceMiddle('123') }}
               </span>
               <span class="text-green  font-[800]">
                 ${{ (1234.12).toLocaleString() }}
