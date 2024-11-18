@@ -87,16 +87,35 @@ if (isClient) {
         'opacity-100 translate-y-0': !isOpen,
       }"
     >
-      <nav class="mt-5">
-        <div v-for="item in menuItems" :key="item.name" class="flex justify-center">
-          <a
-            :href="item.href" class="p-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
-            :title="item.name"
-          >
-            {{ item.name }}
+      <BaseInvitation is-icon />
 
-          </a>
-        </div>
+      <nav class="mt-5 flex flex-col gap-[5px] items-center">
+        <BaseTooltip
+          v-for="item in menuItems" :key="item.name"
+          side="right"
+          :side-offset="10"
+          arrow-color="var(--bc-bgColor6)"
+        >
+          <div
+            class="flex justify-center h-[40px] w-[40px] cursor-pointer flex items-center justify-center  hover-bg-linear-3 rounded-[10px]"
+          >
+            <i
+              v-if="item.iconType !== 'svg'"
+              class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[22px] text-e-g-color-108 hover-icon"
+              :class="item.icon"
+            />
+            <template v-else>
+              <i-svg-casino v-if="item.icon === 'casino'" class="scale-[1.5]" />
+              <i-svg-sport v-else-if="item.icon === 'sport'" class="scale-[1.5]" />
+              <i-svg-lotter v-else-if="item.icon === 'lotter'" class="scale-[1.5]" />
+            </template>
+          </div>
+          <template #content>
+            <div class="bg-color6 p-[10px] ">
+              {{ item.name }}
+            </div>
+          </template>
+        </BaseTooltip>
       </nav>
     </div>
   </div>
