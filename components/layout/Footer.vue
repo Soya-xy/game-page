@@ -34,7 +34,7 @@ import { footerList, joinList } from '~/@types/constants'
         </div>
         <div class="flex gap-x-[140px] border-solid border-t-[1px] border-[var(--bc-color18)] px-[16px] py-[33px]">
           <div class="w-[40%]">
-            <Image src="/images/logo.avif" alt="logo" lazy style="height: 86px;" />
+            <Image src="/images/logo.avif" alt="logo" style="height: 86px;" />
             <div class="mt-[24px] text-left text-[13px] font-semibold text-color leading-[22px] whitespace-pre-wrap">
               The handicap and sports odds information contained on this website is for entertainment purposes only.
               Please check the betting regulations in your jurisdiction as they vary from state to state, province to

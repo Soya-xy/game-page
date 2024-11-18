@@ -11,7 +11,7 @@ const containerRef = templateRef('containerRef')
 const games = ref(Array.from({ length: 20 }))
 const page = ref(1)
 
-useSwiper(containerRef, {
+const swiper = useSwiper(containerRef, {
   slidesPerView: 1,
   slidesPerGroup: 1,
   spaceBetween: 8,
@@ -55,7 +55,7 @@ useSwiper(containerRef, {
             <span>More</span>
             <i class="i-mdi-chevron-right font-bold" />
           </div>
-          <BasePage v-model="page" :total="20" :size="5" />
+          <BasePage v-model="page" :total="20" :size="5" @prev="swiper.prev()" @next="swiper.next()" />
         </div>
       </template>
     </BaseTitle>

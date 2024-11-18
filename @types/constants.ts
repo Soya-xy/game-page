@@ -137,3 +137,9 @@ export const joinList = [
     url: 'https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/share/twitch.png?20240416',
   },
 ]
+
+export enum ImageLoadStatus {
+  Loading = 'loading',
+  Loaded = 'loaded',
+  Error = 'error',
+}
