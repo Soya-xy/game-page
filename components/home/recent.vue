@@ -1,10 +1,9 @@
 <script lang="ts" setup>
 import { replaceMiddle } from '~/lib/utils'
 
-const containerRef = ref(null)
+const containerRef = templateRef('containerRef')
 const games = ref(Array.from({ length: 20 }))
 useSwiper(containerRef, {
-  // effect: 'creative',
   loop: true,
   slidesPerView: 'auto',
   spaceBetween: 12,

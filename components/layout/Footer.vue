@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-
+import { footerList, joinList } from '~/@types/constants'
 </script>
 
 <template>
@@ -10,46 +10,14 @@
           <ul
             class="text-center w-[1000px] grid gap-x-[5%] gap-y-[40px] mr-[60px] grid-flow-col-dense text-[14px] text-color grid-cols-4"
           >
-            <li>
+            <li v-for="item in footerList" :key="item.title">
               <h4 class="text-white font-extrabold uppercase mb-[20px] text-left truncate">
-                Promo
+                {{ item.title }}
               </h4>
               <div class="footer-link flex flex-col flex-wrap items-start gap-[14px] text-left">
-                <a class="cursor-pointer hover-text-white">VIP Club</a><a
-                  class="cursor-pointer hover-text-white"
-                >Promotions</a><a class="cursor-pointer hover-text-white">Refer
-                  and Earn</a><a class="cursor-pointer hover-text-white">Bonus</a>
-              </div>
-            </li>
-            <li>
-              <h4 class="text-white font-extrabold uppercase mb-[20px] text-left truncate">
-                About Us
-              </h4>
-              <div class="footer-link flex flex-col flex-wrap items-start gap-[14px] text-left">
-                <a class="cursor-pointer hover-text-white">About AFun</a>
-              </div>
-            </li>
-            <li>
-              <h4 class="text-white font-extrabold uppercase mb-[20px] text-left truncate">
-                Help
-              </h4>
-              <div class="footer-link flex flex-col flex-wrap items-start gap-[14px] text-left">
-                <a class="cursor-pointer hover-text-white">Privacy Policy</a><a
-                  class="cursor-pointer hover-text-white"
-                >AML</a><a class="cursor-pointer hover-text-white">Service
-                  Terms</a><a class="cursor-pointer hover-text-white">Responsible Gambling</a><a
-                  class="cursor-pointer hover-text-white"
-                >FAQ</a>
-              </div>
-            </li>
-            <li>
-              <h4 class="text-white font-extrabold uppercase mb-[20px] text-left truncate">
-                Contact Us
-              </h4>
-              <div class="footer-link flex flex-col flex-wrap items-start gap-[14px] text-left">
-                <a class="cursor-pointer hover-text-white">marketing@afun.com</a><a
-                  class="cursor-pointer hover-text-white"
-                >support@afun.com</a>
+                <a v-for="v in item.list" :key="v.name" class="cursor-pointer hover:text-white">
+                  {{ v.name }}
+                </a>
               </div>
             </li>
           </ul>
@@ -58,62 +26,15 @@
               Join our Community
             </h4>
             <div class="gap-x-[30px] gap-y-[20px] flex items-center flex-wrap">
-              <a class="footer-link shrink-0 cursor-pointer" target="_blank"><img
-                src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/share/instagram.png?20240416"
-                alt="" importance="auto" class="w-[40px] h-[40px]" lazy=""
-              ></a><a
-                class="footer-link shrink-0 cursor-pointer" target="_blank"
-              ><img
-                src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/share/telegram.png?20240416"
-                alt="" importance="auto" class="w-[40px] h-[40px]" lazy=""
-              ></a><a
-                class="footer-link shrink-0 cursor-pointer" target="_blank"
-              ><img
-                src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/share/facebook.png?20240416"
-                alt="" importance="auto" class="w-[40px] h-[40px]" lazy=""
-              ></a><a
-                class="footer-link shrink-0 cursor-pointer" target="_blank"
-              ><img
-                src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/share/whatsapp.png?20240416"
-                alt="" importance="auto" class="w-[40px] h-[40px]" lazy=""
-              ></a><a
-                class="footer-link shrink-0 cursor-pointer" target="_blank"
-              ><img
-                src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/share/twitter.png?20240416" alt=""
-                importance="auto" class="w-[40px] h-[40px]" lazy=""
-              ></a><a
-                class="footer-link shrink-0 cursor-pointer"
-                target="_blank"
-              ><img
-                src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/share/technology.png?20240416"
-                alt="" importance="auto" class="w-[40px] h-[40px]" lazy=""
-              ></a><a
-                class="footer-link shrink-0 cursor-pointer" target="_blank"
-              ><img
-                src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/share/youtube.png?20240416" alt=""
-                importance="auto" class="w-[40px] h-[40px]" lazy=""
-              ></a><a
-                class="footer-link shrink-0 cursor-pointer"
-                target="_blank"
-              ><img
-                src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/share/tiktok.png?20240416" alt=""
-                importance="auto" class="w-[40px] h-[40px]" lazy=""
-              ></a><a
-                class="footer-link shrink-0 cursor-pointer"
-                target="_blank"
-              ><img
-                src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/share/twitch.png?20240416" alt=""
-                importance="auto" class="w-[40px] h-[40px]" lazy=""
-              ></a>
+              <a v-for="item in joinList" :key="item.name" class="footer-link shrink-0 cursor-pointer" target="_blank">
+                <Image :src="item.url" class="w-[40px] h-[40px]" lazy />
+              </a>
             </div>
           </div>
         </div>
         <div class="flex gap-x-[140px] border-solid border-t-[1px] border-[var(--bc-color18)] px-[16px] py-[33px]">
           <div class="w-[40%]">
-            <Image
-              src="/images/logo.avif"
-              alt="logo" lazy style="height: 86px;"
-            />
+            <Image src="/images/logo.avif" alt="logo" lazy style="height: 86px;" />
             <div class="mt-[24px] text-left text-[13px] font-semibold text-color leading-[22px] whitespace-pre-wrap">
               The handicap and sports odds information contained on this website is for entertainment purposes only.
               Please check the betting regulations in your jurisdiction as they vary from state to state, province to

@@ -7,7 +7,7 @@ const info = {
   isHot: true,
 }
 const title = defineProp('')
-const containerRef = ref(null)
+const containerRef = templateRef('containerRef')
 const games = ref(Array.from({ length: 20 }))
 const page = ref(1)
 
