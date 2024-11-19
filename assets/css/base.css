@@ -47,33 +47,26 @@ button {
   from {
     transform: translate(-50%, -50%) scale(0);
   }
+
   to {
     transform: translate(-50%, -50%) scale(1);
   }
 }
 
-@keyframes zoomOut {
+@keyframes spin1 {
   from {
-    transform: translate(-50%, -50%) scale(1);
+    transform: rotate(0deg);
   }
 
   to {
-    transform: translate(-50%, -50%) scale(0);
+    transform: rotate(180deg);
   }
 }
 
-.DialogContent[data-state='open'] {
+.DialogContentOpen {
   animation: zoomIn 300ms ease-out !important;
 }
 
-.DialogContent[data-state='closed'] {
-  animation: zoomOut 300ms ease-in !important;
-}
-
-.model-enter-active {
-  animation: zoomIn 300ms ease-out !important;
-}
-
-.model-leave-active {
-  animation: zoomOut 300ms ease-in !important;
+.DialogContentClosed {
+  animation: zoomIn 300ms ease-in reverse !important;
 }
