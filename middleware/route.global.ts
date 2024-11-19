@@ -4,5 +4,5 @@ export default defineNuxtRouteMiddleware((to) => {
   if (to.path !== '/login')
     return
 
-  return openRouterModal('Login')
+  return openRouterModal('LoginIndex')
 })

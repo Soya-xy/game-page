@@ -4,17 +4,16 @@ import {
   DialogContent,
 } from '~/components/ui/pageDialog'
 
-const { path } = useModal()
+const { router } = useModal()
 const enterAnimation = ref(0)
 const show = ref(false)
 const is = shallowRef()
 
-watch(path, (val) => {
-  console.log('🚀 ~ watch ~ val:', val)
-  if (val) {
+watch(router, (val) => {
+  if (val.path) {
     is.value = defineAsyncComponent({
       loader: () => {
-        return import(`..${path.value!.replace(/([A-Z])/g, '/$1')}.vue`)
+        return import(`..${val.path!.replace(/([A-Z])/g, '/$1')}.vue`)
       },
       delay: 200,
       timeout: 10000,
@@ -24,12 +23,16 @@ watch(path, (val) => {
 
     enterAnimation.value = 1
   }
+}, {
+  deep: true,
 })
 
 function closeModal() {
   enterAnimation.value = 2
   setTimeout(() => {
-    path.value = undefined
+    router.value = {
+      path: undefined,
+    }
     show.value = false
     enterAnimation.value = 0
   }, 300)
