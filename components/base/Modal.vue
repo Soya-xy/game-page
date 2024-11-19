@@ -13,7 +13,7 @@ watch(router, (val) => {
   if (val.path) {
     is.value = defineAsyncComponent({
       loader: () => {
-        return import(`..${val.path!.replace(/([A-Z])/g, '/$1')}.vue`)
+        return import(`../../components${val.path!.replace(/([A-Z])/g, '/$1')}.vue`)
       },
       delay: 200,
       timeout: 10000,
