@@ -42,3 +42,38 @@ button {
 ::-webkit-scrollbar {
   display: none;
 }
+
+@keyframes zoomIn {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(0);
+  }
+}
+
+.DialogContent[data-state='open'] {
+  animation: zoomIn 300ms ease-out !important;
+}
+
+.DialogContent[data-state='closed'] {
+  animation: zoomOut 300ms ease-in !important;
+}
+
+.model-enter-active {
+  animation: zoomIn 300ms ease-out !important;
+}
+
+.model-leave-active {
+  animation: zoomOut 300ms ease-in !important;
+}

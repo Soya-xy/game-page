@@ -17,6 +17,8 @@ useHead({
   <VitePwaManifest />
   <NuxtLayout>
     <BaseSpin v-show="isLoading" />
-    <NuxtPage />
+    <PlusModalNuxtPage v-slot="{ route }">
+      <NuxtPage :route="route" />
+    </PlusModalNuxtPage>
   </NuxtLayout>
 </template>

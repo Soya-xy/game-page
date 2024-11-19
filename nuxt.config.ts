@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxtjs/google-fonts',
     'nuxt-swiper',
+    'nuxt-pages-plus',
   ],
 
   devtools: {

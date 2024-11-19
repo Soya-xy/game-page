@@ -8,11 +8,13 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
+
+const { close } = useModalRouter()
 </script>
 
 <template>
   <Dialog default-open>
-    <DialogContent class="sm:max-w-[425px]">
+    <DialogContent class="DialogContent">
       <DialogHeader>
         <DialogTitle>Edit profile</DialogTitle>
         <DialogDescription>
@@ -28,7 +30,7 @@ import {
         </div>
       </div>
       <DialogFooter>
-        <Button type="submit">
+        <Button type="submit" @click="close">
           Save changes
         </Button>
       </DialogFooter>

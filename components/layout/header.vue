@@ -2,6 +2,7 @@
 import { useMenu } from '@/composables/menu'
 import { cn } from '@/lib/utils'
 
+const { push } = useModalRouter()
 const { toggleMenu, isOpen } = useMenu()
 </script>
 
@@ -22,9 +23,10 @@ const { toggleMenu, isOpen } = useMenu()
         <i-svg-search class="w-[25px] h-[24px]" />
       </BaseIconButton>
 
-      <BaseButton>
+      <BaseButton @click="push('/login')">
         Sign in
       </BaseButton>
+
       <BaseButton class="bg-button-linear">
         Sign Up
       </BaseButton>

@@ -20,5 +20,9 @@
         </div>
       </template>
     </Suspense>
+
+    <Transition name="modal">
+      <PlusModalPage name="modal" />
+    </Transition>
   </div>
 </template>

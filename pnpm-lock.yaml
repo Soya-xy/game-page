@@ -32,6 +32,9 @@ importers:
       lucide-vue-next:
         specifier: ^0.460.0
         version: 0.460.0(vue@3.5.12(typescript@5.6.3))
+      motion:
+        specifier: ^11.11.17
+        version: 11.11.17
       radix-vue:
         specifier: ^1.9.9
         version: 1.9.9(vue@3.5.12(typescript@5.6.3))
@@ -120,6 +123,9 @@ importers:
       nuxt:
         specifier: ^3.14.159
         version: 3.14.159(@parcel/watcher@2.5.0)(@types/node@22.9.0)(eslint@9.15.0(jiti@2.4.0))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.25.0)(sass@1.81.0)(terser@5.36.0)(typescript@5.6.3)(vite@5.4.11(@types/node@22.9.0)(sass@1.81.0)(terser@5.36.0))(vue-tsc@2.1.10(typescript@5.6.3))
+      nuxt-pages-plus:
+        specifier: ^0.5.1
+        version: 0.5.1(magicast@0.3.5)(rollup@4.25.0)(vue@3.5.12(typescript@5.6.3))
       nuxt-svgo:
         specifier: ^4.0.8
         version: 4.0.8(magicast@0.3.5)(rollup@4.25.0)(vue@3.5.12(typescript@5.6.3))
@@ -3812,6 +3818,20 @@ packages:
   fraction.js@4.3.7:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
 
+  framer-motion@11.11.17:
+    resolution: {integrity: sha512-O8QzvoKiuzI5HSAHbcYuL6xU+ZLXbrH7C8Akaato4JzQbX2ULNeniqC2Vo5eiCtFktX9XsJ+7nUhxcl2E2IjpA==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
   fresh@0.5.2:
     resolution: {integrity: sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==}
     engines: {node: '>= 0.6'}
@@ -4836,6 +4856,20 @@ packages:
   mlly@1.7.3:
     resolution: {integrity: sha512-xUsx5n/mN0uQf4V548PKQ+YShA4/IW0KI1dZhrNrPCLG+xizETbHTkOa1f8/xut9JRPp8kQuMnz0oqwkTiLo/A==}
 
+  motion@11.11.17:
+    resolution: {integrity: sha512-y6mXYElvJ5HHwPBUpYG/5wclKVGW4hJhqPkTjWccib5/WrcRM185adg3+4aSmG5iD10XKFt5uBOAiKwuzMHPPQ==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
   mri@1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
     engines: {node: '>=4'}
@@ -4962,6 +4996,9 @@ packages:
     resolution: {integrity: sha512-ZVu45nuDrdb7nzKW2kLGY/N1vvFYLLbUVX6gUYw4BApKGGu4+GktTR5o48dGVgMYX9A8chaugl7TL9ZYmwC9Mg==}
     engines: {node: ^16.10.0 || >=18.0.0}
     hasBin: true
+
+  nuxt-pages-plus@0.5.1:
+    resolution: {integrity: sha512-5MrSXxiQyFP1hnqwwyVUKdgF7G4BJBViIY1LFg0A+yyM9vbhGvdiHu5PUJG3i2906X0HsPuZNeFmwGSvmbADEg==}
 
   nuxt-svgo@4.0.8:
     resolution: {integrity: sha512-77o0WAA/hZDV/xPuVIWCSYuqG9vCLufCXYhp4BNwG8Ug1zQQ8jDBvmDcxMlrCkEayIvyj/+qA1VQY7IKqRNIwQ==}
@@ -11385,6 +11422,10 @@ snapshots:
 
   fraction.js@4.3.7: {}
 
+  framer-motion@11.11.17:
+    dependencies:
+      tslib: 2.8.1
+
   fresh@0.5.2: {}
 
   fs-constants@1.0.0:
@@ -12643,6 +12684,11 @@ snapshots:
       pkg-types: 1.2.1
       ufo: 1.5.4
 
+  motion@11.11.17:
+    dependencies:
+      framer-motion: 11.11.17
+      tslib: 2.8.1
+
   mri@1.2.0: {}
 
   mrmime@2.0.0: {}
@@ -12826,6 +12872,20 @@ snapshots:
   number-flow@0.3.8: {}
 
   nuxi@3.15.0: {}
+
+  nuxt-pages-plus@0.5.1(magicast@0.3.5)(rollup@4.25.0)(vue@3.5.12(typescript@5.6.3)):
+    dependencies:
+      '@nuxt/kit': 3.14.159(magicast@0.3.5)(rollup@4.25.0)
+      '@vueuse/core': 11.2.0(vue@3.5.12(typescript@5.6.3))
+      defu: 6.1.4
+      ufo: 1.5.4
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - magicast
+      - rollup
+      - supports-color
+      - vue
+      - webpack-sources
 
   nuxt-svgo@4.0.8(magicast@0.3.5)(rollup@4.25.0)(vue@3.5.12(typescript@5.6.3)):
     dependencies:
