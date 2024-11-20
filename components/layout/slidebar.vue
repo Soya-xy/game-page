@@ -89,34 +89,36 @@ if (isClient) {
     >
       <BaseInvitation is-icon />
 
-      <nav class="mt-5 flex flex-col gap-[5px] items-center">
-        <BaseTooltip
-          v-for="item in menuItems" :key="item.name"
-          side="right"
-          :side-offset="10"
-          arrow-color="var(--bc-bgColor6)"
-        >
-          <div
-            class="flex justify-center h-[40px] w-[40px] cursor-pointer flex items-center justify-center  hover-bg-linear-3 rounded-[10px]"
+      <ClientOnly>
+        <nav class="mt-5 flex flex-col gap-[5px] items-center">
+          <BaseTooltip
+            v-for="item in menuItems" :key="item.name"
+            side="right"
+            :side-offset="10"
+            arrow-color="var(--bc-bgColor6)"
           >
-            <i
-              v-if="item.iconType !== 'svg'"
-              class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[22px] text-e-g-color-108 hover-icon"
-              :class="item.icon"
-            />
-            <template v-else>
-              <i-svg-casino v-if="item.icon === 'casino'" class="scale-[1.5]" />
-              <i-svg-sport v-else-if="item.icon === 'sport'" class="scale-[1.5]" />
-              <i-svg-lotter v-else-if="item.icon === 'lotter'" class="scale-[1.5]" />
-            </template>
-          </div>
-          <template #content>
-            <div class="bg-color6 p-[10px] ">
-              {{ item.name }}
+            <div
+              class="flex justify-center h-[40px] w-[40px] cursor-pointer flex items-center justify-center  hover-bg-linear-3 rounded-[10px]"
+            >
+              <i
+                v-if="item.iconType !== 'svg'"
+                class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[22px] text-e-g-color-108 hover-icon"
+                :class="item.icon"
+              />
+              <template v-else>
+                <i-svg-casino v-if="item.icon === 'casino'" class="scale-[1.5]" />
+                <i-svg-sport v-else-if="item.icon === 'sport'" class="scale-[1.5]" />
+                <i-svg-lotter v-else-if="item.icon === 'lotter'" class="scale-[1.5]" />
+              </template>
             </div>
-          </template>
-        </BaseTooltip>
-      </nav>
+            <template #content>
+              <div class="bg-color6 p-[10px] ">
+                {{ item.name }}
+              </div>
+            </template>
+          </BaseTooltip>
+        </nav>
+      </ClientOnly>
     </div>
   </div>
 </template>

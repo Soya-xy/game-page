@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 const { toggleMenu, isOpen } = useMenu()
 const { openRouterModal } = useModal()
 function openLogin() {
-  openRouterModal('LoginIndex')
+  openRouterModal('login')
 }
 </script>
 

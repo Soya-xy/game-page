@@ -1,20 +1,24 @@
 <script setup lang="ts">
 import {
-  Dialog,
-  DialogContent,
-} from '~/components/ui/pageDialog'
+  PageDialog as Dialog,
+  PageDialogContent as DialogContent,
+} from '~/components/pageDialog'
 
 const { router } = useModal()
 const enterAnimation = ref(0)
 const show = ref(false)
 const is = shallowRef()
 
+const RouteToComponent: Record<string, Promise<Component>> = {
+  login: import('../Login/Index.vue'),
+}
+
 watch(router, (val) => {
   if (val.path) {
     is.value = defineAsyncComponent({
-      loader: () => {
-        return import(`../../components${val.path!.replace(/([A-Z])/g, '/$1')}.vue`)
-      },
+      loader: (async () => {
+        return await RouteToComponent[val.path!]
+      }) as () => Promise<Component>,
       delay: 200,
       timeout: 10000,
       suspensible: false,
