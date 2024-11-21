@@ -31,7 +31,7 @@ const forwarded = useForwardPropsEmits(delegatedProps)
   />
   <DialogContent
     v-bind="forwarded" :class="cn(
-      'fixed left-1/2 top-1/2 z-[500] grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border sm:rounded-lg bg-background shadow-lg',
+      'fixed left-1/2 top-1/2 z-[500] grid  -translate-x-1/2 -translate-y-1/2 gap-4 border sm:rounded-lg bg-background shadow-lg',
       props.class,
     )" @interact-outside="(e: Event) => {
       if (!props.clickOutClose) {
