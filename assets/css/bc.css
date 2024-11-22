@@ -24,6 +24,7 @@ html {
   --bc-menuClose: 73px;
   --bc-pageColor: #3b4041;
   --bc-color18: #ffffff1f;
+  --bc-searchColor: #1c1f1f;
 }
 
 /* html[data-theme='dark'] {
