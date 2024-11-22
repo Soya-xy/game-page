@@ -13,7 +13,7 @@ const props = defineProps<DialogContentProps & {
   class?: HTMLAttributes['class']
   clickOutClose?: boolean
 }>()
-const close = defineEmit()
+const emits = defineEmits(['close'])
 const delegatedProps = computed(() => {
   const { class: _, ...delegated } = props
 
@@ -43,7 +43,7 @@ const forwarded = useForwardPropsEmits(delegatedProps)
 
     <div
       class="absolute right-[20px] top-[20px] rounded-sm opacity-70 hover:opacity-100 focus:outline-none cursor-pointer hover:-rotate-[180deg] transition-all duration-300"
-      @click="close"
+      @click="emits('close')"
     >
       <X class="w-6 h-6" />
       <span class="sr-only">Close</span>

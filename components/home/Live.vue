@@ -1,15 +1,8 @@
 <script lang="ts" setup>
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
 
-const info = {
-  src: 'https://web-res-aaa.afunimg5.com/cdn-cgi/image/f=auto,w=110.33,dpr=2,q=80/newres/gameicon_en6010/008/100802058.jpg',
-  rtp: 96.55,
-  name: 'Money Coming',
-  great: 10000,
-  isHot: true,
-}
 const title = defineProp('')
-const containerRef = ref()
+const containerRef = templateRef('containerRef')
 const games = ref(Array.from({ length: 20 }))
 
 const swiper = useSwiper(containerRef, {
@@ -17,25 +10,17 @@ const swiper = useSwiper(containerRef, {
   slidesPerGroup: 1,
   spaceBetween: 8,
   breakpoints: {
-    640: {
-      slidesPerView: 3,
-      slidesPerGroup: 3,
-    },
     700: {
-      slidesPerView: 4,
-      slidesPerGroup: 4,
+      slidesPerView: 1,
+      slidesPerGroup: 1,
     },
-    864: {
-      slidesPerView: 5,
-      slidesPerGroup: 5,
+    720: {
+      slidesPerView: 2,
+      slidesPerGroup: 2,
     },
     1024: {
-      slidesPerView: 6,
-      slidesPerGroup: 6,
-    },
-    1280: {
-      slidesPerView: 8,
-      slidesPerGroup: 8,
+      slidesPerView: 3,
+      slidesPerGroup: 3,
     },
   },
 })
@@ -85,9 +70,9 @@ function next(type: 'up' | 'down') {
       </template>
     </BaseTitle>
     <ClientOnly>
-      <swiper-container ref="containerRef" class="w-full flex h-full">
+      <swiper-container ref="containerRef" :init="false" class="w-full flex h-full">
         <swiper-slide v-for="(game, index) in games" :key="index" class="flex-shrink-0">
-          <BaseGameCard :key="index" :info />
+          <BaseFootball :key="index" />
         </swiper-slide>
       </swiper-container>
     </ClientOnly>

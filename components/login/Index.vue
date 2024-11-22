@@ -5,7 +5,7 @@ const showPassword = ref(false)
 </script>
 
 <template>
-  <div class="flex justify-between overflow-hidden w-[800px] h-[700px] bg-color-4 rounded">
+  <div class="flex justify-between overflow-hidden w-[800px] h-[700px] bg-color2 rounded">
     <div class="flex flex-col justify-between relative w-[400px]">
       <div class="text-[0px] w-[400px] h-[700px] relative">
         <Image

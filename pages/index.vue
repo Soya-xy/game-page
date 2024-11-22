@@ -11,6 +11,7 @@
           <HomeCard />
           <BaseGameList title="Recommendar" />
           <BaseGameList title="AFun Originals" />
+          <HomeLive title="Live Sports" />
           <HomePrizePool />
         </div>
       </ClientOnly>
