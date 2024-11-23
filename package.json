@@ -13,7 +13,6 @@
     "lint": "eslint . --fix --ignore-path .gitignore ",
     "typecheck": "vue-tsc --noEmit",
     "postinstall": "simple-git-hooks",
-    "verify-commit": "node scripts/verifyCommit.js"
   },
   "dependencies": {
     "@number-flow/vue": "^0.2.4",
@@ -66,12 +65,12 @@
     "vue-tsc": "^2.1.10"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged",
-    "commit-msg": "pnpm verify-commit"
+    "commit-msg": "node ./scripts/verifyCommit.js",
+    "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
     "*": [
-      "eslint --cache --fix"
+      "eslint --fix"
     ]
   }
 }
