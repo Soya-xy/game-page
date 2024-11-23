@@ -15,7 +15,7 @@ export default resolveConfig({
   theme: {
     container: {
       center: true,
-      padding: '24px',
+      padding: '10px',
       screens: {
         'xl': '1248px',
         '2xl': '1248px',

@@ -13,10 +13,18 @@ const containerRef = ref()
 const games = ref(Array.from({ length: 20 }))
 
 const swiper = useSwiper(containerRef, {
-  slidesPerView: 1,
-  slidesPerGroup: 1,
+  slidesPerView: 3,
+  slidesPerGroup: 3,
   spaceBetween: 8,
   breakpoints: {
+    320: {
+      slidesPerView: 3,
+      slidesPerGroup: 3,
+    },
+    480: {
+      slidesPerView: 3,
+      spaceBetween: 30,
+    },
     640: {
       slidesPerView: 3,
       slidesPerGroup: 3,

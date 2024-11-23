@@ -12,7 +12,6 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'shadcn-nuxt',
     '@vue-macros/nuxt',
-    '@nuxtjs/device',
     'nuxt-svgo',
     '@nuxt/image',
     '@nuxtjs/i18n',
@@ -23,7 +22,6 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
-
   app: {
     head: {
       viewport: 'width=device-width,initial-scale=1',
@@ -77,7 +75,6 @@ export default defineNuxtConfig({
       // ignore: ['/hi'],
     },
   },
-
   eslint: {
     config: {
       standalone: false,

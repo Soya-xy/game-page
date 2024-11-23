@@ -3,6 +3,7 @@ import { appName } from '~~/constants'
 
 const nuxtApp = useNuxtApp()
 const { isLoading } = useLoading()
+const layout = useLayoutState()
 
 nuxtApp.hook('page:finish', () => {
   isLoading.value = false
@@ -15,7 +16,7 @@ useHead({
 
 <template>
   <VitePwaManifest />
-  <NuxtLayout>
+  <NuxtLayout :name="layout">
     <BaseSpin v-show="isLoading" />
     <NuxtPage />
   </NuxtLayout>
