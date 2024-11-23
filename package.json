@@ -68,7 +68,6 @@
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged",
     "commit-msg": "pnpm verify-commit"
-
   },
   "lint-staged": {
     "*": [
