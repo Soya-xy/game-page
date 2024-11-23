@@ -1,6 +1,8 @@
+import type { LayoutKey } from '#build/types/layouts'
+
 export function useLayoutState() {
   const { width } = useWindowSize()
-  const defaultLayout = useState('defaultLayout', () => 'default')
+  const defaultLayout: MaybeRef<Ref<LayoutKey>> = useState('defaultLayout', () => 'default')
 
   // 只在客户端执行布局切换
   onMounted(() => {
