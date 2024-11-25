@@ -6,6 +6,7 @@
     <Suspense>
       <ClientOnly>
         <div class="container @container flex flex-col gap-y-[24px] px relative z-[20] sm:px-[24px]">
+          <HomeSwiper />
           <HomeBanner />
           <HomeRecent />
           <HomeCard />

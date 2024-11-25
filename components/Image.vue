@@ -9,6 +9,6 @@ const img = useImage()
 <template>
   <NuxtImg
     :src="src" class="max-w-full h-full" loading="lazy"
-    :placeholder="img(src, { format: 'png', blur: 20, quality: 70 })" v-bind="$attrs"
+    :placeholder="img(src, { h: 10, f: 'png', blur: 2, q: 50 })" v-bind="$attrs"
   />
 </template>

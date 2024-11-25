@@ -9,6 +9,7 @@ const info = {
   isHot: true,
 }
 const title = defineProp('')
+const haveMore = defineProp<boolean>(false)
 const containerRef = ref()
 const games = ref(Array.from({ length: 20 }))
 
@@ -66,6 +67,7 @@ function next(type: 'up' | 'down') {
       <template #action>
         <div class="flex items-center gap-2 h-full  ">
           <div
+            v-if="haveMore"
             class="
               h-[32px] px-2 font-bold
               text-sm text-primary cursor-pointer

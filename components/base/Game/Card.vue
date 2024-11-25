@@ -1,10 +1,13 @@
 <script lang="ts" setup>
+import { ref } from 'vue'
+
 const info = defineProp<{
   rtp: number
   name: string
   src: string
   isHot: boolean
 }>(undefined, true)
+const isOpen = ref<boolean>(false)
 </script>
 
 <template>
@@ -13,6 +16,7 @@ const info = defineProp<{
       <div class="rounded-[10px]">
         <div
           class="h-[0] relative bg-no-repeat bg-cover bg-center rounded-[inherit] game_cursor pb-[133.333333%] bg-linear-12 cursor-pointer"
+          @click="isOpen = true"
         >
           <Image
             :src="info.src" alt=""
@@ -28,14 +32,14 @@ const info = defineProp<{
               </div>
             </div>
             <div
-              class="truncate uppercase font-normal text-white absolute z-[10] hover-gplat left-0 right-0 bottom-[3.96%] text-center"
+              class="truncate uppercase font-normal text-white absolute z-[10] left-0 right-0 bottom-[3.96%] text-center"
               style="font-size: min(max(10px, 0.625vw), 12px);"
             >
               {{ info?.name }}
             </div>
           </div>
           <div
-            class="game_hover absolute top-[-1px] left-[-1px] right-[-1px] bottom-[-1px] m-auto rounded-[inherit] bg-alpha-black-06 backdrop-blur-[5px] z-[11]"
+            class="game_hover hidden sm:block absolute top-[-1px] left-[-1px] right-[-1px] bottom-[-1px] m-auto rounded-[inherit] bg-alpha-black-06 backdrop-blur-[5px] z-[11]"
           >
             <div class="flex justify-between items-center pt-[3.255%] mr-[3.255%] ml-[3.255%]">
               <div class="text-[12px]">
@@ -49,7 +53,7 @@ const info = defineProp<{
                 />
                 <template #content>
                   <div
-                    class="flex bg-color2 shadow-bc2 text-color text-[14px] w-[320px] h-[150px] border-radius-1 p-[10px] flex-col justify-between"
+                    class="flex bg-color2 shadow-bc2 text-color text-[14px] w-[320px] h-[150px] rounded-[10px] p-[10px] flex-col justify-between"
                   >
                     <div class="mt-[6px] w-full flex flex-col gap-[10px]">
                       <div class="flex justify-between items-center h-[30px] px-[10px] w-full bg-color2 rounded-[10px]">
@@ -122,6 +126,59 @@ const info = defineProp<{
           </div>
         </div>
       </div>
+      <BaseDrawer v-model:open="isOpen" title="Game Details">
+        <div class="bg-color2 rounded-[10px] p-[12px] shrink-0 flex flex-col gap-y-[8px]">
+          <div class="flex gap-x-[8px] text-[12px]">
+            <div class="rounded-[10px] w-[34.37%] shrink-0">
+              <div
+                class="h-[0] relative bg-no-repeat bg-cover bg-center rounded-[inherit] pb-[133.333333%] bg-color-linear-12"
+              >
+                <Image
+                  src="https://web-res-aaa.afunimg5.com/cdn-cgi/image/f=webp,w=110.33,dpr=3,q=80/newres/gameicon_en7010/010/101001030.jpg"
+                  alt="" class="absolute top-[0] left-[0] w-full h-full rounded-[inherit]"
+                  style="width: 100%; height: 100%; background-image: unset;"
+                />
+                <div class="rounded-[inherit]">
+                  <div class="absolute top-0 left-0 right-0 bottom-0 rounded-[inherit]">
+                    <i
+                      class="inline-block h-[max-content] w-[max-content] icon-new-a-bonus text-white text-[16px] absolute top-[4px] right-[4px]"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col justify-between flex-1">
+              <div class="flex-1 flex flex-col">
+                <div class="flex justify-between gap-x-[10px] text-white">
+                  <div class="flex-1">
+                    <div class="text-[14px] font-bold">
+                      Fortune Mouse 2
+                    </div>
+                    <div class="text-[--bc-color20] mt-[4px]">
+                      Revenge
+                    </div>
+                  </div>
+                  <span class="text-[20px] shrink-0">
+                    <i class="inline-block h-[max-content] w-[max-content] icon-new-favorites-soild" />
+                  </span>
+                </div>
+                <div class="text-linearColor font-[500] mt-[4px]">
+                  RTP: 96.75%
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-[8px] font-extrabold">
+            <span
+              class="flex-1 h-[40px] main-color-btn rounded flex items-center justify-center gap-x-[4px] text-font text-[14px]"
+            ><i
+              class="inline-block h-[max-content] w-[max-content] icon-new-play-demo text-[20px]"
+            /><span>Play</span></span>
+          </div>
+        </div>
+        <BaseGameList title="HOT" />
+        <BaseGameList title="TOP" />
+      </BaseDrawer>
     </div>
   </div>
 </template>
