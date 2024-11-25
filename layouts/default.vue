@@ -3,7 +3,7 @@ const { isOpen } = useMenu()
 </script>
 
 <template>
-  <div class=" text-color bg-color">
+  <div class="text-color bg-color">
     <LayoutHeader />
     <div class="relative bottom-0 top-[60px] overflow-auto flex flex-col h-[calc(100%-60px)]">
       <LayoutSlidebar />

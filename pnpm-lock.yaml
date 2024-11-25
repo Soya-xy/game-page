@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@iconify/utils':
+        specifier: ^2.1.33
+        version: 2.1.33
       '@number-flow/vue':
         specifier: ^0.2.4
         version: 0.2.4(vue@3.5.12(typescript@5.6.3))
@@ -8113,7 +8116,7 @@ snapshots:
       debug: 4.3.7(supports-color@9.4.0)
       kolorist: 1.8.0
       local-pkg: 0.5.0
-      mlly: 1.7.2
+      mlly: 1.7.3
     transitivePeerDependencies:
       - supports-color
 

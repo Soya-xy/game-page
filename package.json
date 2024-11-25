@@ -15,6 +15,7 @@
     "postinstall": "simple-git-hooks"
   },
   "dependencies": {
+    "@iconify/utils": "^2.1.33",
     "@number-flow/vue": "^0.2.4",
     "@vee-validate/zod": "^4.14.7",
     "@vueuse/core": "^11.2.0",

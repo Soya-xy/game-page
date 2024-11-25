@@ -24,7 +24,7 @@ const swiper = useSwiper(containerRef, {
     },
     480: {
       slidesPerView: 3,
-      spaceBetween: 30,
+      spaceBetween: 3,
     },
     640: {
       slidesPerView: 3,

@@ -1,20 +1,21 @@
 <script lang="ts" setup>
 const type = defineProp<number>(undefined, true)
+const showIcon = defineProp<boolean>(false)
 const name = defineProp('')
 const description = defineProp('')
 </script>
 
 <template>
   <div
-    class="flex-1 flex-col justify-between px-[12px] pt-[20px] pb-[26px] bg-color2 rounded-[10px] overflow-hidden relative cursor-pointer flex"
+    class="flex-1 flex-col justify-between px-[12px] pt-[20px] h-[180px] pb-[26px] bg-color2 rounded-[10px] overflow-hidden relative cursor-pointer flex"
     :class="`bg-image${type}`"
   >
     <Image
       src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/gameEntry/sports.png" alt=""
       importance="auto" class="!w-auto absolute top-0 right-0" lazy
     />
-    <div class="text-[24px] font-extrabold text-white flex items-center gap-x-[2px] uppercase">
-      <div class="flex items-center justify-center" style="width: 32px; height: 32px;">
+    <div class="text-[14px] lg:text-[24px] font-extrabold text-white flex items-center gap-x-[2px] uppercase">
+      <div v-if="showIcon" class="flex items-center justify-center" style="width: 32px; height: 32px;">
         <i-svg-casino v-if="type === 1" class="scale-[1.5]" />
         <i-svg-sport v-else-if="type === 2" class="scale-[1.5]" />
         <i-svg-lotter v-else class="scale-[1.5]" />

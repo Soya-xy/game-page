@@ -126,3 +126,34 @@ html {
 .hover-bg-linear-3:hover {
   background: var(--bc-linearColor3);
 }
+
+.my-bullet {
+  transition: all 0.3s;
+}
+
+.my-bullet:after,
+.my-bullet:before {
+  background: var(--bc-bgColor5);
+  border-radius: inherit;
+  content: ' ';
+  display: block;
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.my-bullet.my-bullet-active.my-bullet-animation:after {
+  animation: banner-full 3000ms forwards;
+  background: var(--bc-activeColor);
+}
+
+@keyframes banner-full {
+  0% {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
