@@ -26,6 +26,7 @@ html {
   --bc-color18: #ffffff1f;
   --bc-color20: #adb7ba;
   --bc-searchColor: #1c1f1f;
+  --bc-tabBgColor: #313536;
 }
 
 /* html[data-theme='dark'] {
@@ -43,6 +44,10 @@ html {
 
 .svg-layer path {
   fill: var(--bc-activeColor);
+}
+
+.active {
+  color: var(--bc-activeColor);
 }
 
 .svg-layer:not(.active) path.need-active {

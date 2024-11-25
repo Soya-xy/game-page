@@ -3,10 +3,12 @@
 
 <template>
   <div class="text-color bg-color">
-    <div class="pt-[60px] overflow-auto flex flex-col ">
+    <LayoutWapHeader />
+    <div class="overflow-auto flex flex-col pb-[70px]">
       <main>
         <slot />
       </main>
     </div>
+    <LayoutWapTabbar />
   </div>
 </template>

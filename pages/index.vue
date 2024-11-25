@@ -5,7 +5,7 @@
   <div>
     <Suspense>
       <ClientOnly>
-        <div class="container @container flex flex-col gap-y-[12px] px relative z-[20] sm:px-[24px]">
+        <div class="container @container flex flex-col gap-y-[12px] mt-[12px] relative z-[20] sm:px-[24px]">
           <HomeSwiper />
           <HomeBanner />
           <HomeRecent />
@@ -17,8 +17,8 @@
         </div>
       </ClientOnly>
       <template #fallback>
-        <div italic op50>
-          <span animate-pulse>Loading...</span>
+        <div class="italic" op50>
+          <span class="animate-pulse">Loading...</span>
         </div>
       </template>
     </Suspense>
