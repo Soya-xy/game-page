@@ -2,11 +2,11 @@
 import { appName } from '~~/constants'
 
 const nuxtApp = useNuxtApp()
-const { isLoading } = useLoading()
-const layout = useLayoutState()
+const { layout, ready } = useLayoutState()
+const once = ref(true)
 
 nuxtApp.hook('page:finish', () => {
-  isLoading.value = false
+  once.value = false
 })
 
 useHead({
@@ -16,10 +16,12 @@ useHead({
 
 <template>
   <VitePwaManifest />
-  <NuxtLayout :name="layout">
-    <BaseSpin v-show="isLoading" />
-    <NuxtPage />
-  </NuxtLayout>
+  <BaseSpin v-if="once" />
+  <div v-if="ready">
+    <NuxtLayout :name="layout">
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
   <ClientOnly>
     <BaseModal />
   </ClientOnly>

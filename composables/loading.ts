@@ -1,5 +1,6 @@
 export function useLoading() {
   const isLoading = useState('isLoading', () => true)
+  const isPageLoading = useState('isPageLoading', () => true)
 
   function loading() {
     isLoading.value = true
@@ -7,6 +8,7 @@ export function useLoading() {
 
   return {
     isLoading,
+    isPageLoading,
     loading,
   }
 }

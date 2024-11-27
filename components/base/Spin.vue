@@ -1,5 +1,9 @@
+<script setup lang="ts">
+const isPage = defineProp<boolean>(false)
+</script>
+
 <template>
-  <div class="app-loading">
+  <div class="app-loading" :class="{ 'top-0 !z-[9999]': !isPage }">
     <div class="spin" />
   </div>
 </template>
@@ -7,9 +11,8 @@
 <style scoped>
 .app-loading {
   position: fixed;
-  top: 0;
   left: 0;
-  z-index: 10000000;
+  z-index: 99;
   background-color: var(--bc-bgColor);
   display: flex;
   flex-direction: column;

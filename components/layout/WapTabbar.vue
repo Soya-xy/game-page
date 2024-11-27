@@ -3,14 +3,14 @@ const route = useRoute()
 const router = useRouter()
 const isOpen = ref(false)
 const menuItems = [
-  { name: 'Casino', href: '/', icon: 'casino', iconType: 'svg' },
-  { name: 'Sports', href: '/analytics', icon: 'sport', iconType: 'svg' },
-  { name: 'Bonus Games', href: '/analytics', icon: 'lotter', iconType: 'svg' },
-  { name: 'VIP Club', href: '/analytics', icon: 'icon-n-vip' },
-  { name: 'Affiliate', href: '/analytics', icon: 'icon-n-affiliate' },
-  { name: 'Promotion', href: '/analytics', icon: 'icon-n-bonus' },
-  { name: 'Install', href: '/analytics', icon: 'icon-n-install' },
-  { name: 'Live Chat', href: '/analytics', icon: 'icon-n-livechat' },
+  { name: 'Casino', href: '/casino', icon: 'casino', iconType: 'svg' },
+  { name: 'Sports', href: '/sports', icon: 'sport', iconType: 'svg' },
+  { name: 'Bonus Games', href: '/lottery', icon: 'lotter', iconType: 'svg' },
+  { name: 'VIP Club', href: '/vip', icon: 'icon-n-vip' },
+  { name: 'Affiliate', href: '/affiliate', icon: 'icon-n-affiliate' },
+  { name: 'Promotion', href: '/promotion', icon: 'icon-n-bonus' },
+  { name: 'Install', href: '/install', icon: 'icon-n-install' },
+  { name: 'Live Chat', href: '/livechat', icon: 'icon-n-livechat' },
 ]
 </script>
 
@@ -78,8 +78,12 @@ const menuItems = [
         <BaseSlideBarTab />
         <nav class="flex flex-col gap-[5px]">
           <div
-            v-for="item in menuItems" :key="item.name" :href="item.href"
+            v-for="item in menuItems" :key="item.name"
             class="h-[40px] text-white text-[14px] font-semibold bg-color2 cursor-pointer rounded overflow-hidden"
+            @click="() => {
+              isOpen = false
+              router.push(item.href)
+            }"
           >
             <div class="h-full flex items-center relative hover-bg-linear-3">
               <div class="w-[40px] h-[40px] flex items-center justify-center">
@@ -102,9 +106,7 @@ const menuItems = [
               </p>
             </div>
           </div>
-          <div
-            class="h-[40px] text-white text-[14px] font-semibold bg-color2 cursor-pointer rounded overflow-hidden"
-          >
+          <div class="h-[40px] text-white text-[14px] font-semibold bg-color2 cursor-pointer rounded overflow-hidden">
             <div class="h-full flex items-center relative hover-bg-linear-3">
               <div class="w-[40px] h-[40px] flex items-center justify-center">
                 <i

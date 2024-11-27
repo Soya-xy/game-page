@@ -18,7 +18,6 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-swiper',
   ],
-
   devtools: {
     enabled: true,
   },

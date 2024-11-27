@@ -2,16 +2,16 @@
 import { isClient } from '@vueuse/core'
 // import cas
 const { isOpen } = useMenu()
-
+const router = useRouter()
 const menuItems = [
-  { name: 'Casino', href: '/', icon: 'casino', iconType: 'svg' },
-  { name: 'Sports', href: '/analytics', icon: 'sport', iconType: 'svg' },
-  { name: 'Bonus Games', href: '/analytics', icon: 'lotter', iconType: 'svg' },
-  { name: 'VIP Club', href: '/analytics', icon: 'icon-n-vip' },
-  { name: 'Affiliate', href: '/analytics', icon: 'icon-n-affiliate' },
-  { name: 'Promotion', href: '/analytics', icon: 'icon-n-bonus' },
-  { name: 'Install', href: '/analytics', icon: 'icon-n-install' },
-  { name: 'Live Chat', href: '/analytics', icon: 'icon-n-livechat' },
+  { name: 'Casino', href: '/casino', icon: 'casino', iconType: 'svg' },
+  { name: 'Sports', href: '/sports', icon: 'sport', iconType: 'svg' },
+  { name: 'Bonus Games', href: '/lottery', icon: 'lotter', iconType: 'svg' },
+  { name: 'VIP Club', href: '/vip', icon: 'icon-n-vip' },
+  { name: 'Affiliate', href: '/affiliate', icon: 'icon-n-affiliate' },
+  { name: 'Promotion', href: '/promotion', icon: 'icon-n-bonus' },
+  { name: 'Install', href: '/install', icon: 'icon-n-install' },
+  { name: 'Live Chat', href: '/livechat', icon: 'icon-n-livechat' },
 ]
 
 onMounted(() => {
@@ -30,7 +30,7 @@ if (isClient) {
 </script>
 
 <template>
-  <div class="relative">
+  <div class="relative z-[100]">
     <!-- 展开状态的侧边栏 -->
     <div
       class="flex flex-col gap-[5px] fixed top-[60px] bottom-0 p-[16px] left-0 w-[var(--bc-menuOpen)] bg-color2 shadow-bc transform transition-transform duration-300 ease-in-out"
@@ -40,8 +40,9 @@ if (isClient) {
       <BaseSlideBarTab />
       <nav class="flex flex-col gap-[5px]">
         <div
-          v-for="item in menuItems" :key="item.name" :href="item.href"
+          v-for="item in menuItems" :key="item.name"
           class="h-[40px] text-white text-[14px] font-semibold bg-tab cursor-pointer rounded-[10px] overflow-hidden"
+          @click="router.push(item.href)"
         >
           <div class="h-full flex items-center relative hover-bg-linear-3">
             <div class="w-[40px] h-[40px] flex items-center justify-center">
@@ -96,6 +97,7 @@ if (isClient) {
             side="right"
             :side-offset="10"
             arrow-color="var(--bc-bgColor6)"
+            @click="router.push(item.href)"
           >
             <div
               class="flex justify-center h-[40px] w-[40px] cursor-pointer flex items-center justify-center  hover-bg-linear-3 rounded-[10px]"

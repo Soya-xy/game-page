@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="h-[48px] relative z-[100] flex items-center justify-between px-[10px] bg-header">
+  <div class="h-[48px] fixed top-0 left-0 right-0 z-[51] flex items-center justify-between px-[10px] bg-header">
     <div class="flex items-center gap-[8px] h-full">
       <Image src="/images/logo.avif" class="!h-[30px]" />
     </div>
