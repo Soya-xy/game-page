@@ -12,16 +12,16 @@ importers:
         specifier: ^2.1.33
         version: 2.1.33
       '@number-flow/vue':
-        specifier: ^0.2.4
-        version: 0.2.7(vue@3.5.13(typescript@5.7.2))
+        specifier: ^0.3.1
+        version: 0.3.1(vue@3.5.13(typescript@5.7.2))
       '@vee-validate/zod':
         specifier: ^4.14.7
         version: 4.14.7(vue@3.5.13(typescript@5.7.2))
       '@vueuse/core':
-        specifier: ^11.2.0
+        specifier: ^11.3.0
         version: 11.3.0(vue@3.5.13(typescript@5.7.2))
       class-variance-authority:
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: 0.7.1
       clsx:
         specifier: ^2.1.1
@@ -30,16 +30,16 @@ importers:
         specifier: ^1.11.13
         version: 1.11.13
       lucide-vue-next:
-        specifier: ^0.460.0
-        version: 0.460.0(vue@3.5.13(typescript@5.7.2))
+        specifier: ^0.461.0
+        version: 0.461.0(vue@3.5.13(typescript@5.7.2))
       motion:
         specifier: ^11.11.17
         version: 11.11.17
       radix-vue:
-        specifier: ^1.9.9
+        specifier: ^1.9.10
         version: 1.9.10(vue@3.5.13(typescript@5.7.2))
       tailwind-merge:
-        specifier: ^2.5.4
+        specifier: ^2.5.5
         version: 2.5.5
       tailwindcss-animate:
         specifier: ^1.0.7
@@ -55,7 +55,7 @@ importers:
         version: 3.23.8
     devDependencies:
       '@antfu/eslint-config':
-        specifier: ^3.9.1
+        specifier: ^3.10.0
         version: 3.10.0(@typescript-eslint/utils@8.16.0(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2))(@vue/compiler-sfc@3.5.13)(eslint-plugin-format@0.1.2(eslint@9.15.0(jiti@2.4.0)))(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)
       '@egoist/tailwindcss-icons':
         specifier: ^1.8.1
@@ -70,10 +70,10 @@ importers:
         specifier: ^4.0.7
         version: 4.0.7
       '@nuxt/devtools':
-        specifier: ^1.6.0
+        specifier: ^1.6.1
         version: 1.6.1(rollup@4.27.4)(vite@5.4.11(@types/node@22.10.0)(sass@1.81.0)(terser@5.36.0))(vue@3.5.13(typescript@5.7.2))
       '@nuxt/eslint':
-        specifier: ^0.7.0
+        specifier: ^0.7.2
         version: 0.7.2(@vue/compiler-sfc@3.5.13)(eslint-plugin-format@0.1.2(eslint@9.15.0(jiti@2.4.0)))(eslint@9.15.0(jiti@2.4.0))(magicast@0.3.5)(rollup@4.27.4)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.0)(sass@1.81.0)(terser@5.36.0))
       '@nuxt/image':
         specifier: ^1.8.1
@@ -85,7 +85,7 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0(magicast@0.3.5)(rollup@4.27.4)
       '@nuxtjs/i18n':
-        specifier: ^9.0.0
+        specifier: ^9.1.0
         version: 9.1.0(@vue/compiler-dom@3.5.13)(eslint@9.15.0(jiti@2.4.0))(magicast@0.3.5)(rollup@4.27.4)(typescript@5.7.2)(vue@3.5.13(typescript@5.7.2))
       '@nuxtjs/tailwindcss':
         specifier: ^6.12.2
@@ -100,10 +100,10 @@ importers:
         specifier: ^0.10.6
         version: 0.10.6(magicast@0.3.5)(rollup@4.27.4)(vite@5.4.11(@types/node@22.10.0)(sass@1.81.0)(terser@5.36.0))(workbox-build@7.3.0)(workbox-window@7.3.0)
       '@vue-macros/nuxt':
-        specifier: ^1.12.8
+        specifier: ^1.12.9
         version: 1.12.9(@vueuse/core@11.3.0(vue@3.5.13(typescript@5.7.2)))(esbuild@0.23.1)(magicast@0.3.5)(nuxt@3.14.1592(@parcel/watcher@2.5.0)(@types/node@22.10.0)(eslint@9.15.0(jiti@2.4.0))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.27.4)(sass@1.81.0)(terser@5.36.0)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.0)(sass@1.81.0)(terser@5.36.0))(vue-tsc@2.1.10(typescript@5.7.2)))(rollup@4.27.4)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.0)(sass@1.81.0)(terser@5.36.0))(vue-tsc@2.1.10(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2))
       '@vueuse/nuxt':
-        specifier: ^11.2.0
+        specifier: ^11.3.0
         version: 11.3.0(magicast@0.3.5)(nuxt@3.14.1592(@parcel/watcher@2.5.0)(@types/node@22.10.0)(eslint@9.15.0(jiti@2.4.0))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.27.4)(sass@1.81.0)(terser@5.36.0)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.0)(sass@1.81.0)(terser@5.36.0))(vue-tsc@2.1.10(typescript@5.7.2)))(rollup@4.27.4)(vue@3.5.13(typescript@5.7.2))
       chalk:
         specifier: ^5.3.0
@@ -124,10 +124,10 @@ importers:
         specifier: ^15.2.10
         version: 15.2.10
       nuxt:
-        specifier: ^3.14.159
+        specifier: ^3.14.1592
         version: 3.14.1592(@parcel/watcher@2.5.0)(@types/node@22.10.0)(eslint@9.15.0(jiti@2.4.0))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.27.4)(sass@1.81.0)(terser@5.36.0)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.0)(sass@1.81.0)(terser@5.36.0))(vue-tsc@2.1.10(typescript@5.7.2))
       nuxt-svgo:
-        specifier: ^4.0.8
+        specifier: ^4.0.9
         version: 4.0.9(magicast@0.3.5)(rollup@4.27.4)(vue@3.5.13(typescript@5.7.2))
       nuxt-swiper:
         specifier: ^2.0.0
@@ -139,7 +139,7 @@ importers:
         specifier: ^1.81.0
         version: 1.81.0
       shadcn-nuxt:
-        specifier: ^0.11.2
+        specifier: ^0.11.3
         version: 0.11.3(magicast@0.3.5)(rollup@4.27.4)
       simple-git-hooks:
         specifier: ^2.11.1
@@ -148,7 +148,7 @@ importers:
         specifier: ^3.4.15
         version: 3.4.15
       typescript:
-        specifier: ^5.6.3
+        specifier: ^5.7.2
         version: 5.7.2
       vue-tsc:
         specifier: ^2.1.10
@@ -1521,8 +1521,8 @@ packages:
     resolution: {integrity: sha512-54voNDBobGdMl3BUXSu7UaDh1P85PGHWlJ5e0XhPugo1JulOyCtp2I+5ri4wplGDJ8QGwPEQW7/x3yTLU7yF1A==}
     engines: {node: '>=16.14.0'}
 
-  '@number-flow/vue@0.2.7':
-    resolution: {integrity: sha512-mnJQQo+vFsylEI9KnDmm/0EddZFrlS3B6itxlTmqOpFAu4Ij0tfk3ZXa7+3dCNHzJ+VuhUalC/ITY3i00/8GjA==}
+  '@number-flow/vue@0.3.1':
+    resolution: {integrity: sha512-ZXyHHaRMzrKqodivT8oLvQZQnVHn2QXTTkLvHKDWBzPpstAcUkDU7GyTwRU4WqC/urQPXP29kLc65EF6r1zoMA==}
     peerDependencies:
       vue: ^3
 
@@ -3799,7 +3799,6 @@ packages:
   gauge@3.0.2:
     resolution: {integrity: sha512-+5J6MS/5XksCuXq++uFRsnUd7Ovu1XenbeuIuNRJxYWjgQbPuFhT14lAvsWfqfAmnwluf1OwMjz39HjfLPci0Q==}
     engines: {node: '>=10'}
-    deprecated: This package is no longer supported.
 
   gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
@@ -4540,8 +4539,8 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lucide-vue-next@0.460.0:
-    resolution: {integrity: sha512-IhM1tm3gPhc3u6RagNra4W6Oe48Mz0l3fAJzk0oSLzsRQqt3WU3XiX5ngRyjIs8fzCtvgzu7fC6Qk7XVhS00DQ==}
+  lucide-vue-next@0.461.0:
+    resolution: {integrity: sha512-9qAQq4W3/Ka0VRUjXWDzoFex0lLuPxy8hf6vvs4xkc82tdGqIJhhSx+lAILX4BAiY4e+Hai5C0mGamDno6lHtA==}
     peerDependencies:
       vue: '>=3.0.1'
 
@@ -4939,8 +4938,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  number-flow@0.3.10:
-    resolution: {integrity: sha512-BpNMhQnRAHOFbi0giD+dMnDoaPibVW22Vl2CWfZZIlpgTtixmbPm+Cv7a7F7FrEc/dTOECMS/T8V5rltIGI0tw==}
+  number-flow@0.4.0:
+    resolution: {integrity: sha512-sG2ngZe0y3M8DSa9VQfMA5J9Yi1i4RYaaZ/lgawTJpICftFAGaFgTUydaavZmUbOZcBnjDqNizcsyb1MDhrGaw==}
 
   nuxi@3.15.0:
     resolution: {integrity: sha512-ZVu45nuDrdb7nzKW2kLGY/N1vvFYLLbUVX6gUYw4BApKGGu4+GktTR5o48dGVgMYX9A8chaugl7TL9ZYmwC9Mg==}
@@ -8275,10 +8274,10 @@ snapshots:
       '@nodelib/fs.scandir': 3.0.0
       fastq: 1.17.1
 
-  '@number-flow/vue@0.2.7(vue@3.5.13(typescript@5.7.2))':
+  '@number-flow/vue@0.3.1(vue@3.5.13(typescript@5.7.2))':
     dependencies:
       esm-env: 1.1.4
-      number-flow: 0.3.10
+      number-flow: 0.4.0
       vue: 3.5.13(typescript@5.7.2)
 
   '@nuxt/devalue@2.0.2': {}
@@ -12113,7 +12112,7 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lucide-vue-next@0.460.0(vue@3.5.13(typescript@5.7.2)):
+  lucide-vue-next@0.461.0(vue@3.5.13(typescript@5.7.2)):
     dependencies:
       vue: 3.5.13(typescript@5.7.2)
 
@@ -12707,7 +12706,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  number-flow@0.3.10:
+  number-flow@0.4.0:
     dependencies:
       esm-env: 1.1.4
 

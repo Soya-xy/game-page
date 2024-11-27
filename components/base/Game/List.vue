@@ -8,8 +8,8 @@ const info = {
   great: 10000,
   isHot: true,
 }
-const title = defineProp('')
-const haveMore = defineProp<boolean>(false)
+const title = defineProp('', true)
+const haveMore = defineProp<boolean>(undefined, false)
 const containerRef = ref()
 const games = ref(Array.from({ length: 20 }))
 

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-const name = defineProp<string>('')
-const icon = defineProp<boolean>(false)
+const name = defineProp<string>('', true)
+const icon = defineProp<boolean>(false, false)
 </script>
 
 <template>

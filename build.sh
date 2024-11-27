@@ -13,7 +13,10 @@ if [ -z "$TAG" ]; then
     exit 1
 fi
 
-IMG="$NAME:$TAG"
+NAME=${2:-$name}
+PROJECT=${3:-cloud-eye}
+REGISTRY=${4:-ld.io:5000}
+IMG="$REGISTRY/$PROJECT/$NAME:$TAG"
 
 echo "build & push $IMG"
 

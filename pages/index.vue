@@ -14,6 +14,7 @@
           <BaseGameList title="AFun Originals" />
           <HomeLive title="Live Sports" />
           <HomePrizePool />
+          <BaseDeposit />
         </div>
       </ClientOnly>
       <template #fallback>
