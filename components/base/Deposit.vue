@@ -1,5 +1,31 @@
 <script lang="ts" setup>
+// eslint-disable-next-line ts/ban-ts-comment
+// @ts-expect-error
+import ColorThief from 'colorthief'
 
+const colorThief = new ColorThief()
+
+function getColor(dom: string) {
+  const img = document.getElementById(dom)
+
+  if (img) {
+    img.addEventListener('load', (e) => {
+      const d = colorThief.getPalette(e.target, 10)
+      const color = d[4]
+      const deposit = document.getElementById(`deposit-${dom}`)
+      if (deposit) {
+        deposit.style.borderColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`
+        deposit.style.backgroundImage = `linear-gradient(162deg, rgb(${color[0]}, ${color[1]}, ${color[2]}) -3.8%, var(--bc-buttonColor) 95.14%)`
+      }
+    })
+  }
+}
+
+onMounted(() => {
+  [1, 2, 3, 4].forEach((item) => {
+    getColor(`icon-${item}`)
+  })
+})
 </script>
 
 <template>
@@ -21,7 +47,7 @@
             </p>
           </dt>
           <button
-            class="rounded-[10px] md:hidden w-[max-content] min-w-[77px] h-[32px] text-[12px] main-color-btn text-font font-extrabold flex items-center justify-center px-[15px]"
+            class="rounded md:hidden w-[max-content] min-w-[77px] h-[32px] text-[12px] main-color-btn text-font font-extrabold flex items-center justify-center px-[15px]"
           >
             Deposit
           </button>
@@ -136,8 +162,7 @@
 
         <ul class="grid grid-cols-2 gap-[10px] mt-[12px] w-full">
           <li
-            v-for="item in 4" :key="item" class="h-[70px] rounded-[10px] px-[7px] flex items-center relative"
-            style="border: 1px solid rgb(89, 186, 41); background: linear-gradient(162deg, rgb(89, 186, 41) -3.8%, rgba(89, 186, 41, 0) 95.14%);"
+            v-for="item in 4" :id="`deposit-icon-${item}`" :key="item" class="h-[70px] rounded-[10px] px-[7px] flex items-center relative border-[1px] border-solid "
           >
             <div class="flex flex-col gap-y-[4px] relative z-[1]">
               <div class="text-[14px] font-black text-white">
@@ -156,8 +181,10 @@
                 </div>
               </div>
             </div><img
-              src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/box1.png" alt=""
-              importance="auto" class="h-[40px] absolute right-[7px]" lazy=""
+              :id="`icon-${item}`" :src="`https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/box${item}.png`"
+              alt="" importance="auto" class="h-[40px] absolute right-[7px]"
+              lazy=""
+              crossorigin="anonymous"
             >
           </li>
         </ul>
