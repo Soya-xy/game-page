@@ -6,34 +6,39 @@
   <div class="w-full">
     <div class="rounded-[10px] bg-color2 overflow-hidden">
       <div
-        class="xl:h-[180px] px-[50px] py-[15px] flex flex-row lg:items-center bg-color3-linear lg:justify-between gap-[20px] rounded-[inherit] h-auto flex-wrap flex-col items-start justify-start"
+        class="h-[180px] md:px-[50px] px-[12px] py-[15px] flex items-center bg-color3-linear justify-between md:gap-[20px] rounded-[inherit] max-xl:h-auto max-xl:flex-wrap max-lg:flex-col max-lg:items-start max-lg:justify-start"
       >
-        <dl class="flex justify-between items-center w-full md:block md:w-auto">
+        <dl class="max-lg:flex max-lg:justify-between max-lg:items-center max-lg:w-full">
           <dt class="flex flex-col gap-y-[4px]">
-            <h4 class="text-[20px] font-bold text-white">
+            <h4 class="md:text-[20px] text-[15px] font-bold text-white">
               Great bonus for every deposit
             </h4>
-            <h3 class="text-[38px] font-extrabold text-e-linear-color-1">
+            <h3 class="md:text-[38px] text-[20px] font-extrabold text-linearColor">
               Up to 50%
             </h3>
-            <p class="text-[14px] font-medium text-e-g-color-19 invisible">
+            <p class="md:text-[14px] text-[12px] font-medium text-color3">
               Refresh time
             </p>
           </dt>
-          <dd class="md:hidden items-center gap-[15px] mt-[20px] flex flex-col mt-0 items-start">
+          <button
+            class="rounded-[10px] md:hidden w-[max-content] min-w-[77px] h-[32px] text-[12px] main-color-btn text-font font-extrabold flex items-center justify-center px-[15px]"
+          >
+            Deposit
+          </button>
+          <dd class="hidden items-center gap-[15px] mt-[20px]">
             <button
               class="rounded-[10px] w-[max-content] min-w-[154px] h-[42px] text-[15px] text-white font-semibold flex items-center justify-center px-[15px] bg-e-g-color-13 hover:brightness-105"
             >
               Detail
             </button>
             <button
-              class="rounded-[10px] w-[max-content] main-color-btn min-w-[154px] h-[42px] text-[15px] text-font font-extrabold flex items-center justify-center px-[15px] hover:brightness-105"
+              class="rounded-[10px]  main-color-btn min-w-[154px] h-[42px] text-[15px] text-font font-extrabold flex items-center justify-center px-[15px] hover:brightness-105"
             >
               Deposit
             </button>
           </dd>
         </dl>
-        <ul class="w-[485px] flex items-center justify-between">
+        <ul class="hidden md:flex w-[485px] items-center justify-between">
           <li
             class="h-[150px] w-[107px] py-[10px] flex flex-col justify-between items-center rounded-[10px] relative"
             style="border: 1px solid rgb(89, 186, 41); background: linear-gradient(162deg, rgb(89, 186, 41) -3.8%, rgba(89, 186, 41, 0) 95.14%);"
@@ -41,10 +46,10 @@
             <div class="text-[14px] font-black text-white">
               10%<span class="text-[12px] font-medium ml-[4px]">Bonus</span>
             </div>
-            <Image
+            <img
               src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/box1.png"
               alt="" importance="auto" class="w-[100px] absolute left-0 right-0 bottom-[25px] mx-auto" lazy=""
-            />
+            >
             <div class="w-[102px] h-[22px] flex items-center justify-end relative">
               <span
                 class="leading-[20px] text-center w-[92px] text-[10px] font-medium rounded-[4px] text-e-g-color-19 break-words break-all line-clamp-1"
@@ -128,18 +133,34 @@
             </div>
           </li>
         </ul>
-        <div class="flex flex-col gap-y-[15px] md:hidden">
-          <button
-            class="rounded-[10px] w-[max-content] min-w-[154px] main-color-btn h-[42px] text-[15px] text-e-g-color-15 font-extrabold flex items-center justify-center px-[15px] hover:brightness-105"
+
+        <ul class="grid grid-cols-2 gap-[10px] mt-[12px] w-full">
+          <li
+            v-for="item in 4" :key="item" class="h-[70px] rounded-[10px] px-[7px] flex items-center relative"
+            style="border: 1px solid rgb(89, 186, 41); background: linear-gradient(162deg, rgb(89, 186, 41) -3.8%, rgba(89, 186, 41, 0) 95.14%);"
           >
-            Deposit
-          </button>
-          <button
-            class="rounded-[10px] w-[max-content] min-w-[154px] h-[42px] text-[15px] text-white font-semibold flex items-center justify-center px-[15px] bg-e-g-color-13 hover:brightness-105"
-          >
-            Detail
-          </button>
-        </div>
+            <div class="flex flex-col gap-y-[4px] relative z-[1]">
+              <div class="text-[14px] font-black text-white">
+                10%<span class="text-[12px] font-medium ml-[4px]">Bonus</span>
+              </div>
+              <div class="w-[102px] h-[22px] flex items-center justify-end relative">
+                <span
+                  class="leading-[20px] text-center w-[92px] text-[10px] font-medium rounded-[4px] text-color break-words break-all line-clamp-1"
+                  style="background: rgba(40, 51, 38, 0.4);"
+                >1st Deposit</span>
+                <div
+                  class="w-[20px] h-[22.63px] text-[10px] text-e-g-color-5 font-extrabold text-center pt-[3px] absolute left-0 bg-no-repeat bg-cover"
+                  style="background-image: url(&quot;https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/icon1.png&quot;);"
+                >
+                  01
+                </div>
+              </div>
+            </div><img
+              src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/box1.png" alt=""
+              importance="auto" class="h-[40px] absolute right-[7px]" lazy=""
+            >
+          </li>
+        </ul>
       </div>
     </div>
   </div>
