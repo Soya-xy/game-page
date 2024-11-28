@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { appName } from '~~/constants'
 
+const color = useColorMode()
+color.preference = 'dark'
 const nuxtApp = useNuxtApp()
 const { layout, ready } = useLayoutState()
 const once = ref(true)
