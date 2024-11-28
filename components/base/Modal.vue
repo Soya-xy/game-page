@@ -11,6 +11,7 @@ const is = shallowRef()
 
 const RouteToComponent: Record<string, Promise<Component>> = {
   login: import('~/components/Login/Index.vue'),
+  register: import('~/components/Register/Index.vue'),
 }
 
 watch(router, (val) => {

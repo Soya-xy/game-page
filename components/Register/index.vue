@@ -41,50 +41,33 @@ const showPassword = ref(false)
     </div>
     <div class="w-[400px] px-[40px] pt-[40px] flex flex-col relative">
       <div class="text-[20px] font-bold text-white mb-[20px]">
-        Sign In 4
+        Sign In
       </div>
       <div class="flex flex-col gap-[10px] flex-1 overflow-y-auto pb-[40px]">
         <div>
-          <div
-            class="field-container w-full rounded-[10px] flex items-center shrink-0 border-[--bc-buttonColor] border border-solid relative h-[46px]  text-[14px]  gap-[8px] field-container-pc h-[46px] text-[14px] "
-          >
-            <div class="h-full flex items-center flex-1 shrink-0 relative rounded-[10px] overflow-hidden">
-              <BaseInput placeholder="Account / Email / Phone Number" />
-            </div>
-          </div>
+          <BaseInput placeholder="Account / Email / Phone Number">
+            <template #prefix>
+              <div class="flex items-center pl-[10px] pr-[5px] flex-1 border-r border-solid border-[--bc-buttonColor]">
+                <div class="text-[14px] flex items-center text-white w-[50px]">
+                  <img src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/home/country/area/Area_Code_55.svg?t202411122151" alt="" importance="auto" class="mr-[4px] w-[20px]" lazy="">
+                  <p>+55</p>
+                </div>
+              </div>
+            </template>
+          </BaseInput>
         </div>
         <div>
-          <div
-            class="field-container w-full rounded-[10px] flex items-center shrink-0 border-[--bc-buttonColor] border border-solid relative h-[46px]  text-[14px]  gap-[8px] field-container-pc h-[46px] text-[14px] "
+          <BaseInput
+            :type="showPassword ? 'text' : 'password'" placeholder="Passwor2d"
+            @click-icon="showPassword = !showPassword"
           >
-            <div class="h-full flex items-center flex-1 shrink-0 relative rounded-[10px] overflow-hidden">
-              <!-- <Input
-                class="h-full flex-1 min-w-[60px] bg-[--bc-searchColor] field-base text-white rounded-[10px] placeholder:font-normal hover:border-[--bc-activeColor]"
-                :type="showPassword ? 'text' : 'password'" index="1" autocapitalize="off" autocorrect="off"
-                autocomplete="new-text" inputmode="text" placeholder="Password"
+            <template #icon>
+              <i
+                class="inline-block h-[max-content] w-[max-content] cursor-pointer"
+                :class="!showPassword ? 'icon-new-eyes-close' : 'icon-new-eyes-open'"
               />
-              <button
-                class="text-[--bc-textColor] text-[12px] flex items-center absolute inset-y-0 right-[10px] justify-center [text-16px] text-[16px]"
-                @click="showPassword = !showPassword"
-              >
-                <i
-                  class="inline-block h-[max-content] w-[max-content] cursor-pointer"
-                  :class="!showPassword ? 'icon-new-eyes-close' : 'icon-new-eyes-open'"
-                />
-              </button> -->
-              <BaseInput
-                :type="showPassword ? 'text' : 'password'" placeholder="Passwor2d"
-                @click-icon="showPassword = !showPassword"
-              >
-                <template #icon>
-                  <i
-                    class="inline-block h-[max-content] w-[max-content] cursor-pointer"
-                    :class="!showPassword ? 'icon-new-eyes-close' : 'icon-new-eyes-open'"
-                  />
-                </template>
-              </BaseInput>
-            </div>
-          </div>
+            </template>
+          </BaseInput>
         </div>
         <div class="text-[14px] text-white text-right">
           <div class="cursor-pointer">

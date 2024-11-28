@@ -68,7 +68,7 @@ const showPassword = ref(false)
                 autocomplete="new-text" inputmode="text" placeholder="Password"
               />
               <button
-                class="text-[--bc-textColor] text-[12px] flex items-center absolute inset-y-0 right-[10px] justify-center [text-16px] text-[16px]"
+                class="text-[--bc-textColor] flex items-center absolute inset-y-0 right-[10px] justify-center text-[16px]"
                 @click="showPassword = !showPassword"
               >
                 <i

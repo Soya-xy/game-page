@@ -32,7 +32,7 @@ function openLogin() {
         Sign in
       </BaseButton>
 
-      <BaseButton class="bg-button-linear">
+      <BaseButton class="bg-button-linear" @click="openRouterModal('register')">
         Sign Up
       </BaseButton>
       <BaseIconButton>
