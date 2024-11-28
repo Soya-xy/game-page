@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-
+const router = useRouter()
 </script>
 
 <template>
@@ -11,11 +11,13 @@
       <div class="flex items-center gap-[5px]">
         <button
           class="h-[35px] min-w-[62px] font-extrabold flex items-center justify-center bg-button px-[10px] rounded-[10px] text-white"
+          @click="router.push('/login')"
         >
           Sign In
         </button>
         <button
           class="px-[10px] h-[35px] min-w-[62px] font-extrabold text-font rounded-[10px] main-color-btn flex items-center justify-center"
+          @click="router.push('/register')"
         >
           Sign Up
         </button>

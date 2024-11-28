@@ -126,7 +126,10 @@ const isOpen = ref<boolean>(false)
           </div>
         </div>
       </div>
-      <BaseDrawer v-model:open="isOpen" title="Game Details">
+      <BaseDrawer v-model:open="isOpen">
+        <template #title>
+          Game Details
+        </template>
         <div class="bg-color2 rounded-[10px] p-[12px] shrink-0 flex flex-col gap-y-[8px]">
           <div class="flex gap-x-[8px] text-[12px]">
             <div class="rounded-[10px] w-[34.37%] shrink-0">

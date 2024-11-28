@@ -6,22 +6,26 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from '@/components/ui/drawer'
+import { cn } from '@/lib/utils'
 
 const open = defineModel<boolean>('open', {
   type: Boolean,
   required: true,
 })
 
-const title = defineProp('')
 const haveClose = defineProp<boolean>(true)
+const contentClass = defineProp<string>('')
+const close = defineEmit()
 </script>
 
 <template>
   <Drawer v-model:open="open" should-scale-background>
-    <DrawerContent class="bg-color">
+    <DrawerContent :class="cn('bg-color', contentClass)">
       <DrawerHeader class="flex justify-between">
-        <DrawerTitle>{{ title }}</DrawerTitle>
-        <DrawerClose v-if="haveClose">
+        <DrawerTitle>
+          <slot name="title" />
+        </DrawerTitle>
+        <DrawerClose v-if="haveClose" @click="close">
           <button
             class="flex justify-center items-center shrink-0 w-[28px] h-[28px] rounded-[6px] bg-button text-white"
           >

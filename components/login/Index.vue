@@ -5,7 +5,7 @@ import Checkbox from '../ui/checkbox/Checkbox.vue'
 const showPassword = ref(false)
 const schema = {
   username: z.string().min(2).max(50),
-  password: z.unknown(),
+  password: z.string().optional(),
 }
 
 function onSubmit(e: any) {
@@ -14,8 +14,8 @@ function onSubmit(e: any) {
 </script>
 
 <template>
-  <div class="flex justify-between overflow-hidden w-[800px] h-[700px] bg-color2 rounded">
-    <div class="flex flex-col justify-between relative w-[400px]">
+  <div class="flex justify-between overflow-hidden w-full h-full md:w-[800px] md:h-[700px] bg-color2 rounded">
+    <div class="hidden md:flex flex-col justify-between relative w-[400px]">
       <div class="text-[0px] w-[400px] h-[700px] relative">
         <Image
           src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/login/banner_pc.jpg" alt=""
@@ -48,7 +48,7 @@ function onSubmit(e: any) {
         </div>
       </div>
     </div>
-    <div class="w-[400px] px-[40px] pt-[40px] flex flex-col relative">
+    <div class="w-full md:w-[400px] px-[40px] pt-[40px] flex flex-col relative">
       <div class="text-[20px] font-bold text-white mb-[20px]">
         Sign In
       </div>

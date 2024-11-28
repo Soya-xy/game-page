@@ -1,8 +1,7 @@
 export function useDevice() {
-  const isMobile = useMediaQuery('(min-width: 640px)')
-  console.log('🚀 ~ useDevice ~ isMobile:', isMobile)
+  const isPc = useMediaQuery('(min-width: 640px)')
 
   return {
-    isMobile,
+    isPc,
   }
 }
