@@ -1,7 +1,16 @@
 <script setup lang="ts">
+import * as z from 'zod'
 import Checkbox from '../ui/checkbox/Checkbox.vue'
 
 const showPassword = ref(false)
+const schema = {
+  username: z.string().min(2).max(50),
+  password: z.unknown(),
+}
+
+function onSubmit(e: any) {
+  console.log('🚀 ~ onSubmit ~ e:', e)
+}
 </script>
 
 <template>
@@ -41,53 +50,75 @@ const showPassword = ref(false)
     </div>
     <div class="w-[400px] px-[40px] pt-[40px] flex flex-col relative">
       <div class="text-[20px] font-bold text-white mb-[20px]">
-        Sign In
+        Sign Up
       </div>
       <div class="flex flex-col gap-[10px] flex-1 overflow-y-auto pb-[40px]">
-        <div>
-          <BaseInput placeholder="Account / Email / Phone Number">
-            <template #prefix>
-              <div class="flex items-center pl-[10px] pr-[5px] flex-1 border-r border-solid border-[--bc-buttonColor]">
-                <div class="text-[14px] flex items-center text-white w-[50px]">
-                  <img src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/home/country/area/Area_Code_55.svg?t202411122151" alt="" importance="auto" class="mr-[4px] w-[20px]" lazy="">
-                  <p>+55</p>
+        <BaseForm :schema="schema" class="flex flex-col gap-[10px]" @submit="onSubmit">
+          <FormField v-slot="{ componentField }" name="username">
+            <FormItem>
+              <FormControl>
+                <BaseInput placeholder="Account / Email / Phone Number" v-bind="componentField">
+                  <template #prefix>
+                    <div
+                      class="flex items-center pl-[10px] pr-[5px] flex-1 border-r border-solid border-[--bc-buttonColor]"
+                    >
+                      <div class="text-[14px] flex items-center text-white w-[50px]">
+                        <img
+                          src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/home/country/area/Area_Code_55.svg?t202411122151"
+                          alt="" importance="auto" class="mr-[4px] w-[20px]" lazy=""
+                        >
+                        <p>+55</p>
+                      </div>
+                    </div>
+                  </template>
+                </BaseInput>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          </FormField>
+          <FormField v-slot="{ componentField }" name="password">
+            <FormItem>
+              <FormControl>
+                <div>
+                  <BaseInput
+                    :type="showPassword ? 'text' : 'password'" placeholder="Password" v-bind="componentField"
+                    @click-icon="showPassword = !showPassword"
+                  >
+                    <template #icon>
+                      <i
+                        class="inline-block h-[max-content] w-[max-content] cursor-pointer"
+                        :class="!showPassword ? 'icon-new-eyes-close' : 'icon-new-eyes-open'"
+                      />
+                    </template>
+                  </BaseInput>
                 </div>
-              </div>
-            </template>
-          </BaseInput>
-        </div>
-        <div>
-          <BaseInput
-            :type="showPassword ? 'text' : 'password'" placeholder="Passwor2d"
-            @click-icon="showPassword = !showPassword"
-          >
-            <template #icon>
-              <i
-                class="inline-block h-[max-content] w-[max-content] cursor-pointer"
-                :class="!showPassword ? 'icon-new-eyes-close' : 'icon-new-eyes-open'"
-              />
-            </template>
-          </BaseInput>
-        </div>
-        <div class="text-[14px] text-white text-right">
-          <div class="cursor-pointer">
-            Forgot Password?
-          </div>
-        </div>
-        <div class="flex items-center gap-[8px] cursor-pointer text-[16px] text-white mt-[10px]">
-          <Checkbox class="border-[--bc-activeColor] data-[state=checked]:bg-[--bc-activeColor]" />
-
-          <div class="flex-1 overflow-hidden">
-            <div class="text-white cursor-pointer">
-              Remember me
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          </FormField>
+          <div class="text-[14px] text-white text-right">
+            <div class="cursor-pointer">
+              Forgot Password?
             </div>
           </div>
-        </div><button
-          class="flex items-center min-h-[46px] justify-center w-full bg-color-main-1 rounded text-[14px] font-bold text-black bg-[--bc-activeColor]"
-        >
-          Sign
-          In
-        </button>
+          <div class="flex items-center gap-[8px] cursor-pointer text-[16px] text-white mt-[10px]">
+            <Checkbox class="border-[--bc-activeColor] data-[state=checked]:bg-[--bc-activeColor]" />
+
+            <div class="flex-1 overflow-hidden">
+              <div class="text-white cursor-pointer">
+                Remember me
+              </div>
+            </div>
+          </div>
+          <button
+            class="flex items-center min-h-[46px] justify-center w-full bg-color-main-1 rounded text-[14px] font-bold text-black bg-[--bc-activeColor]"
+            type="submit"
+          >
+            Sign
+            Up
+          </button>
+        </BaseForm>
+
         <div class="text-[14px] text-[--bc-textColor]">
           <div>
             Don't have an account? <div class="text-[--bc-activeColor] font-[900] cursor-pointer">
