@@ -6,6 +6,7 @@ import {
   type DialogContentProps,
   DialogOverlay,
   useForwardPropsEmits,
+  VisuallyHidden,
 } from 'radix-vue'
 import { computed, type HTMLAttributes } from 'vue'
 
@@ -30,15 +31,20 @@ const forwarded = useForwardPropsEmits(delegatedProps)
     "
   />
   <DialogContent
+    :aria-describedby="undefined"
     v-bind="forwarded" :class="cn(
       'fixed left-1/2 top-1/2 z-[500] grid  -translate-x-1/2 -translate-y-1/2 gap-4 border sm:rounded-lg bg-background shadow-lg',
       props.class,
-    )" @interact-outside="(e: Event) => {
+    )"
+    @interact-outside="(e: Event) => {
       if (!props.clickOutClose) {
         e.preventDefault()
       }
     }"
   >
+    <VisuallyHidden as-child>
+      <DialogTitle />
+    </VisuallyHidden>
     <slot />
 
     <div

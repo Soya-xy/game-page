@@ -47,13 +47,15 @@ function closeModal() {
   <Dialog v-model:open="show" modal>
     <DialogContent
       class="fixed left-1/2 top-1/2 z-[500] grid min-w-[500px] min-h-[500px] max-h-[100vh] -translate-x-1/2 -translate-y-1/2 gap-4 border sm:rounded-lg shadow-lg"
-      disable-outside-pointer-events :class="{
+      disable-outside-pointer-events
+      :class="{
         'opacity-0': enterAnimation === 0,
         'DialogContentOpen': enterAnimation === 1,
         'DialogContentClosed': enterAnimation === 2,
-      }" @close="closeModal"
+      }"
+      @close="closeModal"
     >
-      <component :is="is" />
+      <component :is="is" v-if="enterAnimation !== 0" />
     </DialogContent>
   </Dialog>
 </template>
