@@ -46,6 +46,20 @@ onMounted(() => {
               Refresh time
             </p>
           </dt>
+
+          <dd class="hidden items-center gap-[15px] mt-[20px] md:flex max-lg:flex-col max-lg:mt-0">
+            <button
+              class="border-radius-0 w-[max-content] min-w-[154px] h-[42px] text-[15px] text-color font-semibold flex items-center justify-center px-[15px] bg-page hover:brightness-105"
+            >
+              Detail
+            </button><button
+              class="border-radius-0 w-[max-content] main-color-btn min-w-[154px] h-[42px] text-[15px] text-font font-extrabold flex items-center justify-center px-[15px] hover:brightness-105"
+            >
+              Deposit
+            </button>
+          </dd>
+
+          <!-- 移动端Deposit -->
           <button
             class="rounded md:hidden w-[max-content] min-w-[77px] h-[32px] text-[12px] main-color-btn text-font font-extrabold flex items-center justify-center px-[15px]"
           >
@@ -160,9 +174,11 @@ onMounted(() => {
           </li>
         </ul>
 
-        <ul class="grid grid-cols-2 gap-[10px] mt-[12px] w-full">
+        <!-- 移动端Deposit -->
+        <ul class="md:hidden grid grid-cols-2 gap-[10px] mt-[12px] w-full">
           <li
-            v-for="item in 4" :id="`deposit-icon-${item}`" :key="item" class="h-[70px] rounded-[10px] px-[7px] flex items-center relative border-[1px] border-solid "
+            v-for="item in 4" :id="`deposit-icon-${item}`" :key="item"
+            class="h-[70px] rounded-[10px] px-[7px] flex items-center relative border-[1px] border-solid "
           >
             <div class="flex flex-col gap-y-[4px] relative z-[1]">
               <div class="text-[14px] font-black text-white">
@@ -181,10 +197,9 @@ onMounted(() => {
                 </div>
               </div>
             </div><img
-              :id="`icon-${item}`" :src="`https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/box${item}.png`"
-              alt="" importance="auto" class="h-[40px] absolute right-[7px]"
-              lazy=""
-              crossorigin="anonymous"
+              :id="`icon-${item}`"
+              :src="`https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/box${item}.png`"
+              alt="" importance="auto" class="h-[40px] absolute right-[7px]" lazy="" crossorigin="anonymous"
             >
           </li>
         </ul>

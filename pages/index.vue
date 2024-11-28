@@ -15,6 +15,7 @@
           <HomeLive title="Live Sports" />
           <HomePrizePool />
           <BaseDeposit />
+          <HomeWithdraw />
         </div>
       </ClientOnly>
       <template #fallback>

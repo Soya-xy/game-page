@@ -4,11 +4,12 @@ html {
   --bc-bgColor4: #dedede33;
   --bc-bgColor5: #4b5455;
   --bc-bgColor6: #363838;
+  --bc-bgColor7: #404647;
   --bc-tabColor: #323838;
   --bc-textColor: #bec7ca;
   --bc-fontColor: #292d2e;
   --bc-buttonColor: #ffffff1a;
-  --bc-headerColor: #292c2b;
+  --bc-headerColor: #2a6d57;
   --bc-activeColor: #2dee88;
   --bc-noActiveColor: #2dee881a;
   --bc-noActiveColor2: #2dee8866;
@@ -19,6 +20,7 @@ html {
   --bc-shadow: 8px 0 8px #00000040;
   --bc-hoverButtonColor: linear-gradient(90deg, var(--bc-noActiveColor), #2dee8800), #ffffff0d;
   --bc-bgColor3: linear-gradient(90deg, var(--bc-noActiveColor2), #2dee8800 40%);
+
   --bc-shadow2: 0 4px 4px #14141480;
   --bc-menuOpen: 240px;
   --bc-menuClose: 73px;
@@ -60,6 +62,9 @@ html {
 
 .bg-linear-color-2 {
   background-image: var(--bc-linearColor2) !important;
+}
+.bg-linear-color-1 {
+  background-image: var(--bc-linearColor) !important;
 }
 
 .bg-button-linear {
@@ -161,4 +166,12 @@ html {
   to {
     width: 100%;
   }
+}
+
+.border-radius-0 {
+  @apply rounded-[6px];
+}
+
+.border-radius-1 {
+  @apply rounded-[10px];
 }

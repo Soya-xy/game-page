@@ -46,11 +46,11 @@ const showPassword = ref(false)
       <div class="flex flex-col gap-[10px] flex-1 overflow-y-auto pb-[40px]">
         <div>
           <div
-            class="field-container w-full rounded-[10px] flex items-center shrink-0 border-color-btn-3 border border-solid relative h-[46px]  text-[14px]  gap-[8px] field-container-pc h-[46px] text-[14px] "
+            class="field-container w-full rounded-[10px] flex items-center shrink-0 border-[--bc-buttonColor] border border-solid relative h-[46px]  text-[14px]  gap-[8px] field-container-pc h-[46px] text-[14px] "
           >
-            <div class="h-full flex items-center flex-1 shrink-0 relative overflow-hidden">
+            <div class="h-full flex items-center flex-1 shrink-0 relative rounded-[10px] overflow-hidden">
               <Input
-                class="h-full flex-1 min-w-[60px] field-base text-white bg-[--bc-searchColor] placeholder:font-normal hover:border-[--bc-activeColor]"
+                class="h-full flex-1 min-w-[60px] field-base text-white rounded-[10px] bg-[--bc-searchColor] placeholder:font-normal hover:border-[--bc-activeColor]"
                 type="text" index="0" autocapitalize="off" autocorrect="off" autocomplete="new-text" inputmode="text"
                 placeholder="Account / Email / Phone Number"
               />
@@ -59,11 +59,11 @@ const showPassword = ref(false)
         </div>
         <div>
           <div
-            class="field-container w-full rounded-[10px] flex items-center shrink-0 border-color-btn-3 border border-solid relative h-[46px]  text-[14px]  gap-[8px] field-container-pc h-[46px] text-[14px] "
+            class="field-container w-full rounded-[10px] flex items-center shrink-0 border-[--bc-buttonColor] border border-solid relative h-[46px]  text-[14px]  gap-[8px] field-container-pc h-[46px] text-[14px] "
           >
-            <div class="h-full flex items-center flex-1 shrink-0 relative overflow-hidden relative">
+            <div class="h-full flex items-center flex-1 shrink-0 relative rounded-[10px] overflow-hidden">
               <Input
-                class="h-full flex-1 min-w-[60px] bg-[--bc-searchColor] field-base text-white placeholder:font-normal hover:border-[--bc-activeColor]"
+                class="h-full flex-1 min-w-[60px] bg-[--bc-searchColor] field-base text-white rounded-[10px] placeholder:font-normal hover:border-[--bc-activeColor]"
                 :type="showPassword ? 'text' : 'password'" index="1" autocapitalize="off" autocorrect="off"
                 autocomplete="new-text" inputmode="text" placeholder="Password"
               />
