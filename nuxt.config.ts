@@ -97,6 +97,10 @@ export default defineNuxtConfig({
     locales: defaultResource,
     lazy: true,
     defaultLocale: 'en',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieCrossOrigin: true,
+    },
   },
 
   macros: {

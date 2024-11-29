@@ -9,8 +9,7 @@ export const useUserStore = defineStore('user', () => {
   const router = useRouter()
   const { toast } = useToast()
 
-  const login = async (data: any) => {
-    const res = await loginApi(data)
+  const handleLogin = async (res: any, isRefresh = false) => {
     if (res.code === 0) {
       const { $serverApi } = useNuxtApp()
       user.value = res.data
@@ -29,9 +28,11 @@ export const useUserStore = defineStore('user', () => {
         else {
           router.back()
         }
-        toast({
-          title: 'Login Success',
-        })
+        if (isRefresh) {
+          toast({
+            title: 'Login Success',
+          })
+        }
       }
       else {
         toast({
@@ -42,5 +43,23 @@ export const useUserStore = defineStore('user', () => {
       }
     }
   }
-  return { user, login, token }
+
+  const login = async (data: any) => {
+    const res = await loginApi(data)
+    handleLogin(res)
+  }
+
+  const refreshToken = async () => {
+    const { $clientApi } = useNuxtApp()
+    const user = JSON.parse(localStorage.getItem('user') || '{}')
+    const res = await $clientApi('/member/auth/refresh-token', {
+      method: 'POST',
+      query: {
+        refreshToken: user.refreshToken,
+      },
+    })
+    handleLogin(res, true)
+  }
+
+  return { user, login, token, refreshToken, handleLogin }
 })

@@ -1,6 +1,7 @@
 import type { $Fetch, FetchContext, FetchOptions } from 'ofetch'
 import { useToast } from '@/components/ui/toast/use-toast'
 import { createConsola } from 'consola'
+import dayjs from 'dayjs'
 
 function createLogger(logLevel: number) {
   const envSuffix = import.meta.env.SSR ? 'ssr' : 'csr'
@@ -20,10 +21,23 @@ export function createHttpClient(isServer: boolean): $Fetch {
   const httpOptions: FetchOptions = {
     baseURL: config.public.appUrl,
 
-    async onRequest({ options }: FetchContext): Promise<void> {
+    async onRequest({ request, options }): Promise<void> {
       if (isServer) {
         options.baseURL = '/'
       }
+
+      const expiresTime = localStorage.getItem('expiresTime')
+      const token = localStorage.getItem('token')
+      // 如果当前时间还有1分钟就过期，则重新刷新token
+      if (dayjs().isAfter(dayjs(Number(expiresTime)).subtract(1, 'minute')) && !(request as string).includes('refresh-token')) {
+        await nuxtApp.runWithContext(async () => await useUserStore().refreshToken())
+      }
+
+      if (token) {
+        options.headers.set('Authorization', `Bearer ${token}`)
+      }
+
+      options.headers.set('Accept-Language', useCookieLocale().value)
 
       logger.info('Request:', options)
     },
@@ -58,14 +72,6 @@ export function createHttpClient(isServer: boolean): $Fetch {
     async onResponseError({ response }): Promise<void> {
       if (response.status === 419) {
         logger.warn('CSRF token mismatch, check your API configuration')
-        return
-      }
-
-      if (response.status === 401) {
-        await nuxtApp.runWithContext(
-          async () =>
-            await navigateTo('/login'),
-        )
       }
     },
   }

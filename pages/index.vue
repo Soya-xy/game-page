@@ -5,7 +5,6 @@ import { getHomeData } from '~/api'
 import Spin from '~/components/Base/Spin.vue'
 
 const { data, error } = await getHomeData()
-console.log('🚀 ~ data:', data)
 
 if (error.value) {
   navigateTo('/error')
