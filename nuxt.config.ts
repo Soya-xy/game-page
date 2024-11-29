@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { defaultResource } from './@types/default-resource'
 import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
@@ -48,7 +49,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      appUrl: '',
+      appUrl: process.env.NUXT_PUBLIC_APP_URL,
     },
   },
 
