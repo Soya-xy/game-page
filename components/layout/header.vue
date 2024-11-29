@@ -3,6 +3,8 @@ import { useMenu } from '@/composables/menu'
 import { cn } from '@/lib/utils'
 
 const router = useRouter()
+const userStore = useUserStore()
+const { user } = storeToRefs(userStore)
 const { toggleMenu, isOpen } = useMenu()
 </script>
 
@@ -22,20 +24,25 @@ const { toggleMenu, isOpen } = useMenu()
       <BaseIconButton>
         <i-svg-search class="w-[25px] h-[24px]" />
       </BaseIconButton>
+      <template v-if="!user">
+        <BaseButton @click="router.push('/login')">
+          Sign in
+        </BaseButton>
 
-      <BaseButton @click="router.push('/login')">
-        Sign in
-      </BaseButton>
+        <BaseButton class="bg-button-linear" @click="router.push('/register')">
+          Sign Up
+        </BaseButton>
+      </template>
 
-      <BaseButton class="bg-button-linear" @click="router.push('/register')">
-        Sign Up
-      </BaseButton>
       <BaseIconButton>
         <i-svg-chat class="w-[25px] h-[24px]" />
       </BaseIconButton>
       <BaseIconButton>
         <i class="i-carbon-earth w-[25px] h-[24px]" />
       </BaseIconButton>
+      <template v-if="user">
+        <BaseAvatar :src="user.avatar" :alt="user.nickname" />
+      </template>
     </div>
   </header>
 </template>

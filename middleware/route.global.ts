@@ -1,9 +1,17 @@
 import { isEmpty } from 'ramda'
 
 const needModalPath = ['/login', '/register']
-export default defineNuxtRouteMiddleware((to, from) => {
+export default defineNuxtRouteMiddleware(async (to, from) => {
   const { openRouterModal } = useModal()
   const { isPc } = useDevice()
+
+  if (import.meta.client) {
+    const userStore = useUserStore()
+    if (userStore.token) {
+      userStore.getUserInfo()
+    }
+  }
+
   if (to.path === from.path)
     return
   // TODO: Server端无法获取hash，所以需要手动处理

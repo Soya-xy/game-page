@@ -75,5 +75,12 @@ export const useUserStore = defineStore('user', () => {
     localStorage.removeItem('token')
   }
 
-  return { user, login, register, token, refreshToken, handleLogin, logout }
+  const getUserInfo = async () => {
+    const { $clientApi } = useNuxtApp()
+    const res = await $clientApi('/member/user/get')
+    console.log('🚀 ~ getUserInfo ~ res:', res)
+    user.value = res.data
+  }
+
+  return { user, login, register, token, refreshToken, handleLogin, logout, getUserInfo }
 })
