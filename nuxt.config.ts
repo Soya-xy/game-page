@@ -47,6 +47,11 @@ export default defineNuxtConfig({
     fallback: 'dark',
     dataValue: 'theme',
   },
+  runtimeConfig: {
+    public: {
+      appUrl: '',
+    },
+  },
 
   future: {
     compatibilityVersion: 4,

@@ -59,6 +59,7 @@
     "nuxt": "^3.14.1592",
     "nuxt-svgo": "^4.0.9",
     "nuxt-swiper": "^2.0.0",
+    "ofetch": "^1.4.1",
     "pinia": "^2.2.6",
     "sass": "^1.81.0",
     "shadcn-nuxt": "^0.11.3",
@@ -69,8 +70,15 @@
   },
   "pnpm": {
     "supportedArchitectures": {
-      "os": ["win32", "darwin", "current"],
-      "cpu": ["x64", "arm64"]
+      "os": [
+        "win32",
+        "darwin",
+        "current"
+      ],
+      "cpu": [
+        "x64",
+        "arm64"
+      ]
     }
   },
   "simple-git-hooks": {
