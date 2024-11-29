@@ -28,6 +28,13 @@ watch(router, (val) => {
 
     enterAnimation.value = 1
   }
+  else {
+    enterAnimation.value = 2
+    setTimeout(() => {
+      show.value = false
+      enterAnimation.value = 0
+    }, 300)
+  }
 }, {
   deep: true,
 })

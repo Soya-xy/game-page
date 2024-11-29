@@ -1,4 +1,5 @@
 import type { $Fetch, FetchContext, FetchOptions } from 'ofetch'
+import { useToast } from '@/components/ui/toast/use-toast'
 import { createConsola } from 'consola'
 
 function createLogger(logLevel: number) {
@@ -14,6 +15,7 @@ export function createHttpClient(isServer: boolean): $Fetch {
   const config = useRuntimeConfig()
   const { isPc } = useDevice()
   const { openRouterModal } = useModal()
+  const { toast } = useToast()
 
   const httpOptions: FetchOptions = {
     baseURL: config.public.appUrl,
@@ -27,22 +29,33 @@ export function createHttpClient(isServer: boolean): $Fetch {
     },
 
     async onResponse({ response }: FetchContext) {
-      if (response?._data?.code === 401) {
-        if (isPc) {
-          openRouterModal('login')
+      if (response) {
+        if (response?._data?.code === 401) {
+          if (isPc) {
+            openRouterModal('login')
+          }
+          else {
+            await nuxtApp.runWithContext(() => navigateTo('/login'))
+          }
         }
-        else {
-          await nuxtApp.runWithContext(() => navigateTo('/login'))
-        }
-      }
 
-      if (response?._data?.code === 0) {
-        return response._data.data
+        const data = response._data
+
+        if (data?.code === 0) {
+          return data.data
+        }
+        else if (data.code === 400) {
+          toast({
+            title: '请求异常',
+            description: data.msg,
+            duration: 2000,
+            bgColor: 'bg-red-500',
+          })
+        }
       }
     },
 
     async onResponseError({ response }): Promise<void> {
-      console.log('🚀 ~ onResponseError ~ response:', response)
       if (response.status === 419) {
         logger.warn('CSRF token mismatch, check your API configuration')
         return

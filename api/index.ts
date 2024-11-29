@@ -1,7 +1,7 @@
 import type { AsyncData, AsyncDataOptions } from '#app'
 import { useNuxtApp } from '#app'
 
-async function useMyAsyncData(key: string, url: string, params?: Record<string, any>, options?: AsyncDataOptions<any, any, any, any>) {
+export async function useMyAsyncData(key: string, url: string, params?: Record<string, any>, options?: AsyncDataOptions<any, any, any, any>) {
   const { $clientApi, $serverApi } = useNuxtApp()
   let fn: () => Promise<any>
 

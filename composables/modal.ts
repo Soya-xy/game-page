@@ -19,8 +19,13 @@ export function useModal() {
     router.value = { ...option, path: route }
   }
 
+  function closeRouterModal() {
+    router.value = { path: undefined }
+  }
+
   return {
     openRouterModal,
+    closeRouterModal,
     router,
   }
 }

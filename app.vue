@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Toaster from '@/components/ui/toast/Toaster.vue'
 import { appName } from '~~/constants'
 
 const color = useColorMode()
@@ -18,6 +19,9 @@ useHead({
 
 <template>
   <VitePwaManifest />
+  <ClientOnly>
+    <Toaster />
+  </ClientOnly>
   <BaseSpin v-if="once" />
   <div v-if="ready">
     <NuxtLayout :name="layout">

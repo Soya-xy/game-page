@@ -3,13 +3,20 @@ import * as z from 'zod'
 import Checkbox from '../ui/checkbox/Checkbox.vue'
 
 const showPassword = ref(false)
+const remember = ref(false)
+
 const schema = {
-  username: z.string().min(2).max(50),
-  password: z.string().optional(),
+  mobile: z.string().min(2).max(50).default(localStorage.getItem('mobile') || ''),
+  password: z.string().optional().default(localStorage.getItem('password') || ''),
 }
 
-function onSubmit(e: any) {
-  console.log('🚀 ~ onSubmit ~ e:', e)
+const userStore = useUserStore()
+async function onSubmit(e: any) {
+  await userStore.login(e)
+  if (remember.value) {
+    localStorage.setItem('mobile', e.mobile)
+    localStorage.setItem('password', e.password)
+  }
 }
 </script>
 
@@ -54,7 +61,7 @@ function onSubmit(e: any) {
       </div>
       <div class="flex flex-col gap-[10px] flex-1 overflow-y-auto pb-[40px]">
         <BaseForm :schema="schema" class="flex flex-col gap-[10px]" @submit="onSubmit">
-          <FormField v-slot="{ componentField }" name="username">
+          <FormField v-slot="{ componentField }" name="mobile">
             <FormItem>
               <FormControl>
                 <BaseInput placeholder="Account / Email / Phone Number" v-bind="componentField" />
@@ -88,7 +95,7 @@ function onSubmit(e: any) {
             </div>
           </div>
           <div class="flex items-center gap-[8px] cursor-pointer text-[16px] text-white mt-[10px]">
-            <Checkbox class="border-[--bc-activeColor] data-[state=checked]:bg-[--bc-activeColor]" />
+            <Checkbox v-model:checked="remember" class="border-[--bc-activeColor] data-[state=checked]:bg-[--bc-activeColor]" />
 
             <div class="flex-1 overflow-hidden">
               <div class="text-white cursor-pointer">
