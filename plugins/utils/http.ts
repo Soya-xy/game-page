@@ -62,7 +62,7 @@ export function createHttpClient(isServer: boolean): $Fetch {
         if (data?.code === 0) {
           return data.data
         }
-        else if (data.code === 400) {
+        else {
           toast({
             title: '请求异常',
             description: data.msg,

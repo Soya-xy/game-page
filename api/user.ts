@@ -1,6 +1,3 @@
-import type { AsyncData } from '#app'
-import { useMyAsyncData } from '.'
-
 interface LoginData {
   mobile: string
   code: string
@@ -19,12 +16,14 @@ export async function login(body: LoginData) {
 
 interface RegisterData {
   mobile: string
-  code: string
+  password: string
+  inviteCode?: string
 }
 
-export async function register(data: RegisterData): Promise<AsyncData<any, any>> {
-  return useMyAsyncData('register', '/member/auth/register', {
+export async function register(body: RegisterData) {
+  const { $clientApi } = useNuxtApp()
+  return $clientApi('/member/auth/register', {
     method: 'POST',
-    body: data,
+    body,
   })
 }

@@ -1,5 +1,5 @@
 import { useToast } from '@/components/ui/toast/use-toast'
-import { login as loginApi } from '~/api/user'
+import { login as loginApi, register as registerApi } from '~/api/user'
 
 export const useUserStore = defineStore('user', () => {
   const user = ref(JSON.parse(localStorage.getItem('user') || '{}') || undefined)
@@ -24,19 +24,21 @@ export const useUserStore = defineStore('user', () => {
       if (data) {
         if (isPc.value) {
           closeRouterModal()
+          router.back()
         }
         else {
           router.back()
         }
-        if (isRefresh) {
+        if (!isRefresh) {
           toast({
-            title: 'Login Success',
+            title: 'Success',
+            bgColor: 'bg-green-500',
           })
         }
       }
       else {
         toast({
-          title: 'Login Failed',
+          title: 'Failed',
           description: 'Please try again',
           bgColor: 'bg-red-500',
         })
@@ -46,6 +48,11 @@ export const useUserStore = defineStore('user', () => {
 
   const login = async (data: any) => {
     const res = await loginApi(data)
+    handleLogin(res)
+  }
+
+  const register = async (data: any) => {
+    const res = await registerApi(data)
     handleLogin(res)
   }
 
@@ -68,5 +75,5 @@ export const useUserStore = defineStore('user', () => {
     localStorage.removeItem('token')
   }
 
-  return { user, login, token, refreshToken, handleLogin, logout }
+  return { user, login, register, token, refreshToken, handleLogin, logout }
 })

@@ -15,7 +15,6 @@ const RouteToComponent: Record<string, any> = {
 }
 
 watch(router, (val) => {
-  console.log('🚀 ~ watch ~ val:', val)
   if (val.path) {
     is.value = defineAsyncComponent({
       loader: () => RouteToComponent[val.path!],
@@ -39,6 +38,8 @@ watch(router, (val) => {
   deep: true,
 })
 
+const routerPush = useRouter()
+
 function closeModal() {
   enterAnimation.value = 2
   setTimeout(() => {
@@ -47,6 +48,7 @@ function closeModal() {
     }
     show.value = false
     enterAnimation.value = 0
+    routerPush.back()
   }, 300)
 }
 </script>

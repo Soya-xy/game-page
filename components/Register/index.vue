@@ -2,18 +2,27 @@
 import { cn } from '@/lib/utils'
 import * as z from 'zod'
 import Checkbox from '../ui/checkbox/Checkbox.vue'
+import { useToast } from '../ui/toast'
 
 const showPassword = ref(false)
 const showInviteCode = ref(false)
+const { toast } = useToast()
 const router = useRouter()
+const userStore = useUserStore()
 const schema = {
   mobile: z.string(),
   password: z.string(),
-  inviteCode: z.string(),
+  inviteCode: z.string().optional(),
 }
+const isAgree = ref<boolean>(false)
+async function onSubmit(e: any) {
+  if (!isAgree.value) {
+    return toast({
+      title: 'Please agree to the terms of service and privacy policy',
+    })
+  }
 
-function onSubmit(e: any) {
-  console.log('🚀 ~ onSubmit ~ e:', e)
+  await userStore.register(e)
 }
 </script>
 
@@ -101,10 +110,9 @@ function onSubmit(e: any) {
             </FormItem>
           </FormField>
           <div class="text-[14px] text-color text-left">
-            <div class="cursor-pointer">
+            <div class="cursor-pointer w-[max-content]" @click="showInviteCode = !showInviteCode">
               Add Invite Code <i
                 :class="cn(`inline-block transition-all duration-200  h-[max-content] w-[max-content] rotate-[90deg] icon-new-arrow cursor-pointer font-bold`, showInviteCode ? '-rotate-[90deg] text-white ' : '')"
-                @click="showInviteCode = !showInviteCode"
               />
             </div>
           </div>
@@ -117,7 +125,7 @@ function onSubmit(e: any) {
             </FormItem>
           </FormField>
           <div class="flex items-start gap-[8px] cursor-pointer text-[16px] text-white my-[10px]">
-            <Checkbox class="border-[--bc-activeColor] data-[state=checked]:bg-[--bc-activeColor]" />
+            <Checkbox v-model:checked="isAgree" class="border-[--bc-activeColor] data-[state=checked]:bg-[--bc-activeColor]" />
 
             <div class="flex-1 overflow-hidden">
               <div class="text-color cursor-pointer text-[14px]">
