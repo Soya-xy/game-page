@@ -1,17 +1,19 @@
 <script lang="ts" setup>
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
+import { getGameData } from '~/api'
 
-const info = {
-  src: 'https://web-res-aaa.afunimg5.com/cdn-cgi/image/f=auto,w=110.33,dpr=2,q=80/newres/gameicon_en6010/008/100802058.jpg',
-  rtp: 96.55,
-  name: 'Money Coming',
-  great: 10000,
-  isHot: true,
-}
+const id = defineProp('', true)
+const page = ref(1)
+const { data } = await getGameData(id.value, {
+  id: id.value,
+  pageNo: page.value,
+  pageSize: 30,
+}, {
+  watch: [page],
+})
+
 const title = defineProp('', true)
-const haveMore = defineProp<boolean>(undefined, false)
 const containerRef = ref()
-const games = ref(Array.from({ length: 20 }))
 
 const swiper = useSwiper(containerRef, {
   slidesPerView: 3,
@@ -67,7 +69,6 @@ function next(type: 'up' | 'down') {
       <template #action>
         <div class="flex items-center gap-2 h-full  ">
           <div
-            v-if="haveMore"
             class="
               h-[32px] px-2 font-bold
               text-sm text-primary cursor-pointer
@@ -96,8 +97,8 @@ function next(type: 'up' | 'down') {
     </BaseTitle>
     <ClientOnly>
       <swiper-container ref="containerRef" class="w-full flex h-full">
-        <swiper-slide v-for="(game, index) in games" :key="index" class="flex-shrink-0">
-          <BaseGameCard :key="index" :info />
+        <swiper-slide v-for="(game, index) in data.list" :key="index" class="flex-shrink-0">
+          <BaseGameCard :key="index" :info="game" />
         </swiper-slide>
       </swiper-container>
     </ClientOnly>
