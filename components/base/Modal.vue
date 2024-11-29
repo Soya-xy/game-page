@@ -9,21 +9,21 @@ const enterAnimation = ref(0)
 const show = ref(false)
 const is = shallowRef()
 
-const RouteToComponent: Record<string, Promise<Component>> = {
-  login: import('~/components/Login/Index.vue'),
-  register: import('~/components/Register/Index.vue'),
+const RouteToComponent: Record<string, any> = {
+  '/login': import('~/components/Login/Index.vue'),
+  '/register': import('~/components/Register/Index.vue'),
 }
 
 watch(router, (val) => {
+  console.log('🚀 ~ watch ~ val:', val)
   if (val.path) {
     is.value = defineAsyncComponent({
-      loader: (async () => {
-        return await RouteToComponent[val.path!]
-      }) as () => Promise<Component>,
+      loader: () => RouteToComponent[val.path!],
       delay: 200,
       timeout: 10000,
       suspensible: false,
     })
+
     show.value = true
 
     enterAnimation.value = 1

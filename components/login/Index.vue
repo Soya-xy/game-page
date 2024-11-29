@@ -4,7 +4,7 @@ import Checkbox from '../ui/checkbox/Checkbox.vue'
 
 const showPassword = ref(false)
 const remember = ref(false)
-
+const router = useRouter()
 const schema = {
   mobile: z.string().min(2).max(50).default(localStorage.getItem('mobile') || ''),
   password: z.string().optional().default(localStorage.getItem('password') || ''),
@@ -114,8 +114,9 @@ async function onSubmit(e: any) {
 
         <div class="text-[14px] text-[--bc-textColor]">
           <div>
-            Don't have an account? <div class="text-[--bc-activeColor] font-[900] cursor-pointer">
-              Sign In
+            Don't have an account?
+            <div class="text-[--bc-activeColor] font-[900] cursor-pointer" @click="router.push('/register')">
+              Sign Up
             </div>
           </div>
         </div>

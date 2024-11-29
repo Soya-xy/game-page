@@ -2,8 +2,8 @@ import { useToast } from '@/components/ui/toast/use-toast'
 import { login as loginApi } from '~/api/user'
 
 export const useUserStore = defineStore('user', () => {
-  const user = ref()
-  const token = ref()
+  const user = ref(JSON.parse(localStorage.getItem('user') || '{}') || undefined)
+  const token = ref(localStorage.getItem('token') || undefined)
   const { isPc } = useDevice()
   const { closeRouterModal } = useModal()
   const router = useRouter()
@@ -13,7 +13,7 @@ export const useUserStore = defineStore('user', () => {
     if (res.code === 0) {
       const { $serverApi } = useNuxtApp()
       user.value = res.data
-      token.value = res.data.token
+      token.value = res.data.accessToken
       localStorage.setItem('token', res.data.accessToken)
       localStorage.setItem('user', JSON.stringify(res.data))
       localStorage.setItem('expiresTime', res.data.expiresTime)
@@ -61,5 +61,12 @@ export const useUserStore = defineStore('user', () => {
     handleLogin(res, true)
   }
 
-  return { user, login, token, refreshToken, handleLogin }
+  const logout = () => {
+    user.value = undefined
+    token.value = undefined
+    localStorage.removeItem('user')
+    localStorage.removeItem('token')
+  }
+
+  return { user, login, token, refreshToken, handleLogin, logout }
 })

@@ -2,13 +2,8 @@
 import { useMenu } from '@/composables/menu'
 import { cn } from '@/lib/utils'
 
+const router = useRouter()
 const { toggleMenu, isOpen } = useMenu()
-
-const { openRouterModal } = useModal()
-
-function openLogin() {
-  openRouterModal('login')
-}
 </script>
 
 <template>
@@ -28,11 +23,11 @@ function openLogin() {
         <i-svg-search class="w-[25px] h-[24px]" />
       </BaseIconButton>
 
-      <BaseButton @click="openLogin">
+      <BaseButton @click="router.push('/login')">
         Sign in
       </BaseButton>
 
-      <BaseButton class="bg-button-linear" @click="openRouterModal('register')">
+      <BaseButton class="bg-button-linear" @click="router.push('/register')">
         Sign Up
       </BaseButton>
       <BaseIconButton>
