@@ -21,20 +21,20 @@ export const useUserStore = defineStore('user', () => {
         method: 'POST',
         body: res.data,
       })
+
+      // 无感刷新
+      if (isRefresh)
+        return
+
       if (data) {
         if (isPc.value) {
           closeRouterModal()
-          router.back()
         }
-        else {
-          router.back()
-        }
-        if (!isRefresh) {
-          toast({
-            title: 'Success',
-            bgColor: 'bg-green-500',
-          })
-        }
+        toast({
+          title: 'Success',
+          bgColor: 'bg-green-500',
+        })
+        router.back()
       }
       else {
         toast({
