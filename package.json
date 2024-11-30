@@ -12,6 +12,7 @@
     "start:generate": "npx serve .output/public",
     "lint": "eslint . --fix --ignore-path .gitignore ",
     "typecheck": "vue-tsc --noEmit",
+    "upi": "pnpm up -L -i",
     "postinstall": "simple-git-hooks"
   },
   "dependencies": {
@@ -56,7 +57,7 @@
     "consola": "^3.2.3",
     "device": "^0.3.12",
     "eslint": "^9.16.0",
-    "eslint-plugin-format": "^0.1.2",
+    "eslint-plugin-format": "^0.1.3",
     "lint-staged": "^15.2.10",
     "nuxt": "^3.14.1592",
     "nuxt-svgo": "^4.0.9",

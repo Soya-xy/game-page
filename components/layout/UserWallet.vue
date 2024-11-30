@@ -2,11 +2,22 @@
 import { ref } from 'vue'
 
 const open = ref<boolean>(false)
+const mobileOpen = ref<boolean>(false)
+const { isPc } = useDevice()
+
+function toggleOpen() {
+  if (isPc.value) {
+    open.value = !open.value
+  }
+  else {
+    mobileOpen.value = !mobileOpen.value
+  }
+}
 </script>
 
 <template>
   <div class="flex items-center border-radius-0 bg-button cursor-pointer relative">
-    <div class="flex items-center text-[14px] h-[40px] font-bold text-white mx-[10px]">
+    <div class="flex items-center text-[14px] h-[34px] md:h-[40px] font-bold text-white mx-[10px]">
       <Image
         src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/dev_skin/C02/wallet/currency/BRL.png"
         alt="" importance="auto" class=" shrink-0 w-[24px] !h-[24px]" lazy=""
@@ -24,7 +35,7 @@ const open = ref<boolean>(false)
             :class="{
               'rotate-[90deg]': !open,
               'rotate-[270deg]': open,
-            }" @click="open = !open"
+            }" @click="toggleOpen"
           >
             <i class="inline-block h-[max-content] w-[max-content] icon-new-arrow cursor-pointer text-[16px]" />
           </button>
@@ -84,13 +95,18 @@ const open = ref<boolean>(false)
       </DropdownMenu>
     </div>
     <div
-      class="flex items-center px-[12px]  h-[32px] mr-[6px] relative font-bold rounded-[8px] hover:brightness-105 shadow-[inset_0_-2px_var(--bc-activeColor)] bg-button-linear"
+      class="hidden md:flex items-center px-[12px] h-[32px] mr-[6px] relative font-bold rounded-[8px] hover:brightness-105 shadow-[inset_0_-2px_var(--bc-activeColor)] bg-button-linear"
     >
       <span class="text-[13px] font-extrabold">Deposit</span>
     </div>
+    <div
+      class="flex md:hidden relative h-[28px] w-[28px] mx-[4px] shrink-0 items-center justify-center text-font rounded-[6px] bg-linear-color-1"
+    >
+      <i class="inline-block h-[max-content] w-[max-content] icon-new-clean-3 inline-block rotate-45 text-[9px]" />
+    </div>
   </div>
   <div
-    class="w-[50px] h-[40px] flex items-center justify-center shadow-[inset_0_-1.176px_#edea8740,inset_0_1.176px_1.176px_#ffde306e] relative rounded-[6px] cursor-pointer bg-chest"
+    class="md:w-[50px] w-[44px] h-[34px] md:h-[40px] flex items-center justify-center shadow-[inset_0_-1.176px_#edea8740,inset_0_1.176px_1.176px_#ffde306e] relative rounded-[6px] cursor-pointer bg-chest"
   >
     <div
       class="rounded-full text-[11px] bg-[--bc-activeColor2] shrink-0 text-font flex items-center justify-center font-bold px-[2px] min-w-[16px] h-[14px] text-[11px] absolute -right-[4px] top-0"
@@ -102,6 +118,55 @@ const open = ref<boolean>(false)
       class="w-[28px] !h-[28px]" lazy=""
     />
   </div>
+  <!-- 手机端弹窗 -->
+  <BaseDrawer v-model:open="mobileOpen" content-class="z-[555]" overlay-class="z-[550]">
+    <template #title>
+      Wallet
+    </template>
+    <div
+      class="relative pb-[15px] z-[352] w-full h-[max-content] flex flex-col max-h-[550px] border-radius-1 overflow-hidden"
+    >
+      <div class="flex-1 flex flex-col overflow-y-auto overscroll-contain">
+        <div class="shrink-0 text-white text-[14px] font-semibold">
+          <div class="mt-[20px] mb-[14px] text-color">
+            Fiat
+          </div>
+          <div
+            class="min-h-[60px] max-h-[70px] p-[10px] flex justify-between items-center border-radius-0 cursor-pointer bg-color6"
+          >
+            <div class="flex items-center gap-x-[10px]">
+              <Image
+                src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/dev_skin/C02/wallet/currency/BRL.png"
+                alt="" importance="auto" class="shrink-0 w-[24px] !h-[24px]" lazy=""
+              />
+              <div class="text-[16px]">
+                BRL
+              </div>
+            </div>
+            <div class="flex flex-col items-end">
+              <div class="ml-[10px]">
+                <div class="flex items-center justify-end">
+                  <div class="text-color mr-[10px]">
+                    Cash
+                  </div>
+                  <span class="whitespace-pre">R$0.07</span>
+                </div>
+                <div class="flex items-center justify-end mt-[12px]">
+                  <div class="flex items-center px-[4px]">
+                    <i
+                      class="inline-block h-[max-content] w-[max-content] icon-new-wenhao cursor-pointer text-[--bc-color20]"
+                    />
+                  </div>
+                  <div class="text-color mr-[10px]">
+                    Bonus
+                  </div>
+                  <span class="whitespace-pre">R$0.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </BaseDrawer>
 </template>
-
-<style></style>

@@ -2,6 +2,7 @@
 const type = defineProp<number>(undefined, true)
 const showIcon = defineProp<boolean>(false)
 const name = defineProp('')
+const img = defineProp('', true)
 const description = defineProp('')
 </script>
 
@@ -11,7 +12,7 @@ const description = defineProp('')
     :class="`bg-image${type}`"
   >
     <Image
-      src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/gameEntry/sports.png" alt=""
+      :src="img" alt=""
       importance="auto" class="!w-auto absolute top-0 right-0" lazy
     />
     <div class="xl:text-[14px] text-[14px] sm:text-[24px] font-extrabold text-white flex items-center gap-x-[2px] uppercase">

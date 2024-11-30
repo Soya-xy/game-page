@@ -4,6 +4,7 @@ import { getGameData } from '~/api'
 
 const id = defineProp('', true)
 const page = ref(1)
+const haveMore = defineProp(true)
 const { data } = await getGameData(id.value, {
   id: id.value,
   pageNo: page.value,
@@ -69,6 +70,7 @@ function next(type: 'up' | 'down') {
       <template #action>
         <div class="flex items-center gap-2 h-full  ">
           <div
+            v-if="haveMore"
             class="
               h-[32px] px-2 font-bold
               text-sm text-primary cursor-pointer

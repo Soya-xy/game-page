@@ -78,7 +78,6 @@ export const useUserStore = defineStore('user', () => {
   const getUserInfo = async () => {
     const { $clientApi } = useNuxtApp()
     const res = await $clientApi('/member/user/get')
-    console.log('🚀 ~ getUserInfo ~ res:', res)
     user.value = res.data
   }
 
