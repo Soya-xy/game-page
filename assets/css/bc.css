@@ -9,8 +9,10 @@ html {
   --bc-textColor: #bec7ca;
   --bc-fontColor: #292d2e;
   --bc-buttonColor: #ffffff1a;
+  --bc-iconColor: #b3b8c1;
   --bc-headerColor: #2a6d57;
   --bc-activeColor: #2dee88;
+  --bc-activeColor2: #33ee87;
   --bc-noActiveColor: #2dee881a;
   --bc-noActiveColor2: #2dee8866;
   --bc-greenColor: #25d276;
@@ -53,7 +55,7 @@ html {
 }
 
 .svg-layer:not(.active) path.need-active {
-  fill: #b3b8c1;
+  fill: var(--bc-iconColor);
 }
 
 .bg-button:hover path.need-active {
@@ -174,4 +176,8 @@ html {
 
 .border-radius-1 {
   @apply rounded-[10px];
+}
+
+.bg-chest {
+  background: linear-gradient(180deg, #fea01380, #fea01326 35%, #fea0131a, #fea01326 65%, #fea01380);
 }

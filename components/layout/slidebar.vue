@@ -15,14 +15,14 @@ const menuItems = [
 ]
 
 onMounted(() => {
-  if (window.innerWidth < 768) {
+  if (window.innerWidth < 1280) {
     isOpen.value = false
   }
 })
 
 if (isClient) {
   window.addEventListener('resize', () => {
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 1280) {
       isOpen.value = false
     }
   })
@@ -48,7 +48,7 @@ if (isClient) {
             <div class="w-[40px] h-[40px] flex items-center justify-center">
               <i
                 v-if="item.iconType !== 'svg'"
-                class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[22px] text-e-g-color-108 hover-icon"
+                class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[22px] text-e-g-color-108 "
                 :class="item.icon"
               />
               <template v-else>
@@ -69,7 +69,7 @@ if (isClient) {
           <div class="h-full flex items-center relative hover-bg-linear-3">
             <div class="w-[40px] h-[40px] flex items-center justify-center">
               <i
-                class="inline-block h-[max-content] w-[max-content] icon-n-lang cursor-pointer text-[22px] text-e-g-color-108 hover-icon"
+                class="inline-block h-[max-content] w-[max-content] icon-n-lang cursor-pointer text-[22px] text-e-g-color-108 "
               />
             </div>
             <p class="text-[14px] flex-1">
@@ -104,7 +104,7 @@ if (isClient) {
             >
               <i
                 v-if="item.iconType !== 'svg'"
-                class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[22px] text-e-g-color-108 hover-icon"
+                class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[22px] text-e-g-color-108 "
                 :class="item.icon"
               />
               <template v-else>

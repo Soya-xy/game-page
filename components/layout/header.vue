@@ -6,6 +6,18 @@ const router = useRouter()
 const userStore = useUserStore()
 const { user } = storeToRefs(userStore)
 const { toggleMenu, isOpen } = useMenu()
+
+// 添加菜单配置数组
+const menuItems = [
+  { label: 'Wallet', icon: 'icon-n-wallet' },
+  { label: 'Withdraw', icon: 'icon-n-withdraw' },
+  { label: 'Profile', icon: 'icon-n-personal' },
+  { label: 'Transaction', icon: 'icon-n-transaction-history' },
+  { label: 'Bets History', icon: 'icon-n-bet-history' },
+  { label: 'Free bets', icon: 'icon-n-free' },
+  { label: 'Setting', icon: 'icon-n-security-settings' },
+  { label: 'Install', icon: 'icon-n-install' },
+]
 </script>
 
 <template>
@@ -18,13 +30,14 @@ const { toggleMenu, isOpen } = useMenu()
   >
     <div class="flex items-center gap-[27px] ml-[22px]">
       <BaseToggleMenu :class="isOpen ? 'rotate-180' : ''" @click="toggleMenu" />
-      <Image src="/images/logo.avif" class="!h-[44px]" />
+      <Image src="/images/logo.avif" class="!h-[44px]" @click="router.push('/')" />
     </div>
     <div class="flex items-center px-[12px] gap-[12px]">
       <BaseIconButton>
         <i-svg-search class="w-[25px] h-[24px]" />
       </BaseIconButton>
-      <template v-if="!user">
+      <LayoutUserWallet v-if="user" />
+      <template v-else>
         <BaseButton @click="router.push('/login')">
           Sign in
         </BaseButton>
@@ -41,7 +54,42 @@ const { toggleMenu, isOpen } = useMenu()
         <i class="i-carbon-earth w-[25px] h-[24px]" />
       </BaseIconButton>
       <template v-if="user">
-        <BaseAvatar :src="user.avatar" :alt="user.nickname" />
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <BaseAvatar :src="user.avatar" :alt="user.nickname" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            align="end"
+            class="bg-color2 text-color relative text-[14px] overflow-hidden border-radius-0 pt-[10px] min-w-[220px] flex flex-col shadow-[0_4px_20px_#00000060]"
+          >
+            <DropdownMenuItem
+              v-for="item in menuItems" :key="item.label"
+              class="hover:text-white hover:bg-page hover:text-bold focus:text-white focus:bg-page focus:text-bold p-0"
+            >
+              <div class="pl-[20px] pr-[10px] h-[46px] flex items-center cursor-pointer">
+                <i
+                  class="inline-block h-[max-content] w-[max-content] cursor-pointer mr-[14px] text-[20px] text-icon "
+                  :class="[
+                    item.icon,
+                  ]"
+                />
+                <p>{{ item.label }}</p>
+              </div>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator class="bg-button" />
+
+            <DropdownMenuItem
+              class="hover:text-white hover:bg-page hover:text-bold focus:text-white focus:bg-page focus:text-bold p-0"
+            >
+              <div class="pl-[20px] pr-[10px] h-[46px] flex items-center cursor-pointer">
+                <i
+                  class="inline-block h-[max-content] w-[max-content] cursor-pointer mr-[14px] text-[20px] text-icon  icon-n-sign-out"
+                />
+                <p>Sign Out</p>
+              </div>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </template>
     </div>
   </header>
