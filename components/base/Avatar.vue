@@ -8,6 +8,6 @@ const alt = defineProp<string>('')
 <template>
   <Avatar class="bg-button">
     <AvatarImage :src="src" :alt="alt" />
-    <AvatarFallback>CN</AvatarFallback>
+    <AvatarFallback>{{ alt }}</AvatarFallback>
   </Avatar>
 </template>
