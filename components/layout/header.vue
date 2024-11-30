@@ -33,9 +33,7 @@ const menuItems = [
       <Image src="/images/logo.avif" class="!h-[44px]" @click="router.push('/')" />
     </div>
     <div class="flex items-center px-[12px] gap-[12px]">
-      <BaseIconButton>
-        <i-svg-search class="w-[25px] h-[24px]" />
-      </BaseIconButton>
+      <LayoutSearch />
       <LayoutUserWallet v-if="user" />
       <template v-else>
         <BaseButton @click="router.push('/login')">

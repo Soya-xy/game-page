@@ -3,18 +3,11 @@ import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
 import { getGameData } from '~/api'
 
 const id = defineProp('', true)
-const page = ref(1)
 const haveMore = defineProp(true)
-const { data } = await getGameData(id.value, {
-  id: id.value,
-  pageNo: page.value,
-  pageSize: 30,
-}, {
-  watch: [page],
-})
+const title = defineProp('')
 
-const title = defineProp('', true)
 const containerRef = ref()
+const page = ref(1)
 
 const swiper = useSwiper(containerRef, {
   slidesPerView: 3,
@@ -52,6 +45,14 @@ const swiper = useSwiper(containerRef, {
   },
 })
 
+const { data } = await getGameData(id.value, {
+  id: id.value,
+  pageNo: page.value,
+  pageSize: 30,
+}, {
+  watch: [page],
+})
+
 const progress = ref(0)
 function next(type: 'up' | 'down') {
   if (type === 'up') {
@@ -65,7 +66,7 @@ function next(type: 'up' | 'down') {
 </script>
 
 <template>
-  <div>
+  <div class="w-full">
     <BaseTitle :name="title">
       <template #action>
         <div class="flex items-center gap-2 h-full  ">

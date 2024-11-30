@@ -29,6 +29,6 @@ useHead({
     </NuxtLayout>
   </div>
   <ClientOnly>
-    <BaseModal />
+    <BasePageModal />
   </ClientOnly>
 </template>

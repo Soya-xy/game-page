@@ -7,6 +7,7 @@ html {
   --bc-bgColor7: #404647;
   --bc-bgColor8: #292c2b;
   --bc-tabColor: #323838;
+  --bc-searchBtnColor: #3c4243;
   --bc-textColor: #bec7ca;
   --bc-fontColor: #292d2e;
   --bc-buttonColor: #ffffff1a;
@@ -29,9 +30,11 @@ html {
   --bc-menuClose: 73px;
   --bc-pageColor: #3b4041;
   --bc-color18: #ffffff1f;
+  --bc-color19: #0003;
   --bc-color20: #adb7ba;
   --bc-searchColor: #1c1f1f;
   --bc-tabBgColor: #313536;
+  --bc-linearColor05: linear-gradient(180deg, #516382, #97a8c7);
 }
 
 /* html[data-theme='dark'] {
@@ -77,6 +80,12 @@ html {
 
 .text-linearColor {
   background-image: var(--bc-linearColor) !important;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+}
+.text-linearColor1 {
+  background-image: var(--bc-linearColor05) !important;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent !important;

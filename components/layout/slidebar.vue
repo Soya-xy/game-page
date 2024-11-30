@@ -30,7 +30,7 @@ if (isClient) {
 </script>
 
 <template>
-  <div class="relative z-[100]">
+  <div class="relative z-[50]">
     <!-- 展开状态的侧边栏 -->
     <div
       class="flex flex-col gap-[5px] fixed top-[60px] bottom-0 p-[16px] left-0 w-[var(--bc-menuOpen)] bg-color2 shadow-bc transform transition-transform duration-300 ease-in-out"

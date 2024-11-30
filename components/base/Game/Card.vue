@@ -7,10 +7,13 @@ const info = defineProp<{
   src: string
   isHot: boolean
 }>(undefined, true)
-const isOpen = ref<boolean>(false)
+
 const { isPc } = useDevice()
 const userStore = useUserStore()
+const router = useRouter()
 const { token } = storeToRefs(userStore)
+
+const isOpen = ref<boolean>(false)
 function openGame() {
   if (!isPc.value) {
     isOpen.value = true
@@ -190,8 +193,8 @@ function openGame() {
               /><span>Play</span></span>
             </div>
           </div>
-          <BaseGameList title="HOT" :have-more="false" />
-          <BaseGameList title="TOP" :have-more="false" />
+          <BaseGameList id="" title="HOT" :have-more="false" />
+          <BaseGameList id="" title="TOP" :have-more="false" />
         </div>
       </BaseDrawer>
     </div>
