@@ -2,7 +2,7 @@
 definePageMeta({
   noFooter: true,
 })
-
+const router = useRouter()
 const { isPc } = useDevice()
 const open = ref<boolean>(false)
 const current = ref<string>('Download Google PWA')
@@ -184,11 +184,11 @@ function toggleOpen() {
     <div class="flex flex-col px-[15px] mb-[15px]">
       <DropdownMenu v-model:open="open" class="!p-0 w-full seleBox">
         <DropdownMenuTrigger disabled>
-          <div class="relative text-[12px] mt-[15px]" @click="toggleOpen">
-            <button class="absolute right-[-15px] flex justify-center items-center w-[40px] h-[40px]">
+          <div class="relative text-[12px] mt-[15px]">
+            <button class="absolute right-[-15px] flex justify-center items-center w-[40px] h-[40px]" @click="router.back()">
               <i class="inline-block h-[max-content] w-[max-content] icon-new-clean-1 text-white text-[12px]" />
             </button>
-            <button class="flex items-center gap-x-[10px] px-[20px] h-[40px] bg-[--bc-bgColor9] border-radius-0 text-white text-xs">
+            <button class="flex items-center gap-x-[10px] px-[20px] h-[40px] bg-[--bc-bgColor9] border-radius-0 text-white text-xs" @click="toggleOpen">
               {{ current }} <i class="inline-block h-[max-content] w-[max-content] icon-new-back  transform duration-200 text-[--bc-textColor] transition-all rotate-[-180deg]" :class="{ 'rotate-[-90deg]': open }" />
             </button>
           </div>
