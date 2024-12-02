@@ -31,7 +31,7 @@ async function onSubmit(e: any) {
     <div class="flex flex-col justify-between relative w-[400px]">
       <div class="text-[0px] w-[400px] h-[700px] relative">
         <Image
-          src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/login/banner_pc.jpg" alt=""
+          src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/login/banner_pc.jpg"
           importance="auto" class="w-[400px] h-[700px]" lazy=""
         />
         <div class="text-center w-full px-[20px] absolute top-[432px]">
@@ -54,7 +54,7 @@ async function onSubmit(e: any) {
             <div class="flex-1">
               <Image
                 src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/30101/logo/logo-h.png?20241111"
-                alt="" importance="auto" class="cursor-pointer h-[40px] w-full" lazy
+                importance="auto" class="cursor-pointer h-[40px] w-full" lazy
               />
             </div>
           </div>
@@ -78,7 +78,7 @@ async function onSubmit(e: any) {
                       <div class="text-[14px] flex items-center text-white w-[50px]">
                         <img
                           src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/home/country/area/Area_Code_55.svg?t202411122151"
-                          alt="" importance="auto" class="mr-[4px] w-[20px]" lazy=""
+                          importance="auto" class="mr-[4px] w-[20px]" lazy=""
                         >
                         <p>+55</p>
                       </div>

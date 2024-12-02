@@ -25,7 +25,7 @@ async function onSubmit(e: any) {
     <div class="hidden md:flex flex-col justify-between relative w-[400px]">
       <div class="text-[0px] w-[400px] h-[700px] relative">
         <Image
-          src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/login/banner_pc.jpg" alt=""
+          src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/login/banner_pc.jpg"
           importance="auto" class="w-[400px] h-[700px]" lazy=""
         />
         <div class="text-center w-full px-[20px] absolute top-[432px]">
@@ -48,7 +48,7 @@ async function onSubmit(e: any) {
             <div class="flex-1">
               <Image
                 src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/30101/logo/logo-h.png?20241111"
-                alt="" importance="auto" class="cursor-pointer h-[40px] w-full" lazy
+                importance="auto" class="cursor-pointer h-[40px] w-full" lazy
               />
             </div>
           </div>

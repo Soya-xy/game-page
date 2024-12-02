@@ -33,7 +33,7 @@ function openGame() {
           @click="openGame"
         >
           <Image
-            :src="info.src" alt=""
+            :src="info.src"
             class="absolute top-[0] left-[0] rounded-[inherit] w-full h-full object-cover"
           />
           <div class="rounded-[inherit]">
@@ -152,7 +152,7 @@ function openGame() {
                 >
                   <Image
                     src="https://web-res-aaa.afunimg5.com/cdn-cgi/image/f=webp,w=110.33,dpr=3,q=80/newres/gameicon_en7010/010/101001030.jpg"
-                    alt="" class="absolute top-[0] left-[0] w-full h-full rounded-[inherit]"
+                    class="absolute top-[0] left-[0] w-full h-full rounded-[inherit]"
                     style="width: 100%; height: 100%; background-image: unset;"
                   />
                   <div class="rounded-[inherit]">

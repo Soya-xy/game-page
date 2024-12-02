@@ -45,7 +45,7 @@ const desc = computed(() => JSON.parse(info.value?.productDesc || '{}'))
       <div class="flex items-center justify-between h-[90px]">
         <div class="flex-1 flex flex-col items-center h-full justify-start gap-y-[4px]">
           <Image
-            :src="info.blueIcon" alt="" importance="auto"
+            :src="info.blueIcon"
             class="h-[50px]" lazy=""
           />
           <div class="text-center break-words break-all line-clamp-2">
@@ -62,7 +62,7 @@ const desc = computed(() => JSON.parse(info.value?.productDesc || '{}'))
         </div>
         <div class="flex-1 flex flex-col items-center justify-start gap-y-[4px] h-full">
           <Image
-            :src="info.redIcon" alt="" importance="auto"
+            :src="info.redIcon"
             class="h-[50px]" lazy=""
           />
           <div class="text-center break-words break-all line-clamp-2">

@@ -9,7 +9,7 @@ import { Progress } from '@/components/ui/progress'
         class="h-[165px] px-[15px]  md:px-[36px] md:py-[15px] rounded-[inherit] bg-color3-linear font-extrabold text-white relative py-[12px] flex md:flex-row flex-col justify-start"
       >
         <Image
-          src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/invite_wheel.png" alt=""
+          src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/invite_wheel.png"
           importance="auto" class="h-full absolute bottom-0 left-[47.1%] max-lg:h-[60%] max-lg:left-[55%]" lazy=""
         />
         <div class="md:w-[50%]">

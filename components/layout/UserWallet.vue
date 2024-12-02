@@ -20,7 +20,7 @@ function toggleOpen() {
     <div class="flex items-center text-[14px] h-[34px] md:h-[40px] font-bold text-white mx-[10px]">
       <Image
         src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/dev_skin/C02/wallet/currency/BRL.png"
-        alt="" importance="auto" class=" shrink-0 w-[24px] !h-[24px]" lazy=""
+        importance="auto" class=" shrink-0 w-[24px] !h-[24px]" lazy=""
       />
       <div class="mr-[12px] ml-[6px]">
         <span class="whitespace-pre">0.07</span>
@@ -59,7 +59,7 @@ function toggleOpen() {
                     <div class="flex items-center gap-x-[10px]">
                       <Image
                         src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/dev_skin/C02/wallet/currency/BRL.png"
-                        alt="" importance="auto" class="shrink-0 w-[24px] !h-[24px]" lazy=""
+                        importance="auto" class="shrink-0 w-[24px] !h-[24px]" lazy=""
                       />
                       <div class="text-[16px]">
                         BRL
@@ -114,7 +114,7 @@ function toggleOpen() {
       3
     </div>
     <Image
-      src="https://web-res-ccc.afunimg8.com/C02/_E/home/bonus.gif" alt="" importance="auto"
+      src="https://web-res-ccc.afunimg8.com/C02/_E/home/bonus.gif" importance="auto"
       class="w-[28px] !h-[28px]" lazy=""
     />
   </div>
@@ -137,7 +137,7 @@ function toggleOpen() {
             <div class="flex items-center gap-x-[10px]">
               <Image
                 src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/dev_skin/C02/wallet/currency/BRL.png"
-                alt="" importance="auto" class="shrink-0 w-[24px] !h-[24px]" lazy=""
+                importance="auto" class="shrink-0 w-[24px] !h-[24px]" lazy=""
               />
               <div class="text-[16px]">
                 BRL

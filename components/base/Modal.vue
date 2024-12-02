@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { DialogPortal } from 'radix-vue'
 import {
   PageDialog as Dialog,
   PageDialogContent as DialogContent,
@@ -36,16 +37,18 @@ function closeModal() {
 
 <template>
   <Dialog v-model:open="show" modal>
-    <DialogContent
-      disable-outside-pointer-events :class="cn(
-        'fixed left-1/2 top-1/2 z-[500] grid min-w-[500px] min-h-[500px] max-h-[100vh] -translate-x-1/2 -translate-y-1/2 gap-4 border sm:rounded-lg shadow-lg  bg-[--bc-bgColor8]',
-        enterAnimation === 0 && 'DialogContentClosed',
-        enterAnimation === 1 && 'DialogContentOpen',
-        enterAnimation === 2 && 'DialogContentClosed',
-        contentClass,
-      )" @close="closeModal"
-    >
-      <slot />
-    </DialogContent>
+    <DialogPortal>
+      <DialogContent
+        disable-outside-pointer-events :class="cn(
+          'fixed left-1/2 top-1/2 z-[500] grid min-w-[500px] min-h-[500px] max-h-[100vh] -translate-x-1/2 -translate-y-1/2 gap-4 border sm:rounded-lg shadow-lg  bg-[--bc-bgColor8]',
+          enterAnimation === 0 && 'DialogContentClosed',
+          enterAnimation === 1 && 'DialogContentOpen',
+          enterAnimation === 2 && 'DialogContentClosed',
+          contentClass,
+        )" @close="closeModal"
+      >
+        <slot />
+      </DialogContent>
+    </DialogPortal>
   </Dialog>
 </template>

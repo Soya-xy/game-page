@@ -3,7 +3,7 @@ const { isOpen } = useMenu()
 
 const { isPageLoading } = useLoading()
 const nuxtApp = useNuxtApp()
-
+const route = useRoute()
 nuxtApp.hook('page:start', () => {
   isPageLoading.value = true
 })
@@ -26,7 +26,7 @@ nuxtApp.hook('page:finish', () => {
         }"
       >
         <slot />
-        <LayoutFooter />
+        <LayoutFooter v-if="!route.meta.noFooter" />
       </main>
     </div>
   </div>

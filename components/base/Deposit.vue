@@ -88,7 +88,7 @@ onMounted(() => {
             </div>
             <img
               src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/box1.png"
-              alt="" importance="auto" class="w-[100px] absolute left-0 right-0 bottom-[25px] mx-auto" lazy=""
+              importance="auto" class="w-[100px] absolute left-0 right-0 bottom-[25px] mx-auto" lazy=""
             >
             <div class="w-[102px] h-[22px] flex items-center justify-end relative">
               <span
@@ -110,7 +110,7 @@ onMounted(() => {
             <div class="text-[14px] font-black text-white">
               10%<span class="text-[12px] font-medium ml-[4px]">Bonus</span>
             </div><img
-              src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/box2.png" alt=""
+              src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/box2.png"
               importance="auto" class="w-[100px] absolute left-0 right-0 bottom-[25px] mx-auto" lazy=""
             >
             <div class="w-[102px] h-[22px] flex items-center justify-end relative">
@@ -133,7 +133,7 @@ onMounted(() => {
             <div class="text-[14px] font-black text-white">
               10%<span class="text-[12px] font-medium ml-[4px]">Bonus</span>
             </div><img
-              src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/box3.png" alt=""
+              src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/box3.png"
               importance="auto" class="w-[100px] absolute left-0 right-0 bottom-[25px] mx-auto" lazy=""
             >
             <div class="w-[102px] h-[22px] flex items-center justify-end relative">
@@ -156,7 +156,7 @@ onMounted(() => {
             <div class="text-[14px] font-black text-white">
               20%<span class="text-[12px] font-medium ml-[4px]">Bonus</span>
             </div><img
-              src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/box4.png" alt=""
+              src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/box4.png"
               importance="auto" class="w-[100px] absolute left-0 right-0 bottom-[25px] mx-auto" lazy=""
             >
             <div class="w-[102px] h-[22px] flex items-center justify-end relative">
@@ -199,7 +199,7 @@ onMounted(() => {
             </div><img
               :id="`icon-${item}`"
               :src="`https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/box${item}.png`"
-              alt="" importance="auto" class="h-[40px] absolute right-[7px]" lazy="" crossorigin="anonymous"
+              importance="auto" class="h-[40px] absolute right-[7px]" lazy="" crossorigin="anonymous"
             >
           </li>
         </ul>

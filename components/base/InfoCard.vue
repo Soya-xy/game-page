@@ -12,8 +12,8 @@ const description = defineProp('')
     :class="`bg-image${type}`"
   >
     <Image
-      :src="img" alt=""
-      importance="auto" class="!w-auto absolute top-0 right-0" lazy
+      :src="img"
+      class="!w-auto absolute top-0 right-0" lazy
     />
     <div class="xl:text-[14px] text-[14px] sm:text-[24px] font-extrabold text-white flex items-center gap-x-[2px] uppercase">
       <div v-if="showIcon" class="flex items-center justify-center" style="width: 32px; height: 32px;">

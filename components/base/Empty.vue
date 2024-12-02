@@ -8,8 +8,8 @@
   >
     <div class="flex flex-col items-center justify-center">
       <Image
-        src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/home/empty.png?t20231225" alt=""
-        importance="auto" class="shrink-0 w-[220px]"
+        src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/home/empty.png?t20231225"
+        class="shrink-0 w-[220px]"
       />
       <p class="text-color-text-1 text-center mt-[10px] text-[16px]">
         <span>Oops! No data yet!</span>

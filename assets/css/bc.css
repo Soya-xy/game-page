@@ -27,7 +27,7 @@ html {
   --bc-shadow: 8px 0 8px #00000040;
   --bc-hoverButtonColor: linear-gradient(90deg, var(--bc-noActiveColor), #2dee8800), #ffffff0d;
   --bc-bgColor3: linear-gradient(90deg, var(--bc-noActiveColor2), #2dee8800 40%);
-
+  --bc-textColor3: #8f310f;
   --bc-shadow2: 0 4px 4px #14141480;
   --bc-menuOpen: 240px;
   --bc-menuClose: 73px;
