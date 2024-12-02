@@ -12,7 +12,6 @@
         <Image
           src="/images/afun/banner.avif" class="h-full absolute top-0
           right-[-25%] md:right-[-15%] xl:right-0"
-          lazy=""
         />
         <h3 class="text-[26px] leading-[36px] z-[1]">
           Sign Up &amp; Get

@@ -32,7 +32,7 @@ async function onSubmit(e: any) {
       <div class="text-[0px] w-[400px] h-[700px] relative">
         <Image
           src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/login/banner_pc.jpg"
-          importance="auto" class="w-[400px] h-[700px]" lazy=""
+          importance="auto" class="w-[400px] h-[700px]"
         />
         <div class="text-center w-full px-[20px] absolute top-[432px]">
           <div class="font-[200] text-white mb-[2px] text-[18px]">
@@ -78,7 +78,7 @@ async function onSubmit(e: any) {
                       <div class="text-[14px] flex items-center text-white w-[50px]">
                         <img
                           src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/home/country/area/Area_Code_55.svg?t202411122151"
-                          importance="auto" class="mr-[4px] w-[20px]" lazy=""
+                          importance="auto" class="mr-[4px] w-[20px]"
                         >
                         <p>+55</p>
                       </div>
@@ -172,7 +172,7 @@ async function onSubmit(e: any) {
                   >
                     <Image
                       src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/login/google1.png?t20231209"
-                      alt="google" importance="auto" class="shrink-0 mr-[10px] h-[30px]" lazy=""
+                      alt="google" importance="auto" class="shrink-0 mr-[10px] h-[30px]"
                     /> Sign in with
                     Google+
                   </button>

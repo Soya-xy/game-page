@@ -3,6 +3,10 @@ import { defaultResource } from './@types/default-resource'
 import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
 
+if (!process.env.NUXT_PUBLIC_APP_URL) {
+  throw new Error('NUXT_PUBLIC_APP_URL 未设置')
+}
+
 export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
