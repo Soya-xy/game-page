@@ -6,13 +6,17 @@ html {
   --bc-bgColor5: #4b5455;
   --bc-bgColor6: #363838;
   --bc-bgColor7: #404647;
-  --bc-bgColor8: #34393a;
+  --bc-bgColor8: #292c2b;
+  --bc-bgColor9: #34393a;
   --bc-tabColor: #323838;
+  --bc-searchBtnColor: #3c4243;
   --bc-textColor: #bec7ca;
   --bc-fontColor: #292d2e;
   --bc-buttonColor: #ffffff1a;
+  --bc-iconColor: #b3b8c1;
   --bc-headerColor: #2a6d57;
   --bc-activeColor: #2dee88;
+  --bc-activeColor2: #33ee87;
   --bc-noActiveColor: #2dee881a;
   --bc-noActiveColor2: #2dee8866;
   --bc-greenColor: #25d276;
@@ -29,10 +33,12 @@ html {
   --bc-menuClose: 73px;
   --bc-pageColor: #3b4041;
   --bc-color18: #ffffff1f;
+  --bc-color19: #0003;
   --bc-color20: #adb7ba;
   --bc-searchColor: #1c1f1f;
   --bc-tabBgColor: #313536;
   --bc-color2: #1bb83d;
+  --bc-linearColor05: linear-gradient(180deg, #516382, #97a8c7);
 }
 
 /* html[data-theme='dark'] {
@@ -57,7 +63,7 @@ html {
 }
 
 .svg-layer:not(.active) path.need-active {
-  fill: #b3b8c1;
+  fill: var(--bc-iconColor);
 }
 
 .bg-button:hover path.need-active {
@@ -78,6 +84,12 @@ html {
 
 .text-linearColor {
   background-image: var(--bc-linearColor) !important;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+}
+.text-linearColor1 {
+  background-image: var(--bc-linearColor05) !important;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent !important;
@@ -178,4 +190,8 @@ html {
 
 .border-radius-1 {
   @apply rounded-[10px];
+}
+
+.bg-chest {
+  background: linear-gradient(180deg, #fea01380, #fea01326 35%, #fea0131a, #fea01326 65%, #fea01380);
 }
