@@ -15,12 +15,13 @@ const open = defineModel<boolean>('open', {
 
 const haveClose = defineProp<boolean>(true)
 const contentClass = defineProp<string>('')
+const overlayClass = defineProp<string>('')
 const close = defineEmit()
 </script>
 
 <template>
   <Drawer v-model:open="open" should-scale-background>
-    <DrawerContent :class="cn('bg-color', contentClass)">
+    <DrawerContent :class="cn('bg-color', contentClass)" :overlay-class="overlayClass">
       <DrawerHeader class="flex justify-between">
         <DrawerTitle>
           <slot name="title" />
@@ -33,7 +34,7 @@ const close = defineEmit()
           </button>
         </DrawerClose>
       </DrawerHeader>
-      <div class="px-[12px]">
+      <div class="p-[12px]">
         <slot />
       </div>
     </DrawerContent>

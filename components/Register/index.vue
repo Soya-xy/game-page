@@ -1,15 +1,28 @@
 <script setup lang="ts">
+import { cn } from '@/lib/utils'
 import * as z from 'zod'
 import Checkbox from '../ui/checkbox/Checkbox.vue'
+import { useToast } from '../ui/toast'
 
 const showPassword = ref(false)
+const showInviteCode = ref(false)
+const { toast } = useToast()
+const router = useRouter()
+const userStore = useUserStore()
 const schema = {
-  username: z.string().min(2).max(50),
-  password: z.unknown(),
+  mobile: z.string(),
+  password: z.string(),
+  inviteCode: z.string().optional(),
 }
+const isAgree = ref<boolean>(false)
+async function onSubmit(e: any) {
+  if (!isAgree.value) {
+    return toast({
+      title: 'Please agree to the terms of service and privacy policy',
+    })
+  }
 
-function onSubmit(e: any) {
-  console.log('🚀 ~ onSubmit ~ e:', e)
+  await userStore.register(e)
 }
 </script>
 
@@ -54,10 +67,10 @@ function onSubmit(e: any) {
       </div>
       <div class="flex flex-col gap-[10px] flex-1 overflow-y-auto pb-[40px]">
         <BaseForm :schema="schema" class="flex flex-col gap-[10px]" @submit="onSubmit">
-          <FormField v-slot="{ componentField }" name="username">
+          <FormField v-slot="{ componentField }" name="mobile">
             <FormItem>
               <FormControl>
-                <BaseInput placeholder="Account / Email / Phone Number" v-bind="componentField">
+                <BaseInput placeholder="Phone Number" v-bind="componentField">
                   <template #prefix>
                     <div
                       class="flex items-center pl-[10px] pr-[5px] flex-1 border-r border-solid border-[--bc-buttonColor]"
@@ -86,7 +99,7 @@ function onSubmit(e: any) {
                   >
                     <template #icon>
                       <i
-                        class="inline-block h-[max-content] w-[max-content] cursor-pointer"
+                        class="inline-block h-[18px] w-[18px] cursor-pointer"
                         :class="!showPassword ? 'icon-new-eyes-close' : 'icon-new-eyes-open'"
                       />
                     </template>
@@ -96,17 +109,31 @@ function onSubmit(e: any) {
               <FormMessage />
             </FormItem>
           </FormField>
-          <div class="text-[14px] text-white text-right">
-            <div class="cursor-pointer">
-              Forgot Password?
+          <div class="text-[14px] text-color text-left">
+            <div class="cursor-pointer w-[max-content]" @click="showInviteCode = !showInviteCode">
+              Add Invite Code <i
+                :class="cn(`inline-block transition-all duration-200  h-[max-content] w-[max-content] rotate-[90deg] icon-new-arrow cursor-pointer font-bold`, showInviteCode ? '-rotate-[90deg] text-white ' : '')"
+              />
             </div>
           </div>
-          <div class="flex items-center gap-[8px] cursor-pointer text-[16px] text-white mt-[10px]">
-            <Checkbox class="border-[--bc-activeColor] data-[state=checked]:bg-[--bc-activeColor]" />
+          <FormField v-if="showInviteCode" v-slot="{ componentField }" name="inviteCode">
+            <FormItem>
+              <FormControl>
+                <BaseInput placeholder="Account / Email / Phone Number" v-bind="componentField" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          </FormField>
+          <div class="flex items-start gap-[8px] cursor-pointer text-[16px] text-white my-[10px]">
+            <Checkbox v-model:checked="isAgree" class="border-[--bc-activeColor] data-[state=checked]:bg-[--bc-activeColor]" />
 
             <div class="flex-1 overflow-hidden">
-              <div class="text-white cursor-pointer">
-                Remember me
+              <div class="text-color cursor-pointer text-[14px]">
+                I confirm that I am above 18 years old and accept the
+                <span class="text-white">Privacy Policy</span> and
+                <span class="text-white">
+                  Terms of Service
+                </span>
               </div>
             </div>
           </div>
@@ -121,8 +148,9 @@ function onSubmit(e: any) {
 
         <div class="text-[14px] text-[--bc-textColor]">
           <div>
-            Don't have an account? <div class="text-[--bc-activeColor] font-[900] cursor-pointer">
-              Sign Up
+            Already have an account?
+            <div class="text-[--bc-activeColor] font-[900] cursor-pointer" @click="router.push('/login')">
+              Sign In
             </div>
           </div>
         </div>

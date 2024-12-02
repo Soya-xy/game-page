@@ -32,7 +32,7 @@ const currentList = ref(['All', 'Official', 'Sports', 'Special'])
                 Sports Ranking Championship
               </h3><!---->
             </div><button
-              class="h-[40px] border-radius-0 bg-[--bc-bgColor8] text-[16px] font-[500] px-[8px] min-w-[100px] w-[max-content] text-[--bc-color2] shrink-0"
+              class="h-[40px] border-radius-0 bg-[--bc-bgColor9] text-[16px] font-[500] px-[8px] min-w-[100px] w-[max-content] text-[--bc-color2] shrink-0"
             >
               Detail
             </button>

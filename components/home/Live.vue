@@ -1,9 +1,11 @@
 <script lang="ts" setup>
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
+import { getSportData } from '~/api'
+
+const { data } = await getSportData()
 
 const title = defineProp('')
-const containerRef = templateRef('containerRef')
-const games = ref(Array.from({ length: 20 }))
+const containerRef = ref()
 
 const swiper = useSwiper(containerRef, {
   slidesPerView: 1,
@@ -18,7 +20,7 @@ const swiper = useSwiper(containerRef, {
       slidesPerView: 2,
       slidesPerGroup: 2,
     },
-    1024: {
+    1280: {
       slidesPerView: 3,
       slidesPerGroup: 3,
     },
@@ -70,9 +72,9 @@ function next(type: 'up' | 'down') {
       </template>
     </BaseTitle>
     <ClientOnly>
-      <swiper-container ref="containerRef" :init="false" class="w-full flex h-full">
-        <swiper-slide v-for="(game, index) in games" :key="index" class="flex-shrink-0">
-          <BaseFootball :key="index" />
+      <swiper-container ref="containerRef" class="w-full flex h-full">
+        <swiper-slide v-for="(game, index) in data" :key="index" class="flex-shrink-0">
+          <BaseFootball :key="index" :info="game" />
         </swiper-slide>
       </swiper-container>
     </ClientOnly>

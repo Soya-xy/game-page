@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { defaultResource } from './@types/default-resource'
 import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
@@ -26,7 +27,6 @@ export default defineNuxtConfig({
       viewport: 'width=device-width,initial-scale=1',
       link: [
         { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
-        { rel: 'icon', type: 'image/svg+xml', href: '/nuxt.svg' },
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       ],
       meta: [
@@ -46,6 +46,11 @@ export default defineNuxtConfig({
   colorMode: {
     fallback: 'dark',
     dataValue: 'theme',
+  },
+  runtimeConfig: {
+    public: {
+      appUrl: process.env.NUXT_PUBLIC_APP_URL,
+    },
   },
 
   future: {
@@ -93,6 +98,10 @@ export default defineNuxtConfig({
     locales: defaultResource,
     lazy: true,
     defaultLocale: 'en',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieCrossOrigin: true,
+    },
   },
 
   macros: {

@@ -1,23 +1,36 @@
 <script lang="ts" setup>
-
+interface Info {
+  eventName: string
+  startDate: string
+  banner: string
+  blueIcon: string
+  blueTeamName: string
+  redIcon: string
+  redTeamName: string
+  productCode: string
+  productDesc: string
+}
+const info = defineProp<Info>(undefined, true)
+const desc = computed(() => JSON.parse(info.value?.productDesc || '{}'))
 </script>
 
 <template>
   <div>
-    <div class="bg-color2 space-y-[20px] py-[10px] px-[12px] rounded-[10px] font-semibold cursor-pointer text-white">
+    <div
+      class="bg-color2 space-y-[20px] py-[10px] px-[12px] rounded-[10px] font-semibold cursor-pointer text-white"
+      :style="`${info.banner ? `background: url(${info.banner}) no-repeat center center / cover` : ''}`"
+    >
       <div class="flex items-center justify-between">
         <div class="flex items-center overflow-hidden">
-          <div>
-            FIFA
-          </div>
           <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6" fill="none" class="mx-[6px]">
             <circle cx="3.14746" cy="2.7207" r="2.5" fill="white" />
           </svg>
-          <div class="truncate">
-            League 1
+          <div class="truncate xl:max-w-[15rem] lg:max-w-[20rem] md:max-w-[10rem] max-w-[25rem]">
+            {{ info.eventName }}
           </div>
         </div>
         <div
+          v-if="!info.startDate"
           class="bg-noActive h-[24px] min-w-[48px] whitespace-nowrap shrink-0 px-[6px] text-active font-normal flex items-center justify-center gap-x-[4px] rounded-[10px]"
         >
           <i
@@ -25,55 +38,61 @@
           />
           Live
         </div>
+        <p v-else class="text-white truncate">
+          {{ info.startDate }}
+        </p>
       </div>
       <div class="flex items-center justify-between h-[90px]">
         <div class="flex-1 flex flex-col items-center h-full justify-start gap-y-[4px]">
           <Image
-            src="https://web-res-ccc.afunimg8.com/C02/_E/home/sport/sports_type_300.svg" alt="" importance="auto"
+            :src="info.blueIcon" alt="" importance="auto"
             class="h-[50px]" lazy=""
           />
           <div class="text-center break-words break-all line-clamp-2">
-            Stade de Reims
+            {{ info.blueTeamName }}
           </div>
         </div>
         <div class="px-[20px] flex flex-col items-center justify-center  gap-y-[8px]">
           <div class="text-[24px]">
-            <span>0</span> : <span>0</span>
+            <span>{{ desc?.socres?.away_score }}</span> : <span>{{ desc?.socres?.home_score }}</span>
           </div>
           <div class="text-color font-normal">
-            1st period
+            {{ desc?.state }}
           </div>
         </div>
         <div class="flex-1 flex flex-col items-center justify-start gap-y-[4px] h-full">
           <Image
-            src="https://web-res-ccc.afunimg8.com/C02/_E/home/sport/sports_type_300.svg" alt="" importance="auto"
+            :src="info.redIcon" alt="" importance="auto"
             class="h-[50px]" lazy=""
           />
           <div class="text-center break-words break-all line-clamp-2">
-            FC Lorient
+            {{ info.redTeamName }}
           </div>
         </div>
       </div>
       <div class="flex gap-x-[5px]">
         <button class="flex-1 h-[40px] rounded-[10px] flex items-center justify-center gap-x-[8px] bg-[#FC3C3C1a]">
           1 <div class="text-[12px] text-[#FC3C3C]">
-            2.7
+            {{ desc?.markets?.basic[1]?.k }}
           </div>
         </button><button
-          class="flex-1 h-[40px] rounded-[10px] flex items-center justify-center gap-x-[8px] bg-[#FC3C3C1a]"
+          class="flex-1 h-[40px] border-radius-0 flex items-center justify-center gap-x-[8px] bg-[#fc3c3c26]"
         >
           Draw
           <div class="text-[12px] text-[#FC3C3C]">
-            2.45
+            {{ desc?.markets?.basic[2]?.k }}
           </div>
-        </button><button
+        </button>
+
+        <button
           class="flex-1 h-[40px] rounded-[10px] flex items-center justify-center gap-x-[8px] bg-[#FC3C3C1a]"
         >
           2 <div class="text-[12px] text-[#FC3C3C]">
-            3.05
+            {{ desc?.markets?.basic[3]?.k }}
           </div>
-        </button><button class="flex-1 h-[40px] rounded-[10px] flex items-center justify-center bg-page">
-          +1
+        </button>
+        <button v-if="desc?.markets?.plus" class="flex-1 h-[40px] rounded-[10px] flex items-center justify-center bg-page">
+          +{{ desc?.markets?.plus }}
         </button>
       </div>
     </div>

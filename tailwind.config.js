@@ -42,6 +42,7 @@ export default resolveConfig({
       },
       colors: {
         font: 'var(--bc-fontColor)',
+        icon: 'var(--bc-iconColor)',
         color: 'var(--bc-textColor)',
         active: 'var(--bc-activeColor)',
         green: 'var(--bc-greenColor)',

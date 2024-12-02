@@ -7,7 +7,21 @@ const info = defineProp<{
   src: string
   isHot: boolean
 }>(undefined, true)
+
+const { isPc } = useDevice()
+const userStore = useUserStore()
+const router = useRouter()
+const { token } = storeToRefs(userStore)
+
 const isOpen = ref<boolean>(false)
+function openGame() {
+  if (!isPc.value) {
+    isOpen.value = true
+  }
+  else {
+    window.open('#', '_blank')
+  }
+}
 </script>
 
 <template>
@@ -16,7 +30,7 @@ const isOpen = ref<boolean>(false)
       <div class="rounded-[10px]">
         <div
           class="h-[0] relative bg-no-repeat bg-cover bg-center rounded-[inherit] game_cursor pb-[133.333333%] bg-linear-12 cursor-pointer"
-          @click="isOpen = true"
+          @click="openGame"
         >
           <Image
             :src="info.src" alt=""
@@ -106,10 +120,9 @@ const isOpen = ref<boolean>(false)
               <i
                 class="inline-block  i-mdi-play-circle-outline cursor-pointer mr-2 text-font"
                 style="font-size: min(max(12px, 1.0417vw), 20px);"
-              /><span
-                class="text-font font-bold"
-                style="font-size: min(max(11px, 0.9375vw), 18px);"
-              >Sign Up</span>
+              />
+              <span v-if="!token" class="text-font font-bold" style="font-size: min(max(11px, 0.9375vw), 18px);" @click="router.push('/login')">Sign In</span>
+              <span v-else class="text-font font-bold" style="font-size: min(max(11px, 0.9375vw), 18px);" @click="openGame">Play</span>
             </div>
             <div
               class="truncate uppercase font-normal text-color absolute z-[10] left-0 right-0 bottom-[3.96%] text-center"
@@ -126,61 +139,63 @@ const isOpen = ref<boolean>(false)
           </div>
         </div>
       </div>
-      <BaseDrawer v-model:open="isOpen">
+      <BaseDrawer v-model:open="isOpen" content-class="z-[555]" overlay-class="z-[550]">
         <template #title>
           Game Details
         </template>
-        <div class="bg-color2 rounded-[10px] p-[12px] shrink-0 flex flex-col gap-y-[8px]">
-          <div class="flex gap-x-[8px] text-[12px]">
-            <div class="rounded-[10px] w-[34.37%] shrink-0">
-              <div
-                class="h-[0] relative bg-no-repeat bg-cover bg-center rounded-[inherit] pb-[133.333333%] bg-color-linear-12"
-              >
-                <Image
-                  src="https://web-res-aaa.afunimg5.com/cdn-cgi/image/f=webp,w=110.33,dpr=3,q=80/newres/gameicon_en7010/010/101001030.jpg"
-                  alt="" class="absolute top-[0] left-[0] w-full h-full rounded-[inherit]"
-                  style="width: 100%; height: 100%; background-image: unset;"
-                />
-                <div class="rounded-[inherit]">
-                  <div class="absolute top-0 left-0 right-0 bottom-0 rounded-[inherit]">
-                    <i
-                      class="inline-block h-[max-content] w-[max-content] icon-new-a-bonus text-white text-[16px] absolute top-[4px] right-[4px]"
-                    />
+        <div class="flex flex-col gap-y-[12px]">
+          <div class="bg-color2 rounded-[10px] p-[12px] shrink-0 flex flex-col gap-y-[8px]">
+            <div class="flex gap-x-[8px] text-[12px]">
+              <div class="rounded-[10px] w-[34.37%] shrink-0">
+                <div
+                  class="h-[0] relative bg-no-repeat bg-cover bg-center rounded-[inherit] pb-[133.333333%] bg-color-linear-12"
+                >
+                  <Image
+                    src="https://web-res-aaa.afunimg5.com/cdn-cgi/image/f=webp,w=110.33,dpr=3,q=80/newres/gameicon_en7010/010/101001030.jpg"
+                    alt="" class="absolute top-[0] left-[0] w-full h-full rounded-[inherit]"
+                    style="width: 100%; height: 100%; background-image: unset;"
+                  />
+                  <div class="rounded-[inherit]">
+                    <div class="absolute top-0 left-0 right-0 bottom-0 rounded-[inherit]">
+                      <i
+                        class="inline-block h-[max-content] w-[max-content] icon-new-a-bonus text-white text-[16px] absolute top-[4px] right-[4px]"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col justify-between flex-1">
+                <div class="flex-1 flex flex-col">
+                  <div class="flex justify-between gap-x-[10px] text-white">
+                    <div class="flex-1">
+                      <div class="text-[14px] font-bold">
+                        Fortune Mouse 2
+                      </div>
+                      <div class="text-[--bc-color20] mt-[4px]">
+                        Revenge
+                      </div>
+                    </div>
+                    <span class="text-[20px] shrink-0">
+                      <i class="inline-block h-[max-content] w-[max-content] icon-new-favorites-soild" />
+                    </span>
+                  </div>
+                  <div class="text-linearColor font-[500] mt-[4px]">
+                    RTP: 96.75%
                   </div>
                 </div>
               </div>
             </div>
-            <div class="flex flex-col justify-between flex-1">
-              <div class="flex-1 flex flex-col">
-                <div class="flex justify-between gap-x-[10px] text-white">
-                  <div class="flex-1">
-                    <div class="text-[14px] font-bold">
-                      Fortune Mouse 2
-                    </div>
-                    <div class="text-[--bc-color20] mt-[4px]">
-                      Revenge
-                    </div>
-                  </div>
-                  <span class="text-[20px] shrink-0">
-                    <i class="inline-block h-[max-content] w-[max-content] icon-new-favorites-soild" />
-                  </span>
-                </div>
-                <div class="text-linearColor font-[500] mt-[4px]">
-                  RTP: 96.75%
-                </div>
-              </div>
+            <div class="flex items-center gap-[8px] font-extrabold">
+              <span
+                class="flex-1 h-[40px] main-color-btn rounded flex items-center justify-center gap-x-[4px] text-font text-[14px]"
+              ><i
+                class="inline-block h-[max-content] w-[max-content] icon-new-play-demo text-[20px]"
+              /><span>Play</span></span>
             </div>
           </div>
-          <div class="flex items-center gap-[8px] font-extrabold">
-            <span
-              class="flex-1 h-[40px] main-color-btn rounded flex items-center justify-center gap-x-[4px] text-font text-[14px]"
-            ><i
-              class="inline-block h-[max-content] w-[max-content] icon-new-play-demo text-[20px]"
-            /><span>Play</span></span>
-          </div>
+          <BaseGameList id="" title="HOT" :have-more="false" />
+          <BaseGameList id="" title="TOP" :have-more="false" />
         </div>
-        <BaseGameList title="HOT" />
-        <BaseGameList title="TOP" />
       </BaseDrawer>
     </div>
   </div>

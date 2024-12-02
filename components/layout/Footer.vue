@@ -54,7 +54,7 @@ import { footerList, joinList } from '~/@types/constants'
                 <div class="h-full shrink-0 cursor-pointer" style="width: 90px;">
                   <iframe
                     id="koyoz" class="w-full h-full" src="https://www.afun.global/res/sel.html" frameborder="0"
-                    scrolling="no"
+                    scrolling="no" crossorigin="anonymous"
                   />
                 </div>
                 <div class="h-full shrink-0">
