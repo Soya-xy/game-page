@@ -3,8 +3,8 @@ import { getIconCollections, iconsPlugin } from '@egoist/tailwindcss-icons'
 import { cleanupSVG, importDirectorySync, isEmptyColor, parseColors, runSVGO } from '@iconify/tools'
 import { compareColors, stringToColor } from '@iconify/utils/lib/colors'
 import containerQueries from '@tailwindcss/container-queries'
-import resolveConfig from 'tailwindcss/resolveConfig'
 import animate from 'tailwindcss-animate'
+import resolveConfig from 'tailwindcss/resolveConfig'
 
 /** @type {import('tailwindcss').Config} */
 export default resolveConfig({
@@ -31,6 +31,7 @@ export default resolveConfig({
         color: 'var(--bc-bgColor)',
         color2: 'var(--bc-bgColor2)',
         color4: 'var(--bc-bgColor4)',
+        color41: 'var(--bc-bgColor41)',
         color5: 'var(--bc-bgColor5)',
         color6: 'var(--bc-bgColor6)',
         active: 'var(--bc-activeColor)',
