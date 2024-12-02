@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-// 记录总旋转圈数
+import { Vue3Lottie } from 'vue3-lottie'
 
 // 发出结束事件
 const emit = defineEmits(['spinEnd'])
@@ -65,7 +65,6 @@ function calculateTargetAngle(index: number) {
   return baseAngle
 }
 
-// 修改 updateAnimation 函数
 function updateAnimation() {
   playCount.value++
 
@@ -201,12 +200,11 @@ onUnmounted(() => {
           <div
             class="w-[61.44%] h-[61.44%] text-e-g-color-88 leading-[1] text-center pt-[12.65%] relative cursor-pointer"
           >
-            <div
-              data-id="Na38ASjwlYKdCH766EE3"
-              class="lottie-animation-container absolute w-[71%] top-[45%] right-[-31%] pointer-events-none"
-              style="--lottie-animation-container-width: 100%; --lottie-animation-container-height: 100%; --lottie-animation-container-background-color: transparent;"
-            >
+            <div class="absolute w-[71%] top-[45%] right-[-31%] pointer-events-none">
               <!-- <i-svg-mouse /> -->
+              <client-only>
+                <Vue3Lottie animation-link="/images/animation/roulette/index.json" />
+              </client-only>
             </div>
           </div>
         </div>
