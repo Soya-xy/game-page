@@ -10,7 +10,7 @@ import { Progress } from '@/components/ui/progress'
       >
         <Image
           src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/invite_wheel.png"
-          importance="auto" class="h-full absolute bottom-0 left-[47.1%] max-lg:h-[60%] max-lg:left-[55%]" lazy=""
+          importance="auto" class="h-full absolute bottom-0 left-[47.1%] max-lg:h-[60%] max-lg:left-[55%]"
         />
         <div class="md:w-[50%]">
           <h4 class="text-[16px] md:text-[26px] md:gap-x-[4px] mb-[4px] flex flex-col md:flex-row items-baseline">

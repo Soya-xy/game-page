@@ -23,7 +23,7 @@ function toggleOpen() {
           <div class="relative w-[1600px]">
             <img
               src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/install/bg_pc_1.jpg"
-              alt="install" importance="auto" class="w-full" lazy=""
+              alt="install" importance="auto" class="w-full"
             >
             <div class="absolute w-[160px] h-[160px] top-[445px] left-[814px] p-[5px]">
               <image
@@ -229,19 +229,19 @@ function toggleOpen() {
           </h2><p class="text-color-text-1 mt-[5px]">
             If you are using another browser, please open this page in Chrome
           </p>
-        </div><img src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/install/download/android_pwa_2.png?20240626" alt="" importance="auto" class="w-[63.77%] mx-auto" lazy=""><div class="text-[13px] font-medium">
+        </div><img src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/install/download/android_pwa_2.png?20240626" alt="" importance="auto" class="w-[63.77%] mx-auto"><div class="text-[13px] font-medium">
           <h2 class="text-white flex items-center">
             3.Click <i class="inline-block h-[max-content] w-[max-content] icon sysicon-new-android-more text-[16px] text-color-main-1" />
           </h2><p class="text-color-text-1 mt-[5px] flex items-center">
             Click in the browser <i class="inline-block h-[max-content] w-[max-content] icon sysicon-new-android-more text-[14px] text-color-main-1" />
           </p>
-        </div><img src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/install/download/android_pwa_3.png?20241104" alt="" importance="auto" class="w-[63.77%] mx-auto" lazy=""><div class="text-[13px] font-medium">
+        </div><img src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/install/download/android_pwa_3.png?20241104" alt="" importance="auto" class="w-[63.77%] mx-auto"><div class="text-[13px] font-medium">
           <h2 class="text-white">
             4.Click "Install app"
           </h2><p class="text-color-text-1 mt-[5px]">
             Click the "Install app" icon in the menu. A dialog box will open.
           </p>
-        </div><img src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/install/download/android_pwa_4.png?20241104" alt="" importance="auto" class="w-[63.77%] mx-auto" lazy=""><div class="h-[20px] w-full" />
+        </div><img src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/install/download/android_pwa_4.png?20241104" alt="" importance="auto" class="w-[63.77%] mx-auto"><div class="h-[20px] w-full" />
       </div>
     </div>
     <div v-else-if="current === currentList[1]" class="flex flex-col px-[15px] gap-[15px] text-white page-container flex flex-col overflow-auto">
@@ -263,13 +263,13 @@ function toggleOpen() {
         </h2><p class="text-color-text-1 mt-[5px]">
           If you are using another browser, please open this page in Safari
         </p>
-      </div><img src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/install/download/ios_app_1.png" alt="" importance="auto" class="w-[63.77%] mx-auto" lazy=""><div class="text-[13px] font-medium">
+      </div><img src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/install/download/ios_app_1.png" alt="" importance="auto" class="w-[63.77%] mx-auto"><div class="text-[13px] font-medium">
         <h2 class="text-white">
           2.Download iOS App
         </h2><p class="text-color-text-1 mt-[5px]">
           Click "Download" in the image to download the app
         </p>
-      </div><img src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/install/download/ios_app_2.png?20241104" alt="" importance="auto" class="w-[63.77%] mx-auto" lazy=""><button class="w-[57.975%] h-[42px] text-[13px] font-medium text-color-btn-4 bg-color-main-1 border-radius-0 mx-auto">
+      </div><img src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/install/download/ios_app_2.png?20241104" alt="" importance="auto" class="w-[63.77%] mx-auto"><button class="w-[57.975%] h-[42px] text-[13px] font-medium text-color-btn-4 bg-color-main-1 border-radius-0 mx-auto">
         Download
       </button><div class="text-[13px] font-medium">
         <h2 class="text-white">
@@ -285,7 +285,7 @@ function toggleOpen() {
         </p><p class="text-color-text-1">
           Step 5: Press "Install"
         </p>
-      </div><img src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/install/download/ios_app_3.png" alt="" importance="auto" class="w-[63.77%] mx-auto" lazy=""><div class="h-[20px] w-full" />
+      </div><img src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/install/download/ios_app_3.png" alt="" importance="auto" class="w-[63.77%] mx-auto"><div class="h-[20px] w-full" />
     </div>
   </div>
 </template>

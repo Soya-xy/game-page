@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const router = useRouter()
 const userStore = useUserStore()
-const { user } = storeToRefs(userStore)
+const { token } = storeToRefs(userStore)
 </script>
 
 <template>
@@ -10,7 +10,7 @@ const { user } = storeToRefs(userStore)
       <Image src="/images/logo.avif" class="!h-[30px]" @click="router.push('/')" />
     </div>
     <div class="flex items-center h-full text-[12px] gap-x-[10px]">
-      <div v-if="!user" class="flex items-center gap-[5px]">
+      <div v-if="!token" class="flex items-center gap-[5px]">
         <button
           class="h-[35px] min-w-[62px] font-extrabold flex items-center justify-center bg-button px-[10px] rounded-[10px] text-white"
           @click="router.push('/login')"

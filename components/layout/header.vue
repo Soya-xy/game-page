@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 
 const router = useRouter()
 const userStore = useUserStore()
-const { user } = storeToRefs(userStore)
+const { token, user } = storeToRefs(userStore)
 const { toggleMenu, isOpen } = useMenu()
 
 // 添加菜单配置数组
@@ -34,7 +34,7 @@ const menuItems = [
     </div>
     <div class="flex items-center px-[12px] gap-[12px]">
       <LayoutSearch />
-      <LayoutUserWallet v-if="user" />
+      <LayoutUserWallet v-if="token" />
       <template v-else>
         <BaseButton @click="router.push('/login')">
           Sign in
@@ -51,7 +51,7 @@ const menuItems = [
       <BaseIconButton>
         <i class="i-carbon-earth w-[25px] h-[24px]" />
       </BaseIconButton>
-      <template v-if="user">
+      <template v-if="token">
         <DropdownMenu>
           <DropdownMenuTrigger>
             <BaseAvatar :src="user.avatar" :alt="user.nickname" />

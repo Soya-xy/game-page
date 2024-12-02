@@ -10,7 +10,7 @@
     "prepare": "nuxi prepare",
     "start": "node .output/server/index.mjs",
     "start:generate": "npx serve .output/public",
-    "lint": "eslint . --fix --ignore-path .gitignore ",
+    "lint": "eslint . --fix",
     "typecheck": "vue-tsc --noEmit",
     "upi": "pnpm up -L -i",
     "postinstall": "simple-git-hooks"

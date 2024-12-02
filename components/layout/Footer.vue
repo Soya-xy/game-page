@@ -60,7 +60,7 @@ import { footerList, joinList } from '~/@types/constants'
                 <div class="h-full shrink-0">
                   <img
                     src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/home/footer-icon-2.png?t20231225"
-                    alt="footer" importance="auto" class="h-full" lazy=""
+                    alt="footer" importance="auto" class="h-full"
                   >
                 </div><!---->
               </div><!---->
