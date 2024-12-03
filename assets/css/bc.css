@@ -195,3 +195,84 @@ html {
 .bg-chest {
   background: linear-gradient(180deg, #fea01380, #fea01326 35%, #fea0131a, #fea01326 65%, #fea01380);
 }
+
+@keyframes appSlideInLeft {
+  from {
+    transform: translate3d(100%, 0, 0);
+    position: fixed;
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    position: fixed;
+    opacity: 1;
+  }
+}
+
+@keyframes appSlideInRight {
+  from {
+    transform: translate3d(0%, 0, 0);
+    position: fixed;
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(-100%, 0, 0);
+    position: fixed;
+    opacity: 1;
+  }
+}
+
+.app-slide-left-enter-active {
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+  animation: appSlideInLeft 3000ms ease-in forwards;
+}
+
+.app-slide-left-leave-active {
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+  animation: appSlideInRight 3000ms ease-in forwards;
+}
+
+/*向右滑动*/
+@keyframes appSideOutLeft {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    position: fixed;
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(0%, 0, 0);
+    position: fixed;
+    opacity: 1;
+  }
+}
+
+@keyframes appSlideOutRight {
+  from {
+    transform: translate3d(0%, 0, 0);
+    position: fixed;
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(100%, 0, 0);
+    position: fixed;
+    opacity: 1;
+  }
+}
+
+.app-slide-right-enter-active {
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+  animation: appSideOutLeft 3000ms ease-in forwards;
+}
+
+.app-slide-right-leave-active {
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+  animation: appSlideOutRight 3000ms ease-in forwards;
+}

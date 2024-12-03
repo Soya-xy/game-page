@@ -27,6 +27,7 @@ export default defineNuxtConfig({
     enabled: true,
   },
   app: {
+    pageTransition: false,
     head: {
       viewport: 'width=device-width,initial-scale=1',
       link: [

@@ -3,6 +3,11 @@ import type { ModuleType } from '~/@types/component'
 import { Component } from '~/@types/component'
 import { getHomeData } from '~/api'
 import Spin from '~/components/Base/Spin.vue'
+import { PageIndexEnum } from '~/composables/page'
+
+definePageMeta({
+  pageIndex: PageIndexEnum.home,
+})
 
 const userStore = useUserStore()
 const { token } = storeToRefs(userStore)
