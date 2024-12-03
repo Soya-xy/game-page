@@ -70,14 +70,14 @@ function toggleOpen() {
                 </div>
               </div>
               <div
-                class="sticky top-0 z-[20] w-full flex items-center px-[30px] bg-color-linear-12 text-white h-[76px] shrink-0 !h-[52px] !px-[15px]"
+                class="sticky top-0 z-[20] w-full flex items-center bg-color-linear-12 text-white shrink-0 !h-[52px] !px-[15px]"
               >
                 <div class="flex-1 flex items-center">
                   <!---->
                   <div class="text-[18px] font-bold text-white">
                     Chat
                   </div><i
-                    class="inline-block h-[max-content] w-[max-content] icon sysicon-new-personal cursor-pointer text-[16px] mx-[8px] text-color-text-2"
+                    class="inline-block h-[max-content] w-[max-content] icon-new-personal cursor-pointer text-[16px] mx-[8px] "
                   /><span
                     class="text-color-tip-1 font-bold text-[16px]"
                   >0</span>
@@ -89,11 +89,11 @@ function toggleOpen() {
                   <div class="chat-help-btn relative mr-[14px]">
                     <button>
                       <i
-                        class="inline-block h-[max-content] w-[max-content] icon sysicon-new-info-normal hover-text-white cursor-pointer text-[18px] text-color-text-2"
+                        class="inline-block h-[max-content] w-[max-content] icon-new-info-normal hover-text-white cursor-pointer text-[18px] "
                       />
                     </button>
                   </div><i
-                    class="inline-block h-[max-content] w-[max-content] icon sysicon-new-clean-3 cursor-pointer hover:-rotate-[180deg] text-color-text-2 hover-text-white transition-all duration-300 !text-[14px]"
+                    class="inline-block h-[max-content] w-[max-content] icon-new-clean-3 cursor-pointer hover:-rotate-[180deg]  hover-text-white transition-all duration-300 !text-[14px]"
                   />
                 </div>
               </div><!----><!----><!----><!----><!----><!---->
@@ -116,7 +116,7 @@ function toggleOpen() {
                         spellcheck="false" placeholder="Write a message..."
                       />
                     </div><i
-                      class="inline-block h-[max-content] w-[max-content] icon sysicon-new-chat-emoji cursor-pointer p-[8px] py-[14px] text-[24px] text-color-text-2"
+                      class="inline-block h-[max-content] w-[max-content] icon-new-chat-emoji cursor-pointer p-[8px] py-[14px] text-[24px] "
                       tabindex="-1"
                     />
                   </div>
@@ -124,7 +124,7 @@ function toggleOpen() {
                     class="h-[42px] w-[42px] shrink-0 border-radius-0 flex items-center justify-center bg-[--bc-activeColor] ml-[8px] mt-[2px]"
                   >
                     <i
-                      class="inline-block h-[max-content] w-[max-content] icon sysicon-new-send cursor-pointer text-[22px] text-[--bc-fontColor]"
+                      class="inline-block h-[max-content] w-[max-content] icon-new-send cursor-pointer text-[22px] text-[--bc-fontColor]"
                       ix-pos="upright" tabindex="-1"
                     />
                   </div>
@@ -132,18 +132,18 @@ function toggleOpen() {
                 <div class="flex w-full mt-[10px] items-center">
                   <div
                     data-v-87948940=""
-                    class="select-bg border-radius-0 relative overflow-visible text-[12px] text-color-text-1 shrink-0 z-10 h-[36px] bg-[--bc-bgColor9] z-10 z-[2] w-[160px] bg-color-alpha-black-02 cursor-pointer"
+                    class="select-bg border-radius-0 relative overflow-visible text-[12px]  shrink-0 h-[36px] bg-[--bc-bgColor9] z-10 w-[160px] cursor-pointer"
                   >
                     <div class="h-full flex items-center justify-between px-[10px]">
                       <div class="flex items-center text-white font-medium">
                         <i
-                          class="inline-block h-[max-content] w-[max-content] icon sysicon-new-lang cursor-pointer text-[20px] text-color-text-1 mr-[14px] shrink-0 h-[20px]"
+                          class="inline-block  w-[max-content] icon-new-lang cursor-pointer text-[20px]  mr-[14px] shrink-0 h-[20px]"
                         /><span>English</span>
                       </div><button
-                        class="text-[10px] transition-all duration-200 flex items-center -rotate-[90deg] text-color-text-2"
+                        class="text-[10px] transition-all duration-200 flex items-center -rotate-[90deg] "
                       >
                         <i
-                          class="inline-block h-[max-content] w-[max-content] icon sysicon-new-back cursor-pointer"
+                          class="inline-block h-[max-content] w-[max-content] icon-new-back cursor-pointer"
                         />
                       </button>
                     </div>
@@ -157,7 +157,7 @@ function toggleOpen() {
                           class="absolute inset-y-0 right-[15px] flex items-center"
                         >
                           <i
-                            class="inline-block h-[max-content] w-[max-content] icon sysicon-new-hook cursor-pointer text-color-main-1"
+                            class="inline-block h-[max-content] w-[max-content] icon-new-hook cursor-pointer text-color-main-1"
                           />
                         </button>
                       </li>
@@ -169,8 +169,8 @@ function toggleOpen() {
                     </ul>
                   </div>
                   <div class="pl-[15px] space-x-[15px] flex items-center">
-                    <!----><!----><i
-                      class="inline-block h-[max-content] w-[max-content] icon sysicon-new-chat-rank cursor-pointer text-color-text-2 text-[20px] cursor-pointer hover-text-white"
+                    <i
+                      class="inline-block h-[max-content] w-[max-content] icon-new-chat-rank cursor-pointer  text-[20px] hover-text-white"
                     />
                   </div>
                 </div>
@@ -182,7 +182,7 @@ function toggleOpen() {
     </div>
     <div v-else>
       <div class="flex flex-col px-[15px] mb-[15px]">
-        <DropdownMenu v-model:open="open" class="!p-0 w-full seleBox">
+        <DropdownMenu v-model:open="open" class="!p-0 w-full">
           <DropdownMenuTrigger disabled>
             <div class="relative text-[12px] mt-[15px]">
               <button class="absolute right-[-15px] flex justify-center items-center w-[40px] h-[40px]" @click="router.back()">
@@ -194,14 +194,14 @@ function toggleOpen() {
             </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            class="text-color bg-color2  p-0 hover:bg-color2 focus:bg-color2 relative w-[calc(100vw-30px)] text-[14px] overflow-hidden border-radius-0 flex flex-col shadow-[0_4px_20px_#00000060]"
+            class="text-color relative w-[calc(100vw-30px)] text-[14px] overflow-hidden border-radius-0 flex flex-col shadow-[0_4px_20px_#00000060] bg-red"
           >
-            <DropdownMenuItem class="w-full  !p-0 hover:bg-color2 focus:bg-color2">
+            <DropdownMenuItem class="w-full !p-0">
               <ul class="w-full">
                 <!-- <li class="h-[47px] flex items-center px-[16px] bg-[--bc-bgColor5] text-white font-[500]">
                 Download Google PWA
               </li> -->
-                <li v-for="(item, index) in currentList" :key="index" class="h-[47px] flex items-center px-[16px] text-xs" :class="{ 'bg-[--bc-bgColor5] font-[500] text-white': current === item }" @click="current = item">
+                <li v-for="(item, index) in currentList" :key="index" class="h-[47px] flex items-center px-[16px] text-xs" :class="{ 'bg-[--bc-bgColor5] font-[500] text-white': current === item, 'bg-[--bc-bgColor9]': current !== item }" @click="current = item">
                   {{ item }}
                 </li>
               </ul>
@@ -215,19 +215,19 @@ function toggleOpen() {
           <div class="text-[13px] font-medium">
             <h2 class="text-white">
               1.Click the download button to install
-            </h2><p class="text-color-text-1 mt-[5px]">
+            </h2><p class=" mt-[5px]">
               Click "Download" in the image to download the app
             </p>
           </div><div class="flex flex-col items-center">
             <Image src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/install/download/android_pwa_1.png?20241104" alt="" importance="auto" class="w-[63.77%] mx-auto !h-auto" />
-            <button class="relative w-[57.975%] h-[42px] text-[13px] font-medium bg-[--bc-bgColor9] border-radius-0 mx-auto text-color-text-1">
+            <button class="relative w-[57.975%] h-[42px] text-[13px] font-medium bg-[--bc-bgColor9] border-radius-0 mx-auto ">
               <!-- <div class="h-full bg-[--bc-activeColor] border-radius-0" style="width: 0%;" /> -->
               <span class="flex justify-center items-center absolute z-[1] top-0 left-0 w-full h-full">Download Complete!</span>
             </button>
           </div><div class="text-[13px] font-medium">
             <h2 class="text-white">
               2.Or open in Chrome
-            </h2><p class="text-color-text-1 mt-[5px]">
+            </h2><p class=" mt-[5px]">
               If you are using another browser, please open this page in Chrome
             </p>
           </div>
@@ -235,29 +235,29 @@ function toggleOpen() {
           <div class="text-[13px] font-medium">
             <h2 class="text-white flex items-center">
               3.Click <i class="inline-block h-[max-content] w-[max-content] icon sysicon-new-android-more text-[16px] text-color-main-1" />
-            </h2><p class="text-color-text-1 mt-[5px] flex items-center">
+            </h2><p class=" mt-[5px] flex items-center">
               Click in the browser <i class="inline-block h-[max-content] w-[max-content] icon sysicon-new-android-more text-[14px] text-color-main-1" />
             </p>
           </div><Image src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/install/download/android_pwa_3.png?20241104" alt="" importance="auto" class="w-[63.77%] mx-auto !h-auto" /><div class="text-[13px] font-medium">
             <h2 class="text-white">
               4.Click "Install app"
-            </h2><p class="text-color-text-1 mt-[5px]">
+            </h2><p class=" mt-[5px]">
               Click the "Install app" icon in the menu. A dialog box will open.
             </p>
           </div><Image src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/install/download/android_pwa_4.png?20241104" alt="" importance="auto" class="w-[63.77%] mx-auto !h-auto" /><div class="h-[20px] w-full" />
         </div>
       </div>
-      <div v-else-if="current === currentList[1]" class="flex flex-col px-[15px] gap-[15px]  page-container flex flex-col overflow-auto">
+      <div v-else-if="current === currentList[1]" class="px-[15px] gap-[15px]  page-container flex flex-col overflow-auto">
         <div class="text-[13px] font-medium">
           <h2 class="text-white">
             1.Open in Safari
-          </h2><p class="text-color-text-1 mt-[5px]">
+          </h2><p class=" mt-[5px]">
             If you are using another browser, please open this page in Safari
           </p>
         </div><Image src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/install/download/ios_app_1.png" alt="" importance="auto" class="w-[63.77%] mx-auto !h-auto" /><div class="text-[13px] font-medium">
           <h2 class="text-white">
             2.Download iOS App
-          </h2><p class="text-color-text-1 mt-[5px]">
+          </h2><p class=" mt-[5px]">
             Click "Download" in the image to download the app
           </p>
         </div><Image src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/install/download/ios_app_2.png?20241104" alt="" importance="auto" class="w-[63.77%] mx-auto !h-auto" /><button class="w-[57.975%] h-[42px] text-[13px] font-medium text-[--bc-fontColor] bg-[--bc-activeColor] border-radius-0 mx-auto">
@@ -265,15 +265,15 @@ function toggleOpen() {
         </button><div class="text-[13px] font-medium">
           <h2 class="text-white">
             3.Install iOS App
-          </h2><p class="text-color-text-1 mt-[5px]">
+          </h2><p class=" mt-[5px]">
             Step 1: Tap "Setting"
-          </p><p class="text-color-text-1">
+          </p><p class="">
             Step 2: Tap "General"
-          </p><p class="text-color-text-1">
+          </p><p class="">
             Step 3: Tap "Profiles &amp; Device Management"
-          </p><p class="text-color-text-1">
+          </p><p class="">
             Step 4: Select "Lite-APP"
-          </p><p class="text-color-text-1">
+          </p><p class="">
             Step 5: Press "Install"
           </p>
         </div><Image src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/install/download/ios_app_3.png" alt="" importance="auto" class="w-[63.77%] mx-auto !h-auto" /><div class="h-[20px] w-full" />
