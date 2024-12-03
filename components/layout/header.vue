@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import type { Locale } from '@intlify/core-base'
 import { useMenu } from '@/composables/menu'
-import { cn } from '@/lib/utils'
 
 const router = useRouter()
 const userStore = useUserStore()
 const { token, user } = storeToRefs(userStore)
 const { toggleMenu, isOpen } = useMenu()
-const showLanguageModal = ref(false)
+const showLanguageModal = ref<boolean>(false)
+
 // 添加菜单配置数组
 const menuItems = [
   { label: 'Wallet', icon: 'icon-n-wallet' },
@@ -29,10 +29,9 @@ function changeLang(lang: Locale) {
 
 <template>
   <header
-    :class="cn(
-      'h-[60px] fixed top-0 left-0 right-0 z-[100] w-full',
-      'bg-inherit flex items-center justify-between shadow-[0_4px_20px_#00000060]',
-    )
+    class="
+      h-[60px] fixed top-0 left-0 right-0 z-[100] w-full bg-inherit flex items-center justify-between shadow-[0_4px_20px_#00000060]
+
     "
   >
     <div class="flex items-center gap-[27px] ml-[22px]">
@@ -85,6 +84,7 @@ function changeLang(lang: Locale) {
 
             <DropdownMenuItem
               class="hover:text-white hover:bg-page hover:font-bold focus:text-white focus:bg-page focus:font-bold p-0"
+              @click="userStore.logout"
             >
               <div class="pl-[20px] pr-[10px] h-[46px] flex items-center cursor-pointer">
                 <i
@@ -107,5 +107,3 @@ function changeLang(lang: Locale) {
     <BaseLang @change="changeLang" />
   </BaseModal>
 </template>
-
-<style></style>

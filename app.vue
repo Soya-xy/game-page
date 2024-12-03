@@ -23,11 +23,11 @@ useHead({
     <Toaster />
   </ClientOnly>
   <BaseSpin v-if="once" />
-  <div v-if="ready">
+  <template v-if="ready">
     <NuxtLayout :name="layout">
       <NuxtPage />
     </NuxtLayout>
-  </div>
+  </template>
   <ClientOnly>
     <BasePageModal />
   </ClientOnly>

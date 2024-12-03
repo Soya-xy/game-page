@@ -61,9 +61,7 @@ function openGame() {
               </div>
               <BaseTooltip>
                 <i
-                  class=" text-white rounded-[10px]
-                  i-mdi-information-variant-box
-                   cursor-pointer text-[25px] info-button hover-text-color-text-0 hover-question-modal relative z-[15]"
+                  class="inline-block h-[max-content] w-[max-content] icon-new-info-normal cursor-pointer text-[20px] text-white hover:white relative z-[15]"
                 />
                 <template #content>
                   <div

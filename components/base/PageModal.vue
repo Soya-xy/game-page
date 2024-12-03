@@ -10,7 +10,7 @@ const show = ref(false)
 const is = shallowRef()
 
 const RouteToComponent: Record<string, any> = {
-  '/login': import('~/components/Login/Index.vue'),
+  '/login': import('~/components/Login/Index.client.vue'),
   '/register': import('~/components/Register/Index.vue'),
 }
 
