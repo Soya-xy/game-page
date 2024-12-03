@@ -1,7 +1,21 @@
 <script setup lang="ts">
-const { isPageLoading } = useLoading()
+interface PageTransition {
+  name: 'app-slide-left' | 'app-slide-right'
+  mode: 'in-out' | 'out-in'
+}
 
+const { isPageLoading } = useLoading()
+const route = useRoute()
 const nuxtApp = useNuxtApp()
+
+const pageTransition = computed<PageTransition>(() => {
+  const transition = route.meta.pageTransition as Partial<PageTransition> | undefined
+
+  return {
+    name: transition?.name ?? 'app-slide-right',
+    mode: transition?.mode ?? 'in-out',
+  }
+})
 
 nuxtApp.hook('page:start', () => {
   isPageLoading.value = true
@@ -15,10 +29,10 @@ nuxtApp.hook('page:finish', () => {
 <template>
   <div class="text-color bg-[--bc-bgColor8]">
     <LayoutWapHeader />
-    <div class="overflow-auto flex flex-col pb-[70px] bg-color pt-[48px] h-full">
+    <div class="overflow-auto flex flex-col pb-[70px] bg-color pt-[48px] h-full min-h-screen">
       <main>
         <BaseSpin v-show="isPageLoading" is-page />
-        <Transition name="page">
+        <Transition :name="pageTransition.name" :mode="pageTransition.mode">
           <slot />
         </Transition>
       </main>
@@ -26,15 +40,3 @@ nuxtApp.hook('page:finish', () => {
     <LayoutWapTabbar />
   </div>
 </template>
-
-<style>
-.page-enter-active,
-.page-leave-active {
-  transition: all 0.3s ease-in-out;
-}
-
-.page-enter-from,
-.page-leave-to {
-  transform: translateX(100%);
-}
-</style>

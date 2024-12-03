@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 definePageMeta({
   noFooter: true,
+  pageIndex: PageIndexEnum.install,
 })
 const router = useRouter()
 const { isPc } = useDevice()

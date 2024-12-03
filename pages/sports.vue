@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-
+definePageMeta({
+  pageIndex: PageIndexEnum.sport,
+})
 </script>
 
 <template>
