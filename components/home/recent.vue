@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { replaceMiddle } from '~/lib/utils'
 
-const containerRef = templateRef('containerRef')
+const containerRef = ref()
 const games = ref(Array.from({ length: 20 }))
 useSwiper(containerRef, {
   loop: true,

@@ -171,7 +171,7 @@ html {
 }
 
 .my-bullet.my-bullet-active.my-bullet-animation:after {
-  animation: banner-full 3000ms forwards;
+  animation: banner-full 300ms forwards;
   background: var(--bc-activeColor);
 }
 

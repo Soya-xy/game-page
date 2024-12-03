@@ -33,7 +33,9 @@ nuxtApp.hook('page:finish', () => {
       <main>
         <BaseSpin v-show="isPageLoading" is-page />
         <Transition :name="pageTransition.name" :mode="pageTransition.mode">
-          <slot />
+          <div :key="route.path">
+            <slot />
+          </div>
         </Transition>
       </main>
     </div>
