@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { Locale } from '@intlify/core-base'
 import { useMenu } from '@/composables/menu'
 import { cn } from '@/lib/utils'
 
@@ -6,7 +7,7 @@ const router = useRouter()
 const userStore = useUserStore()
 const { token, user } = storeToRefs(userStore)
 const { toggleMenu, isOpen } = useMenu()
-
+const showLanguageModal = ref(false)
 // 添加菜单配置数组
 const menuItems = [
   { label: 'Wallet', icon: 'icon-n-wallet' },
@@ -18,6 +19,12 @@ const menuItems = [
   { label: 'Setting', icon: 'icon-n-security-settings' },
   { label: 'Install', icon: 'icon-n-install' },
 ]
+const { setLocale } = useI18n()
+function changeLang(lang: Locale) {
+  setLocale(lang)
+  router.replace('/')
+  showLanguageModal.value = false
+}
 </script>
 
 <template>
@@ -48,7 +55,7 @@ const menuItems = [
       <BaseIconButton>
         <i-svg-chat class="w-[25px] h-[24px]" />
       </BaseIconButton>
-      <BaseIconButton>
+      <BaseIconButton @click="showLanguageModal = true">
         <i class="i-carbon-earth w-[25px] h-[24px]" />
       </BaseIconButton>
       <template v-if="token">
@@ -91,6 +98,14 @@ const menuItems = [
       </template>
     </div>
   </header>
+  <BaseModal v-model:show="showLanguageModal">
+    <template #title>
+      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
+        Switch Language
+      </div>
+    </template>
+    <BaseLang @change="changeLang" />
+  </BaseModal>
 </template>
 
 <style></style>

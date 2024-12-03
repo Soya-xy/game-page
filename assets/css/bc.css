@@ -20,7 +20,8 @@ html {
   --bc-noActiveColor: #2dee881a;
   --bc-noActiveColor2: #2dee8866;
   --bc-greenColor: #25d276;
-  --bc-linearColor: linear-gradient(90deg, var(--bc-activeColor), #96e974);
+  --bc-langColor: #96e974;
+  --bc-linearColor: linear-gradient(90deg, var(--bc-activeColor), var(--bc-langColor));
   --bc-linearColor2: linear-gradient(75deg, var(--bc-noActiveColor) 42.49%, var(--bc-activeColor) 97.18%);
   --bc-linearColor3: linear-gradient(90deg, var(--bc-noActiveColor), #2dee8800), #ffffff0d;
   --bc-linearColor4: linear-gradient(180deg, #2dee8800 31.77%, #2dee8833 80.21%, #2dee884d 94.78%, #2dee88 94.79%);
