@@ -19,7 +19,7 @@ function toggleOpen() {
     >
       <div class="flex overflow-x-hidden">
         <div class="flex-1 overflow-x-hidden">
-          <div class="flex justify-center items-center flex flex-col">
+          <div class="flex justify-center items-center flex-col">
             <div class="relative w-[1600px]">
               <Image
                 src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/install/bg_pc_1.jpg"
@@ -51,22 +51,12 @@ function toggleOpen() {
           >
             <div class="flex-1 flex flex-col overflow-hidden w-full">
               <!---->
-              <div data-v-4a8f7307="" class="app-loading back-color-1 !absolute">
+              <div class="app-loading back-color-1 !absolute">
                 <div
-                  data-v-4ba16216="" data-v-1d666f6a="" data-v-4a8f7307=""
+
                   class="w-[max-content] h-[max-content] absolute left-0 right-0 top-0 bottom-0 m-auto"
                 >
-                  <svg
-                    data-v-4ba16216="" width="20px" height="20px" viewBox="0 0 20 20"
-                    class="e-loading-10"
-                  >
-                    <circle data-v-4ba16216="" cx="10" cy="10" r="8" stroke-width="3" fill="none" />
-                    <circle
-                      data-v-4ba16216="" cx="10" cy="10" r="8" stroke-width="3" fill="none"
-                      stroke-linecap="round" stroke-dasharray="50.26548245743669"
-                      stroke-dashoffset="15.079644737231007"
-                    />
-                  </svg>
+                  <icon-svg name="install" />
                 </div>
               </div>
               <div
@@ -131,7 +121,6 @@ function toggleOpen() {
                 </div>
                 <div class="flex w-full mt-[10px] items-center">
                   <div
-                    data-v-87948940=""
                     class="select-bg border-radius-0 relative overflow-visible text-[12px]  shrink-0 h-[36px] bg-[--bc-bgColor9] z-10 w-[160px] cursor-pointer"
                   >
                     <div class="h-full flex items-center justify-between px-[10px]">
@@ -189,12 +178,12 @@ function toggleOpen() {
                 <i class="inline-block h-[max-content] w-[max-content] icon-new-clean-1 text-white text-[12px]" />
               </button>
               <button class="flex items-center gap-x-[10px] px-[20px] h-[40px] bg-[--bc-bgColor9] border-radius-0 text-white text-xs" @click="toggleOpen">
-                {{ current }} <i class="inline-block h-[max-content] w-[max-content] icon-new-back  transform duration-200 text-[--bc-fontColor] transition-all rotate-[-180deg]" :class="{ 'rotate-[-90deg]': open }" />
+                {{ current }} <i class="inline-block h-[max-content] w-[max-content] icon-new-back  transform duration-200 text-[--bc-textColor] transition-all rotate-[-180deg]" :class="{ 'rotate-[-90deg]': open }" />
               </button>
             </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            class="text-color relative w-[calc(100vw-30px)] text-[14px] overflow-hidden border-radius-0 flex flex-col shadow-[0_4px_20px_#00000060] bg-red"
+            class="text-color relative w-[calc(100vw-25px)] text-[14px] overflow-hidden border-radius-0 flex flex-col shadow-[0_4px_20px_#00000060] bg-transparent"
           >
             <DropdownMenuItem class="w-full !p-0">
               <ul class="w-full">
@@ -211,7 +200,7 @@ function toggleOpen() {
       </div>
 
       <div v-if="current === currentList[0]">
-        <div class="flex flex-col px-[15px] gap-[15px]  page-container flex flex-col overflow-auto">
+        <div class="flex flex-col px-[15px] gap-[15px]  page-container overflow-auto">
           <div class="text-[13px] font-medium">
             <h2 class="text-white">
               1.Click the download button to install
