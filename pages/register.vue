@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 definePageMeta({
-  pageIndex: PageIndexEnum.login,
+  pageIndex: PageIndexEnum.register,
 })
 
 const router = useRouter()
@@ -25,7 +25,7 @@ function close() {
         </button>
       </div>
     </div>
-    <Login />
+    <Register />
   </div>
 </template>
 

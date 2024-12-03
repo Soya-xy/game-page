@@ -5,6 +5,8 @@ export enum PageIndexEnum {
   rewards = 104,
   install = 105, // 安装页面
   account = 106, // 账户页面
+  login = 107, // 登录页面
+  register = 108, // 注册页面
   brandAmbassador = 1001, //
   bonusCenter = 1000, // 奖金中心
   game = 1002, // 游戏页面
