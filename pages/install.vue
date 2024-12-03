@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 definePageMeta({
   noFooter: true,
-  pageIndex: PageIndexEnum.install,
 })
 const router = useRouter()
 const { isPc } = useDevice()
@@ -122,10 +121,10 @@ function toggleOpen() {
                     />
                   </div>
                   <div
-                    class="h-[42px] w-[42px] shrink-0 border-radius-0 flex items-center justify-center bg-color-main-1 ml-[8px] mt-[2px]"
+                    class="h-[42px] w-[42px] shrink-0 border-radius-0 flex items-center justify-center bg-[--bc-activeColor] ml-[8px] mt-[2px]"
                   >
                     <i
-                      class="inline-block h-[max-content] w-[max-content] icon sysicon-new-send cursor-pointer text-[22px] text-color-btn-4"
+                      class="inline-block h-[max-content] w-[max-content] icon sysicon-new-send cursor-pointer text-[22px] text-[--bc-fontColor]"
                       ix-pos="upright" tabindex="-1"
                     />
                   </div>
@@ -190,7 +189,7 @@ function toggleOpen() {
                 <i class="inline-block h-[max-content] w-[max-content] icon-new-clean-1 text-white text-[12px]" />
               </button>
               <button class="flex items-center gap-x-[10px] px-[20px] h-[40px] bg-[--bc-bgColor9] border-radius-0 text-white text-xs" @click="toggleOpen">
-                {{ current }} <i class="inline-block h-[max-content] w-[max-content] icon-new-back  transform duration-200 text-[--bc-textColor] transition-all rotate-[-180deg]" :class="{ 'rotate-[-90deg]': open }" />
+                {{ current }} <i class="inline-block h-[max-content] w-[max-content] icon-new-back  transform duration-200 text-[--bc-fontColor] transition-all rotate-[-180deg]" :class="{ 'rotate-[-90deg]': open }" />
               </button>
             </div>
           </DropdownMenuTrigger>
@@ -222,7 +221,7 @@ function toggleOpen() {
           </div><div class="flex flex-col items-center">
             <Image src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/install/download/android_pwa_1.png?20241104" alt="" importance="auto" class="w-[63.77%] mx-auto !h-auto" />
             <button class="relative w-[57.975%] h-[42px] text-[13px] font-medium bg-[--bc-bgColor9] border-radius-0 mx-auto text-color-text-1">
-              <!-- <div class="h-full bg-color-main-1 border-radius-0" style="width: 0%;" /> -->
+              <!-- <div class="h-full bg-[--bc-activeColor] border-radius-0" style="width: 0%;" /> -->
               <span class="flex justify-center items-center absolute z-[1] top-0 left-0 w-full h-full">Download Complete!</span>
             </button>
           </div><div class="text-[13px] font-medium">
@@ -261,7 +260,7 @@ function toggleOpen() {
           </h2><p class="text-color-text-1 mt-[5px]">
             Click "Download" in the image to download the app
           </p>
-        </div><Image src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/install/download/ios_app_2.png?20241104" alt="" importance="auto" class="w-[63.77%] mx-auto !h-auto" /><button class="w-[57.975%] h-[42px] text-[13px] font-medium text-color-btn-4 bg-color-main-1 border-radius-0 mx-auto">
+        </div><Image src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/install/download/ios_app_2.png?20241104" alt="" importance="auto" class="w-[63.77%] mx-auto !h-auto" /><button class="w-[57.975%] h-[42px] text-[13px] font-medium text-[--bc-fontColor] bg-[--bc-activeColor] border-radius-0 mx-auto">
           Download
         </button><div class="text-[13px] font-medium">
           <h2 class="text-white">
