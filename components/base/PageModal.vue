@@ -2,7 +2,7 @@
 import {
   PageDialog as Dialog,
   PageDialogContent as DialogContent,
-} from '~/components/pageDialog'
+} from '~/components/PageDialog'
 
 const { router } = useModal()
 const enterAnimation = ref(0)

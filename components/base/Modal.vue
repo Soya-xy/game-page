@@ -3,7 +3,7 @@ import { DialogPortal } from 'radix-vue'
 import {
   PageDialog as Dialog,
   PageDialogContent as DialogContent,
-} from '~/components/pageDialog'
+} from '~/components/PageDialog'
 
 import { cn } from '~/lib/utils'
 
