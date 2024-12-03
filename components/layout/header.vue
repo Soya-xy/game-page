@@ -54,7 +54,7 @@ const menuItems = [
       <template v-if="token">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <BaseAvatar :src="user.avatar" :alt="user.nickname" />
+            <BaseAvatar :src="user?.avatar" :alt="user?.nickname" />
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="end"
