@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { cn } from '@/lib/utils'
-
 const isPage = defineProp<boolean>(false)
 const { isPc } = useDevice()
 </script>
@@ -8,11 +6,10 @@ const { isPc } = useDevice()
 <template>
   <ClientOnly>
     <div
-      class="app-loading" :class="
-        cn(
-          !isPage && 'top-0 !z-[9999] left-0',
-          isPc && 'top-[60px]',
-        )"
+      class="app-loading" :class="{
+        'top-0 !z-[9999] left-0': !isPage,
+        'top-[60px]': isPc,
+      }"
     >
       <div class="spin" />
     </div>
