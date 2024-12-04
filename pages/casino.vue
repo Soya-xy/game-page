@@ -1,9 +1,8 @@
 <script lang="ts" setup>
-await new Promise(resolve => setTimeout(resolve, 10000))
 </script>
 
 <template>
-  <div>
+  <div class="container @container flex flex-col gap-y-[12px] mt-[12px] relative z-[20] sm:px-[24px]">
     casino
   </div>
 </template>

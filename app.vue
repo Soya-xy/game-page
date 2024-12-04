@@ -19,16 +19,21 @@ useHead({
 
 <template>
   <VitePwaManifest />
-  <ClientOnly>
-    <Toaster />
-  </ClientOnly>
   <BaseSpin v-if="once" />
-  <template v-if="ready">
-    <NuxtLayout :name="layout">
-      <NuxtPage />
-    </NuxtLayout>
-  </template>
+  <Suspense>
+    <template v-if="ready">
+      <NuxtLayout :name="layout">
+        <NuxtPage />
+      </NuxtLayout>
+    </template>
+    <template #fallback>
+      <div class="opacity-50 italic">
+        <span class="animate-pulse">Loading...</span>
+      </div>
+    </template>
+  </Suspense>
   <ClientOnly>
     <BasePageModal />
+    <Toaster />
   </ClientOnly>
 </template>
