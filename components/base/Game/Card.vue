@@ -4,8 +4,11 @@ import { ref } from 'vue'
 const info = defineProp<{
   rtp: number
   name: string
-  src: string
+  picUrl: string
+  greatVictory: string
   isHot: boolean
+  gameMaintain: boolean
+  brandName: string
 }>(undefined, true)
 
 const { isPc } = useDevice()
@@ -32,10 +35,7 @@ function openGame() {
           class="h-[0] relative bg-no-repeat bg-cover bg-center rounded-[inherit] game_cursor pb-[133.333333%] bg-linear-12 cursor-pointer"
           @click="openGame"
         >
-          <Image
-            :src="info.src"
-            class="absolute top-[0] left-[0] rounded-[inherit] w-full h-full object-cover"
-          />
+          <Image :src="info.picUrl" class="absolute top-[0] left-[0] rounded-[inherit] w-full h-full object-cover" />
           <div class="rounded-[inherit]">
             <div v-if="info.isHot" class="absolute top-0 left-0 right-0 bottom-0 rounded-[inherit]">
               <div
@@ -69,10 +69,7 @@ function openGame() {
                   >
                     <div class="mt-[6px] w-full flex flex-col gap-[10px]">
                       <div class="flex justify-between items-center h-[30px] px-[10px] w-full bg-color2 rounded-[10px]">
-                        <span>RTP:</span><span class="text-color-linear-19">96.55%</span>
-                      </div>
-                      <div class="flex justify-between items-center h-[30px] px-[10px] w-full bg-color2 rounded-[10px]">
-                        <span>Great victory:</span><span>10000X</span>
+                        <span>Great victory:</span><span>{{ info?.greatVictory || 0 }}X</span>
                       </div>
                     </div>
                     <div
@@ -98,20 +95,21 @@ function openGame() {
               style="font-size: min(max(10px, 0.83334vw), 16px);"
             >
               <p class="text-center font-bold line-clamp-2 text-ellipsis">
-                Money Coming
+                {{ info.gameMaintain ? 'Money Coming' : info?.name }}
               </p>
             </div>
-            <!-- <div
-              class="text-color-text-1 w-full px-[2%] mt-[3.3%] flex items-center justify-center invisible opacity-0 select-none pointer-events-none"
+            <div
+              class="text-color w-full px-[2%] mt-[3.3%] flex items-center justify-center  select-none pointer-events-none"
               style="font-size: min(max(8px, 0.625vw), 12px);"
             >
               <i
-                class="inline-block h-[max-content] w-[max-content] icon sysicon-new-a-bonus cursor-pointer text-[1.2em] mr-[4px]"
+                class="inline-block h-[max-content] w-[max-content] icon-new-a-bonus cursor-pointer text-[1.2em] mr-[4px]"
               />
               <p class="truncate">
                 Bonus cannot be wagered
               </p>
-            </div> -->
+            </div>
+            <!-- 注册和试玩按钮 -->
             <div
               class="w-[82%] h-[16.4%] m-[auto] mt-[6.1%] rounded-[10px] bg-active flex justify-center items-center cursor-pointer"
             >
@@ -119,14 +117,21 @@ function openGame() {
                 class="inline-block  i-mdi-play-circle-outline cursor-pointer mr-2 text-font"
                 style="font-size: min(max(12px, 1.0417vw), 20px);"
               />
-              <span v-if="!token" class="text-font font-bold" style="font-size: min(max(11px, 0.9375vw), 18px);" @click.stop="router.push('/login')">Sign In</span>
-              <span v-else class="text-font font-bold" style="font-size: min(max(11px, 0.9375vw), 18px);" @click.stop="openGame">Play</span>
+              <span
+                v-if="!token" class="text-font font-bold" style="font-size: min(max(11px, 0.9375vw), 18px);"
+                @click.stop="router.push('/login')"
+              >Sign In</span>
+              <span
+                v-else class="text-font font-bold" style="font-size: min(max(11px, 0.9375vw), 18px);"
+                @click.stop="openGame"
+              >Play</span>
             </div>
+
             <div
               class="truncate uppercase font-normal text-color absolute z-[10] left-0 right-0 bottom-[3.96%] text-center"
               style="font-size: min(max(10px, 0.625vw), 12px);"
             >
-              {{ info?.name }}
+              {{ info.brandName }}
             </div>
             <span
               class="absolute bottom-0 right-0 mr-[6px] mb-[5px] flex z-[10]"
@@ -137,6 +142,7 @@ function openGame() {
           </div>
         </div>
       </div>
+      <!-- 手机端弹窗 -->
       <BaseDrawer v-model:open="isOpen" content-class="z-[555]" overlay-class="z-[550]">
         <template #title>
           Game Details
@@ -149,8 +155,7 @@ function openGame() {
                   class="h-[0] relative bg-no-repeat bg-cover bg-center rounded-[inherit] pb-[133.333333%] bg-color-linear-12"
                 >
                   <Image
-                    src="https://web-res-aaa.afunimg5.com/cdn-cgi/image/f=webp,w=110.33,dpr=3,q=80/newres/gameicon_en7010/010/101001030.jpg"
-                    class="absolute top-[0] left-[0] w-full h-full rounded-[inherit]"
+                    :src="info.picUrl" class="absolute top-[0] left-[0] w-full h-full rounded-[inherit]"
                     style="width: 100%; height: 100%; background-image: unset;"
                   />
                   <div class="rounded-[inherit]">
@@ -166,19 +171,19 @@ function openGame() {
                 <div class="flex-1 flex flex-col">
                   <div class="flex justify-between gap-x-[10px] text-white">
                     <div class="flex-1">
-                      <div class="text-[14px] font-bold">
-                        Fortune Mouse 2
-                      </div>
-                      <div class="text-[--bc-color20] mt-[4px]">
-                        Revenge
+                      <div class="text-[--bc-color20] mt-[4px] text-[14px] font-bold">
+                        {{ info.name }}
                       </div>
                     </div>
                     <span class="text-[20px] shrink-0">
                       <i class="inline-block h-[max-content] w-[max-content] icon-new-favorites-soild" />
                     </span>
                   </div>
+                  <div class="text-linearColor font-[500] text-color mt-[4px]">
+                    {{ info.brandName }}
+                  </div>
                   <div class="text-linearColor font-[500] mt-[4px]">
-                    RTP: 96.75%
+                    RTP: {{ info.rtp }}%
                   </div>
                 </div>
               </div>
@@ -191,8 +196,8 @@ function openGame() {
               /><span>Play</span></span>
             </div>
           </div>
-          <BaseGameList id="" title="HOT" :have-more="false" />
-          <BaseGameList id="" title="TOP" :have-more="false" />
+          <BaseGameList type="hot" :have-more="false" />
+          <BaseGameList type="top" :have-more="false" />
         </div>
       </BaseDrawer>
     </div>

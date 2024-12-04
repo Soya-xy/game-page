@@ -60,7 +60,7 @@ const eventHandler = useThrottleFn((evt: any) => {
         <Spin :loading="isLoading">
           <!-- 最近搜索记录 -->
           <div class="flex mb-[20px] w-full shrink-0 items-center justify-between">
-            <div class="flex flex-1  flex-nowrap gap-[10px] overflow-x-auto">
+            <HScroll>
               <button
                 v-for="v in 20" :key="v"
                 class="bg-[--bc-color19] text-[14px] h-[46px] px-[14px] flex items-center justify-center rounded-[20px] "
@@ -71,7 +71,7 @@ const eventHandler = useThrottleFn((evt: any) => {
                   class="inline-block h-[max-content] w-[max-content] icon-new-clean-1 cursor-pointer text-color-text-2 text-[12px]"
                 />
               </button>
-            </div>
+            </HScroll>
             <div
               class="pl-[20px] text-[14px] cursor-pointer shrink-0 h-[46px] flex items-center justify-center text-active font-bold"
             >

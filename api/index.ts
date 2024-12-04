@@ -37,3 +37,7 @@ export async function getGameData(id: string, params?: Record<string, any>, opti
     params,
   }, options)
 }
+
+export async function getHotGameData() {
+  return useMyAsyncData('getHotGameData', '/product/category/list-hot-game')
+}

@@ -17,7 +17,7 @@ nuxtApp.hook('page:finish', () => {
   <div class="text-color bg-[--bc-bgColor8]">
     <LayoutHeader />
     <BaseSpin v-show="isPageLoading" is-page />
-    <div class="relative bottom-0 top-[60px] overflow-auto flex flex-col bg-color h-[calc(100%-60px)]">
+    <div class="relative bottom-0 top-[60px] overflow-auto flex flex-col bg-color h-[calc(100vh-60px)]">
       <LayoutSlidebar />
       <main
         class="flex-1 pt-6 transition-all duration-300 ease-in-out" :class="{

@@ -48,7 +48,6 @@ export default defineNuxtConfig({
   css: [
     './assets/css/main.css',
   ],
-
   colorMode: {
     fallback: 'dark',
     dataValue: 'theme',
@@ -109,6 +108,10 @@ export default defineNuxtConfig({
       useCookie: true,
       cookieCrossOrigin: true,
     },
+  },
+
+  image: {
+    // domains: ['web-res-aaa.afunimg5.com'],
   },
 
   macros: {

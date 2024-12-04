@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
-import { getGameData } from '~/api'
+import { getGameData, getHotGameData } from '~/api'
 
-const id = defineProp('', true)
+const id = defineProp('')
+const type = defineProp('')
+const list = defineProp<any[]>([])
 const haveMore = defineProp(true)
 const title = defineProp('')
 const containerRef = ref()
@@ -44,13 +46,35 @@ const swiper = useSwiper(containerRef, {
   },
 })
 
-const { data } = await getGameData(id.value, {
-  id: id.value,
-  pageNo: page.value,
-  pageSize: 30,
-}, {
-  watch: [page],
-})
+const data = ref<any[]>([])
+
+if (type.value) {
+  const { data: gameList } = await getHotGameData()
+  data.value = gameList.value.list.map((item: any) => ({
+    ...item,
+    picUrl: item.gameImageUrl,
+    name: item.gameName,
+  }))
+}
+else {
+  if (list.value.length > 0) {
+    data.value = list.value
+  }
+  else if (id.value) {
+    const { data: gameList } = await getGameData(id.value, {
+      id: id.value,
+      pageNo: page.value,
+      pageSize: 30,
+    }, {
+      watch: [page],
+    })
+    data.value = gameList.value.list.map((item: any) => ({
+      ...item,
+      picUrl: item.gameImageUrl,
+      name: item.gameName,
+    }))
+  }
+}
 
 const progress = ref(0)
 function next(type: 'up' | 'down') {
@@ -70,8 +94,7 @@ function next(type: 'up' | 'down') {
       <template #action>
         <div class="flex items-center gap-2 h-full  ">
           <div
-            v-if="haveMore"
-            class="
+            v-if="haveMore" class="
               h-[32px] px-2 font-bold
               text-sm text-primary cursor-pointer
               bg-page rounded-[8px] flex justify-center items-center
@@ -99,7 +122,7 @@ function next(type: 'up' | 'down') {
     </BaseTitle>
     <ClientOnly>
       <swiper-container ref="containerRef" class="w-full flex h-full">
-        <swiper-slide v-for="(game, index) in data.list" :key="index" class="flex-shrink-0">
+        <swiper-slide v-for="(game, index) in data" :key="index" class="flex-shrink-0">
           <BaseGameCard :key="index" :info="game" />
         </swiper-slide>
       </swiper-container>
