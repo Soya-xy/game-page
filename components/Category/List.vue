@@ -32,12 +32,20 @@ watch(activeIndex, async (newVal) => {
 
     list.value.push({
       name: item.name,
+      id: item.id,
       data,
     })
   }))
 }, {
   immediate: true,
 })
+
+async function getMore(id: number, opt: any) {
+  const { data: gameList } = await getCategoryListDetail({ id, ...opt })
+  return gameList.value.providerList
+    ? gameList.value.providerList
+    : gameList.value?.gamesRespVO?.pageResult?.list || []
+}
 </script>
 
 <template>
@@ -62,7 +70,10 @@ watch(activeIndex, async (newVal) => {
     </button>
   </HScroll>
   <template v-for="(item, idx) in list" :key="idx">
-    <BaseGameList :list="item.data" :title="item.name" />
+    <BaseGameList
+      :list="item.data" :title="item.name"
+      :more-fetch="(opt: any) => getMore(item.id, opt)"
+    />
   </template>
 </template>
 

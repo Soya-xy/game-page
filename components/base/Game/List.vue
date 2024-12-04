@@ -2,14 +2,28 @@
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
 import { getGameData, getHotGameData } from '~/api'
 
+interface GameItem {
+  gameImageUrl: string
+  gameName: string
+  [key: string]: any
+}
+
+interface GameResponse {
+  list: GameItem[]
+  [key: string]: any
+}
+
 const id = defineProp('')
 const type = defineProp('')
 const list = defineProp<any[]>([])
+
 const haveMore = defineProp(true)
+const moreFetch = defineProp()
+
 const title = defineProp('')
 const containerRef = ref()
 const page = ref(1)
-
+const drawerOpen = ref(false)
 const swiper = useSwiper(containerRef, {
   slidesPerView: 3,
   slidesPerGroup: 3,
@@ -48,33 +62,41 @@ const swiper = useSwiper(containerRef, {
 
 const data = ref<any[]>([])
 
-if (type.value) {
-  const { data: gameList } = await getHotGameData()
-  data.value = gameList.value.list.map((item: any) => ({
+async function fetchGameData(pageNo = 1) {
+  if (type.value) {
+    const { data: gameList } = await getHotGameData()
+    return transformGameData(gameList.value)
+  }
+
+  if (id.value) {
+    const { data: gameList } = await getGameData(id.value, {
+      id: id.value,
+      pageNo,
+      pageSize: 30,
+    })
+    return transformGameData(gameList.value)
+  }
+
+  return []
+}
+
+function transformGameData(response: GameResponse) {
+  return response.list.map(item => ({
     ...item,
     picUrl: item.gameImageUrl,
     name: item.gameName,
   }))
 }
-else {
+
+// 初始化数据
+onMounted(async () => {
   if (list.value.length > 0) {
     data.value = list.value
   }
-  else if (id.value) {
-    const { data: gameList } = await getGameData(id.value, {
-      id: id.value,
-      pageNo: page.value,
-      pageSize: 30,
-    }, {
-      watch: [page],
-    })
-    data.value = gameList.value.list.map((item: any) => ({
-      ...item,
-      picUrl: item.gameImageUrl,
-      name: item.gameName,
-    }))
+  else {
+    data.value = await fetchGameData(page.value)
   }
-}
+})
 
 const progress = ref(0)
 function next(type: 'up' | 'down') {
@@ -98,7 +120,7 @@ function next(type: 'up' | 'down') {
               h-[32px] px-2 font-bold
               text-sm text-primary cursor-pointer
               bg-page rounded-[8px] flex justify-center items-center
-            "
+            " @click="drawerOpen = true"
           >
             <span>More</span>
             <i class="i-mdi-chevron-right font-bold" />
@@ -127,6 +149,14 @@ function next(type: 'up' | 'down') {
         </swiper-slide>
       </swiper-container>
     </ClientOnly>
+    <BaseModal v-model:show="drawerOpen">
+      <template #title>
+        <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
+          {{ title }}
+        </div>
+      </template>
+      <BaseGameMore :get-data="moreFetch" />
+    </BaseModal>
   </div>
 </template>
 
