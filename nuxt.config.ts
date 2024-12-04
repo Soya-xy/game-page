@@ -28,7 +28,10 @@ export default defineNuxtConfig({
   },
   app: {
     keepalive: true,
-    pageTransition: false,
+    pageTransition: {
+      name: 'fade',
+      mode: 'in-out',
+    },
     head: {
       viewport: 'width=device-width,initial-scale=1',
       link: [

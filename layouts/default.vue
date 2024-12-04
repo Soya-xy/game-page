@@ -2,21 +2,13 @@
 const { isOpen } = useMenu()
 
 const { isPageLoading } = useLoading()
-const nuxtApp = useNuxtApp()
-const route = useRoute()
-nuxtApp.hook('page:start', () => {
-  isPageLoading.value = true
-})
 
-nuxtApp.hook('page:finish', () => {
-  isPageLoading.value = false
-})
+const route = useRoute()
 </script>
 
 <template>
   <div class="text-color bg-[--bc-bgColor8]">
     <LayoutHeader />
-    <BaseSpin v-show="isPageLoading" is-page />
     <div class="relative bottom-0 top-[60px] overflow-auto flex flex-col bg-color h-[calc(100vh-60px)]">
       <LayoutSlidebar />
       <main
@@ -25,6 +17,8 @@ nuxtApp.hook('page:finish', () => {
           'ml-[var(--bc-menuClose)]': !isOpen,
         }"
       >
+        <BaseSpin v-show="isPageLoading" is-page />
+
         <slot />
         <LayoutFooter v-if="!route.meta.noFooter" />
       </main>

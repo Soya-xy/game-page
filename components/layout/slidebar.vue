@@ -97,10 +97,10 @@ if (isClient) {
             side="right"
             :side-offset="10"
             arrow-color="var(--bc-bgColor6)"
-            @click="router.push(item.href)"
           >
             <div
               class="flex justify-center h-[40px] w-[40px] cursor-pointer flex items-center justify-center  hover-bg-linear-3 rounded-[10px]"
+              @click="router.push(item.href)"
             >
               <i
                 v-if="item.iconType !== 'svg'"

@@ -7,9 +7,17 @@ color.preference = 'dark'
 const nuxtApp = useNuxtApp()
 const { layout, ready } = useLayoutState()
 const once = ref(true)
+const { isPageLoading } = useLoading()
+
+nuxtApp.hook('page:loading:start', () => {
+  isPageLoading.value = true
+})
 
 nuxtApp.hook('page:finish', () => {
-  once.value = false
+  if (once.value)
+    once.value = false
+
+  isPageLoading.value = false
 })
 
 useHead({

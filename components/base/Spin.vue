@@ -1,17 +1,27 @@
 <script setup lang="ts">
+import { cn } from '@/lib/utils'
+
 const isPage = defineProp<boolean>(false)
+const { isPc } = useDevice()
 </script>
 
 <template>
-  <div class="app-loading" :class="{ 'top-0 !z-[9999]': !isPage }">
-    <div class="spin" />
-  </div>
+  <ClientOnly>
+    <div
+      class="app-loading" :class="
+        cn(
+          !isPage && 'top-0 !z-[9999] left-0',
+          isPc && 'top-[60px]',
+        )"
+    >
+      <div class="spin" />
+    </div>
+  </ClientOnly>
 </template>
 
 <style scoped>
 .app-loading {
   position: fixed;
-  left: 0;
   z-index: 99;
   background-color: var(--bc-bgColor);
   display: flex;
