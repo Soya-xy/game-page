@@ -5,7 +5,6 @@ import { getGameData } from '~/api'
 const id = defineProp('', true)
 const haveMore = defineProp(true)
 const title = defineProp('')
-
 const containerRef = ref()
 const page = ref(1)
 

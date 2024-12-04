@@ -19,7 +19,7 @@ function openGame() {
     isOpen.value = true
   }
   else {
-    window.open('#', '_blank')
+    router.push(`/game/${info.value?.name}`)
   }
 }
 </script>
@@ -119,8 +119,8 @@ function openGame() {
                 class="inline-block  i-mdi-play-circle-outline cursor-pointer mr-2 text-font"
                 style="font-size: min(max(12px, 1.0417vw), 20px);"
               />
-              <span v-if="!token" class="text-font font-bold" style="font-size: min(max(11px, 0.9375vw), 18px);" @click="router.push('/login')">Sign In</span>
-              <span v-else class="text-font font-bold" style="font-size: min(max(11px, 0.9375vw), 18px);" @click="openGame">Play</span>
+              <span v-if="!token" class="text-font font-bold" style="font-size: min(max(11px, 0.9375vw), 18px);" @click.stop="router.push('/login')">Sign In</span>
+              <span v-else class="text-font font-bold" style="font-size: min(max(11px, 0.9375vw), 18px);" @click.stop="openGame">Play</span>
             </div>
             <div
               class="truncate uppercase font-normal text-color absolute z-[10] left-0 right-0 bottom-[3.96%] text-center"
@@ -132,7 +132,7 @@ function openGame() {
               class="absolute bottom-0 right-0 mr-[6px] mb-[5px] flex z-[10]"
               style="font-size: min(max(12px, 1.0417vw), 20px);"
             ><i
-              class="inline-block i-mdi-heart-outline  text-[18px] cursor-pointer text-color-text-0"
+              class="inline-block i-mdi-heart-outline  text-[18px] cursor-pointer text-color"
             /></span>
           </div>
         </div>

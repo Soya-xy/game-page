@@ -28,11 +28,11 @@ const eventHandler = useThrottleFn((evt: any) => {
     >
       <button class="absolute right-0 top-0 p-[20px]">
         <i
-          class="inline-block h-[max-content] w-[max-content] icon sysicon-new-clean-3 cursor-pointer hover:-rotate-[180deg] text-color-text-2 hover-text-color-text-0 transition-all duration-300 text-[16px]"
+          class="inline-block h-[max-content] w-[max-content] icon sysicon-new-clean-3 cursor-pointer hover:-rotate-[180deg] text-color-text-2 hover-text-color transition-all duration-300 text-[16px]"
         />
       </button>
       <div class="w-full shrink-0 items-center search-bg overflow-hidden flex flex-col" style="flex: 1 1 0%;">
-        <div class="text-color-text-0 font-bold text-[26px]">
+        <div class="text-color font-bold text-[26px]">
           Search
         </div>
         <div class="flex shrink-0 items-center w-full my-[16px] overflow-hidden">
