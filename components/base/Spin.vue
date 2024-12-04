@@ -1,19 +1,15 @@
 <script setup lang="ts">
 const isPage = defineProp<boolean>(false)
-const { isPc } = useDevice()
 </script>
 
 <template>
-  <ClientOnly>
-    <div
-      class="app-loading" :class="{
-        'top-0 !z-[9999] left-0': !isPage,
-        'top-[60px]': isPc,
-      }"
-    >
-      <div class="spin" />
-    </div>
-  </ClientOnly>
+  <div
+    class="app-loading md:top-[60px]" :class="{
+      'top-0 !z-[9999] left-0': !isPage,
+    }"
+  >
+    <div class="spin" />
+  </div>
 </template>
 
 <style scoped>
