@@ -49,7 +49,7 @@ function openGame() {
               class="truncate uppercase font-normal text-white absolute z-[10] left-0 right-0 bottom-[3.96%] text-center"
               style="font-size: min(max(10px, 0.625vw), 12px);"
             >
-              {{ info?.name }}
+              {{ info?.brandName }}
             </div>
           </div>
           <div
@@ -59,7 +59,7 @@ function openGame() {
               <div class="text-[12px]">
                 RTP <span class="text-linear-19">{{ info?.rtp }}%</span>
               </div>
-              <BaseTooltip>
+              <BaseTooltip content-class="!z-[550]">
                 <i
                   class="inline-block h-[max-content] w-[max-content] icon-new-info-normal cursor-pointer text-[20px] text-white hover:white relative z-[15]"
                 />
@@ -83,7 +83,7 @@ function openGame() {
                         </button>
                       </div>
                       <button class="shrink-0">
-                        Tada
+                        {{ info.brandName }}
                       </button>
                     </div>
                   </div>

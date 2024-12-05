@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 const params = useRoute().params as { id: string }
 const id = params.id
-console.log('🚀 ~ id:', id)
 </script>
 
 <template>

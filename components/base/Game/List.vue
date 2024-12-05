@@ -7,7 +7,6 @@ const type = defineProp('')
 const list = defineProp<any[]>([])
 
 const haveMore = defineProp(true)
-const moreFetch = defineProp()
 
 const title = defineProp('')
 const containerRef = ref()
@@ -71,6 +70,25 @@ async function fetchGameData(pageNo = 1) {
   return []
 }
 
+// 加载更多
+async function moreFetch(opt: any) {
+  if (type.value) {
+    const { data: gameList } = await asyncHotGameData()
+    if (gameList.value)
+      return gameList.value.list || []
+  }
+
+  if (id.value) {
+    const { data: gameList } = await asyncModuleData({
+      ...opt,
+      id: id.value,
+    })
+    if (gameList.value)
+      return gameList.value.list || []
+  }
+
+  return []
+}
 // 初始化数据
 onMounted(async () => {
   if (list.value.length > 0) {

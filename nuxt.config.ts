@@ -60,6 +60,9 @@ export default defineNuxtConfig({
       appUrl: process.env.NUXT_PUBLIC_APP_URL,
     },
   },
+  devServer: {
+    port: 9832,
+  },
 
   future: {
     compatibilityVersion: 4,
