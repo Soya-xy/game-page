@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ModuleType } from '~/@types/component'
 import { Component } from '~/@types/component'
-import { getHomeData } from '~/api'
+import { asyncHomeData } from '~/api/home'
 import Spin from '~/components/Base/Spin.vue'
 import { PageIndexEnum } from '~/composables/page'
 
@@ -11,7 +11,9 @@ definePageMeta({
 
 const userStore = useUserStore()
 const { token } = storeToRefs(userStore)
-const { data, error } = await getHomeData()
+
+const { data, error } = await asyncHomeData()
+
 const { isPc } = useDevice()
 if (error.value) {
   navigateTo('/error')

@@ -1,14 +1,15 @@
 <script lang="ts" setup>
 import { cn } from '@/lib/utils'
-import { getCategoryList, getCategoryListDetail } from '~/api/category'
+import { asyncCategoryList, asyncCategoryListDetail } from '~/api/category'
 
-const { data } = await getCategoryList()
+const { data } = await asyncCategoryList()
 const { makeTree } = useTree({
   id: 'id',
   pid: 'parentId',
   children: 'children',
 })
-const tree = makeTree(data.value)
+
+const tree = makeTree(data.value!)
 const activeIndex = ref(0)
 const list = ref<any[]>([])
 
@@ -20,13 +21,13 @@ watch(activeIndex, async (newVal) => {
     : [tree[newVal]]
 
   await Promise.all(itemList.map(async (item: any) => {
-    const { data: gameList } = await getCategoryListDetail({
+    const { data: gameList } = await asyncCategoryListDetail({
       id: item.id,
       pageNo: 1,
       pageSize: 30,
     })
 
-    const data = gameList.value.providerList
+    const data = gameList.value?.providerList
       ? gameList.value.providerList
       : gameList.value?.gamesRespVO?.pageResult?.list || []
 
@@ -41,8 +42,8 @@ watch(activeIndex, async (newVal) => {
 })
 
 async function getMore(id: number, opt: any) {
-  const { data: gameList } = await getCategoryListDetail({ id, ...opt })
-  return gameList.value.providerList
+  const { data: gameList } = await asyncCategoryListDetail({ id, ...opt })
+  return gameList.value?.providerList
     ? gameList.value.providerList
     : gameList.value?.gamesRespVO?.pageResult?.list || []
 }

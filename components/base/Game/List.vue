@@ -1,17 +1,6 @@
 <script lang="ts" setup>
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
-import { getGameData, getHotGameData } from '~/api'
-
-interface GameItem {
-  gameImageUrl: string
-  gameName: string
-  [key: string]: any
-}
-
-interface GameResponse {
-  list: GameItem[]
-  [key: string]: any
-}
+import { asyncHotGameData, asyncModuleData } from '~/api/home'
 
 const id = defineProp('')
 const type = defineProp('')
@@ -64,28 +53,22 @@ const data = ref<any[]>([])
 
 async function fetchGameData(pageNo = 1) {
   if (type.value) {
-    const { data: gameList } = await getHotGameData()
-    return transformGameData(gameList.value)
+    const { data: gameList } = await asyncHotGameData()
+    if (gameList.value)
+      return gameList.value.list || []
   }
 
   if (id.value) {
-    const { data: gameList } = await getGameData(id.value, {
+    const { data: gameList } = await asyncModuleData({
       id: id.value,
       pageNo,
       pageSize: 30,
     })
-    return transformGameData(gameList.value)
+    if (gameList.value)
+      return gameList.value.list || []
   }
 
   return []
-}
-
-function transformGameData(response: GameResponse) {
-  return response.list.map(item => ({
-    ...item,
-    picUrl: item.gameImageUrl,
-    name: item.gameName,
-  }))
 }
 
 // 初始化数据

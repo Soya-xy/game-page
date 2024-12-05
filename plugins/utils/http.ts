@@ -59,7 +59,7 @@ export function createHttpClient(isServer: boolean): $Fetch {
 
         const data = response._data
 
-        if (data?.code === 0) {
+        if (data.code === 0) {
           return data.data
         }
         else {

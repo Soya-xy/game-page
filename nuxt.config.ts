@@ -87,7 +87,7 @@ export default defineNuxtConfig({
       // ignore: ['/hi'],
     },
   },
-  debug: process.env.NODE_ENV === 'development',
+  // debug: process.env.NODE_ENV === 'development',
   eslint: {
     config: {
       standalone: false,
