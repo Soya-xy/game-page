@@ -138,7 +138,7 @@ button {
 
 /* 隐藏滚动条 */
 ::-webkit-scrollbar {
-  display: none;
+  /* display: none; */
 }
 
 @keyframes zoomIn {
