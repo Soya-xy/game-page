@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import type { CategoryListDetailResponse } from '~/api/category/type'
+import type { Option } from '~/api/type'
 import { cn } from '@/lib/utils'
 import { asyncCategoryList, asyncCategoryListDetail } from '~/api/category'
 
@@ -12,7 +14,25 @@ const { makeTree } = useTree({
 const tree = makeTree(data.value!)
 const activeIndex = ref(0)
 const list = ref<any[]>([])
-
+const option = ref([
+  {
+    value: 'Popular',
+    label: 'Popular',
+  },
+  {
+    value: 'A-Z',
+    label: 'A-Z',
+  },
+  {
+    value: 'Z-A',
+    label: 'Z-A',
+  },
+  {
+    value: 'New',
+    label: 'New',
+  },
+])
+const providerList = ref<Option[]>([])
 watch(activeIndex, async (newVal) => {
   list.value = []
 
@@ -29,17 +49,23 @@ watch(activeIndex, async (newVal) => {
 
     const data = gameList.value?.providerList
       ? gameList.value.providerList
-      : gameList.value?.gamesRespVO?.pageResult?.list || []
+      : gameList.value?.gamesRespVO || []
 
     const type = gameList.value?.providerList ? 'provider' : 'game'
 
     list.value.push({
       name: item.name,
       id: item.id,
-      data,
+      data: (data as CategoryListDetailResponse).pageResult.list,
       type,
     })
-    console.log('🚀 ~ awaitPromise.all ~ list.value:', list.value)
+
+    providerList.value = (data as CategoryListDetailResponse).providerData.map(v => ({
+      value: v.id,
+      label: v.name,
+      picUrl: v.picUrl,
+      count: v.count,
+    }))
   }))
 }, {
   immediate: true,
@@ -50,6 +76,12 @@ async function getMore(id: number, opt: any) {
   return gameList.value?.providerList
     ? gameList.value.providerList
     : gameList.value?.gamesRespVO?.pageResult?.list || []
+}
+
+const value = ref('Popular')
+const providerValue = ref<string[]>([])
+function changeHandler(e: string[]) {
+  providerValue.value = e
 }
 </script>
 
@@ -74,6 +106,26 @@ async function getMore(id: number, opt: any) {
       </div>
     </button>
   </HScroll>
+  <div v-if="list.length === 1" class="flex items-center gap-2">
+    <FilterSelect v-model="value" :option="option">
+      <template #placeholder>
+        <div class="text-white">
+          Sort by:  {{ value }}
+        </div>
+      </template>
+    </FilterSelect>
+
+    <FilterProviderSelect
+      :option="providerList"
+      @change="changeHandler"
+    >
+      <template #placeholder>
+        <div class="text-white">
+          Provider:  {{ providerValue.length ? `+${providerValue.length}` : 'All' }}
+        </div>
+      </template>
+    </FilterProviderSelect>
+  </div>
   <template v-for="(item, idx) in list" :key="idx">
     <BaseGameList
       v-if="item.type === 'game'"

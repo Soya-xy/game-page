@@ -22,9 +22,11 @@ html {
   --bc-noActiveColor3: #2dee8800;
   --bc-greenColor: #25d276;
   --bc-langColor: #96e974;
+  --bc-transparentColor: #ffffff0d;
   --bc-linearColor: linear-gradient(90deg, var(--bc-activeColor), var(--bc-langColor));
   --bc-linearColor2: linear-gradient(75deg, var(--bc-noActiveColor) 42.49%, var(--bc-activeColor) 97.18%);
-  --bc-linearColor3: linear-gradient(90deg, var(--bc-noActiveColor), var(--bc-noActiveColor3)), #ffffff0d;
+  --bc-linearColor3: linear-gradient(90deg, var(--bc-noActiveColor), var(--bc-noActiveColor3)),
+    var(--bc-transparentColor);
   --bc-linearColor4: linear-gradient(
     180deg,
     var(--bc-noActiveColor3) 31.77%,
@@ -33,7 +35,8 @@ html {
     var(--bc-activeColor) 94.79%
   );
   --bc-shadow: 8px 0 8px #00000040;
-  --bc-hoverButtonColor: linear-gradient(90deg, var(--bc-noActiveColor), var(--bc-noActiveColor3)), #ffffff0d;
+  --bc-hoverButtonColor: linear-gradient(90deg, var(--bc-noActiveColor), var(--bc-noActiveColor3)),
+    var(--bc-transparentColor);
   --bc-bgColor3: linear-gradient(90deg, var(--bc-noActiveColor2), var(--bc-noActiveColor3) 40%);
   --bc-textColor3: #8f310f;
   --bc-shadow2: 0 4px 4px #14141480;

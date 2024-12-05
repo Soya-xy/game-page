@@ -1,5 +1,6 @@
-import type { ID } from './../type'
+import type { ID, ParentId, PicUrl } from './../type'
 
+export type Provider = PicUrl & ID & { count: number }
 export interface CategoryListDetailResponse {
   pageResult: {
     list: {
@@ -30,14 +31,10 @@ export interface CategoryListDetailResponse {
     }[]
     total: number
   }
-  providerData: string
+  providerData: Provider[]
 }
 
-export interface CategoryListProviderResponse extends ID {
-  picUrl: string
-  name: string
-  parentId: number
-}
+export interface CategoryListProviderResponse extends ID, ParentId, PicUrl {}
 
 export interface CategoryListResponse {
   gamesRespVO: CategoryListDetailResponse
