@@ -13,19 +13,23 @@ const delegatedProps = computed(() => {
 })
 
 const forwardedProps = useForwardProps(delegatedProps)
+console.log("🚀 ~ forwardedProps:", forwardedProps)
 </script>
 
 <template>
   <SelectTrigger
     v-bind="forwardedProps"
     :class="cn(
-      'flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background data-[placeholder]:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:truncate text-start',
+      'flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background data-[placeholder]:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:truncate text-start group',
       props.class,
     )"
   >
     <slot />
-    <SelectIcon as-child>
-      <ChevronDown class="w-4 h-4 opacity-50 shrink-0" />
+    <SelectIcon  class="bg-[--bc-bgColor7] w-[22px] h-[22px] rounded-[4px] flex items-center justify-center">
+      <i
+        class="inline-block h-[max-content] -rotate-90 w-[max-content] icon-n-back cursor-pointer text-[8px]  group-data-[state=open]:rotate-90"
+      />
     </SelectIcon>
+    
   </SelectTrigger>
 </template>

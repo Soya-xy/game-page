@@ -91,7 +91,7 @@ async function moreFetch(opt: any) {
 }
 // 初始化数据
 onMounted(async () => {
-  if (list.value.length > 0) {
+  if (list.value?.length > 0) {
     data.value = list.value
   }
   else {

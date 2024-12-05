@@ -56,11 +56,11 @@ watch(activeIndex, async (newVal) => {
     list.value.push({
       name: item.name,
       id: item.id,
-      data: (data as CategoryListDetailResponse).pageResult.list,
+      data: (data as CategoryListDetailResponse).pageResult?.list,
       type,
     })
 
-    providerList.value = (data as CategoryListDetailResponse).providerData.map(v => ({
+    providerList.value = (data as CategoryListDetailResponse).providerData?.map(v => ({
       value: v.id,
       label: v.name,
       picUrl: v.picUrl,
