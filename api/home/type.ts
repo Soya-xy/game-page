@@ -19,3 +19,12 @@ export interface GameResponse {
   list: GameItem[]
   [key: string]: any
 }
+
+export interface BigWinsItem {
+  id: number
+  gameName: string
+  playerIdentifier: string
+  winAmount: number
+  gameImageUrl: string
+  sort: number
+}
