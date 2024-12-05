@@ -31,11 +31,15 @@ watch(activeIndex, async (newVal) => {
       ? gameList.value.providerList
       : gameList.value?.gamesRespVO?.pageResult?.list || []
 
+    const type = gameList.value?.providerList ? 'provider' : 'game'
+
     list.value.push({
       name: item.name,
       id: item.id,
       data,
+      type,
     })
+    console.log('🚀 ~ awaitPromise.all ~ list.value:', list.value)
   }))
 }, {
   immediate: true,
@@ -72,9 +76,15 @@ async function getMore(id: number, opt: any) {
   </HScroll>
   <template v-for="(item, idx) in list" :key="idx">
     <BaseGameList
+      v-if="item.type === 'game'"
       :list="item.data" :title="item.name"
       :more-fetch="(opt: any) => getMore(item.id, opt)"
     />
+    <template v-else-if="item.type === 'provider'">
+      <div class="grid gap-[12px] grid-cols-[repeat(auto-fill,minmax(180px,1fr))]">
+        <BaseGameProvider v-for="provider in item.data" :key="provider.id" :info="provider" />
+      </div>
+    </template>
   </template>
 </template>
 

@@ -1,7 +1,3 @@
-<script lang="ts" setup>
-
-</script>
-
 <template>
   <div class="w-full" style="min-height: 261px;">
     <!-- css 渐变 -->

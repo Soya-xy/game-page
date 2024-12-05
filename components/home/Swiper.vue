@@ -72,4 +72,5 @@ const eventHandler = useTrack((id: number) => {
       <div class="my-pagination flex justify-center items-center gap-[4px]" />
     </ClientOnly>
   </div>
+  <HomeBanner v-else />
 </template>
