@@ -10,16 +10,16 @@ export const useUserStore = defineStore('user', () => {
   const { toast } = useToast()
 
   const handleLogin = async (res: any, isRefresh = false) => {
-    if (res.code === 0) {
+    if (res) {
       const { $serverApi } = useNuxtApp()
-      user.value = res.data
-      token.value = res.data.accessToken
-      localStorage.setItem('token', res.data.accessToken)
-      localStorage.setItem('user', JSON.stringify(res.data))
-      localStorage.setItem('expiresTime', res.data.expiresTime)
+      user.value = res
+      token.value = res.accessToken
+      localStorage.setItem('token', res.accessToken)
+      localStorage.setItem('user', JSON.stringify(res))
+      localStorage.setItem('expiresTime', res.expiresTime)
       const data = await $serverApi('/api/login', {
         method: 'POST',
-        body: res.data,
+        body: res,
       })
 
       // 无感刷新
@@ -34,7 +34,9 @@ export const useUserStore = defineStore('user', () => {
           title: 'Success',
           bgColor: 'bg-green-500',
         })
-        router.back()
+        setTimeout(() => {
+          router.back()
+        }, 1000)
       }
       else {
         toast({
