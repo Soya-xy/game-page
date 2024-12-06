@@ -41,8 +41,8 @@ function toggleOpen() {
                 class="cursor-pointer temp-btn-item absolute w-[338px] h-[52px] top-[559px] left-[1000px]"
               />
             </div>
-          </div><!---->
-        </div><!---->
+          </div>
+        </div>
         <div
           class="w-[300px] h-full shrink-0 relative overflow-hidden transition-all duration-300 bg-color-2 z-[100] -ml-[310px]"
         >
@@ -50,7 +50,6 @@ function toggleOpen() {
             class="w-[300px] chat-height bg-color-search-1 fixed z-[250 overflow-hidden max-h-full transition-all duration-300 flex flex-col -right-[310px]"
           >
             <div class="flex-1 flex flex-col overflow-hidden w-full">
-              <!---->
               <div class="app-loading back-color-1 !absolute">
                 <div
 
@@ -63,19 +62,16 @@ function toggleOpen() {
                 class="sticky top-0 z-[20] w-full flex items-center bg-color-linear-12 text-white shrink-0 !h-[52px] !px-[15px]"
               >
                 <div class="flex-1 flex items-center">
-                  <!---->
                   <div class="text-[18px] font-bold text-white">
                     Chat
                   </div><i
                     class="inline-block h-[max-content] w-[max-content] icon-new-personal cursor-pointer text-[16px] mx-[8px] "
                   /><span
-                    class="text-color-tip-1 font-bold text-[16px]"
+                    class="font-bold text-[16px]"
                   >0</span>
                 </div>
                 <div class="flex items-center">
-                  <div class="live-btn relative px-[15px]">
-                  <!---->
-                  </div>
+                  <div class="live-btn relative px-[15px]" />
                   <div class="chat-help-btn relative mr-[14px]">
                     <button>
                       <i
@@ -86,13 +82,12 @@ function toggleOpen() {
                     class="inline-block h-[max-content] w-[max-content] icon-new-clean-3 cursor-pointer hover:-rotate-[180deg]  hover-text-white transition-all duration-300 !text-[14px]"
                   />
                 </div>
-              </div><!----><!----><!----><!----><!----><!---->
+              </div>
               <div
                 class="flex flex-col-reverse overflow-x-hidden chat-content-box pb-[20px] modal-flex1-scroll-container w-full relative z-[0]"
               />
               <div class="flex flex-col min-h-[76px] relative p-[10px] pb-[20px] bg-color-4">
                 <div class="chat-bottom flex w-full">
-                  <!----><!----><!----><!----><!---->
                   <div
                     class="chat-content relative items-start rounded-lg bg-color-2 flex flex-1 pl-[16px] overflow-hidden"
                   >
@@ -153,7 +148,7 @@ function toggleOpen() {
                       <li
                         class="flex items-center justify-center px-[15px] relative cursor-pointer min-h-[36px]"
                       >
-                        <span>Português</span><!---->
+                        <span>Português</span>
                       </li>
                     </ul>
                   </div>
@@ -187,9 +182,6 @@ function toggleOpen() {
           >
             <DropdownMenuItem class="w-full !p-0">
               <ul class="w-full">
-                <!-- <li class="h-[47px] flex items-center px-[16px] bg-[--bc-bgColor5] text-white font-[500]">
-                Download Google PWA
-              </li> -->
                 <li v-for="(item, index) in currentList" :key="index" class="h-[47px] flex items-center px-[16px] text-xs" :class="{ 'bg-[--bc-bgColor5] font-[500] text-white': current === item, 'bg-[--bc-bgColor9]': current !== item }" @click="current = item">
                   {{ item }}
                 </li>
@@ -210,7 +202,6 @@ function toggleOpen() {
           </div><div class="flex flex-col items-center">
             <Image src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/install/download/android_pwa_1.png?20241104" alt="" importance="auto" class="w-[63.77%] mx-auto !h-auto" />
             <button class="relative w-[57.975%] h-[42px] text-[13px] font-medium bg-[--bc-bgColor9] border-radius-0 mx-auto ">
-              <!-- <div class="h-full bg-[--bc-activeColor] border-radius-0" style="width: 0%;" /> -->
               <span class="flex justify-center items-center absolute z-[1] top-0 left-0 w-full h-full">Download Complete!</span>
             </button>
           </div><div class="text-[13px] font-medium">

@@ -6,7 +6,7 @@ const currentList = ref(['All', 'Official', 'Sports', 'Special'])
 <template>
   <div class="max-w-[1414px]  flex mx-auto flex-col gap-y-[12px] mt-[12px] relative z-[20] sm:px-[20px] ">
     <div
-      class="border-b-[1px] border-solid border-[#34393a] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] border-[1px] flex fixed md:static top-[48px] w-full z-[20] bg-[--bc-bgColor]"
+      class="border-b-[1px] border-solid border-[#34393a] border-[1px] flex fixed md:static top-[48px] w-full z-[20] bg-[--bc-bgColor]"
     >
       <div
         v-for="(item, index) in currentList" :key="index"
@@ -33,7 +33,7 @@ const currentList = ref(['All', 'Official', 'Sports', 'Special'])
               <h3 class="text-[16px] font-[500] text-color-text-0 line-clamp-1">
                 AFUN
                 Sports Ranking Championship
-              </h3><!---->
+              </h3>
             </div>
             <button
               class="h-[40px] border-radius-0 bg-[--bc-bgColor9] text-[16px] font-[500] px-[8px] min-w-[100px] w-[max-content] text-[--bc-color2] shrink-0"
