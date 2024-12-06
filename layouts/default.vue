@@ -4,6 +4,9 @@ const { isOpen } = useMenu()
 const { isPageLoading } = useLoading()
 
 const route = useRoute()
+watch(isPageLoading, (v) => {
+  console.log('isPageLoading', v)
+})
 </script>
 
 <template>

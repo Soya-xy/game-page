@@ -1,7 +1,7 @@
 import { isEmpty } from 'ramda'
 
 // 需要弹窗的路由
-const needModalPath = ['/login', '/register']
+const needModalPath = ['/login', '/register', '/gametag/hot']
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
   const { openRouterModal } = useModal()
@@ -43,7 +43,9 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   // TODO: Server端无法获取hash，所以需要手动处理
   if (!isEmpty(to.hash)) {
     if (isPc.value) {
-      openRouterModal(to.path)
+      openRouterModal(to.path, {
+        hash: `#${to.path}`,
+      })
       return
     }
   }
@@ -51,7 +53,10 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   // 需要弹窗的路由 pc端需要弹窗，移动端需要跳转
   if (needModalPath.includes(to.path)) {
     if (isPc.value) {
-      openRouterModal(to.path)
+      openRouterModal(to.path, {
+        hash: `#${to.path}`,
+      })
+
       return navigateTo({
         path: from.path,
         query: from.query,
@@ -69,5 +74,5 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   if (!isPc.value)
     return
 
-  return openRouterModal('login')
+  return true
 })

@@ -5,10 +5,10 @@ import { asyncHotGameData, asyncModuleData } from '~/api/home'
 const id = defineProp('')
 const type = defineProp('')
 const list = defineProp<any[]>([])
-
 const haveMore = defineProp(true)
-
 const title = defineProp('')
+const moreFetch = defineProp<(opt: any) => Promise<any[]>>()
+console.log('🚀 ~ moreFetch:', moreFetch)
 const containerRef = ref()
 const page = ref(1)
 const drawerOpen = ref(false)
@@ -71,7 +71,13 @@ async function fetchGameData(pageNo = 1) {
 }
 
 // 加载更多
-async function moreFetch(opt: any) {
+async function getMoreFetch(opt: any) {
+  console.log('🚀 ~ getMoreFetch ~ moreFetch.value:', moreFetch.value)
+
+  if (moreFetch.value) {
+    return moreFetch.value(opt)
+  }
+
   if (type.value) {
     const { data: gameList } = await asyncHotGameData()
     if (gameList.value)
@@ -151,12 +157,7 @@ function next(type: 'up' | 'down') {
       </swiper-container>
     </ClientOnly>
     <BaseModal v-model:show="drawerOpen">
-      <template #title>
-        <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
-          {{ title }}
-        </div>
-      </template>
-      <BaseGameMore :get-data="moreFetch" />
+      <BaseGameMore :get-data="getMoreFetch" :title="title" />
     </BaseModal>
   </div>
 </template>

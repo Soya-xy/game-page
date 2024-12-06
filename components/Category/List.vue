@@ -3,7 +3,7 @@ import type { CategoryListDetailResponse } from '~/api/category/type'
 import type { Option } from '~/api/type'
 import { cn } from '@/lib/utils'
 import { ref } from 'vue'
-import { asyncCategoryList, asyncCategoryListDetail } from '~/api/category'
+import { asyncCategoryList, asyncCategoryListDetail, getCategoryListDetailGame } from '~/api/category'
 
 const { data } = await asyncCategoryList()
 const { makeTree } = useTree({
@@ -111,21 +111,16 @@ async function loadGames() {
 }
 
 async function getMore(id: number, opt: any) {
-  loading.value = true
-  const { data: gameList } = await asyncCategoryListDetail({ id, ...opt })
-  loading.value = false
-  return gameList.value?.providerList
-    ? gameList.value.providerList
-    : gameList.value?.gamesRespVO?.pageResult?.list || []
+  const gameList = await getCategoryListDetailGame({ id, ...opt })
+  return gameList.providerList
+    ? gameList.providerList
+    : gameList.gamesRespVO?.pageResult?.list || []
 }
 
 function changeHandler(e: string[]) {
   providerValue.value = e
 }
 
-watchEffect(() => {
-  console.log('🚀 ~ loading:', loading.value)
-})
 const target = ref<HTMLElement>()
 useIntersectionObserver(
   target,

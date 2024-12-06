@@ -1,5 +1,6 @@
 export interface PageRoute {
   path: string | undefined
+  hash?: string
   clickOutClose?: boolean
 }
 

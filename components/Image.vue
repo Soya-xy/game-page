@@ -23,7 +23,7 @@ const isError = ref(false)
       loading="lazy"
       :placeholder="img('/images/afun/game_img_fial.png', { h: 10, f: 'png', blur: 2, q: 50 })"
     />
-    <p class="text-color text-sm">
+    <p class="text-color text-sm w-full overflow-hidden text-ellipsis">
       Image is unavailable
     </p>
   </div>

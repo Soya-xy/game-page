@@ -13,7 +13,7 @@ nuxtApp.hook('page:loading:start', () => {
   isPageLoading.value = true
 })
 
-nuxtApp.hook('page:finish', () => {
+nuxtApp.hook('page:loading:end', () => {
   if (once.value)
     once.value = false
 

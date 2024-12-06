@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-
+const router = useRouter()
 </script>
 
 <template>
   <div class="w-full grid grid-cols-3 items-center gap-x-[5px]">
-    <div class="h-[40px] text-white text-[14px] font-semibold bg-tab cursor-pointer rounded-[10px] overflow-hidden">
+    <div class="h-[40px] text-white text-[14px] font-semibold bg-tab cursor-pointer rounded-[10px] overflow-hidden" @click="router.push('/gametag/hot')">
       <div class="h-full flex items-center relative  justify-center bg-linear-3">
         <div class="w-[40px] h-[40px] flex items-center justify-center">
           <i

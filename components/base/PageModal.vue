@@ -8,10 +8,10 @@ const { router } = useModal()
 const enterAnimation = ref(0)
 const show = ref(false)
 const is = shallowRef()
-
 const RouteToComponent: Record<string, any> = {
   '/login': import('~/components/Login/Index.client.vue'),
   '/register': import('~/components/Register/Index.vue'),
+  '/gametag/hot': import('~/components/Base/Game/More.vue'),
 }
 
 watch(router, (val) => {
@@ -56,7 +56,7 @@ function closeModal() {
 <template>
   <Dialog v-model:open="show" modal>
     <DialogContent
-      class="fixed left-1/2 top-1/2 z-[500] grid min-w-[500px] min-h-[500px] max-h-[100vh] -translate-x-1/2 -translate-y-1/2 gap-4 border sm:rounded-lg shadow-lg"
+      class="fixed left-1/2 top-1/2 z-[500] grid min-w-[500px] min-h-[500px] max-h-[100vh] -translate-x-1/2 -translate-y-1/2 gap-4 border sm:rounded-lg shadow-lg  bg-color2"
       disable-outside-pointer-events
       :class="{
         'opacity-0': enterAnimation === 0,
@@ -65,7 +65,7 @@ function closeModal() {
       }"
       @close="closeModal"
     >
-      <component :is="is" v-if="enterAnimation !== 0" />
+      <component :is="is" v-if="enterAnimation !== 0" v-bind="router" />
     </DialogContent>
   </Dialog>
 </template>
