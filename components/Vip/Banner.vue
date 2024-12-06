@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const show = ref(false)
+</script>
+
 <template>
   <div
     class="w-full bg-no-repeat bg-cover h-[200px] relative border-radius-1 !rounded-b-[0]"
@@ -49,7 +53,8 @@
                   </ul>
                 </div>
               </i>
-            </div><p class="underline text-center cursor-pointer text-color">
+            </div>
+            <p class="underline text-center cursor-pointer text-color" @click="show = true">
               VIP Level &amp; Benefits
             </p>
           </div>
@@ -57,4 +62,11 @@
       </div>
     </div>
   </div>
+  <BaseModal v-model:show="show">
+    <template #title>
+      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
+        VIP Level &amp; Benefits
+      </div>
+    </template>
+  </BaseModal>
 </template>

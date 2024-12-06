@@ -1,13 +1,26 @@
 <script lang="ts" setup>
+import { ref } from 'vue'
 import { asyncLevelList } from '~/api/vip'
 
 definePageMeta({
   pageIndex: PageIndexEnum.vip,
+  noFooter: true,
 })
 const currentLevel = ref(1)
 
 const { data: levelList } = await asyncLevelList()
 
+const vipFaq = ref([
+  {
+    title: 'What is VIP?',
+    content: 'VIP is a special membership program that offers exclusive benefits to our most loyal customers.',
+  },
+  {
+    title: 'How do I become a VIP?',
+    content: 'To become a VIP, you need to deposit and trade on our platform. The more you trade, the higher your VIP level will be.',
+  },
+])
+const currentIndex = ref<any>()
 provide('levelList', readonly(levelList.value!))
 </script>
 
@@ -39,6 +52,16 @@ provide('levelList', readonly(levelList.value!))
             <h3 class="text-[20px] px-[20px] font-bold text-white mb-[20px]">
               FAQ
             </h3>
+            <BaseAccordion v-model="currentIndex" type="single" class="w-full" collapsible>
+              <BaseAccordionItem v-for="(item, index) in vipFaq" :key="index" :value="index.toString()">
+                <BaseAccordionTrigger class="bg-[--bc-bgColor41] px-[18px] text-[13px]" :class="{ 'text-white font-bold': index === currentIndex }">
+                  {{ item.title }}
+                </BaseAccordionTrigger>
+                <BaseAccordionContent>
+                  {{ item.content }}
+                </BaseAccordionContent>
+              </BaseAccordionItem>
+            </BaseAccordion>
           </div>
         </div>
       </div>
