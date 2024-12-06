@@ -47,3 +47,8 @@ export function http2ws(url: string) {
     url = url.replace('https://', 'wss://')
   return url
 }
+
+// 根据i18n转换货币符号
+export function toCurrency(value: number) {
+  return Number(value).toLocaleString(useI18n().locale.value, { style: 'currency', currency: 'USD' })
+}

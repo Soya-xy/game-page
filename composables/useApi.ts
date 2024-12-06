@@ -8,7 +8,7 @@ import type { UseFetchOptions } from 'nuxt/app'
 
 export function useAPI<T>(
   url: string | (() => string),
-  options?: UseFetchOptions<T>,
+  options?: Omit<UseFetchOptions<T>, 'default'> & { default: () => T | Ref<T> },
   isServer = false,
 ) {
   return useFetch(url, {
