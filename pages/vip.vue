@@ -24,13 +24,21 @@ provide('levelList', readonly(levelList.value!))
           <div class="mb-[40px] w-full">
             <h3 class="text-[20px] px-[20px] font-bold text-white mb-[20px]">
               More
-            </h3><div class="p-[20px] bg-[--bc-color-3] border-radius-1">
+            </h3>
+            <div class="p-[20px] bg-[--bc-color-3] border-radius-1">
               <p class="mb-[10px] text-[14px] text-color">
                 Please see our promotions for more details.
-              </p><button class="main-color-btn text-font w-[max-content] px-[25px] text-[12px] font-bold h-[40px] border-radius-0 min-w-[130px]">
+              </p>
+              <button class="main-color-btn text-font w-[max-content] px-[25px] text-[12px] font-bold h-[40px] border-radius-0 min-w-[130px]">
                 Promotions
               </button>
             </div>
+          </div>
+          <!-- FAQ -->
+          <div class="w-full mb-[40px]">
+            <h3 class="text-[20px] px-[20px] font-bold text-white mb-[20px]">
+              FAQ
+            </h3>
           </div>
         </div>
       </div>

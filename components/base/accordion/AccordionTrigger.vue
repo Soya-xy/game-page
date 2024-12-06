@@ -24,6 +24,7 @@ const delegatedProps = computed(() => {
       :class="
         cn(
           'flex flex-1 items-center justify-between py-4 font-medium transition-all [&[data-state=open]>svg]:rotate-180',
+          '[&[data-state=closed]]:rounded-[6px] rounded-tl-[6px] rounded-tr-[6px]',
           props.class,
         )
       "
