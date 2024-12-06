@@ -12,7 +12,7 @@ const nowLevel = computed(() => {
 </script>
 
 <template>
-  <div class="mb-[40px]">
+  <div class="mb-[40px] w-full">
     <h3 class="text-[20px] font-bold mb-[20px]">
       <div class="text-[--bc-color20]">
         <span class="text-white">VIP {{ currentLevel }}</span> Benefits
