@@ -22,7 +22,7 @@ const option = defineProp<{
 const open = ref(false)
 const change = defineEmit<any>()
 const checkedList = ref<string[]>([])
-
+const { isPc } = useDevice()
 function changeHandler(e: string) {
   if (checkedList.value.includes(e)) {
     checkedList.value = checkedList.value.filter(item => item !== e)
@@ -66,7 +66,7 @@ watch(open, (v) => {
         </div>
       </Button>
     </PopoverTrigger>
-    <PopoverContent class="bg-color2 p-0 border-[--bc-transparentColor]" :style="{ width: `${contentWidth}px` }">
+    <PopoverContent v-if="isPc" class="bg-color2 p-0 border-[--bc-transparentColor] hidden md:block" :style="{ width: `${contentWidth}px` }">
       <Command>
         <CommandList
           class="bg-color2 border-[--bc-bgColor7] gap-[2px]"
@@ -83,7 +83,6 @@ watch(open, (v) => {
               }"
             >
               <Checkbox
-                :id="item.value"
                 class="bg-color2 border-[--bc-bgColor7]"
                 :class="{
                   'bg-linear-color-1': checkedList.includes(item.value),
@@ -100,4 +99,33 @@ watch(open, (v) => {
       </Command>
     </PopoverContent>
   </Popover>
+  <BaseDrawer v-if="!isPc" v-model:open="open" content-class="z-[555]" overlay-class="z-[550]">
+    <template #title>
+      Select
+    </template>
+    <div class="flex flex-col gap-y-[2px] max-h-[350px] overflow-y-auto overscroll-contain">
+      <div
+        v-for="item in option"
+        :key="item.value"
+        :value="item"
+        class="flex items-center justify-between py-[10px] px-[10px] cursor-pointer"
+        @click="() => {
+          changeHandler(item.value)
+          open = false
+        }"
+      >
+        <Checkbox
+          class="bg-color2 border-[--bc-bgColor7]"
+          :class="{
+            'bg-linear-color-1': checkedList.includes(item.value),
+          }"
+          :checked="checkedList.includes(item.value)"
+        />
+        <Image :src="item.picUrl" :alt="item.label" class="ml-[20px] transition-all duration-200 !h-[28px]" />
+        <div class="flex-1 flex justify-end items-center">
+          {{ item.count }} Games
+        </div>
+      </div>
+    </div>
+  </BaseDrawer>
 </template>

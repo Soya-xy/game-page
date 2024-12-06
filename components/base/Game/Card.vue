@@ -21,9 +21,6 @@ function openGame() {
   if (!isPc.value) {
     isOpen.value = true
   }
-  else {
-    router.push(`/game/${info.value?.name}`)
-  }
 }
 </script>
 
@@ -123,7 +120,7 @@ function openGame() {
               >Sign In</span>
               <span
                 v-else class="text-font font-bold" style="font-size: min(max(11px, 0.9375vw), 18px);"
-                @click.stop="openGame"
+                @click.stop="router.push(`/game/${info.name}`)"
               >Play</span>
             </div>
 
@@ -188,16 +185,23 @@ function openGame() {
                 </div>
               </div>
             </div>
-            <div class="flex items-center gap-[8px] font-extrabold">
+            <div
+              class="flex items-center gap-[8px] font-extrabold" @click="() => {
+                isOpen = false
+                router.push(`/game/${info.name}`)
+              }"
+            >
               <span
                 class="flex-1 h-[40px] main-color-btn rounded flex items-center justify-center gap-x-[4px] text-font text-[14px]"
               ><i
-                class="inline-block h-[max-content] w-[max-content] icon-new-play-demo text-[20px]"
-              /><span>Play</span></span>
+                 class="inline-block h-[max-content] w-[max-content] icon-new-play-demo text-[20px]"
+               />
+                <span>Play</span>
+              </span>
             </div>
           </div>
           <BaseGameList type="hot" :have-more="false" />
-          <BaseGameList type="top" :have-more="false" />
+          <BaseGameList type="hot" :have-more="false" />
         </div>
       </BaseDrawer>
     </div>

@@ -37,8 +37,18 @@ export async function asyncModuleData(params: Page & ID) {
   })
 }
 
+export async function getModuleDataGame(params: Page & ID) {
+  return useNuxtApp().$clientApi<GameResponse>(moduleDataUrl, {
+    params,
+  })
+}
+
 export async function asyncHotGameData() {
   return useAPI<GameResponse>(hotGameUrl)
+}
+
+export async function asyncGameByTag(tag: string) {
+  return useAPI<GameResponse>(`/product/category/list-${tag}-game`)
 }
 
 export async function getGameByTag(tag: string) {

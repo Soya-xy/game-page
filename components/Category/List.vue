@@ -35,7 +35,7 @@ const option = ref([
     label: 'New',
   },
 ])
-const providerList = ref<Option[]>([])
+const providerOption = ref<Option[]>([])
 const loading = ref(false)
 const page = ref(1)
 const value = ref('Popular')
@@ -54,6 +54,8 @@ watch(activeIndex, async () => {
 }, {
   immediate: true,
 })
+
+const providerList = ref<any>([])
 
 async function loadGames() {
   const nowItem = tree[activeIndex.value]
@@ -78,6 +80,12 @@ async function loadGames() {
 
     type.value = gameList.value?.providerList ? 'provider' : (nowItem.children.length > 0 ? 'gameList' : 'game')
     loadGameing.value = false
+
+    if (type.value === 'provider') {
+      providerList.value = data
+      return
+    }
+
     const gameResult = (data as CategoryListDetailResponse).pageResult?.list
     // 游戏卡牌
     if (gameResult?.length <= 0 || !gameResult) {
@@ -101,7 +109,7 @@ async function loadGames() {
       return
     }
 
-    providerList.value = (data as CategoryListDetailResponse).providerData?.map(v => ({
+    providerOption.value = (data as CategoryListDetailResponse).providerData?.map(v => ({
       value: v.id,
       label: v.name,
       picUrl: v.picUrl,
@@ -153,7 +161,7 @@ useIntersectionObserver(
       </div>
     </button>
   </HScroll>
-  <div v-if="list.length === 1" class="flex items-center gap-2">
+  <div v-if="type === 'game'" class="flex items-center gap-2">
     <FilterSelect v-model="value" :option="option">
       <template #placeholder>
         <div class="text-white">
@@ -163,7 +171,7 @@ useIntersectionObserver(
     </FilterSelect>
 
     <FilterProviderSelect
-      :option="providerList"
+      :option="providerOption"
       @change="changeHandler"
     >
       <template #placeholder>
@@ -191,11 +199,9 @@ useIntersectionObserver(
     </template>
 
     <template v-if="type === 'provider'">
-      <template v-for="(item, idx) in list" :key="idx">
-        <div class="grid gap-[12px] grid-cols-[repeat(auto-fill,minmax(180px,1fr))]">
-          <BaseGameProvider v-for="provider in item.data" :key="provider.id" :info="provider" />
-        </div>
-      </template>
+      <div class="grid gap-[12px] md:grid-cols-[repeat(auto-fill,minmax(180px,1fr))] grid-cols-[repeat(auto-fill,minmax(133px,1fr))]">
+        <BaseGameProvider v-for="(item, idx) in providerList" :key="idx" :info="item" />
+      </div>
     </template>
   </Spin>
 </template>

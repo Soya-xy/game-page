@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
-import { asyncHotGameData, asyncModuleData } from '~/api/home'
+import { asyncGameByTag, asyncModuleData, getGameByTag, getModuleDataGame } from '~/api/home'
 
 const id = defineProp('')
 const type = defineProp('')
@@ -8,7 +8,6 @@ const list = defineProp<any[]>([])
 const haveMore = defineProp(true)
 const title = defineProp('')
 const moreFetch = defineProp<(opt: any) => Promise<any[]>>()
-console.log('🚀 ~ moreFetch:', moreFetch)
 const containerRef = ref()
 const page = ref(1)
 const drawerOpen = ref(false)
@@ -48,13 +47,14 @@ const swiper = useSwiper(containerRef, {
   },
 })
 
-const data = ref<any[]>([])
+const data = ref<any>([])
 
 async function fetchGameData(pageNo = 1) {
   if (type.value) {
-    const { data: gameList } = await asyncHotGameData()
+    const { data: gameList } = await asyncGameByTag(type.value)
+
     if (gameList.value)
-      return gameList.value.list || []
+      return gameList.value || []
   }
 
   if (id.value) {
@@ -72,25 +72,24 @@ async function fetchGameData(pageNo = 1) {
 
 // 加载更多
 async function getMoreFetch(opt: any) {
-  console.log('🚀 ~ getMoreFetch ~ moreFetch.value:', moreFetch.value)
-
   if (moreFetch.value) {
     return moreFetch.value(opt)
   }
 
   if (type.value) {
-    const { data: gameList } = await asyncHotGameData()
+    const { data: gameList } = await getGameByTag(type.value)
+
     if (gameList.value)
-      return gameList.value.list || []
+      return gameList.value || []
   }
 
   if (id.value) {
-    const { data: gameList } = await asyncModuleData({
+    const gameList = await getModuleDataGame({
       ...opt,
       id: id.value,
     })
-    if (gameList.value)
-      return gameList.value.list || []
+    if (gameList)
+      return gameList.list || []
   }
 
   return []

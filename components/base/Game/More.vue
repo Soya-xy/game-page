@@ -22,7 +22,6 @@ async function loadGames() {
     let data
     if (getData.value) {
       data = await getData.value({ pageNo: page.value, pageSize: 20 })
-      console.log('🚀 ~ loadGames ~ data:', data)
     }
     else {
       const tag = getRouterHash(hash.value)
