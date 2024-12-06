@@ -27,7 +27,11 @@ export default defineNuxtConfig({
     enabled: true,
   },
   app: {
-    pageTransition: false,
+    keepalive: true,
+    pageTransition: {
+      name: 'fade',
+      mode: 'in-out',
+    },
     head: {
       viewport: 'width=device-width,initial-scale=1',
       link: [
@@ -47,7 +51,6 @@ export default defineNuxtConfig({
   css: [
     './assets/css/main.css',
   ],
-
   colorMode: {
     fallback: 'dark',
     dataValue: 'theme',
@@ -56,6 +59,9 @@ export default defineNuxtConfig({
     public: {
       appUrl: process.env.NUXT_PUBLIC_APP_URL,
     },
+  },
+  devServer: {
+    port: 9832,
   },
 
   future: {
@@ -84,6 +90,7 @@ export default defineNuxtConfig({
       // ignore: ['/hi'],
     },
   },
+  // debug: process.env.NODE_ENV === 'development',
   eslint: {
     config: {
       standalone: false,
@@ -107,6 +114,10 @@ export default defineNuxtConfig({
       useCookie: true,
       cookieCrossOrigin: true,
     },
+  },
+
+  image: {
+    // domains: ['web-res-aaa.afunimg5.com'],
   },
 
   macros: {

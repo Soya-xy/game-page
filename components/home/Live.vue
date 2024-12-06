@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
-import { getSportData } from '~/api'
+import { asyncSportsData } from '~/api/home'
 
-const { data } = await getSportData()
+const { data } = await asyncSportsData()
 
 const title = defineProp('')
 const containerRef = ref()

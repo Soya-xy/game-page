@@ -55,8 +55,8 @@ async function onSubmit(e: any) {
         </div>
       </div>
     </div>
-    <div class="w-full md:w-[400px] px-[40px] pt-[40px] flex flex-col relative">
-      <div class="text-[20px] font-bold text-white mb-[20px]">
+    <div class="w-full md:w-[400px] p-[20px] md:px-[40px] md:pt-[40px] flex flex-col relative">
+      <div class="text-[20px] font-bold text-white mb-[20px] hidden md:block">
         Sign In
       </div>
       <div class="flex flex-col gap-[10px] flex-1 overflow-y-auto pb-[40px]">
@@ -89,7 +89,7 @@ async function onSubmit(e: any) {
               <FormMessage />
             </FormItem>
           </FormField>
-          <div class="text-[14px] text-white text-right">
+          <div class="md:text-[14px] text-[12px] text-white text-right">
             <div class="cursor-pointer">
               Forgot Password?
             </div>
@@ -98,13 +98,13 @@ async function onSubmit(e: any) {
             <Checkbox v-model:checked="remember" class="border-[--bc-activeColor] data-[state=checked]:bg-[--bc-activeColor]" />
 
             <div class="flex-1 overflow-hidden">
-              <div class="text-white cursor-pointer">
+              <div class="text-white cursor-pointer md:text-[14px] text-[12px]">
                 Remember me
               </div>
             </div>
           </div>
           <button
-            class="flex items-center min-h-[46px] justify-center w-full bg-color-main-1 rounded text-[14px] font-bold text-black bg-[--bc-activeColor]"
+            class="flex items-center md:min-h-[46px] min-h-[40px] justify-center w-full rounded text-[14px] font-bold text-black bg-[--bc-activeColor]"
             type="submit"
           >
             Sign
@@ -112,19 +112,19 @@ async function onSubmit(e: any) {
           </button>
         </BaseForm>
 
-        <div class="text-[14px] text-[--bc-textColor]">
-          <div>
+        <div class="md:text-[14px] text-[12px] text-[--bc-textColor]">
+          <div class="flex md:block gap-x-[5px]">
             Don't have an account?
             <div class="text-[--bc-activeColor] font-[900] cursor-pointer" @click="router.push('/register')">
               Sign Up
             </div>
           </div>
         </div>
-        <div class="flex-1" />
+        <div class="flex-1 hidden md:block" />
         <div class="flex flex-col text-center items-center text-[14px] text-color-text-1">
           <div class="flex w-full items-center mb-[10px]">
             <div class="flex-1 h-[1.1px] bg-[--bc-buttonColor]" />
-            <div class="mx-[13px]">
+            <div class="mx-[13px] my-[15px] md:my-0">
               OR
             </div>
             <div class="flex-[1] h-[1.1px] bg-[--bc-buttonColor]" />
@@ -134,7 +134,7 @@ async function onSubmit(e: any) {
               <div id="login-register-google-login" class="relative flex justify-center items-center flex-1">
                 <div class="w-full flex items-center justify-center">
                   <button
-                    class="rounded text-white font-bold flex items-center w-full justify-center shrink-0 bg-color6 h-[46px] px-[15px] text-[14px]"
+                    class="rounded text-white font-bold flex items-center w-full justify-center shrink-0 bg-color6 h-[46px] px-[15px] md:text-[14px] text-[12px]"
                   >
                     <Image
                       src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/login/google1.png?t20231209"

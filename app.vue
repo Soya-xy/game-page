@@ -7,9 +7,17 @@ color.preference = 'dark'
 const nuxtApp = useNuxtApp()
 const { layout, ready } = useLayoutState()
 const once = ref(true)
+const { isPageLoading } = useLoading()
+
+nuxtApp.hook('page:loading:start', () => {
+  isPageLoading.value = true
+})
 
 nuxtApp.hook('page:finish', () => {
-  once.value = false
+  if (once.value)
+    once.value = false
+
+  isPageLoading.value = false
 })
 
 useHead({
@@ -19,16 +27,21 @@ useHead({
 
 <template>
   <VitePwaManifest />
-  <ClientOnly>
-    <Toaster />
-  </ClientOnly>
   <BaseSpin v-if="once" />
-  <div v-if="ready">
-    <NuxtLayout :name="layout">
-      <NuxtPage />
-    </NuxtLayout>
-  </div>
+  <Suspense>
+    <template v-if="ready">
+      <NuxtLayout :name="layout">
+        <NuxtPage />
+      </NuxtLayout>
+    </template>
+    <template #fallback>
+      <div class="opacity-50 italic">
+        <span class="animate-pulse">Loading...</span>
+      </div>
+    </template>
+  </Suspense>
   <ClientOnly>
     <BasePageModal />
+    <Toaster />
   </ClientOnly>
 </template>

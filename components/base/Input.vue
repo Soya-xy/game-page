@@ -10,7 +10,7 @@ const clickIcon = defineEmit()
 
 <template>
   <div
-    class="w-full rounded-[10px] flex items-center shrink-0 border-[--bc-buttonColor] border border-solid relative h-[46px] h-[46px] text-[14px]  hover:border-[--bc-activeColor]  bg-[--bc-searchColor]"
+    class="w-full rounded-[10px] flex items-center shrink-0 border-[--bc-bgColor5] border border-solid relative  h-[40px] text-[14px] hover:border-[--bc-activeColor] bg-[--bc-searchColor]"
   >
     <slot v-if="$slots.prefix" name="prefix" />
     <Input

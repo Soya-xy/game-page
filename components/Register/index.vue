@@ -19,6 +19,7 @@ async function onSubmit(e: any) {
   if (!isAgree.value) {
     return toast({
       title: 'Please agree to the terms of service and privacy policy',
+      bgColor: 'bg-red-500',
     })
   }
 
@@ -27,8 +28,8 @@ async function onSubmit(e: any) {
 </script>
 
 <template>
-  <div class="flex justify-between overflow-hidden w-[800px] h-[700px] bg-color2 rounded">
-    <div class="flex flex-col justify-between relative w-[400px]">
+  <div class="flex justify-between overflow-hidden w-full h-full md:w-[800px] md:h-[700px] bg-color2 rounded">
+    <div class="hidden md:flex flex-col justify-between relative w-[400px]">
       <div class="text-[0px] w-[400px] h-[700px] relative">
         <Image
           src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/login/banner_pc.jpg"
@@ -61,11 +62,11 @@ async function onSubmit(e: any) {
         </div>
       </div>
     </div>
-    <div class="w-[400px] px-[40px] pt-[40px] flex flex-col relative">
-      <div class="text-[20px] font-bold text-white mb-[20px]">
+    <div class="w-[400px] px-[20px] md:px-[40px] md:pt-[40px] flex flex-col relative">
+      <div class="hidden md:block text-[20px] font-bold text-white mb-[20px]">
         Sign Up
       </div>
-      <div class="flex flex-col gap-[10px] flex-1 overflow-y-auto pb-[40px]">
+      <div class="flex flex-col gap-[10px] flex-1 overflow-y-auto pb-[40px] md:pt-0 pt-[20px]">
         <BaseForm :schema="schema" class="flex flex-col gap-[10px]" @submit="onSubmit">
           <FormField v-slot="{ componentField }" name="mobile">
             <FormItem>
@@ -138,7 +139,7 @@ async function onSubmit(e: any) {
             </div>
           </div>
           <button
-            class="flex items-center min-h-[46px] justify-center w-full bg-color-main-1 rounded text-[14px] font-bold text-black bg-[--bc-activeColor]"
+            class="flex items-center min-h-[46px] justify-center w-full rounded text-[14px] font-bold text-black bg-[--bc-activeColor]"
             type="submit"
           >
             Sign
@@ -146,19 +147,19 @@ async function onSubmit(e: any) {
           </button>
         </BaseForm>
 
-        <div class="text-[14px] text-[--bc-textColor]">
-          <div>
+        <div class="md:text-[14px] text-[12px] text-[--bc-textColor]">
+          <div class="flex md:block gap-x-[5px]">
             Already have an account?
             <div class="text-[--bc-activeColor] font-[900] cursor-pointer" @click="router.push('/login')">
               Sign In
             </div>
           </div>
         </div>
-        <div class="flex-1" />
-        <div class="flex flex-col text-center items-center text-[14px] text-color-text-1">
+        <div class="hidden md:flex-1" />
+        <div class="flex flex-col text-center items-center md:text-[14px] text-[12px] text-color-text-1">
           <div class="flex w-full items-center mb-[10px]">
             <div class="flex-1 h-[1.1px] bg-[--bc-buttonColor]" />
-            <div class="mx-[13px]">
+            <div class="mx-[13px] mb-[15px] md:mb-0">
               OR
             </div>
             <div class="flex-[1] h-[1.1px] bg-[--bc-buttonColor]" />

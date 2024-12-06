@@ -11,6 +11,7 @@ import { TooltipArrow } from 'radix-vue'
 const side = defineProp<'top' | 'right' | 'bottom' | 'left' | undefined>('top')
 const sideOffset = defineProp<number>(0)
 const arrowColor = defineProp<string>('currentColor')
+const contentClass = defineProp<string>('')
 </script>
 
 <template>
@@ -19,7 +20,7 @@ const arrowColor = defineProp<string>('currentColor')
       <TooltipTrigger as-child>
         <slot />
       </TooltipTrigger>
-      <TooltipContent class="p-0 shadow-bc2" :side :side-offset>
+      <TooltipContent class="p-0 shadow-bc2" :class="contentClass" :side :side-offset>
         <slot name="content" />
         <TooltipArrow :width="11" :height="5" fill="currentColor" :style="{ fill: arrowColor }" />
       </TooltipContent>

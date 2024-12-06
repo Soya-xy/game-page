@@ -1,6 +1,8 @@
 <script lang="ts" setup>
+import { addBrowser, asyncBannerList } from '~/api/banner'
+
+const { token } = useUserStore()
 const containerRef = ref()
-const games = ref(Array.from({ length: 20 }))
 useSwiper(containerRef, {
   loop: true,
   slidesPerView: 1,
@@ -46,17 +48,23 @@ useSwiper(containerRef, {
   `,
   ],
 })
+const { data: games } = await asyncBannerList(1)
+
+const eventHandler = useTrack((id: number) => {
+  addBrowser(id)
+})
 </script>
 
 <template>
-  <div class="min-h-[125px] flex flex-col gap-y-[12px]">
+  <div v-if="token" class="min-h-[125px] flex flex-col gap-y-[12px]">
     <ClientOnly>
       <swiper-container ref="containerRef" :init="false" class="w-full h-full">
         <swiper-slide v-for="(game, index) in games" :key="index" class="w-auto h-[41.315%]">
-          <div class="bg-no-repeat bg-cover rounded-[10px] cursor-pointer">
+          <div class="bg-no-repeat bg-cover rounded-[10px] cursor-pointer" @click="() => eventHandler(game.id)">
             <Image
-              src="https://buck.engames.com/cdn-cgi/image/f=auto,w=343,dpr=3,q=80/buck/AfunGlobal/NEW/EN20241026-11.png"
+              :src="game.picUrl"
               loading="lazy" class="rounded w-full"
+              :alt="game.title"
             />
           </div>
         </swiper-slide>
@@ -64,4 +72,5 @@ useSwiper(containerRef, {
       <div class="my-pagination flex justify-center items-center gap-[4px]" />
     </ClientOnly>
   </div>
+  <HomeBanner v-else />
 </template>

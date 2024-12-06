@@ -1,11 +1,12 @@
 <script lang="ts" setup>
+import type { Locale } from '@intlify/core-base'
 import { useMenu } from '@/composables/menu'
-import { cn } from '@/lib/utils'
 
 const router = useRouter()
 const userStore = useUserStore()
 const { token, user } = storeToRefs(userStore)
 const { toggleMenu, isOpen } = useMenu()
+const showLanguageModal = ref<boolean>(false)
 
 // 添加菜单配置数组
 const menuItems = [
@@ -18,14 +19,19 @@ const menuItems = [
   { label: 'Setting', icon: 'icon-n-security-settings' },
   { label: 'Install', icon: 'icon-n-install' },
 ]
+const { setLocale } = useI18n()
+function changeLang(lang: Locale) {
+  setLocale(lang)
+  router.replace('/')
+  showLanguageModal.value = false
+}
 </script>
 
 <template>
   <header
-    :class="cn(
-      'h-[60px] fixed top-0 left-0 right-0 z-[100] w-full',
-      'bg-inherit flex items-center justify-between shadow-[0_4px_20px_#00000060]',
-    )
+    class="
+      h-[60px] fixed top-0 left-0 right-0 z-[100] w-full bg-inherit flex items-center justify-between shadow-[0_4px_20px_#00000060]
+
     "
   >
     <div class="flex items-center gap-[27px] ml-[22px]">
@@ -48,13 +54,13 @@ const menuItems = [
       <BaseIconButton>
         <i-svg-chat class="w-[25px] h-[24px]" />
       </BaseIconButton>
-      <BaseIconButton>
+      <BaseIconButton @click="showLanguageModal = true">
         <i class="i-carbon-earth w-[25px] h-[24px]" />
       </BaseIconButton>
       <template v-if="token">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <BaseAvatar :src="user.avatar" :alt="user.nickname" />
+            <BaseAvatar :src="user?.avatar" :alt="user?.nickname" />
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="end"
@@ -62,7 +68,7 @@ const menuItems = [
           >
             <DropdownMenuItem
               v-for="item in menuItems" :key="item.label"
-              class="hover:text-white hover:bg-page hover:text-bold focus:text-white focus:bg-page focus:text-bold p-0"
+              class="hover:text-white hover:bg-page hover:font-bold focus:text-white focus:bg-page focus:font-bold p-0"
             >
               <div class="pl-[20px] pr-[10px] h-[46px] flex items-center cursor-pointer">
                 <i
@@ -77,7 +83,8 @@ const menuItems = [
             <DropdownMenuSeparator class="bg-button" />
 
             <DropdownMenuItem
-              class="hover:text-white hover:bg-page hover:text-bold focus:text-white focus:bg-page focus:text-bold p-0"
+              class="hover:text-white hover:bg-page hover:font-bold focus:text-white focus:bg-page focus:font-bold p-0"
+              @click="userStore.logout"
             >
               <div class="pl-[20px] pr-[10px] h-[46px] flex items-center cursor-pointer">
                 <i
@@ -91,6 +98,12 @@ const menuItems = [
       </template>
     </div>
   </header>
+  <BaseModal v-model:show="showLanguageModal">
+    <template #title>
+      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
+        Switch Language
+      </div>
+    </template>
+    <BaseLang @change="changeLang" />
+  </BaseModal>
 </template>
-
-<style></style>

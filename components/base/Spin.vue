@@ -3,7 +3,11 @@ const isPage = defineProp<boolean>(false)
 </script>
 
 <template>
-  <div class="app-loading" :class="{ 'top-0 !z-[9999]': !isPage }">
+  <div
+    class="app-loading md:top-[60px]" :class="{
+      'top-0 !z-[9999] left-0': !isPage,
+    }"
+  >
     <div class="spin" />
   </div>
 </template>
@@ -11,7 +15,6 @@ const isPage = defineProp<boolean>(false)
 <style scoped>
 .app-loading {
   position: fixed;
-  left: 0;
   z-index: 99;
   background-color: var(--bc-bgColor);
   display: flex;

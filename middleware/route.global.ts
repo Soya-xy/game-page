@@ -30,6 +30,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 
   // 客户端获取用户信息
   if (import.meta.client) {
+    window.scrollTo(0, 0)
     const userStore = useUserStore()
     if (userStore.token) {
       userStore.getUserInfo()
