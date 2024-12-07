@@ -24,6 +24,7 @@
     "clsx": "^2.1.1",
     "colorthief": "^2.6.0",
     "dayjs": "^1.11.13",
+    "floating-vue": "^5.2.2",
     "lucide-vue-next": "^0.462.0",
     "motion-v": "latest",
     "radix-vue": "^1.9.10",
@@ -32,6 +33,7 @@
     "tailwindcss-animate": "^1.0.7",
     "vaul-vue": "^0.2.0",
     "vee-validate": "^4.14.7",
+    "vue-qrcode": "^2.2.2",
     "vue3-lottie": "^3.3.1",
     "zod": "^3.23.8"
   },

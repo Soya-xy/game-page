@@ -30,7 +30,7 @@ async function onSubmit(e: any) {
         />
         <div class="text-center w-full px-[20px] absolute top-[432px]">
           <div class="font-[200] text-white mb-[2px] text-[18px]">
-            Welcome to <b class="text-[--bc-activeColor] font-[900] uppercase text-[24px]">afun.com</b>
+            Welcome to <b class="text-active font-[900] uppercase text-[24px]">afun.com</b>
           </div>
           <div class="text-[14px] mb-[12px] text-[--bc-textColor]">
             Bring you an unprecedented gaming experience.
@@ -115,7 +115,7 @@ async function onSubmit(e: any) {
         <div class="md:text-[14px] text-[12px] text-[--bc-textColor]">
           <div class="flex md:block gap-x-[5px]">
             Don't have an account?
-            <div class="text-[--bc-activeColor] font-[900] cursor-pointer" @click="router.push('/register')">
+            <div class="text-active font-[900] cursor-pointer" @click="router.push('/register')">
               Sign Up
             </div>
           </div>

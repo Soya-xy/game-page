@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-
+const { token } = useUserStore()
 </script>
 
 <template>
   <div
+    v-if="!token"
     class="w-full h-0 pb-[53.33%] bg-no-repeat bg-cover bg-center relative"
     style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/referAndEarn/banner.png?20241031);"
   >
@@ -22,6 +23,11 @@
     >
       Sign Up &amp; Earn
     </button>
+  </div>
+  <div v-else class="px-[15px] pt-[15px] gap-y-[15px] flex flex-col">
+    <WapAffiliateUserTotal />
+    <WapAffiliateUserClaim />
+    <WapAffiliateUserUrl />
   </div>
 </template>
 

@@ -23,6 +23,7 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-swiper',
     'motion-v/nuxt',
+    'floating-vue/nuxt',
   ],
   devtools: {
     enabled: true,

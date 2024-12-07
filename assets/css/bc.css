@@ -485,3 +485,7 @@ html {
 .drop-shadow-color-btn-2 {
   filter: drop-shadow(1px 1px 1px var(--bc-bgColor9)) drop-shadow(-1px -1px 1px var(--bc-bgColor9));
 }
+
+.bg-color-linear-14 {
+  background: linear-gradient(180deg, #242b28, #1a2222);
+}

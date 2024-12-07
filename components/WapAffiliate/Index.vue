@@ -11,7 +11,18 @@ const currentList = ref(['PANEL', 'FAQ', 'TUTORIAL'])
         <WapAffiliateInvite />
         <div class="flex flex-col px-[15px] gap-[25px] mt-[25px]">
           <PcAffiliateRewards />
+          <WapAffiliateRules />
+          <WapAffiliateLive />
+          <PcAffiliateContact />
         </div>
+      </template>
+      <template v-if="current === 1">
+        <WapAffiliateFaq />
+      </template>
+      <template v-if="current === 2">
+        <AffiliateTop />
+        <AffiliateFriends />
+        <AffiliateRules />
       </template>
     </div>
   </div>

@@ -10,7 +10,7 @@ const top = defineEmit()
       @click="top"
     >
       <i
-        class="inline-block h-[max-content] w-[max-content] icon-new-arrow cursor-pointer text-[20px] text-[--bc-activeColor] -rotate-[90deg]"
+        class="inline-block h-[max-content] w-[max-content] icon-new-arrow cursor-pointer text-[20px] text-active -rotate-[90deg]"
       />
       TOP
     </div>

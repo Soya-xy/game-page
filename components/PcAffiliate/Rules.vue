@@ -39,10 +39,10 @@ function handleSliderChange(value: number) {
             You can make money by referring friends to and earn up to commission rewards！
           </div>
           <div v-else class="flex justify-between flex-wrap gap-[10px]">
-            <div class="text-[--bc-activeColor] text-[15px] underline text-left cursor-pointer" @click="showQa = true">
+            <div class="text-active text-[15px] underline text-left cursor-pointer" @click="showQa = true">
               Commission calculation rules
             </div>
-            <div class="text-[--bc-activeColor] text-[15px] underline cursor-pointer text-left min-w-[345px]" @click="showRules = true">
+            <div class="text-active text-[15px] underline cursor-pointer text-left min-w-[345px]" @click="showRules = true">
               Commission reward rules
             </div>
           </div>

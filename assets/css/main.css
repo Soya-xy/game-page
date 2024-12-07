@@ -2,3 +2,14 @@
 @import './bc.css';
 @import './tailwind.css';
 @import './icon.css';
+
+.v-popper--theme-dropdown .v-popper__inner {
+  background: var(--bc-bgColor9) !important;
+  color: var(--bc-textColor) !important;
+  border: 1px solid var(--bc-borderColor) !important;
+}
+
+.v-popper--theme-dropdown .v-popper__arrow-inner,
+.v-popper--theme-dropdown .v-popper__arrow-outer {
+  border-color: var(--bc-bgColor9) !important;
+}
