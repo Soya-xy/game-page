@@ -23,7 +23,7 @@ const nowLevel = computed(() => {
         class="bg-linear-12 border-radius-1 p-[15px] h-[150px] flex flex-col relative items-center"
       >
         <div class="flex items-center flex-1 w-full">
-          <div v-if="!nowLevel.bonusRain" class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1]" />
+          <div v-if="!nowLevel.bonusRain" class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1] border-radius-1" />
           <div
             class="w-[90px] h-[90px] mr-[15px] shrink-0 bg-no-repeat bg-cover"
             style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/bonusCenter/redpacket.png);"
@@ -42,7 +42,7 @@ const nowLevel = computed(() => {
         class="bg-linear-12 border-radius-1 p-[15px] h-[150px] flex flex-col relative items-center"
       >
         <div class="flex items-center flex-1 w-full">
-          <div v-if="nowLevel.levelBonus <= 0" class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1]" />
+          <div v-if="nowLevel.levelBonus <= 0" class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1] border-radius-1" />
           <div class="w-[90px] h-[90px] mr-[15px] shrink-0 bg-no-repeat bg-cover" style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/bonusCenter/vip_upgrade.png);" /><div class="flex-1">
             <div class="text-[18px] text-white mb-[6px]">
               Level up rewards
@@ -61,7 +61,7 @@ const nowLevel = computed(() => {
       <!-- 等级经验 -->
       <div class="bg-linear-12 border-radius-1 p-[15px] h-[150px] flex flex-col relative items-center">
         <div class="flex items-center flex-1 w-full">
-          <div v-if="nowLevel.weeklyBonus <= 0" class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1]" />
+          <div v-if="nowLevel.weeklyBonus <= 0" class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1] border-radius-1" />
           <div class="w-[90px] h-[90px] mr-[15px] shrink-0 bg-no-repeat bg-cover" style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/bonusCenter/vip_weekly.png?t20231224);" /><div class="flex-1">
             <div class="text-[18px] text-white mb-[6px]">
               Weekly rewards
@@ -79,7 +79,7 @@ const nowLevel = computed(() => {
       <!-- 周礼金 -->
       <div class="bg-linear-12 border-radius-1 p-[15px] h-[150px] flex flex-col relative items-center">
         <div class="flex items-center flex-1 w-full">
-          <div v-if="nowLevel.dailyBonus <= 0" class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1]" />
+          <div v-if="nowLevel.dailyBonus <= 0" class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1] border-radius-1" />
           <div class="w-[90px] h-[90px] mr-[15px] shrink-0 bg-no-repeat bg-cover" style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/bonusCenter/vip_day_bonus.png);" />
           <div class="flex-1">
             <div class="text-[18px] text-white mb-[6px]">
@@ -101,7 +101,7 @@ const nowLevel = computed(() => {
       <!-- 日礼金 -->
       <div class="bg-linear-12 border-radius-1 p-[15px] h-[150px] flex flex-col relative items-center">
         <div class="flex items-center flex-1 w-full">
-          <div v-if="nowLevel.monthlyBonus <= 0" class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1]" />
+          <div v-if="nowLevel.monthlyBonus <= 0" class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1] border-radius-1" />
           <div class="w-[90px] h-[90px] mr-[15px] shrink-0 bg-no-repeat bg-cover" style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/bonusCenter/vip_month_bonus.png);" /><div class="flex-1">
             <div class="text-[18px] text-white mb-[6px]">
               Rewards Harian
@@ -124,7 +124,7 @@ const nowLevel = computed(() => {
       <!-- 专属vip -->
       <div class="bg-linear-12 border-radius-1 p-[15px] h-[150px] flex flex-col relative items-center">
         <div class="flex items-center flex-1 w-full">
-          <div v-if="!nowLevel.exclusiveVip" class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1]" />
+          <div v-if="!nowLevel.exclusiveVip" class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1] border-radius-1" />
           <div class="w-[90px] h-[90px] mr-[15px] shrink-0 bg-no-repeat bg-cover" style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/bonusCenter/vip_host.png);" /><div class="flex-1">
             <div class="text-[18px] text-white mb-[6px]">
               Exclusive VIP support
@@ -137,7 +137,7 @@ const nowLevel = computed(() => {
       <!-- 专属奖金 -->
       <div class="bg-linear-12 border-radius-1 p-[15px] h-[150px] flex flex-col relative items-center">
         <div class="flex items-center flex-1 w-full">
-          <div v-if="!nowLevel.exclusiveBonuses" class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1]" />
+          <div v-if="!nowLevel.exclusiveBonuses" class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1] border-radius-1" />
           <div class="w-[90px] h-[90px] mr-[15px] shrink-0 bg-no-repeat bg-cover" style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/bonusCenter/vip_exclusive.png);" /><div class="flex-1">
             <div class="text-[18px] text-white mb-[6px]">
               Exclusive rewards
@@ -150,7 +150,7 @@ const nowLevel = computed(() => {
       <!-- 优质奖品 -->
       <div class="bg-linear-12 border-radius-1 p-[15px] h-[150px] flex flex-col relative items-center">
         <div class="flex items-center flex-1 w-full">
-          <div v-if="!nowLevel.premiumGiveaways" class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1]" />
+          <div v-if="!nowLevel.premiumGiveaways" class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1] border-radius-1" />
           <div class="w-[90px] h-[90px] mr-[15px] shrink-0 bg-no-repeat bg-cover" style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/bonusCenter/vip_luxury.png);" /><div class="flex-1">
             <div class="text-[18px] text-white mb-[6px]">
               Premium giveaways

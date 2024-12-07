@@ -8,14 +8,15 @@ const { isPc } = useDevice()
 
 <template>
   <div
-    class="w-full bg-no-repeat bg-cover h-[200px] relative border-radius-1 !rounded-b-[0]"
+    class="w-full bg-no-repeat bg-cover h-[200px] relative md:rounded-[10px] !rounded-b-[0]"
     style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/vip/bg_pc_login.png);"
   >
     <div class="w-full h-[200px] flex flex-col">
       <div class="flex w-full justify-between h-full">
-        <div class="ml-[114px] h-[184px] shrink-0 relative">
-          <Image src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/vip/l/vip1_l.png" alt="" importance="auto" class="h-full" />
-        </div><div class="flex flex-col justify-between pt-[12px] pb-[28px] flex-1 max-w-[800px] ml-auto mr-[5px]">
+        <div class="md:ml-[114px] h-[184px] shrink-0 relative">
+          <Image src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/vip/l/vip1_l.png" alt="" importance="auto" class="!h-auto md:!h-full" />
+        </div>
+        <div class="flex flex-col justify-between pt-[12px] pb-[28px] flex-1 max-w-[800px] ml-auto mr-[5px]">
           <div>
             <div>
               <h4 class="text-[--bc-color20] flex justify-between items-centertext-[20px] mb-[4px] font-bold">

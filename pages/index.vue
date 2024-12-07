@@ -9,12 +9,12 @@ definePageMeta({
   pageIndex: PageIndexEnum.home,
 })
 
-const { data, error } = await asyncHomeData()
+const { data } = await asyncHomeData()
 
 const { isPc } = useDevice()
-if (error.value) {
-  navigateTo('/error')
-}
+// if (error.value) {
+//   navigateTo('/error')
+// }
 
 function getComponent(type: ModuleType) {
   if (!Component[type])
