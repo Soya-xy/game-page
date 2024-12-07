@@ -12,6 +12,8 @@ const currentList = ref(['PANEL', 'FAQ', 'TUTORIAL'])
         <div class="flex flex-col px-[15px] gap-[25px] mt-[25px]">
           <PcAffiliateRewards />
           <WapAffiliateRules />
+          <WapAffiliateUserWallet />
+          <WapAffiliateUserTeam />
           <WapAffiliateLive />
           <PcAffiliateContact />
         </div>

@@ -1,8 +1,18 @@
 <script lang="ts" setup>
 import { Dropdown } from 'floating-vue'
 import VueQrcode from 'vue-qrcode'
+import { useToast } from '../ui/toast'
 
 const { token } = useUserStore()
+const { copy } = useClipboard()
+const { toast } = useToast()
+function copyUrl(str: string) {
+  copy(str)
+  toast({
+    title: 'Copied',
+    description: 'Copied to clipboard',
+  })
+}
 </script>
 
 <template>
@@ -51,8 +61,8 @@ const { token } = useUserStore()
               <div class="flex">
                 <div class="w-[105px] h-[105px] p-[3px] bg-[#FFF]">
                   <VueQrcode
-                    :margin="2" value="https://www.1stg.me"
-                    :color="{ dark: '#000000ff', light: '#ffffffff' }" type="image/png"
+                    :margin="2" value="https://www.1stg.me" :color="{ dark: '#000000ff', light: '#ffffffff' }"
+                    type="image/png"
                   />
                 </div>
                 <div class="flex-1 ml-[10px] min-w-[100px]">
@@ -64,10 +74,14 @@ const { token } = useUserStore()
                         Link
                       </div>
                       <div class="h-full flex items-center flex-1 shrink-0 relative overflow-hidden">
-                        <input class="h-full flex-1 min-w-[60px] bg-transparent text-white placeholder:font-normal">
+                        <input
+                          class="h-full flex-1 min-w-[60px] bg-transparent text-white placeholder:font-normal"
+                          disabled
+                        >
                       </div>
                       <i
                         class="inline-block h-[max-content] w-[max-content] icon-new-copy cursor-pointer text-[20px] text-[--bc-color20]"
+                        @click="copyUrl('url')"
                       />
                     </div>
                   </div>
@@ -79,9 +93,14 @@ const { token } = useUserStore()
                         Code
                       </div>
                       <div class="h-full flex items-center flex-1 shrink-0 relative overflow-hidden">
-                        <input class="h-full flex-1 min-w-[60px] bg-transparent text-white placeholder:font-normal">
-                      </div><i
+                        <input
+                          class="h-full flex-1 min-w-[60px] bg-transparent text-white placeholder:font-normal"
+                          disabled
+                        >
+                      </div>
+                      <i
                         class="inline-block h-[max-content] w-[max-content] icon-new-copy cursor-pointer text-[20px] text-[--bc-color20]"
+                        @click="copyUrl('code')"
                       />
                     </div>
                   </div>
@@ -128,13 +147,13 @@ const { token } = useUserStore()
                   <div class="text-white font-bold text-[20px] relative">
                     Today team data
                   </div>
-                  <Dropdown :distance="6" placement="bottom-end">
+                  <Dropdown :distance="6" placement="right">
                     <i
                       class="inline-block h-[max-content] w-[max-content] icon-new-wenhao cursor-pointer text-[20px] ml-[10px] relative text-[--bc-color20] hover-question-modal hover-text-white pr-[10px] -mr-[10px]"
                     />
                     <template #popper>
                       <div
-                        class="absolute w-[280px] left-[24px] top-[0] p-[10px] box-shadow-02 border-radius-0 bg-[--bc-bgColor9] z-10"
+                        class=" w-[280px] left-[24px]  p-[10px] box-shadow-02 border-radius-0 bg-[--bc-bgColor9] z-10"
                       >
                         <ul class="text-[14px] list-disc list-outside text-color leading-[1.2] pl-[20px]">
                           <li>Sign up:Number of users who signed up today</li>
