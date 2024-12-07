@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import type { VipLevel } from '~/api/vip'
+
+const levelList = inject<VipLevel[]>('levelList')
 const show = ref(false)
+const { isPc } = useDevice()
 </script>
 
 <template>
@@ -62,11 +66,77 @@ const show = ref(false)
       </div>
     </div>
   </div>
-  <BaseModal v-model:show="show">
+  <BaseModal v-if="isPc" v-model:show="show" content-class="w-[700px]">
     <template #title>
-      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
-        VIP Level &amp; Benefits
+      <div classs="w-full overflow-hidden h-full">
+        <div class="flex justify-between items-center h-[54px] px-[20px] text-white">
+          VIP Level &amp; Benefits
+        </div>
       </div>
     </template>
+    <div class="text-[14px] flex-1 bg-color-3 overflow-hidden border-radius-0 flex flex-col">
+      <div class="shrink-0 flex text-justify items-center h-[46px] px-[20px] text-[--bc-color20] font-semibold vip-level-item">
+        <div class="flex-1 shrink-0 text-left">
+          Level
+        </div><div class="flex-1 shrink-0 text-center px-[4px]">
+          Required XP
+        </div><div class="flex-1 shrink-0 text-center px-[4px]">
+          Level up rewards
+        </div><div class="flex-1 shrink-0 text-center px-[4px]">
+          Weekly rewards
+        </div><div class="flex-1 shrink-0 text-center px-[4px]">
+          Daily rewards
+        </div><div class="flex-1 shrink-0 text-center px-[4px]">
+          Rewards Harian
+        </div>
+      </div>
+      <div class="flex-1 overflow-y-auto overflow-hidden">
+        <div v-for="(item, index) in levelList" :key="index" class="flex items-center px-[20px] h-[46px] text-[--bc-textColor] vip-level-item bg-color-linear-12">
+          <div class="flex-1 shrink-0 flex items-center">
+            <Image :src="item.icon" alt="" importance="auto" class="shrink-0 mr-[6px] !h-auto" />
+            <span>{{ item.name }}</span>
+          </div><div class="flex-1 shrink-0 px-[4px] text-center">
+            <template v-if="item.experience">
+              {{ item.experience }}
+            </template>
+            <template v-else>
+              -
+            </template>
+          </div>
+          <div class="flex-1 shrink-0 text-center px-[4px]">
+            <template v-if="item.levelBonus">
+              {{ item.levelBonus }}
+            </template>
+            <template v-else>
+              -
+            </template>
+          </div>
+          <div class="flex-1 shrink-0 text-center px-[4px]">
+            <template v-if="item.weeklyExperience">
+              {{ item.weeklyBonus }}
+            </template>
+            <template v-else>
+              -
+            </template>
+          </div>
+          <div class="flex-1 shrink-0 text-center px-[4px]">
+            <template v-if="item.dailyBonus">
+              {{ item.dailyBonus }}
+            </template>
+            <template v-else>
+              -
+            </template>
+          </div>
+          <div class="flex-1 shrink-0 text-center px-[4px]">
+            <template v-if="item.dailyExperience">
+              {{ item.dailyExperience }}
+            </template>
+            <template v-else>
+              -
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
   </BaseModal>
 </template>

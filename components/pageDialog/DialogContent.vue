@@ -48,7 +48,7 @@ const forwarded = useForwardPropsEmits(delegatedProps)
     <slot />
 
     <div
-      class="absolute right-[20px] top-[20px] rounded-sm opacity-70 hover:opacity-100 focus:outline-none cursor-pointer hover:-rotate-[180deg] transition-all duration-300"
+      class="absolute right-[20px] top-[20px] rounded-sm text-[--bc-color20] opacity-70 hover:opacity-100 focus:outline-none cursor-pointer hover:-rotate-[180deg] transition-all duration-300"
       @click="emits('close')"
     >
       <X class="w-6 h-6" />
