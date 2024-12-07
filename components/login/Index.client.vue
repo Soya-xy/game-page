@@ -121,7 +121,7 @@ async function onSubmit(e: any) {
           </div>
         </div>
         <div class="flex-1 hidden md:block" />
-        <div class="flex flex-col text-center items-center text-[14px] text-color-text-1">
+        <div class="flex flex-col text-center items-center text-[14px] text-color">
           <div class="flex w-full items-center mb-[10px]">
             <div class="flex-1 h-[1.1px] bg-[--bc-buttonColor]" />
             <div class="mx-[13px] my-[15px] md:my-0">

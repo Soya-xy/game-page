@@ -35,9 +35,9 @@ importers:
       lucide-vue-next:
         specifier: ^0.462.0
         version: 0.462.0(vue@3.5.13(typescript@5.7.2))
-      motion:
-        specifier: ^11.12.0
-        version: 11.12.0
+      motion-v:
+        specifier: latest
+        version: 0.3.1-beta.1(typescript@5.7.2)
       radix-vue:
         specifier: ^1.9.10
         version: 1.9.10(vue@3.5.13(typescript@5.7.2))
@@ -3903,8 +3903,8 @@ packages:
   fraction.js@4.3.7:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
 
-  framer-motion@11.12.0:
-    resolution: {integrity: sha512-gZaZeqFM6pX9kMVti60hYAa75jGpSsGYWAHbBfIkuHN7DkVHVkxSxeNYnrGmHuM0zPkWTzQx10ZT+fDjn7N4SA==}
+  framer-motion@11.11.11:
+    resolution: {integrity: sha512-tuDH23ptJAKUHGydJQII9PhABNJBpB+z0P1bmgKK9QFIssHGlfPd6kxMq00LSKwE27WFsb2z0ovY0bpUyMvfRw==}
     peerDependencies:
       '@emotion/is-prop-valid': '*'
       react: ^18.0.0
@@ -4976,19 +4976,8 @@ packages:
   mlly@1.7.3:
     resolution: {integrity: sha512-xUsx5n/mN0uQf4V548PKQ+YShA4/IW0KI1dZhrNrPCLG+xizETbHTkOa1f8/xut9JRPp8kQuMnz0oqwkTiLo/A==}
 
-  motion@11.12.0:
-    resolution: {integrity: sha512-BFH9vwCs4dI9t1W1/1HonahOCnTxcKfzBR8D310wHFdx7oIwlP/51OqLNGO74lxOdCpTLf5BLe233k6yRqJo9Q==}
-    peerDependencies:
-      '@emotion/is-prop-valid': '*'
-      react: ^18.0.0
-      react-dom: ^18.0.0
-    peerDependenciesMeta:
-      '@emotion/is-prop-valid':
-        optional: true
-      react:
-        optional: true
-      react-dom:
-        optional: true
+  motion-v@0.3.1-beta.1:
+    resolution: {integrity: sha512-n8DZ+NCfOJwq4SDw9mCyCdClw/vKvjGd01+mbbwLUwir36YgMn7cPhHxKhAM6DIDp5pt/sEG2PuSN/EiCQcAQA==}
 
   mri@1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
@@ -11576,7 +11565,7 @@ snapshots:
 
   fraction.js@4.3.7: {}
 
-  framer-motion@11.12.0:
+  framer-motion@11.11.11:
     dependencies:
       tslib: 2.8.1
 
@@ -12857,10 +12846,15 @@ snapshots:
       pkg-types: 1.2.1
       ufo: 1.5.4
 
-  motion@11.12.0:
+  motion-v@0.3.1-beta.1(typescript@5.7.2):
     dependencies:
-      framer-motion: 11.12.0
-      tslib: 2.8.1
+      '@vueuse/core': 12.0.0(typescript@5.7.2)
+      framer-motion: 11.11.11
+    transitivePeerDependencies:
+      - '@emotion/is-prop-valid'
+      - react
+      - react-dom
+      - typescript
 
   mri@1.2.0: {}
 

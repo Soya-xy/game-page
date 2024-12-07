@@ -156,7 +156,7 @@ async function onSubmit(e: any) {
           </div>
         </div>
         <div class="hidden md:flex-1" />
-        <div class="flex flex-col text-center items-center md:text-[14px] text-[12px] text-color-text-1">
+        <div class="flex flex-col text-center items-center md:text-[14px] text-[12px] text-color">
           <div class="flex w-full items-center mb-[10px]">
             <div class="flex-1 h-[1.1px] bg-[--bc-buttonColor]" />
             <div class="mx-[13px] mb-[15px] md:mb-0">

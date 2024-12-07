@@ -25,7 +25,7 @@
     "colorthief": "^2.6.0",
     "dayjs": "^1.11.13",
     "lucide-vue-next": "^0.462.0",
-    "motion": "^11.12.0",
+    "motion-v": "latest",
     "radix-vue": "^1.9.10",
     "ramda": "^0.30.1",
     "tailwind-merge": "^2.5.5",

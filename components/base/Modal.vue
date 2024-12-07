@@ -40,7 +40,7 @@ function closeModal() {
     <DialogPortal>
       <DialogContent
         disable-outside-pointer-events :class="cn(
-          'fixed left-1/2 top-1/2 z-[500] flex flex-col min-w-[500px]  max-h-[80vh] -translate-x-1/2 -translate-y-1/2 gap-4 border sm:rounded-lg shadow-lg  bg-[--bc-bgColor8]',
+          'fixed left-1/2 top-1/2 z-[500] flex flex-col min-w-[500px]  max-h-[80vh] -translate-x-1/2 -translate-y-1/2 gap-4 border sm:rounded-lg shadow-lg bg-[--bc-bgColor8]',
           enterAnimation === 0 && 'DialogContentClosed',
           enterAnimation === 1 && 'DialogContentOpen',
           enterAnimation === 2 && 'DialogContentClosed',

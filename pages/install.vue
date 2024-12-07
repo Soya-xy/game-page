@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-definePageMeta({
-  noFooter: true,
-})
 const router = useRouter()
 const { isPc } = useDevice()
 const open = ref<boolean>(false)

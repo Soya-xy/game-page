@@ -4,7 +4,6 @@ import { asyncLevelList } from '~/api/vip'
 
 definePageMeta({
   pageIndex: PageIndexEnum.vip,
-  noFooter: true,
   noHeader: true,
 })
 const currentLevel = ref(1)
@@ -56,7 +55,7 @@ provide('levelList', readonly(levelList.value!))
               </h3>
               <BaseAccordion v-model="currentIndex" type="single" class="w-full" collapsible>
                 <BaseAccordionItem v-for="(item, index) in vipFaq" :key="index" :value="index.toString()">
-                  <BaseAccordionTrigger class="bg-[--bc-bgColor41] px-[18px] text-[13px]" :class="{ 'text-white font-bold': index === currentIndex }">
+                  <BaseAccordionTrigger class="bg-color2 px-[18px] text-[13px]" :class="{ 'text-white font-bold': index === currentIndex }">
                     {{ item.title }}
                   </BaseAccordionTrigger>
                   <BaseAccordionContent>

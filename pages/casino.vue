@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-definePageMeta({
-  noFooter: true,
-})
 const search = ref('')
 </script>
 
