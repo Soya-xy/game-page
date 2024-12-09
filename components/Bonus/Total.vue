@@ -55,7 +55,7 @@
       </div>
     </div>
     <div
-      class="p-[20px] rounded-[10px] relative h-[248px] flex-[7] ml-[20px] bg-[--bc-activity35] blur-[10px] min-w-[400px]"
+      class="p-[20px] rounded-[10px] relative h-[248px] flex-[7] ml-[20px] bg-[--bc-activity35] backdrop-blur-[20px] min-w-[400px]"
     >
       <div
         class="absolute right-0 top-0 rounded-bl-[10px] h-[28px] px-[12px] min-w-[60px] flex items-center text-white bg-[--bc-alphaBlack4a] cursor-pointer text-[14px]"
@@ -86,15 +86,16 @@
                   <div class="text-[14px] leading-[1]">
                     First Deposit
                   </div>
-                </div><img
+                </div>
+                <Image
                   src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/bonusCenter/news/box_light_deposit.png"
                   alt="" importance="auto"
                   class="bonus-deposit-loading w-[80%] left-0 right-0 mx-auto absolute -bottom-[28px] z-[0]"
-                  lazy=""
-                ><img
+                />
+                <Image
                   src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/bonusCenter/news/reward1.png"
-                  alt="" importance="auto" class="absolute -bottom-[4px] left-0 w-full z-[2]" lazy=""
-                >
+                  alt="" importance="auto" class="absolute -bottom-[4px] left-0 w-full z-[2]"
+                />
               </div>
             </div>
           </div>
@@ -125,7 +126,7 @@
                 <div class="text-[14px] leading-[1]">
                   Third Deposit
                 </div>
-              </div><!---->
+              </div>
             </div>
           </div>
           <div class="flex-1 shrink-0 relative">
@@ -148,8 +149,9 @@
       <div class="w-full flex justify-between items-center">
         <div class="">
           Bonus ends: <span class="text-white">22D 16h:23m:16s</span>
-        </div><button
-          class="border-radius-0 h-[36px] text-color-btn-4 text-[14px] font-bold min-w-[127px] px-[20px] bg-color-main-1"
+        </div>
+        <button
+          class="border-radius-0 h-[36px] text-font text-[14px] font-bold min-w-[127px] px-[20px] bg-active"
         >
           Deposit Now
         </button>
@@ -158,4 +160,22 @@
   </div>
 </template>
 
-<style></style>
+<style scoped>
+.newdeposit-box-shadow {
+  box-shadow: 0 5.534px 16.603px #24ccff4d;
+}
+
+.bonus-deposit-loading {
+  animation: bonus-deposit-loading 5s linear infinite forwards;
+}
+
+@keyframes bonus-deposit-loading {
+  0% {
+    transform: rotate(0) scale(1.8);
+  }
+
+  to {
+    transform: rotate(1turn) scale(1.8);
+  }
+}
+</style>

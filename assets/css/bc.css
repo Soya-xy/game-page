@@ -170,7 +170,7 @@ html {
 }
 
 .my-bullet {
-  transition: all 0.3s;
+  transition: all 3s;
 }
 
 .my-bullet:after,
@@ -186,7 +186,7 @@ html {
 }
 
 .my-bullet.my-bullet-active.my-bullet-animation:after {
-  animation: banner-full 300ms forwards;
+  animation: banner-full 3000ms forwards;
   background: var(--bc-activeColor);
 }
 

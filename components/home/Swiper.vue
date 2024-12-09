@@ -1,23 +1,23 @@
 <script lang="ts" setup>
 import { addBrowser, asyncBannerList } from '~/api/banner'
 
-const { token } = useUserStore()
+const store = useUserStore()
+const { token } = storeToRefs(store)
 const containerRef = ref()
 useSwiper(containerRef, {
-  loop: true,
   slidesPerView: 1,
   spaceBetween: 13,
   pagination: {
     el: '.my-pagination',
     type: 'custom',
     clickable: true,
-    renderCustom(swiper, current, total) {
+    renderCustom(_swiper, current, total) {
       return Array.from({ length: total }).map((_, index) => {
-        return `<span class="my-bullet relative rounded-full h-[6px] w-[6px]
-        ${index === current ? 'my-bullet-active' : ''}
-        ${index === current ? 'my-bullet-animation' : ''}
-        ${index === current ? '!w-[56px]' : ''}
-        ${index !== current ? 'w-[6px]' : ''}
+        return `<span class="my-bullet relative rounded-full h-[6px]
+        ${(index + 1) === current ? 'my-bullet-active' : ''}
+        ${(index + 1) === current ? 'my-bullet-animation' : ''}
+        ${(index + 1) === current ? '!w-[56px]' : ''}
+        ${(index + 1) !== current ? 'w-[6px]' : ''}
           "></span>`
       }).join('')
     },
