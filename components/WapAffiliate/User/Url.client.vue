@@ -8,8 +8,9 @@ const { toast } = useToast()
 function copyUrl(str: string) {
   copy(str)
   toast({
-    title: 'Copied',
     description: 'Copied to clipboard',
+    duration: 2000,
+    class: 'my-toast',
   })
 }
 </script>

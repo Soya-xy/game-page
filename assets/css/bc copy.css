@@ -84,7 +84,7 @@
   background: #fff;
 }
 
-.bg-color-search-1 {
+.bg-[--bc-searchColor] {
   background: #1c1f1f;
 }
 
@@ -761,7 +761,7 @@
   color: #292d2e;
 }
 
-.text-color-text-0 {
+.text-white {
   color: #fff;
 }
 
@@ -777,7 +777,7 @@
   color: #000;
 }
 
-.text-color-text-1 {
+.text-color {
   color: #bec7ca;
 }
 

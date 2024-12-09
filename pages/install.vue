@@ -44,7 +44,7 @@ function toggleOpen() {
           class="w-[300px] h-full shrink-0 relative overflow-hidden transition-all duration-300 bg-color-2 z-[100] -ml-[310px]"
         >
           <div
-            class="w-[300px] chat-height bg-color-search-1 fixed z-[250 overflow-hidden max-h-full transition-all duration-300 flex flex-col -right-[310px]"
+            class="w-[300px] chat-height bg-[--bc-searchColor] fixed z-[250 overflow-hidden max-h-full transition-all duration-300 flex flex-col -right-[310px]"
           >
             <div class="flex-1 flex flex-col overflow-hidden w-full">
               <div class="app-loading back-color-1 !absolute">

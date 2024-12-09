@@ -14,8 +14,6 @@ const logger = createLogger(1)
 export function createHttpClient(isServer: boolean): $Fetch {
   const nuxtApp = useNuxtApp()
   const config = useRuntimeConfig()
-  const { isPc } = useDevice()
-  const { openRouterModal } = useModal()
   const { toast } = useToast()
 
   const httpOptions: FetchOptions = {
@@ -49,12 +47,11 @@ export function createHttpClient(isServer: boolean): $Fetch {
     async onResponse({ response }: FetchContext) {
       if (response) {
         if (response?._data?.code === 401) {
-          if (isPc) {
-            openRouterModal('login')
-          }
-          else {
-            await nuxtApp.runWithContext(() => navigateTo('/login'))
-          }
+          await nuxtApp.runWithContext(() => {
+            localStorage.clear()
+            useUserStore().logout()
+            navigateTo('/login')
+          })
         }
 
         const data = response._data
@@ -66,7 +63,7 @@ export function createHttpClient(isServer: boolean): $Fetch {
             title: '请求异常',
             description: data.msg,
             duration: 2000,
-            bgColor: 'bg-red-500',
+            class: 'bg-red-500',
           })
         }
       }

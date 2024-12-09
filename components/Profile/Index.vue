@@ -21,28 +21,37 @@
               src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/userinfo/header/h_9.jpg?t=20231004"
               alt="" importance="auto" class="w-full rounded-full"
             />
-          </div><span class="text-white mt-[10px] text-[18px] font-bold">85***66</span><span
+          </div>
+          <span class="text-white mt-[10px] text-[18px] font-bold">85***66</span>
+          <span
             class="mt-[6px] text-[14px] flex items-center"
           > ID:600075693 <i
             class="inline-block h-[max-content] w-[max-content] icon-new-copy cursor-pointer ml-[14px] text-[20px] text-[--bc-color20] hover:text-white"
-          /></span><span
+          /></span>
+          <span
             class="w-[36px] h-[36px] bg-color2 text-[20px] flex items-center justify-center border-radius-0 absolute top-0 right-0"
           ><i
             class="inline-block h-[max-content] w-[max-content] icon-new-edit cursor-pointer text-[--bc-color20] hover:text-white"
           /></span>
         </div>
         <div class="flex items-center gap-[5px]">
-          <div class="bg-[--bc-color-3] flex-1 flex flex-col justify-center items-center gap-[10px] h-[72px] border-radius-0">
+          <div
+            class="bg-[--bc-color-3] flex-1 flex flex-col justify-center items-center gap-[10px] h-[72px] border-radius-0"
+          >
             <span class="text-[14px] text-[--bc-color20]">Join</span><span
               class="text-[16px] text-white font-bold text-center"
             >2024-11-04</span>
           </div>
-          <div class="bg-[--bc-color-3] flex-1 flex flex-col justify-center items-center gap-[10px] h-[72px] border-radius-0">
+          <div
+            class="bg-[--bc-color-3] flex-1 flex flex-col justify-center items-center gap-[10px] h-[72px] border-radius-0"
+          >
             <span class="text-[14px] text-[--bc-color20]">Total Bet</span><span
               class="text-[16px] text-white font-bold"
             ><span class="whitespace-pre">R$0.00</span></span>
           </div>
-          <div class="bg-[--bc-color-3] flex-1 flex flex-col justify-center items-center gap-[10px] h-[72px] border-radius-0">
+          <div
+            class="bg-[--bc-color-3] flex-1 flex flex-col justify-center items-center gap-[10px] h-[72px] border-radius-0"
+          >
             <span class="text-[14px] text-[--bc-color20]">Total Rewards</span><span
               class="text-[16px] text-white font-bold"
             ><span class="whitespace-pre">R$0.00</span></span>

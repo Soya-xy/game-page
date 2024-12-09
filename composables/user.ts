@@ -32,7 +32,7 @@ export const useUserStore = defineStore('user', () => {
         }
         toast({
           title: 'Success',
-          bgColor: 'bg-green-500',
+          class: 'bg-green-500',
         })
         setTimeout(() => {
           router.back()
@@ -42,7 +42,7 @@ export const useUserStore = defineStore('user', () => {
         toast({
           title: 'Failed',
           description: 'Please try again',
-          bgColor: 'bg-red-500',
+          class: 'bg-red-500',
         })
       }
     }

@@ -12,7 +12,7 @@ const currentList = ref(['Today team data', 'Total team data'])
         <div class="text-color-text-2 text-[10px] mb-[2px]">
           Sign Up
         </div>
-        <div class="text-color-text-1 font-semibold text-[12px]">
+        <div class="text-color font-semibold text-[12px]">
           0
         </div>
       </div>
@@ -20,7 +20,7 @@ const currentList = ref(['Today team data', 'Total team data'])
         <div class="text-color-text-2 text-[10px] mb-[2px]">
           First Deposit
         </div>
-        <div class="text-color-text-1 font-semibold text-[12px]">
+        <div class="text-color font-semibold text-[12px]">
           0
         </div>
       </div>
@@ -28,7 +28,7 @@ const currentList = ref(['Today team data', 'Total team data'])
         <div class="text-color-text-2 text-[10px] mb-[2px]">
           Valid bet
         </div>
-        <div class="text-color-text-1 font-semibold text-[12px]">
+        <div class="text-color font-semibold text-[12px]">
           <span class="whitespace-pre">R$0.00</span>
         </div>
       </div>
@@ -36,7 +36,7 @@ const currentList = ref(['Today team data', 'Total team data'])
         <div class="text-color-text-2 text-[10px] mb-[2px]">
           Valid bet
         </div>
-        <div class="text-color-text-1 font-semibold text-[12px]">
+        <div class="text-color font-semibold text-[12px]">
           <span class="whitespace-pre">R$0.00</span>
         </div>
       </div>

@@ -29,7 +29,7 @@
       </div>
       <div class="w-full h-[0.5px] bg-[--bc-searchBtnColor] shrink-0 my-[10px]" />
       <div class="flex justify-between items-center">
-        <div class="text-color-text-0 text-[18px] font-bold">
+        <div class="text-white text-[18px] font-bold">
           <span class="whitespace-pre">R$0.00</span>
         </div>
         <button

@@ -12,24 +12,24 @@
       </div>
     </div><div class="flex text-[11px] justify-between mt-[10px] gap-[4px]" style="font-size: clamp(10px, 2.9333vw, 12px);">
       <div class="flex-[10] shrink-0">
-        <div class="text-color-text-0 font-bold">
+        <div class="text-white font-bold">
           Total performance: 1050K
         </div><div class="mt-[5px]">
-          Level 1 performance: <span class="text-color-text-0">300K</span>
+          Level 1 performance: <span class="text-white">300K</span>
         </div><div class="mt-[5px]">
-          Level 2 performance: <span class="text-color-text-0">150K</span>
+          Level 2 performance: <span class="text-white">150K</span>
         </div><div class="mt-[5px]">
-          Level 3 performance: <span class="text-color-text-0">600K</span>
+          Level 3 performance: <span class="text-white">600K</span>
         </div>
       </div><div class="flex-[9] shrink-0">
-        <div class="text-color-text-0 font-bold">
+        <div class="text-white font-bold">
           Total Commission: 3.15K
         </div><div class="mt-[5px]">
-          Level 1 Commission:<span class="text-color-text-0">2.1K</span>
+          Level 1 Commission:<span class="text-white">2.1K</span>
         </div><div class="mt-[5px]">
-          Level 2 Commission: <span class="text-color-text-0">0.45K</span>
+          Level 2 Commission: <span class="text-white">0.45K</span>
         </div><div class="mt-[5px]">
-          Level 3 Commission:<span class="text-color-text-0">0.6K</span>
+          Level 3 Commission:<span class="text-white">0.6K</span>
         </div>
       </div>
     </div>

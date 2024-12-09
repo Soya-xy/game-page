@@ -9,7 +9,7 @@
         <div class="flex items-center justify-between text-white font-bold">
           1.What is the afun.com affiliate program?
         </div>
-        <div class="mt-[6px] text-color-text-1">
+        <div class="mt-[6px] text-color">
           afun.com affiliates is a program where we offer you the opputunity to earn money every day, simply by giving
           us the chance to welcome more players.
         </div>
@@ -20,7 +20,7 @@
         <div class="flex items-center justify-between text-white font-bold">
           2.How much does it cost to participate?
         </div>
-        <div class="mt-[6px] text-color-text-1">
+        <div class="mt-[6px] text-color">
           Absolutely nothing. It's completely free.
         </div>
       </div>
@@ -30,12 +30,12 @@
         <div class="flex items-center justify-between text-white font-bold">
           3.How much do I earn?
         </div>
-        <div class="mt-[6px] text-color-text-1">
+        <div class="mt-[6px] text-color">
           As part of our affiliate network, you will be paid on a revenue share model. You earn more than 70% commission
           reward.
         </div>
       </div>
-      <div class="mt-[15px] text-color-text-1">
+      <div class="mt-[15px] text-color">
         <div class="text-active text-[15px] underline text-left">
           Commission calculation rules
         </div>

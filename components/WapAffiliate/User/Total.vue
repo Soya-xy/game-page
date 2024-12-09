@@ -10,7 +10,7 @@ import { Dropdown } from 'floating-vue'
         style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/referAndEarn/upgrade.png?20241031);"
       />
       <div>
-        <div class="text-[10px] text-color-text-1">
+        <div class="text-[10px] text-color">
           Total Rewards
         </div>
         <div class="text-[12px] font-bold text-color-linear-20 mt-[6px]">
@@ -24,7 +24,7 @@ import { Dropdown } from 'floating-vue'
         style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/referAndEarn/friend.png?20241031);"
       />
       <div class="w-full relative">
-        <div class="text-[10px] text-color-text-1">
+        <div class="text-[10px] text-color">
           Total Friends
         </div>
         <div class="text-[12px] w-full font-bold flex justify-between mt-[6px]">

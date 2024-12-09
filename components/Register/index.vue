@@ -19,7 +19,7 @@ async function onSubmit(e: any) {
   if (!isAgree.value) {
     return toast({
       title: 'Please agree to the terms of service and privacy policy',
-      bgColor: 'bg-red-500',
+      class: 'bg-red-500',
     })
   }
 

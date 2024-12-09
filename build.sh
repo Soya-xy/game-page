@@ -19,4 +19,4 @@ IMG="$NAME:$TAG"
 echo "build & push $IMG"
 
 docker build -t "$IMG" .  --platform=linux/amd64
-docker save $IMG | gzip > ./$NAME-$TAG.tgz
+docker save $IMG | gzip > ./$NAME-$TAG.tar
