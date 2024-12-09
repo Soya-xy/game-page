@@ -4,6 +4,7 @@ import { ref } from 'vue'
 const open = ref<boolean>(false)
 const mobileOpen = ref<boolean>(false)
 const { isPc } = useDevice()
+const router = useRouter()
 
 function toggleOpen() {
   if (isPc.value) {
@@ -102,21 +103,19 @@ function toggleOpen() {
     <div
       class="flex md:hidden relative h-[28px] w-[28px] mx-[4px] shrink-0 items-center justify-center text-font rounded-[6px] bg-linear-color-1"
     >
-      <i class="inline-block h-[max-content] w-[max-content] icon-new-clean-3 inline-block rotate-45 text-[9px]" />
+      <i class="inline-block h-[max-content] w-[max-content] icon-new-clean-3 rotate-45 text-[9px]" />
     </div>
   </div>
   <div
     class="md:w-[50px] w-[44px] h-[34px] md:h-[40px] flex items-center justify-center shadow-[inset_0_-1.176px_#edea8740,inset_0_1.176px_1.176px_#ffde306e] relative rounded-[6px] cursor-pointer bg-chest"
+    @click="router.push('/bonus')"
   >
     <div
       class="rounded-full text-[11px] bg-[--bc-activeColor2] shrink-0 text-font flex items-center justify-center font-bold px-[2px] min-w-[16px] h-[14px] text-[11px] absolute -right-[4px] top-0"
     >
       3
     </div>
-    <Image
-      src="https://web-res-ccc.afunimg8.com/C02/_E/home/bonus.gif" importance="auto"
-      class="w-[28px] !h-[28px]"
-    />
+    <Image src="https://web-res-ccc.afunimg8.com/C02/_E/home/bonus.gif" importance="auto" class="w-[28px] !h-[28px]" />
   </div>
   <!-- 手机端弹窗 -->
   <BaseDrawer v-model:open="mobileOpen" content-class="z-[555]" overlay-class="z-[550]">

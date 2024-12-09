@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const list = defineProp<string[]>()
+const list = defineProp<string[] | { title: string, icon?: string }[]>()
 const modelValue = defineModel<number>()
 </script>
 
@@ -12,7 +12,15 @@ const modelValue = defineModel<number>()
       class="h-full flex-1 md:flex-none md:w-[200px] flex items-center cursor-pointer justify-center text-xs "
       :class="index === modelValue ? 'bg-linear-color-4 text-white font-bold' : ''" @click="modelValue = index"
     >
-      {{ item }}
+      <template v-if="typeof item === 'string'">
+        {{ item }}
+      </template>
+      <template v-else>
+        <div class="flex items-center gap-x-[2px]">
+          <i :class="`inline-block h-[max-content] w-[max-content] cursor-pointer mr-[4px] text-[16px] ${item.icon} ${index === modelValue ? 'text-white' : 'text-color'}`" />
+          {{ item.title }}
+        </div>
+      </template>
     </div>
   </div>
 </template>

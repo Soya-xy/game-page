@@ -111,7 +111,7 @@
                 <div class="text-[14px] leading-[1]">
                   Second Deposit
                 </div>
-              </div><!---->
+              </div>
             </div>
           </div>
           <div class="flex-1 shrink-0 relative">
@@ -141,14 +141,15 @@
                 <div class="text-[14px] leading-[1]">
                   Fourth Deposit
                 </div>
-              </div><!---->
+              </div>
             </div>
           </div>
         </div>
-      </div><!----><!---->
+      </div>
       <div class="w-full flex justify-between items-center">
-        <div class="">
-          Bonus ends: <span class="text-white">22D 16h:23m:16s</span>
+        <div class="flex gap-x-[5px]">
+          Bonus ends:
+          <Countdown :time="new Date('2024-12-12 12:00:00').getTime()" />
         </div>
         <button
           class="border-radius-0 h-[36px] text-font text-[14px] font-bold min-w-[127px] px-[20px] bg-active"
