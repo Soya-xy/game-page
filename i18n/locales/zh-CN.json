@@ -1,0 +1,25 @@
+{
+  "lang": {
+    "langs_ar-DZ": "阿拉伯语（阿尔及利亚）",
+    "langs_ar-IQ": "阿拉伯语（伊拉克）",
+    "langs_ar-KW": "阿拉伯语（科威特）",
+    "langs_ar-MA": "阿拉伯语（摩洛哥）",
+    "langs_ar-SA": "阿拉伯语（沙特阿拉伯）",
+    "langs_ar-TN": "阿拉伯语（突尼斯）",
+    "langs_de": "德语",
+    "langs_en": "英语",
+    "langs_es": "西班牙语",
+    "langs_fi": "芬兰语",
+    "langs_fr": "法语",
+    "langs_it": "意大利语",
+    "langs_ja": "日语",
+    "langs_ko": "韩语",
+    "langs_pt": "葡萄牙语",
+    "langs_ru": "俄语",
+    "langs_tr": "土耳其语",
+    "langs_zh-CN": "简体中文",
+    "langs_zh-HK": "繁体中文（香港）",
+    "langs_zh-TW": "繁体中文（台湾）",
+    "name": "简体中文"
+  }
+}

@@ -1,0 +1,180 @@
+html,
+#shadow-html {
+  font-family: 'Inter', system-ui, sans-serif !important;
+}
+
+body,
+#root {
+  @apply h-screen;
+  @apply cursor-default;
+  @apply select-none;
+  overscroll-behavior: none;
+}
+
+body *,
+body *::before,
+body *::after {
+  box-sizing: border-box;
+  font: inherit;
+}
+
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+p,
+pre,
+q,
+ruby,
+s,
+samp,
+section,
+small,
+span,
+strike,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video {
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  font-family: Inter !important;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-text-size-adjust: none;
+  line-height: normal;
+}
+
+.field-base,
+textarea {
+  box-shadow: none;
+  outline: none;
+  resize: none;
+}
+
+:focus-visible {
+  /* outline: theme(colors.theme.accent.DEFAULT) auto 1px; */
+  outline: none;
+}
+
+button {
+  cursor: var(--pointer);
+}
+
+.prose a {
+  @apply cursor-pointer;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+/* ::selection {
+  @apply bg-accent/80 text-white;
+} */
+
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(0);
+  }
+}
+
+@keyframes spin1 {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+.DialogContentOpen {
+  animation: zoomIn 300ms ease-out !important;
+}
+
+.DialogContentClosed {
+  animation: zoomOut 300ms ease-in !important;
+}
