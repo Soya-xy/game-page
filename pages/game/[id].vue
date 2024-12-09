@@ -5,25 +5,28 @@ import { addFavorite, getFavorite, removeFavorite } from '~/api/game'
 const { toast } = useToast()
 const params = useRoute().params as { id: string }
 const id = params.id
+const isFavorite = ref(false)
 async function handleFavorite() {
-  const res = await getFavorite(id)
-  if (res) {
+  isFavorite.value = await getFavorite(id)
+  if (isFavorite.value) {
     await removeFavorite(id)
     return toast({
-      title: 'Bookmarked!',
-      bgColor: 'bg-green-500',
-      class: 'my-toast',
+      title: 'UnBookmarked!',
+      class: 'my-toast bg-green',
     })
   }
   else {
     await addFavorite(id)
     return toast({
       title: 'Bookmarked!',
-      bgColor: 'bg-green-500',
-      class: 'my-toast',
+      class: 'my-toast bg-green',
     })
   }
+  isFavorite.value = !isFavorite.value
 }
+onMounted(async () => {
+  isFavorite.value = await getFavorite(id)
+})
 </script>
 
 <template>
@@ -43,7 +46,8 @@ async function handleFavorite() {
         <div class="flex items-center gap-[30px]">
           <div class="flex">
             <i
-              class="inline-block h-[max-content] w-[max-content] icon-new-favorites-soild cursor-pointer text-[18px] text-white"
+              class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[18px]"
+              :class=" isFavorite ? 'icon-new-love text-[--bc-textColor3]' : 'icon-new-favorites-soild text-white'"
               @click="handleFavorite"
             />
           </div>
