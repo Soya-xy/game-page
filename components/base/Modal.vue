@@ -8,7 +8,9 @@ import {
 import { cn } from '~/lib/utils'
 
 const contentClass = defineProp<string>()
+const overlayClass = defineProp<string>()
 const enterAnimation = ref(0)
+const noClose = defineProp<boolean>(false)
 const show = defineModel<boolean>('show', {
   type: Boolean,
   required: true,
@@ -45,7 +47,9 @@ function closeModal() {
           enterAnimation === 1 && 'DialogContentOpen',
           enterAnimation === 2 && 'DialogContentClosed',
           contentClass,
-        )" @close="closeModal"
+        )"
+        :overlay-class="overlayClass"
+        :no-close="noClose" @close="closeModal"
       >
         <DialogTitle v-if="$slots.title">
           <slot name="title" />

@@ -16,8 +16,11 @@ const show = ref(false)
     </div>
   </div>
   <BaseModal v-model:show="show" content-class="mx-auto w-[90%] min-w-[640px] max-w-[1414px] px-32px">
-    <div>
-      <InviteTurntable />
+    <div class="flex">
+      <InviteTurntable class="max-w-[500px]" />
+      <div class="flex justify-center mt-[20px]">
+        123
+      </div>
     </div>
   </BaseModal>
 </template>

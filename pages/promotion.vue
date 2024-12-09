@@ -1,21 +1,8 @@
 <script lang="ts" setup>
-const current = ref('All')
-const currentList = ref(['All', 'Official', 'Sports', 'Special'])
 </script>
 
 <template>
   <div class="max-w-[1414px]  flex mx-auto flex-col gap-y-[12px] mt-[12px] relative z-[20] sm:px-[20px] ">
-    <div
-      class="border-b-[1px] border-solid border-[--bc-bgColor9] flex fixed md:static top-[48px] w-full z-[20] bg-[--bc-bgColor]"
-    >
-      <div
-        v-for="(item, index) in currentList" :key="index"
-        class="h-[40px] md:h-[60px] flex-1 md:flex-none md:w-[200px] flex items-center cursor-pointer justify-center text-xs "
-        :class="item === current ? 'bg-linear-color-4 text-white font-bold' : ''" @click="current = item"
-      >
-        {{ item }}
-      </div>
-    </div>
     <div class=" pt-[30px] md:pt-0 px-[15px] md:px-0">
       <div class="grid mt-[20px]  md:grid-cols-3 gap-[15px] sm:grid-cols-2">
         <div

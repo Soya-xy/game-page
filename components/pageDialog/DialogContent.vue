@@ -13,6 +13,8 @@ import { computed, type HTMLAttributes } from 'vue'
 const props = defineProps<DialogContentProps & {
   class?: HTMLAttributes['class']
   clickOutClose?: boolean
+  noClose?: boolean
+  overlayClass?: HTMLAttributes['class']
 }>()
 const emits = defineEmits(['close'])
 const delegatedProps = computed(() => {
@@ -29,6 +31,7 @@ const forwarded = useForwardPropsEmits(delegatedProps)
     class="fixed inset-0 z-[500] bg-black/60 backdrop-blur
     data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0
     "
+    :class="props.overlayClass"
   />
   <DialogContent
     :aria-describedby="undefined"
@@ -48,7 +51,8 @@ const forwarded = useForwardPropsEmits(delegatedProps)
     <slot />
 
     <div
-      class="absolute right-[20px] top-[20px] rounded-sm text-[--bc-color20] opacity-70 hover:opacity-100 focus:outline-none cursor-pointer hover:-rotate-[180deg] transition-all duration-300"
+      v-if="!props.noClose"
+      class="absolute right-[20px] top-[20px] rounded-sm opacity-70 hover:opacity-100 focus:outline-none cursor-pointer hover:-rotate-[180deg] transition-all duration-300"
       @click="emits('close')"
     >
       <X class="w-6 h-6" />

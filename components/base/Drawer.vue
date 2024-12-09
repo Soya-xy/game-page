@@ -22,7 +22,7 @@ const close = defineEmit()
 <template>
   <Drawer v-model:open="open" should-scale-background>
     <DrawerContent :class="cn('bg-color', contentClass)" :overlay-class="overlayClass">
-      <DrawerHeader class="flex justify-between">
+      <DrawerHeader class="flex justify-between bg-[--bc-color-3]">
         <DrawerTitle>
           <slot name="title" />
         </DrawerTitle>

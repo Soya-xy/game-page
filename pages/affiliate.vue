@@ -9,5 +9,8 @@ definePageMeta({
     <div class="hidden gap-[40px] md:flex flex-col">
       <PcAffiliate />
     </div>
+    <div class="flex flex-col md:hidden">
+      <WapAffiliate />
+    </div>
   </div>
 </template>

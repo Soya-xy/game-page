@@ -139,65 +139,9 @@ function handleSliderChange(value: number) {
             </div>
           </div>
         </div>
-        <div class="text-color text-[14px]">
-          <div
-            class="w-full h-0 pb-[23.3333%] mt-[10px] bg-cover bg-no-repeat"
-            style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/referAndEarn/pc_1.png?t20231228);"
-          />
-          <div class="mb-[5px] mt-[2px] w-full mx-auto flex justify-between items-center">
-            <div class="w-[25%] text-center">
-              Valid bet <span class="text-white">100K</span>
-            </div>
-            <div class="w-[25%] text-center">
-              Valid bet <span class="text-white">150K</span>
-            </div>
-            <div class="w-[25%] text-center">
-              Valid bet <span class="text-white">50K</span>
-            </div>
-          </div>
-          <div
-            class="w-full h-0 pb-[23.3333%] bg-cover bg-no-repeat"
-            style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/referAndEarn/pc_2.png?t20231228);"
-          />
-          <div class="mb-[5px] mt-[2px] w-full mx-auto flex justify-between items-center">
-            <div class="w-[25%] text-center">
-              Valid bet <span class="text-white">50K</span>
-            </div>
-            <div class="w-[25%] text-center">
-              Valid bet <span class="text-white">50K</span>
-            </div>
-            <div class="w-[25%] text-center">
-              Valid bet <span class="text-white">50K</span>
-            </div>
-          </div>
-          <div
-            class="w-full h-0 pb-[23.3333%] bg-cover bg-no-repeat"
-            style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/referAndEarn/pc_3.png?t20231228);"
-          />
-          <div class="mb-[5px] mt-[2px] w-full mx-auto flex justify-between items-center">
-            <div class="w-[25%] text-center">
-              Valid bet <span class="text-white">200K</span>
-            </div>
-            <div class="w-[25%] text-center">
-              Valid bet <span class="text-white">200K</span>
-            </div>
-            <div class="w-[25%] text-center">
-              Valid bet <span class="text-white">200K</span>
-            </div>
-          </div>
-        </div>
+        <AffiliateFriends />
         <div class="mt-[16px]">
-          <div class="text-[14px] font-bold text-white mb-[10px]">
-            Rules
-          </div>
-          <div class="text-[12px] text-color">
-            <p>
-              <strong class="text-white bg-[#66b966]">How do I get commission?</strong>
-            </p>
-            <p>1. The system calculates the commission every 24 hours.</p>
-            <p>2. A friend's bet will earn you commission.</p>
-            <p>3. Your friends' friends will also bring you commission.</p>
-          </div>
+          <AffiliateRules />
         </div>
       </div>
     </div>
@@ -210,113 +154,8 @@ function handleSliderChange(value: number) {
     </template>
     <div class="flex-1 overflow-hidden flex flex-col px-[40px] pb-[30px]">
       <div class="flex-1 overflow-y-auto">
-        <div>
-          <div class="text-white font-bold text-[14px] mb-[8px]">
-            Commission reward
-          </div>
-          <div class="text-[14px] text-color">
-            <p>
-              <strong class="text-white bg-[#66b966]">How do I get commission?</strong>
-            </p>
-            <p>1. The system calculates the commission every 24 hours.</p>
-            <p>2. A friend's bet will earn you commission.</p>
-            <p>3. Your friends' friends will also bring you commission.</p>
-          </div>
-        </div>
-        <div class="flex flex-col gap-[10px] mt-[15px]">
-          <div>
-            <div class="text-white font-bold text-[18px] mb-[10px]">
-              Original, Live, Casual, Shows, Sports
-            </div>
-            <div class="flex flex-col gap-[8px] mt-[15px]">
-              <div
-                class="h-[50px] border-radius-0 bg-[--bc-searchBtnColor] px-[15px] flex items-center text-[14px] text-color"
-              >
-                <div class="flex-1 text-left text-white font-bold">
-                  20%
-                </div>
-                <div class="flex-1 text-center">
-                  Of 1% wager
-                </div>
-                <div class="flex-1 text-right">
-                  Tier 1
-                </div>
-              </div>
-              <div
-                class="h-[50px] border-radius-0 bg-[--bc-searchBtnColor] px-[15px] flex items-center text-[14px] text-color"
-              >
-                <div class="flex-1 text-left text-white font-bold">
-                  10%
-                </div>
-                <div class="flex-1 text-center">
-                  Of 1% wager
-                </div>
-                <div class="flex-1 text-right">
-                  Tier 2
-                </div>
-              </div>
-              <div
-                class="h-[50px] border-radius-0 bg-[--bc-searchBtnColor] px-[15px] flex items-center text-[14px] text-color"
-              >
-                <div class="flex-1 text-left text-white font-bold">
-                  5%
-                </div>
-                <div class="flex-1 text-center">
-                  Of 1% wager
-                </div>
-                <div class="flex-1 text-right">
-                  Tier 3
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="text-white font-bold text-[18px] mb-[10px]">
-              Slots
-            </div>
-            <div class="flex flex-col gap-[8px] mt-[15px]">
-              <div
-                class="h-[50px] border-radius-0 bg-[--bc-searchBtnColor] px-[15px] flex items-center text-[14px] text-color"
-              >
-                <div class="flex-1 text-left text-white font-bold">
-                  70%
-                </div>
-                <div class="flex-1 text-center">
-                  Of 1% wager
-                </div>
-                <div class="flex-1 text-right">
-                  Tier 1
-                </div>
-              </div>
-              <div
-                class="h-[50px] border-radius-0 bg-[--bc-searchBtnColor] px-[15px] flex items-center text-[14px] text-color"
-              >
-                <div class="flex-1 text-left text-white font-bold">
-                  30%
-                </div>
-                <div class="flex-1 text-center">
-                  Of 1% wager
-                </div>
-                <div class="flex-1 text-right">
-                  Tier 2
-                </div>
-              </div>
-              <div
-                class="h-[50px] border-radius-0 bg-[--bc-searchBtnColor] px-[15px] flex items-center text-[14px] text-color"
-              >
-                <div class="flex-1 text-left text-white font-bold">
-                  10%
-                </div>
-                <div class="flex-1 text-center">
-                  Of 1% wager
-                </div>
-                <div class="flex-1 text-right">
-                  Tier 3
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <AffiliateRules title="Commission reward" />
+        <AffiliateLevel />
       </div>
     </div>
   </BaseModal>

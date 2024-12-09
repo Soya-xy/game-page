@@ -7,7 +7,7 @@ const route = useRoute()
 const isShowTop = ref(false)
 
 function scrollHandler() {
-  if (main.value?.scrollTop > 300) {
+  if (main.value!.scrollTop > 300) {
     isShowTop.value = true
   }
   else {

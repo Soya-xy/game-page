@@ -477,3 +477,11 @@ html {
   background: var(--red);
   transform-origin: 0%;
 }
+
+.drop-shadow-color-4 {
+  filter: drop-shadow(1px 1px 1px var(--bc-bgColor)) drop-shadow(-1px -1px 1px var(--bc-bgColor));
+}
+
+.drop-shadow-color-btn-2 {
+  filter: drop-shadow(1px 1px 1px var(--bc-bgColor9)) drop-shadow(-1px -1px 1px var(--bc-bgColor9));
+}
