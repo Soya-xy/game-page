@@ -120,7 +120,7 @@ function openGame() {
               >Sign In</span>
               <span
                 v-else class="text-font font-bold" style="font-size: min(max(11px, 0.9375vw), 18px);"
-                @click.stop="router.push(`/game/${info.name}`)"
+                @click.stop="router.push(`/game/${info.id}`)"
               >Play</span>
             </div>
 

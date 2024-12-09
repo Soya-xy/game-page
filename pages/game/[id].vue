@@ -1,6 +1,29 @@
 <script lang="ts" setup>
+import { useToast } from '@/components/ui/toast'
+import { addFavorite, getFavorite, removeFavorite } from '~/api/game'
+
+const { toast } = useToast()
 const params = useRoute().params as { id: string }
 const id = params.id
+async function handleFavorite() {
+  const res = await getFavorite(id)
+  if (res) {
+    await removeFavorite(id)
+    return toast({
+      title: 'Bookmarked!',
+      bgColor: 'bg-green-500',
+      class: 'my-toast',
+    })
+  }
+  else {
+    await addFavorite(id)
+    return toast({
+      title: 'Bookmarked!',
+      bgColor: 'bg-green-500',
+      class: 'my-toast',
+    })
+  }
+}
 </script>
 
 <template>
@@ -21,6 +44,7 @@ const id = params.id
           <div class="flex">
             <i
               class="inline-block h-[max-content] w-[max-content] icon-new-favorites-soild cursor-pointer text-[18px] text-white"
+              @click="handleFavorite"
             />
           </div>
           <div class="flex">
