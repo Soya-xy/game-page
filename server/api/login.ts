@@ -3,5 +3,9 @@ export default defineEventHandler(async (event) => {
   if (body.accessToken) {
     setCookie(event, 'token', body.accessToken)
   }
-  return true
+  return {
+    code: 0,
+    data: true,
+    msg: '登录成功',
+  }
 })

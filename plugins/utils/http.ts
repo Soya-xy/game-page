@@ -22,6 +22,7 @@ export function createHttpClient(isServer: boolean): $Fetch {
     async onRequest({ request, options }): Promise<void> {
       if (isServer) {
         options.baseURL = '/'
+        options.headers.set('x-server', '1')
       }
 
       const expiresTime = localStorage.getItem('expiresTime')
@@ -54,7 +55,7 @@ export function createHttpClient(isServer: boolean): $Fetch {
           })
         }
 
-        const data = response._data
+        const data = await response._data
         if (data.code === 0) {
           response._data = data.data
         }
@@ -65,6 +66,7 @@ export function createHttpClient(isServer: boolean): $Fetch {
             duration: 2000,
             class: 'bg-red-500',
           })
+          throw new Error(data.msg)
         }
       }
     },
