@@ -10,8 +10,9 @@ const show = ref(false)
 const is = shallowRef()
 const RouteToComponent: Record<string, any> = {
   '/login': import('~/components/Login/Index.client.vue'),
-  '/register': import('~/components/Register/Index.vue'),
+  '/register': import('~/components/Register/index.vue'),
   '/gametag/hot': import('~/components/Base/Game/More.vue'),
+  '/profile': import('~/components/Profile/Index.vue'),
 }
 
 watch(router, (val) => {

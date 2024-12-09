@@ -12,7 +12,7 @@ const showLanguageModal = ref<boolean>(false)
 const menuItems = [
   { label: 'Wallet', icon: 'icon-n-wallet' },
   { label: 'Withdraw', icon: 'icon-n-withdraw' },
-  { label: 'Profile', icon: 'icon-n-personal' },
+  { label: 'Profile', icon: 'icon-n-personal', hash: '/profile' },
   { label: 'Transaction', icon: 'icon-n-transaction-history' },
   { label: 'Bets History', icon: 'icon-n-bet-history' },
   { label: 'Free bets', icon: 'icon-n-free' },
@@ -69,6 +69,7 @@ function changeLang(lang: Locale) {
             <DropdownMenuItem
               v-for="item in menuItems" :key="item.label"
               class="hover:text-white hover:bg-page hover:font-bold focus:text-white focus:bg-page focus:font-bold p-0"
+              @click="router.push(item.hash || '/')"
             >
               <div class="pl-[20px] pr-[10px] h-[46px] flex items-center cursor-pointer">
                 <i

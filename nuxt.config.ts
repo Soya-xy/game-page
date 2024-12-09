@@ -62,6 +62,9 @@ export default defineNuxtConfig({
       appUrl: process.env.NUXT_PUBLIC_APP_URL,
     },
   },
+  build: {
+    analyze: true,
+  },
   devServer: {
     port: 9832,
   },

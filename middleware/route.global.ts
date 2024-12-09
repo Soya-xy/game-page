@@ -1,7 +1,7 @@
 import { isEmpty } from 'ramda'
 
 // 需要弹窗的路由
-const needModalPath = ['/login', '/register', '/gametag/hot']
+const needModalPath = ['/login', '/register', '/gametag/hot', '/profile']
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
   const { openRouterModal } = useModal()
