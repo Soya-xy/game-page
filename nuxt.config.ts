@@ -27,6 +27,10 @@ export default defineNuxtConfig({
   ],
   devtools: {
     enabled: true,
+
+    timeline: {
+      enabled: true,
+    },
   },
   app: {
     keepalive: true,

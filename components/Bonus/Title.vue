@@ -3,7 +3,7 @@ const search = ref('')
 </script>
 
 <template>
-  <div class=" pb-[16px] flex justify-between items-center">
+  <div class=" pb-[16px] md:flex justify-between items-center hidden ">
     <div class="text-white font-bold text-[20px]">
       Bonus
     </div>

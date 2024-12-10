@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { RecordPage } from '~/api/record/types'
 import { asyncRecordList, getRecordOptions, getRecordPage } from '~/api/record'
+import { formatTime } from '~/lib/dayjs'
 
 const { data: list } = await asyncRecordList()
 
@@ -35,18 +36,18 @@ watch(bonusCode, () => {
 
 <template>
   <div class="h-full flex flex-col">
-    <div class="flex-1 overflow-hidden flex flex-col pt-[20px] px-[20px] pb-[30px]">
+    <div class="flex-1 overflow-hidden flex flex-col md:p-[20px] md:pb-[30px] p-[15px]">
       <div class="flex-1 overflow-y-auto">
         <div class="text-[20px] font-bold mb-[10px] text-white">
           Bonus Categories
         </div>
-        <div class="grid grid-cols-3 gap-[10px]">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-[10px]">
           <div
             v-for="item in list" :key="item.bonusName"
             class="bg-[--bc-color-3] flex items-center rounded-[8px] overflow-hidden"
           >
             <div class="w-full h-full flex items-center">
-              <div class="w-[60px] h-[60px] shrink-0 mr-[10px] p-[6px]">
+              <div class="md:w-[60px] md:h-[60px] w-[46px] h-[46px] shrink-0 md:mr-[10px] mr-[8px] md:p-[6px] p-[4px]">
                 <Image :src="item.bonusIcon" alt="" class="w-full" />
               </div>
               <div class="flex flex-col justify-center items-start flex-1">
@@ -66,7 +67,7 @@ watch(bonusCode, () => {
           </div>
           <BaseSelect v-model:value="bonusCode" :options="options" />
         </div>
-        <div class="bg-color2 border-[1px] border-solid border-[--bc-bgColor2] rounded-[8px] text-[14px]">
+        <div class="bg-color2 border-[1px] border-solid border-[--bc-bgColor2] rounded-[8px] md:text-[14px] text-[12px]">
           <div
             class="bg-[--bc-color-3] px-[5px] h-[40px] text-[--bc-color20] flex items-center justify-center sticky left-0 -top-[1px]"
           >
@@ -93,7 +94,7 @@ watch(bonusCode, () => {
                 <span class="whitespace-pre">{{ toCurrency(item.point) }}</span>
               </div>
               <div class="w-[25%] text-right text-color">
-                {{ item.createTime }}
+                {{ formatTime(item.createTime) }}
               </div>
             </div>
             <LoadMore :load="load" />

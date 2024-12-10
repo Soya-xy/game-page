@@ -13,7 +13,7 @@ function showDetail() {
 </script>
 
 <template>
-  <div class="flex items-center justify-between mb-[30px]">
+  <div class="md:flex items-center justify-between mb-[30px] hidden">
     <div
       class="flex-[13] flex items-start justify-start h-[248px] bg-right relative rounded-[10px] p-[20px] bg-no-repeat bg-cover "
       style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/bonusCenter/news/bg_pc.jpg?t20240909);"

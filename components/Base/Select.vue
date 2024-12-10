@@ -18,6 +18,11 @@ const list = computed(() => ([
 onClickOutside(contentRef, () => {
   open.value = false
 })
+
+function handleClick() {
+  // TODO: 这里有bug不能直接取反，先根据高度来吧
+  open.value = contentRef.value?.clientHeight === 0
+}
 </script>
 
 <template>
@@ -27,7 +32,7 @@ onClickOutside(contentRef, () => {
     >
       <div
         class="h-full flex items-center justify-between px-[12px] cursor-pointer"
-        @click="open = !open"
+        @click="handleClick"
       >
         <div class="flex items-center text-color font-medium mr-2">
           <span class="flex items-center">{{ options.find(item => item.value === value)?.label || 'All rewards' }}</span>

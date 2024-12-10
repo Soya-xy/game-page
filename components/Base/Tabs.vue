@@ -5,7 +5,7 @@ const modelValue = defineModel<number>()
 
 <template>
   <div
-    class="border-b-[1px] border-solid border-[--bc-bgColor9] flex fixed md:static top-[48px] w-full z-[20] bg-color2 h-[46px]"
+    class="border-b-[1px] border-solid border-[--bc-bgColor9] flex fixed md:static top-[48px] w-full z-[20] bg-color2 md:h-[46px] h-[40px]"
   >
     <div
       v-for="(item, index) in list" :key="index"

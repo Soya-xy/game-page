@@ -7,7 +7,7 @@ const load = defineProp<(e: StateHandler) => void>(undefined, true)
 </script>
 
 <template>
-  <InfiniteLoading @infinite="load">
+  <InfiniteLoading :firstload="false" @infinite="load">
     <slot />
     <template #spinner>
       <div class="text-center py-4 text-sm text-gray-500">
