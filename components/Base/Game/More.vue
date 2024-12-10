@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { useInfiniteScroll } from '@vueuse/core'
 import { getGameByTag } from '~/api/home'
 import { getRouterHash } from '~/lib/utils'
 
@@ -11,10 +10,9 @@ const containerRef = ref<HTMLElement | null>(null)
 const page = ref(1)
 const gameList = ref<any[]>([])
 const isLoading = ref(false)
-const hasMore = ref(true)
 
-async function loadGames() {
-  if (isLoading.value || !hasMore.value)
+async function loadGames(e?: any) {
+  if (isLoading.value)
     return
 
   try {
@@ -30,10 +28,8 @@ async function loadGames() {
       }
     }
 
-    // 如果没有数据返回，表示已经加载完所有数据
     if (!data?.length) {
-      hasMore.value = false
-      return
+      return e?.complete()
     }
 
     gameList.value = [...gameList.value, ...data]
@@ -47,14 +43,6 @@ async function loadGames() {
   }
 }
 
-useInfiniteScroll(
-  containerRef,
-  loadGames,
-  {
-    distance: 50, // 距离底部50px时触发
-    throttle: 300, // 节流，避免频繁触发
-  },
-)
 // 初始加载
 onMounted(async () => {
   loadGames()
@@ -76,16 +64,7 @@ onMounted(async () => {
         <BaseGameCard :info="item" />
       </div>
     </div>
-    <!-- 加载状态和无更多数据提示 -->
-    <div v-if="isLoading || !hasMore" class="text-center py-4 text-sm text-gray-500">
-      <div v-if="isLoading" class="flex justify-center items-center">
-        <div class="spin " />
-      </div>
-
-      <p v-else-if="!hasMore">
-        没有更多数据了
-      </p>
-    </div>
+    <LoadMore :load="loadGames" />
   </div>
 </template>
 

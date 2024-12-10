@@ -4,6 +4,10 @@ import { asyncRecordList } from '~/api/record'
 const { data: list } = await asyncRecordList()
 
 const options = [{ value: 'All bonuses', label: 'All bonuses' }, { value: 'Jackpot Treasure', label: 'Jackpot Treasure' }, { value: 'Dragon\'s Treasure', label: 'Dragon\'s Treasure' }, { value: 'Daily Loss Cashback', label: 'Daily Loss Cashback' }, { value: 'Gachapon Grand Prize', label: 'Gachapon Grand Prize' }, { value: 'Daily Bonus', label: 'Daily Bonus' }, { value: 'Monthly bonus', label: 'Monthly bonus' }, { value: 'Weekly Bonus', label: 'Weekly Bonus' }, { value: 'Level up Bonus', label: 'Level up Bonus' }, { value: 'Deposit Bonus', label: 'Deposit Bonus' }, { value: 'Special Bonus', label: 'Special Bonus' }]
+
+function load(e: any) {
+  console.log('%c🤪 ~ file: /Users/soya/Desktop/game-page/components/Bonus/Details.vue:8 [load] -> e : ', 'color: #56e777', e)
+}
 </script>
 
 <template>
@@ -53,25 +57,11 @@ const options = [{ value: 'All bonuses', label: 'All bonuses' }, { value: 'Jackp
               Time
             </div>
           </div>
-          <div class="v3-infinite-loading">
-            <div style="display: none;">
-              <div class="w-full flex items-center justify-center relative infinite-loading h-[400px]">
-                <div
-                  data-v-4ba16216="" data-v-1d666f6a=""
-                  class="w-[max-content] h-[max-content] absolute left-0 right-0 top-0 bottom-0 m-auto"
-                >
-                  <svg data-v-4ba16216="" width="20px" height="20px" viewBox="0 0 20 20" class="e-loading-10">
-                    <circle data-v-4ba16216="" cx="10" cy="10" r="8" stroke-width="3" fill="none" />
-                    <circle
-                      data-v-4ba16216="" cx="10" cy="10" r="8" stroke-width="3" fill="none" stroke-linecap="round"
-                      stroke-dasharray="50.26548245743669" stroke-dashoffset="32.67256359733385"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <BaseEmpty />
+          <div>
+            123
           </div>
+          <LoadMore :load="load" />
+          <BaseEmpty />
         </div>
       </div>
     </div>
