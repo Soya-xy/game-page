@@ -7,10 +7,12 @@ const { isPc } = useDevice()
 const currentList = ref<{
   title: string
   icon: string
+  badge?: number
   children: any[]
 }[]>([{
   title: 'General Bonus',
   icon: 'icon-new-bonus',
+  badge: 3,
   children: Object.values(activityTypeMap).filter(v => [1, 2, 3, 4].includes(v.id)) || [],
 }, {
   title: 'VIP Bonus',

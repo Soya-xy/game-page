@@ -16,7 +16,7 @@ function showDetail() {
 </script>
 
 <template>
-  <div class="w-full shrink-0 text-[12px] my-[15px]">
+  <div class="w-full shrink-0 text-[12px] my-[15px] md:hidden">
     <div
       class="py-[15px] bg-no-repeat bg-cover w-full relative h-[100px] rounded-[10px] overflow-hidden flex flex-col"
       style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/bonusCenter/news/bg.jpg?t20240909);"

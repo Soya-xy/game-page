@@ -66,7 +66,9 @@ function showDetail() {
         </div>
       </div>
     </div>
+    <!-- TODO: 国际版有这个 巴西的没有 -->
     <div
+      v-if="false"
       class="p-[20px] rounded-[10px] relative h-[248px] flex-[7] ml-[20px] bg-[--bc-activity35] backdrop-blur-[20px] min-w-[400px]"
     >
       <div
