@@ -1,17 +1,40 @@
 <script lang="ts" setup>
-import { asyncRecordList } from '~/api/record'
+import type { RecordPage } from '~/api/record/types'
+import { asyncRecordList, getRecordOptions, getRecordPage } from '~/api/record'
 
 const { data: list } = await asyncRecordList()
 
-const options = [{ value: 'All bonuses', label: 'All bonuses' }, { value: 'Jackpot Treasure', label: 'Jackpot Treasure' }, { value: 'Dragon\'s Treasure', label: 'Dragon\'s Treasure' }, { value: 'Daily Loss Cashback', label: 'Daily Loss Cashback' }, { value: 'Gachapon Grand Prize', label: 'Gachapon Grand Prize' }, { value: 'Daily Bonus', label: 'Daily Bonus' }, { value: 'Monthly bonus', label: 'Monthly bonus' }, { value: 'Weekly Bonus', label: 'Weekly Bonus' }, { value: 'Level up Bonus', label: 'Level up Bonus' }, { value: 'Deposit Bonus', label: 'Deposit Bonus' }, { value: 'Special Bonus', label: 'Special Bonus' }]
+const options = await getRecordOptions()
+const page = ref(1)
+const bonusCode = ref('')
+const data = ref<RecordPage[]>([])
+async function load(e?: any) {
+  const res = await getRecordPage({
+    pageNo: page.value,
+    pageSize: 10,
+    bonusCode: bonusCode.value,
+  })
+  if (data.value.length > res.total || !res.list.length) {
+    e?.complete()
+  }
 
-function load(e: any) {
-  console.log('%c🤪 ~ file: /Users/soya/Desktop/game-page/components/Bonus/Details.vue:8 [load] -> e : ', 'color: #56e777', e)
+  if (res.list) {
+    data.value.push(...res.list)
+  }
 }
+
+watch(bonusCode, () => {
+  page.value = 1
+  data.value = []
+  load()
+}, {
+  immediate: true,
+  deep: true,
+})
 </script>
 
 <template>
-  <div>
+  <div class="h-full flex flex-col">
     <div class="flex-1 overflow-hidden flex flex-col pt-[20px] px-[20px] pb-[30px]">
       <div class="flex-1 overflow-y-auto">
         <div class="text-[20px] font-bold mb-[10px] text-white">
@@ -41,7 +64,7 @@ function load(e: any) {
           <div class="text-[16px]">
             Bonus Transactions
           </div>
-          <FilterSelect :option="options" content-class="z-[555]" placeholder="Select a bonuses" />
+          <BaseSelect v-model:value="bonusCode" :options="options" />
         </div>
         <div class="bg-color2 border-[1px] border-solid border-[--bc-bgColor2] rounded-[8px] text-[14px]">
           <div
@@ -57,11 +80,25 @@ function load(e: any) {
               Time
             </div>
           </div>
-          <div>
-            123
+          <div v-if="data.length">
+            <div v-for="item, idx in data" :key="idx" class="text-white px-[5px] h-[40px] flex items-center justify-center">
+              <div class="w-[25%] text-left">
+                {{ item.title }}
+              </div>
+              <div class="flex-1 text-center flex items-center justify-center">
+                <Image
+                  src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/dev_skin/C02/wallet/currency/BRL.png"
+                  alt="" importance="auto" class="w-[20px] h-[20px] shrink-0 mr-[4px]"
+                />
+                <span class="whitespace-pre">{{ toCurrency(item.point) }}</span>
+              </div>
+              <div class="w-[25%] text-right text-color">
+                {{ item.createTime }}
+              </div>
+            </div>
+            <LoadMore :load="load" />
           </div>
-          <LoadMore :load="load" />
-          <BaseEmpty />
+          <BaseEmpty v-else />
         </div>
       </div>
     </div>

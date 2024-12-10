@@ -1,5 +1,15 @@
 <script lang="ts" setup>
 const showDetails = ref<boolean>(false)
+const user = useUserStore()
+const { token } = storeToRefs(user)
+function showDetail() {
+  if (!token.value) {
+    navigateTo('/login')
+    return
+  }
+
+  showDetails.value = true
+}
 </script>
 
 <template>
@@ -47,7 +57,7 @@ const showDetails = ref<boolean>(false)
         </div>
         <div
           class="h-[36px] text-[14px] px-[20px] w-[max-content] flex items-center text-white bg-[--bc-alphaBlack1a] border-[1px] border-solid border-[--bc-buttonColor] border-radius-0 mt-[20px] cursor-pointer"
-          @click="showDetails = true"
+          @click="showDetail"
         >
           <span>Details</span>
           <i
@@ -165,7 +175,9 @@ const showDetails = ref<boolean>(false)
         Bonus Details
       </div>
     </template>
-    <BonusDetails />
+    <div class="h-[700px]">
+      <BonusDetails />
+    </div>
   </BaseModal>
 </template>
 

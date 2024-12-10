@@ -535,3 +535,7 @@ html {
 .bg-color-pop-16 {
   background: linear-gradient(270deg, #2c3b3c, #22332f);
 }
+
+.box-shadow-02 {
+  box-shadow: 0 4px 20px #0006;
+}

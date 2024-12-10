@@ -14,7 +14,7 @@ const option = defineProp<{
 }[]>(undefined, true)
 
 const placeholder = defineProp<string>('Select a fruit')
-const value = defineModel<string>()
+const value = defineModel<string>('value')
 const open = ref(false)
 const { isPc } = useDevice()
 const contentClass = defineProp<string>('')
