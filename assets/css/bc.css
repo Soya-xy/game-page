@@ -55,6 +55,9 @@ html {
   --bc-alphaBlack1a: #0000001a;
   --bc-alphaBlack4a: #0000004d;
   --bc-activity35: #272c35;
+  --bc-activityWhite: 236, 240, 246;
+  --bc-fontActivity: #4d4d4d;
+  --bc-popupColor: #2e3031;
 }
 
 /* html[data-theme='dark'] {
@@ -523,4 +526,12 @@ html {
   display: flex;
   min-height: 30px;
   align-items: center;
+}
+
+.bg-color-activity-15 {
+  background: linear-gradient(90deg, #b3ddf2, #b2e5ae);
+}
+
+.bg-color-pop-16 {
+  background: linear-gradient(270deg, #2c3b3c, #22332f);
 }

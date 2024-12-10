@@ -43,9 +43,9 @@ function toggleOpen() {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="center"
-          class="text-color bg-color2  p-0 hover:bg-color2 focus:bg-color2 relative text-[14px] overflow-hidden border-radius-0 pt-[10px] min-w-[220px] flex flex-col shadow-[0_4px_20px_#00000060] w-[380px]"
+          class="text-color bg-color2  p-0 hover:bg-color2  relative text-[14px] overflow-hidden border-radius-0 pt-[10px] min-w-[220px] flex flex-col shadow-[0_4px_20px_#00000060] w-[380px]"
         >
-          <DropdownMenuItem class="w-full !p-0 hover:bg-color2 focus:bg-color2">
+          <DropdownMenuItem class="w-full !p-0 hover:bg-color2 ">
             <div
               class="relative z-[352] w-full shadow-[0_4px_20px_#00000060] h-[max-content] flex flex-col max-h-[550px] border-radius-1 overflow-hidden py-[20px]"
             >

@@ -6,7 +6,6 @@
   <div>
     <BonusTitle />
     <BonusTotal />
-    <BonusTabs />
     <BonusItems />
   </div>
 </template>

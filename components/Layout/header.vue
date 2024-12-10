@@ -68,7 +68,7 @@ function changeLang(lang: Locale) {
           >
             <DropdownMenuItem
               v-for="item in menuItems" :key="item.label"
-              class="hover:text-white hover:bg-page hover:font-bold focus:text-white focus:bg-page focus:font-bold p-0"
+              class="hover:text-white hover:bg-page hover:font-bold    p-0"
               @click="router.push(item.hash || '/')"
             >
               <div class="pl-[20px] pr-[10px] h-[46px] flex items-center cursor-pointer">
@@ -84,7 +84,7 @@ function changeLang(lang: Locale) {
             <DropdownMenuSeparator class="bg-button" />
 
             <DropdownMenuItem
-              class="hover:text-white hover:bg-page hover:font-bold focus:text-white focus:bg-page focus:font-bold p-0"
+              class="hover:text-white hover:bg-page hover:font-bold    p-0"
               @click="userStore.logout"
             >
               <div class="pl-[20px] pr-[10px] h-[46px] flex items-center cursor-pointer">

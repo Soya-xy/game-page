@@ -525,8 +525,6 @@
 }
 
 .bg-color-pop-16 {
-  background: -moz-linear-gradient(right, #2c3b3c 0, #22332f 100%);
-  background: -o-linear-gradient(right, #2c3b3c 0, #22332f 100%);
   background: linear-gradient(270deg, #2c3b3c, #22332f);
 }
 

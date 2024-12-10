@@ -27,6 +27,7 @@ export default resolveConfig({
         bc2: 'var(--bc-shadow2)',
       },
       backgroundColor: {
+        popup: 'var(--bc-popupColor)',
         tab: 'var(--bc-tabColor)',
         color: 'var(--bc-bgColor)',
         color2: 'var(--bc-bgColor2)',

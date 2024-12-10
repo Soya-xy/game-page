@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-
+const showDetails = ref<boolean>(false)
 </script>
 
 <template>
@@ -47,8 +47,10 @@
         </div>
         <div
           class="h-[36px] text-[14px] px-[20px] w-[max-content] flex items-center text-white bg-[--bc-alphaBlack1a] border-[1px] border-solid border-[--bc-buttonColor] border-radius-0 mt-[20px] cursor-pointer"
+          @click="showDetails = true"
         >
-          <span>Details</span><i
+          <span>Details</span>
+          <i
             class="inline-block h-[max-content] w-[max-content] icon sysicon-new-back cursor-pointer rotate-[180deg] text-[12px] ml-[6px]"
           />
         </div>
@@ -151,14 +153,20 @@
           Bonus ends:
           <Countdown :time="new Date('2024-12-12 12:00:00').getTime()" />
         </div>
-        <button
-          class="border-radius-0 h-[36px] text-font text-[14px] font-bold min-w-[127px] px-[20px] bg-active"
-        >
+        <button class="border-radius-0 h-[36px] text-font text-[14px] font-bold min-w-[127px] px-[20px] bg-active">
           Deposit Now
         </button>
       </div>
     </div>
   </div>
+  <BaseModal v-model:show="showDetails" content-class="!rounded-[10px] bg-popup min-w-[700px] max-w-[800px]">
+    <template #title>
+      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color-pop-16 rounded-t-[10px] text-white">
+        Bonus Details
+      </div>
+    </template>
+    <BonusDetails />
+  </BaseModal>
 </template>
 
 <style scoped>

@@ -45,7 +45,7 @@ watch(open, (v) => {
 
 <template>
   <Popover v-model:open="open">
-    <PopoverTrigger as-child class="max-w-[325px] w-full h-10 bg-color2 border-[--bc-transparentColor] triggerRef  hover:bg-color6 focus:bg-color6">
+    <PopoverTrigger as-child class="max-w-[325px] w-full h-10 bg-color2 border-[--bc-transparentColor] triggerRef  hover:bg-color6">
       <Button
         ref="triggerRef"
         variant="outline"

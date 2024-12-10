@@ -1,11 +1,45 @@
 <script lang="ts" setup>
+import { ref } from 'vue'
 import { activityTypeMap } from './VipActivityEnum'
+
+const current = ref<number>(0)
+
+const currentList = ref<{
+  title: string
+  icon: string
+  children: any[]
+}[]>([{
+  title: 'General Bonus',
+  icon: 'icon-new-bonus',
+  children: Object.values(activityTypeMap).filter(v => [1, 2, 3, 4].includes(v.id)) || [],
+}, {
+  title: 'VIP Bonus',
+  icon: 'icon-new-bonus-vip',
+  children: Object.values(activityTypeMap).filter(v => [5, 6, 7, 8].includes(v.id)) || [],
+}, {
+  title: 'Special Bonus',
+  icon: 'icon-new-bonus-special ',
+  children: Object.values(activityTypeMap).filter(v => [9, 10, 11, 12].includes(v.id)) || [],
+}])
+
+const showRules = ref<boolean>(false)
+const currentRules = ref<any>(null)
+
+function handleRules(v: any) {
+  currentRules.value = v
+  showRules.value = true
+}
 </script>
 
 <template>
-  <div class="grid gap-[20px] grid-cols-[repeat(auto-fill,minmax(280px,1fr))]">
+  <BaseTabs
+    v-model="current" :list="currentList"
+    class="!static rounded-b-[5px] [&>div:first-child]:rounded-bl-[5px] [&>div:last-child]:rounded-br-[5px] mb-[20px]"
+  />
+
+  <div v-if="currentList[current]?.children.length" class="grid gap-[20px] grid-cols-[repeat(auto-fill,minmax(280px,1fr))]">
     <div
-      v-for="v in activityTypeMap" :key="v.id"
+      v-for="v in currentList[current]?.children" :key="v.id"
       class="flex flex-col w-full h-[308px] z-[1] relative border-radius-1 bg-[--bc-activity35] text-white"
     >
       <svg
@@ -62,9 +96,18 @@ import { activityTypeMap } from './VipActivityEnum'
       </div>
       <div
         class="px-[10px] z-[4] py-[5px] absolute right-0 top-0 bg-[--bc-buttonColor] rounded-bl-[inherit] rounded-tr-[inherit] text-white text-[14px] z-[6] cursor-pointer"
+        @click="handleRules(v)"
       >
         Rules
       </div>
     </div>
   </div>
+  <BaseEmpty v-else />
+
+  <BaseModal
+    v-model:show="showRules" content-class="!bg-[#F5F8FA] !rounded-[10px]"
+    close-class="!text-white bg-[--bc-alphaBlack] w-[28px] h-[28px] !rounded-full flex items-center justify-center"
+  >
+    <BonusModal :info="currentRules" />
+  </BaseModal>
 </template>
