@@ -3,7 +3,8 @@ import { Dropdown } from 'floating-vue'
 import VueQrcode from 'vue-qrcode'
 import { useToast } from '../ui/toast'
 
-const { token } = useUserStore()
+const user = useUserStore()
+const { token } = storeToRefs(user)
 const { copy } = useClipboard()
 const { toast } = useToast()
 function copyUrl(str: string) {

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-const { token } = useUserStore()
+const user = useUserStore()
+const { token } = storeToRefs(user)
 </script>
 
 <template>
