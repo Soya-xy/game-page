@@ -1,56 +1,7 @@
 <script lang="ts" setup>
-const list = [
-  {
-    money: 0,
-    name: 'Jackpot Treasure',
-    icon: 'https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/bonusCenter/bonusCategory/8.png?t2024091214',
-  },
-  {
-    money: 0,
-    name: `Dragon's Treasure`,
-    icon: 'https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/bonusCenter/bonusCategory/15.png?t2024091214',
-  },
-  {
-    money: 0,
-    name: 'Daily Loss Cashback',
-    icon: 'https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/bonusCenter/bonusCategory/16.png?t2024091214',
-  },
-  {
-    money: 0,
-    name: 'Gachapon Grand Prize',
-    icon: 'https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/bonusCenter/bonusCategory/20.png?t2024091214',
-  },
-  {
-    money: 0,
-    name: 'Daily Bonus',
-    icon: 'https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/bonusCenter/bonusCategory/23.png?t2024091214',
-  },
-  {
-    money: 0,
-    name: 'Monthly bonus',
-    icon: 'https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/bonusCenter/bonusCategory/25.png?t2024091214',
-  },
-  {
-    money: 0,
-    name: 'Weekly Bonus',
-    icon: 'https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/bonusCenter/bonusCategory/29.png?t2024091214',
-  },
-  {
-    money: 0,
-    name: 'Level up Bonus',
-    icon: 'https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/bonusCenter/bonusCategory/31.png?t2024091214',
-  },
-  {
-    money: 0,
-    name: 'Deposit Bonus',
-    icon: 'https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/bonusCenter/bonusCategory/100.png?t2024091214',
-  },
-  {
-    money: 0,
-    name: 'Special Bonus',
-    icon: 'https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/bonusCenter/bonusCategory/200.png?t2024091214',
-  },
-]
+import { asyncRecordList } from '~/api/record'
+
+const { data: list } = await asyncRecordList()
 
 const options = [{ value: 'All bonuses', label: 'All bonuses' }, { value: 'Jackpot Treasure', label: 'Jackpot Treasure' }, { value: 'Dragon\'s Treasure', label: 'Dragon\'s Treasure' }, { value: 'Daily Loss Cashback', label: 'Daily Loss Cashback' }, { value: 'Gachapon Grand Prize', label: 'Gachapon Grand Prize' }, { value: 'Daily Bonus', label: 'Daily Bonus' }, { value: 'Monthly bonus', label: 'Monthly bonus' }, { value: 'Weekly Bonus', label: 'Weekly Bonus' }, { value: 'Level up Bonus', label: 'Level up Bonus' }, { value: 'Deposit Bonus', label: 'Deposit Bonus' }, { value: 'Special Bonus', label: 'Special Bonus' }]
 </script>
@@ -64,19 +15,19 @@ const options = [{ value: 'All bonuses', label: 'All bonuses' }, { value: 'Jackp
         </div>
         <div class="grid grid-cols-3 gap-[10px]">
           <div
-            v-for="item in list" :key="item.name"
+            v-for="item in list" :key="item.bonusName"
             class="bg-[--bc-color-3] flex items-center rounded-[8px] overflow-hidden"
           >
             <div class="w-full h-full flex items-center">
               <div class="w-[60px] h-[60px] shrink-0 mr-[10px] p-[6px]">
-                <Image :src="item.icon" alt="" class="w-full" />
+                <Image :src="item.bonusIcon" alt="" class="w-full" />
               </div>
               <div class="flex flex-col justify-center items-start flex-1">
                 <div class="text-[12px] text-color">
-                  {{ item.name }}
+                  {{ item.bonusName }}
                 </div>
                 <div class="text-color-linear-20 text-[14px] font-bold mt-[4px]">
-                  <span class="whitespace-pre">{{ toCurrency(item.money) }}</span>
+                  <span class="whitespace-pre">{{ toCurrency(item.totalClaimedAmount) }}</span>
                 </div>
               </div>
             </div>
