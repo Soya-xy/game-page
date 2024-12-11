@@ -6,9 +6,9 @@
   <div>
     <BonusTitle />
     <BonusTotal />
+    <BonusWapTotal />
+    <BonusItems />
   </div>
 </template>
 
-<style>
-
-</style>
+<style></style>

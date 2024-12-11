@@ -46,7 +46,7 @@ import { footerList, joinList } from '~/@types/constants'
               2.This game contains in-app purchases.
               3 .Just because a player plays or wins in a social gambling game does not mean that he or she will win in
               real money gambling and related games in the future.
-            </div><!---->
+            </div>
           </div>
           <div class="flex-1">
             <div class="flex flex-col mb-[12px] gap-[8px]">
@@ -62,8 +62,8 @@ import { footerList, joinList } from '~/@types/constants'
                     src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/home/footer-icon-2.png?t20231225"
                     alt="footer" importance="auto" class="h-full"
                   >
-                </div><!---->
-              </div><!---->
+                </div>
+              </div>
             </div>
             <p class="text-left text-[12px] font-semibold text-color leading-[22px] whitespace-pre-wrap">
               Afun.global is owned and operated by Safeplay Technology Ltd. registration number000041280, registered
@@ -71,7 +71,7 @@ import { footerList, joinList } from '~/@types/constants'
               licensed and regulated by the Government of the Autonomous Island of Anjouan, Union of Comoros and
               operates under License No. ALSI-152406042-FI4. Afun.global has passed all regulatory compliance and is
               legally authorized to conduct gaming operations for any and all games of chance and wagering.
-            </p><!---->
+            </p>
           </div>
         </div>
         <div

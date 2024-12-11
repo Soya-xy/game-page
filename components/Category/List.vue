@@ -57,7 +57,7 @@ watch(activeIndex, async () => {
 
 const providerList = ref<any>([])
 
-async function loadGames() {
+async function loadGames(e?: any) {
   const nowItem = tree[activeIndex.value]
 
   const itemList = nowItem.children.length > 0
@@ -70,7 +70,7 @@ async function loadGames() {
     const { data: gameList } = await asyncCategoryListDetail({
       id: item.id,
       pageNo: page.value,
-      pageSize: 20,
+      pageSize: 100,
     })
     page.value++
 
@@ -89,7 +89,7 @@ async function loadGames() {
     const gameResult = (data as CategoryListDetailResponse).pageResult?.list
     // 游戏卡牌
     if (gameResult?.length <= 0 || !gameResult) {
-      return
+      return e?.complete()
     }
 
     if (type.value === 'game') {
@@ -129,15 +129,15 @@ function changeHandler(e: string[]) {
   providerValue.value = e
 }
 
-const target = ref<HTMLElement>()
-useIntersectionObserver(
-  target,
-  ([entry]) => {
-    if (entry?.isIntersecting) {
-      loadGames()
-    }
-  },
-)
+// const target = ref<HTMLElement>()
+// useIntersectionObserver(
+//   target,
+//   ([entry]) => {
+//     if (entry?.isIntersecting) {
+//       loadGames()
+//     }
+//   },
+// )
 </script>
 
 <template>
@@ -165,41 +165,35 @@ useIntersectionObserver(
     <FilterSelect v-model="value" :option="option">
       <template #placeholder>
         <div class="text-white">
-          Sort by:  {{ value }}
+          Sort by: {{ value }}
         </div>
       </template>
     </FilterSelect>
 
-    <FilterProviderSelect
-      :option="providerOption"
-      @change="changeHandler"
-    >
+    <FilterProviderSelect :option="providerOption" @change="changeHandler">
       <template #placeholder>
         <div class="text-white">
-          Provider:  {{ providerValue.length ? `+${providerValue.length}` : 'All' }}
+          Provider: {{ providerValue.length ? `+${providerValue.length}` : 'All' }}
         </div>
       </template>
     </FilterProviderSelect>
   </div>
-  <Spin
-    :loading="loading"
-  >
-    <template
-      v-if="type === 'gameList'"
-    >
+  <Spin :loading="loading">
+    <template v-if="type === 'gameList'">
       <BaseGameList
-        v-for="(item, idx) in list" :key="idx"
-        :list="item.data" :title="item.name"
+        v-for="(item, idx) in list" :key="idx" :list="item.data" :title="item.name"
         :more-fetch="(opt: any) => getMore(item.id, opt)"
       />
     </template>
     <template v-if="type === 'game'">
       <CategoryGame :data="list" />
-      <Loading ref="target" :is-loading="loadGameing" :has-more="true" />
+      <LoadMore :load="loadGames" />
     </template>
 
     <template v-if="type === 'provider'">
-      <div class="grid gap-[12px] md:grid-cols-[repeat(auto-fill,minmax(180px,1fr))] grid-cols-[repeat(auto-fill,minmax(133px,1fr))]">
+      <div
+        class="grid gap-[12px] md:grid-cols-[repeat(auto-fill,minmax(180px,1fr))] grid-cols-[repeat(auto-fill,minmax(133px,1fr))]"
+      >
         <BaseGameProvider v-for="(item, idx) in providerList" :key="idx" :info="item" />
       </div>
     </template>

@@ -21,3 +21,8 @@ export interface Option {
   value: string
   [key: string]: any
 }
+
+export interface PageData<T> {
+  list: T[]
+  total: number
+}

@@ -1,9 +1,19 @@
 <script lang="ts" setup>
+const showDetails = ref<boolean>(false)
+const user = useUserStore()
+const { token } = storeToRefs(user)
+function showDetail() {
+  if (!token.value) {
+    navigateTo('/login')
+    return
+  }
 
+  showDetails.value = true
+}
 </script>
 
 <template>
-  <div class="flex items-center justify-between mb-[30px]">
+  <div class="md:flex items-center justify-between mb-[30px] hidden">
     <div
       class="flex-[13] flex items-start justify-start h-[248px] bg-right relative rounded-[10px] p-[20px] bg-no-repeat bg-cover "
       style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/C0E/bonusCenter/news/bg_pc.jpg?t20240909);"
@@ -47,14 +57,18 @@
         </div>
         <div
           class="h-[36px] text-[14px] px-[20px] w-[max-content] flex items-center text-white bg-[--bc-alphaBlack1a] border-[1px] border-solid border-[--bc-buttonColor] border-radius-0 mt-[20px] cursor-pointer"
+          @click="showDetail"
         >
-          <span>Details</span><i
+          <span>Details</span>
+          <i
             class="inline-block h-[max-content] w-[max-content] icon sysicon-new-back cursor-pointer rotate-[180deg] text-[12px] ml-[6px]"
           />
         </div>
       </div>
     </div>
+    <!-- TODO: 国际版有这个 巴西的没有 -->
     <div
+      v-if="false"
       class="p-[20px] rounded-[10px] relative h-[248px] flex-[7] ml-[20px] bg-[--bc-activity35] backdrop-blur-[20px] min-w-[400px]"
     >
       <div
@@ -111,7 +125,7 @@
                 <div class="text-[14px] leading-[1]">
                   Second Deposit
                 </div>
-              </div><!---->
+              </div>
             </div>
           </div>
           <div class="flex-1 shrink-0 relative">
@@ -141,23 +155,32 @@
                 <div class="text-[14px] leading-[1]">
                   Fourth Deposit
                 </div>
-              </div><!---->
+              </div>
             </div>
           </div>
         </div>
-      </div><!----><!---->
+      </div>
       <div class="w-full flex justify-between items-center">
-        <div class="">
-          Bonus ends: <span class="text-white">22D 16h:23m:16s</span>
+        <div class="flex gap-x-[5px]">
+          Bonus ends:
+          <Countdown :time="new Date('2024-12-12 12:00:00').getTime()" />
         </div>
-        <button
-          class="border-radius-0 h-[36px] text-font text-[14px] font-bold min-w-[127px] px-[20px] bg-active"
-        >
+        <button class="border-radius-0 h-[36px] text-font text-[14px] font-bold min-w-[127px] px-[20px] bg-active">
           Deposit Now
         </button>
       </div>
     </div>
   </div>
+  <BaseModal v-model:show="showDetails" content-class="!rounded-[10px] bg-popup min-w-[700px] max-w-[800px]">
+    <template #title>
+      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color-pop-16 rounded-t-[10px] text-white">
+        Bonus Details
+      </div>
+    </template>
+    <div class="h-[700px]">
+      <BonusDetails />
+    </div>
+  </BaseModal>
 </template>
 
 <style scoped>

@@ -14,9 +14,10 @@ const option = defineProp<{
 }[]>(undefined, true)
 
 const placeholder = defineProp<string>('Select a fruit')
-const value = defineModel<string>()
+const value = defineModel<string>('value')
 const open = ref(false)
 const { isPc } = useDevice()
+const contentClass = defineProp<string>('')
 </script>
 
 <template>
@@ -28,16 +29,18 @@ const { isPc } = useDevice()
       class="max-w-[325px] bg-color2 border-[--bc-transparentColor]"
     >
       <SelectValue
-        :placeholder as-child
+        :placeholder="placeholder"
+        :as-child="!!$slots.placeholder"
       >
         <slot
+          v-if="$slots.placeholder"
           name="placeholder"
         />
       </SelectValue>
     </SelectTrigger>
-    <SelectContent v-if="isPc" class="bg-color2 p-0">
+    <SelectContent v-if="isPc" :class="`bg-color2 p-0 ${contentClass}`">
       <SelectGroup>
-        <SelectItem v-for="item in option" :key="item.value" :value="item.value" class="hover:bg-color6 focus:bg-color6 min-h-[40px] h-[40px] text-[12px]">
+        <SelectItem v-for="item in option" :key="item.value" :value="item.value" class="hover:bg-color6 min-h-[40px] h-[40px] text-[12px] text-color">
           {{ item.label }}
         </SelectItem>
       </SelectGroup>
@@ -53,7 +56,7 @@ const { isPc } = useDevice()
         v-for="item in option"
         :key="item.value"
         :value="item"
-        class="hover:bg-color6 focus:bg-color6 min-h-[40px] h-[40px] text-[12px]"
+        class="hover:bg-color6 min-h-[40px] h-[40px] text-[12px]"
         @click="() => {
           open = false
         }"

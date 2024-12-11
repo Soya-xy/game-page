@@ -8,9 +8,13 @@ import {
 import { cn } from '~/lib/utils'
 
 const contentClass = defineProp<string>()
+const wapContentClass = defineProp<string>()
+const direction = defineProp<string>()
 const overlayClass = defineProp<string>()
+const closeClass = defineProp<string>()
 const enterAnimation = ref(0)
 const noClose = defineProp<boolean>(false)
+const { isPc } = useDevice()
 const show = defineModel<boolean>('show', {
   type: Boolean,
   required: true,
@@ -38,7 +42,7 @@ function closeModal() {
 </script>
 
 <template>
-  <Dialog v-model:open="show" modal>
+  <Dialog v-if="isPc" v-model:open="show" modal>
     <DialogPortal>
       <DialogContent
         disable-outside-pointer-events :class="cn(
@@ -48,8 +52,10 @@ function closeModal() {
           enterAnimation === 2 && 'DialogContentClosed',
           contentClass,
         )"
-        :overlay-class="overlayClass"
-        :no-close="noClose" @close="closeModal"
+        :overlay-class
+        :close-class
+        :no-close
+        @close="closeModal"
       >
         <DialogTitle v-if="$slots.title">
           <slot name="title" />
@@ -58,4 +64,10 @@ function closeModal() {
       </DialogContent>
     </DialogPortal>
   </Dialog>
+  <BaseDrawer v-else v-model:open="show" :direction :content-class="wapContentClass" :overlay-class>
+    <template #title>
+      <slot name="title" />
+    </template>
+    <slot />
+  </BaseDrawer>
 </template>
