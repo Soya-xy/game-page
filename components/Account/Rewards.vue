@@ -1,14 +1,20 @@
 <script lang="ts" setup>
-
+const showRule = ref(false)
+const close = defineEmit()
 </script>
 
 <template>
   <div class="flex flex-col h-full w-full overflow-hidden text-[--bc-yellowColor] rounded-[10px] bg-color-linear-39">
     <div class="shrink-0 overflow-hidden pl-[3.73vw] bg-color-linear-25">
       <div class="relative h-[44px] shrink-0 text-[15px] text-white flex items-center font-bold">
-        Rewards rain <button class="absolute z-[1] right-[40px] h-full pl-[10px] flex justify-center items-center">
+        Rewards rain
+        <button
+          class="absolute z-[1] right-[40px] h-full pl-[10px] flex justify-center items-center"
+          @click="showRule = true"
+        >
           <i class="inline-block h-[max-content] w-[max-content] icon-new-wenhao text-[--bc-yellowColor] text-[20px]" />
-        </button><button class="absolute z-[1] right-[4px] h-full top-0 bottom-0 m-auto px-[10px]">
+        </button>
+        <button class="absolute z-[1] right-[4px] h-full top-0 bottom-0 m-auto px-[10px]" @click="close">
           <i
             class="inline-block h-[max-content] w-[max-content] icon-new-clean-3 text-[--bc-yellowColor] text-[15px]"
           />
@@ -88,6 +94,14 @@
       </button>
     </div>
   </div>
+  <BaseDrawer v-model:open="showRule" content-class="z-[999] h-[max-content] p-0" overlay-class="z-[999]" no-header>
+    <div class="absolute top-0 right-0 px-[15px] py-[10px] z-[10]" @click="showRule = false">
+      <div class="bg-[--bc-alphaBlack] w-[28px] h-[28px] rounded-full flex items-center justify-center font-bold">
+        <i class="inline-block h-[max-content] w-[max-content] icon-new-clean-3 text-white text-[12px]" />
+      </div>
+    </div>
+    <BonusModal :info="{}" />
+  </BaseDrawer>
 </template>
 
 <style></style>

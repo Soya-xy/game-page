@@ -1384,7 +1384,7 @@
   border-color: #303434;
 }
 
-.border-color-4 {
+.border-[--bc-bgColor2] {
   border-color: #2c3031;
 }
 

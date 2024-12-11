@@ -143,11 +143,11 @@ async function save() {
           </div>
         </div>
       </div>
-      <div class="text-color-text-1 text-[14px] mt-[20px]">
+      <div class="text-color text-[14px] mt-[20px]">
         Nickname
       </div>
       <div class="my-[8px]">
-        <BaseInput v-model="nickname" placeholder="Enter rewards code" />
+        <BaseInput v-model="nickname" placeholder="Enter rewards code" allow-clear />
       </div>
       <div class="text-color-text-2 text-[12px]">
         Do not use special symbols, otherwise your nickname may not be supported.

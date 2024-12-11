@@ -568,3 +568,11 @@ html {
 .bg-color-linear-39 {
   background: linear-gradient(180deg, #fffae1, #f1be74 75.63%);
 }
+
+.bg-color-linear-42 {
+  background: linear-gradient(180deg, #d6771e -1.09%, #cc5f21 97.83%);
+}
+
+.bg-color-linear-43 {
+  background: linear-gradient(180deg, #397ecc -1.09%, #255fb8 97.83%);
+}

@@ -62,7 +62,7 @@ const showRain = ref<boolean>(false)
     </button>
   </div>
   <WapModal v-model:open="showRain" no-close content-class="p-0">
-    <AccountRewards />
+    <AccountRewards @close="showRain = false" />
   </WapModal>
 </template>
 

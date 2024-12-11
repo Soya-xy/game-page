@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils'
 const placeholder = defineProp<string>()
 const type = defineProp<HTMLInputElement['type']>('text')
 const iconClass = defineProp<string>()
+const allowClear = defineProp<boolean>(false)
 const modelValue = defineModel<string>()
 const clickIcon = defineEmit()
 </script>
@@ -29,6 +30,19 @@ const clickIcon = defineEmit()
       @click="clickIcon"
     >
       <slot name="icon" />
+    </div>
+    <div
+      v-if="allowClear"
+      :class="cn(
+        'text-[--bc-textColor] flex items-center absolute inset-y-0 right-[10px] justify-center text-[16px]',
+        iconClass,
+      )"
+      @click="clickIcon"
+    >
+      <i
+        class="inline-block h-[max-content] w-[max-content] cursor-pointer icon-new-clean-1 text-[12px] text-color-text-2"
+        @click="modelValue = ''"
+      />
     </div>
   </div>
 </template>
