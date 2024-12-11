@@ -1,4 +1,5 @@
 import { isClient } from '@vueuse/core'
+import { isEmpty } from 'ramda'
 import { joinURL } from 'ufo'
 
 // Scheme: https://tools.ietf.org/html/rfc3986#section-3.1
@@ -49,6 +50,9 @@ export function http2ws(url: string) {
 }
 
 // 根据i18n转换货币符号
-export function toCurrency(value: number) {
+export function toCurrency(value: number | string | undefined) {
+  if (isEmpty(value)) {
+    value = 0
+  }
   return Number(value).toLocaleString(useI18n().locale.value, { style: 'currency', currency: 'USD' })
 }

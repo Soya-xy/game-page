@@ -42,11 +42,11 @@ function changeLang(lang: Locale) {
       <LayoutSearch />
       <LayoutUserWallet v-if="token" />
       <template v-else>
-        <BaseButton @click="router.push('/login')">
+        <BaseButton class="px-[17px] h-[40px] min-w-[86px] font-extrabold flex items-center justify-center bg-button rounded-[8px] text-white" @click="router.push('/login')">
           Sign in
         </BaseButton>
 
-        <BaseButton class="bg-button-linear" @click="router.push('/register')">
+        <BaseButton class="px-[17px] h-[40px] min-w-[86px] font-extrabold flex items-center justify-center rounded-[8px] text-white bg-button-linear" @click="router.push('/register')">
           Sign Up
         </BaseButton>
       </template>

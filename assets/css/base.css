@@ -178,3 +178,154 @@ button {
 .DialogContentClosed {
   animation: zoomOut 300ms ease-in !important;
 }
+
+.dot-collision-0,
+.dot-collision-0:after,
+.dot-collision-0:before {
+  background-color: var(--bc-fontColor);
+  color: var(--bc-fontColor);
+}
+
+.dot-collision-1,
+.dot-collision-1:after,
+.dot-collision-1:before {
+  background-color: var(--bc-color20);
+  color: var(--bc-color20);
+}
+
+.dot-collision {
+  margin: 0 30px;
+  position: relative;
+}
+
+.dot-collision,
+.dot-collision:after,
+.dot-collision:before {
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  height: 7px;
+  width: 7px;
+}
+
+.dot-collision:after,
+.dot-collision:before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.dot-collision:before {
+  animation: dotCollisionBefore 1s ease-in infinite;
+  left: -10px;
+}
+
+.dot-collision:after {
+  animation: dotCollisionAfter 1s ease-in infinite;
+  animation-delay: 0.5s;
+  left: 10px;
+}
+
+@-webkit-keyframes dotCollisionBefore {
+  0%,
+  50%,
+  75%,
+  to {
+    transform: translate(0);
+  }
+
+  25% {
+    transform: translate(-15px);
+  }
+}
+
+@-moz-keyframes dotCollisionBefore {
+  0%,
+  50%,
+  75%,
+  to {
+    transform: translate(0);
+  }
+
+  25% {
+    transform: translate(-15px);
+  }
+}
+
+@-o-keyframes dotCollisionBefore {
+  0%,
+  50%,
+  75%,
+  to {
+    transform: translate(0);
+  }
+
+  25% {
+    transform: translate(-15px);
+  }
+}
+
+@keyframes dotCollisionBefore {
+  0%,
+  50%,
+  75%,
+  to {
+    transform: translate(0);
+  }
+
+  25% {
+    transform: translate(-15px);
+  }
+}
+
+@-webkit-keyframes dotCollisionAfter {
+  0%,
+  50%,
+  75%,
+  to {
+    transform: translate(0);
+  }
+
+  25% {
+    transform: translate(15px);
+  }
+}
+
+@-moz-keyframes dotCollisionAfter {
+  0%,
+  50%,
+  75%,
+  to {
+    transform: translate(0);
+  }
+
+  25% {
+    transform: translate(15px);
+  }
+}
+
+@-o-keyframes dotCollisionAfter {
+  0%,
+  50%,
+  75%,
+  to {
+    transform: translate(0);
+  }
+
+  25% {
+    transform: translate(15px);
+  }
+}
+
+@keyframes dotCollisionAfter {
+  0%,
+  50%,
+  75%,
+  to {
+    transform: translate(0);
+  }
+
+  25% {
+    transform: translate(15px);
+  }
+}
