@@ -4,7 +4,6 @@ import { ref } from 'vue'
 const open = ref<boolean>(false)
 const mobileOpen = ref<boolean>(false)
 const { isPc } = useDevice()
-const router = useRouter()
 
 function toggleOpen() {
   if (isPc.value) {
@@ -108,7 +107,7 @@ function toggleOpen() {
   </div>
   <div
     class="md:w-[50px] w-[44px] h-[34px] md:h-[40px] flex items-center justify-center shadow-[inset_0_-1.176px_#edea8740,inset_0_1.176px_1.176px_#ffde306e] relative rounded-[6px] cursor-pointer bg-chest"
-    @click="router.push('/bonus')"
+    @click="routerPush('/bonus')"
   >
     <div
       class="rounded-full text-[11px] bg-[--bc-activeColor2] shrink-0 text-font flex items-center justify-center font-bold px-[2px] min-w-[16px] h-[14px] text-[11px] absolute -right-[4px] top-0"

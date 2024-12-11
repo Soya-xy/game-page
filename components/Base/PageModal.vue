@@ -4,6 +4,8 @@ import {
   PageDialogContent as DialogContent,
 } from '~/components/PageDialog'
 
+import Spin from './Spin.vue'
+
 const { router } = useModal()
 const enterAnimation = ref(0)
 const show = ref(false)
@@ -20,6 +22,8 @@ watch(router, (val) => {
     is.value = defineAsyncComponent({
       loader: () => RouteToComponent[val.path!],
       delay: 200,
+      loadingComponent: Spin,
+      errorComponent: Spin,
       timeout: 10000,
       suspensible: false,
     })
@@ -36,6 +40,7 @@ watch(router, (val) => {
     }, 300)
   }
 }, {
+  immediate: true,
   deep: true,
 })
 

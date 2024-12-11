@@ -13,7 +13,6 @@ const info = defineProp<{
 
 const { isPc } = useDevice()
 const userStore = useUserStore()
-const router = useRouter()
 const { token } = storeToRefs(userStore)
 
 const isOpen = ref<boolean>(false)
@@ -116,11 +115,11 @@ function openGame() {
               />
               <span
                 v-if="!token" class="text-font font-bold" style="font-size: min(max(11px, 0.9375vw), 18px);"
-                @click.stop="router.push('/login')"
+                @click.stop="routerPush('/login')"
               >Sign In</span>
               <span
                 v-else class="text-font font-bold" style="font-size: min(max(11px, 0.9375vw), 18px);"
-                @click.stop="router.push(`/game/${info.id}`)"
+                @click.stop="routerPush(`/game/${info.id}`)"
               >Play</span>
             </div>
 
@@ -188,7 +187,7 @@ function openGame() {
             <div
               class="flex items-center gap-[8px] font-extrabold" @click="() => {
                 isOpen = false
-                router.push(`/game/${info.name}`)
+                routerPush(`/game/${info.name}`)
               }"
             >
               <span

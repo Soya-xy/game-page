@@ -7,7 +7,6 @@ import { useToast } from '../ui/toast'
 const showPassword = ref(false)
 const showInviteCode = ref(false)
 const { toast } = useToast()
-const router = useRouter()
 const userStore = useUserStore()
 const schema = {
   mobile: z.string(),
@@ -150,7 +149,7 @@ async function onSubmit(e: any) {
         <div class="md:text-[14px] text-[12px] text-[--bc-textColor]">
           <div class="flex md:block gap-x-[5px]">
             Already have an account?
-            <div class="text-active font-[900] cursor-pointer" @click="router.push('/login')">
+            <div class="text-active font-[900] cursor-pointer" @click="routerPush('/login')">
               Sign In
             </div>
           </div>

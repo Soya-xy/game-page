@@ -1,3 +1,5 @@
+import type { RouteLocationAsRelativeI18n } from 'vue-router'
+import type { RouteNamedMapI18n } from 'vue-router/auto-routes'
 import { isClient } from '@vueuse/core'
 import { isEmpty } from 'ramda'
 import { joinURL } from 'ufo'
@@ -63,4 +65,8 @@ export function toCurrency(value: number | string | undefined) {
     currency,
   })
   return formatter.format(Number(value))
+}
+
+export function routerPush(path: string) {
+  navigateTo(useNuxtApp().$localeRoute((path as keyof RouteNamedMapI18n | (Omit<RouteLocationAsRelativeI18n, 'path'>)))?.fullPath)
 }

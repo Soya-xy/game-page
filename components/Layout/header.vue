@@ -36,17 +36,17 @@ function changeLang(lang: Locale) {
   >
     <div class="flex items-center gap-[27px] ml-[22px]">
       <BaseToggleMenu :class="isOpen ? 'rotate-180' : ''" @click="toggleMenu" />
-      <Image src="/images/logo.avif" class="!h-[44px]" @click="router.push('/')" />
+      <Image src="/images/logo.avif" class="!h-[44px]" @click="routerPush('/')" />
     </div>
     <div class="flex items-center px-[12px] gap-[12px]">
       <LayoutSearch />
       <LayoutUserWallet v-if="token" />
       <template v-else>
-        <BaseButton class="px-[17px] h-[40px] min-w-[86px] font-extrabold flex items-center justify-center bg-button rounded-[8px] text-white" @click="router.push('/login')">
+        <BaseButton class="px-[17px] h-[40px] min-w-[86px] font-extrabold flex items-center justify-center bg-button rounded-[8px] text-white" @click="routerPush('/login')">
           Sign in
         </BaseButton>
 
-        <BaseButton class="px-[17px] h-[40px] min-w-[86px] font-extrabold flex items-center justify-center rounded-[8px] text-white bg-button-linear" @click="router.push('/register')">
+        <BaseButton class="px-[17px] h-[40px] min-w-[86px] font-extrabold flex items-center justify-center rounded-[8px] text-white bg-button-linear" @click="routerPush('/register')">
           Sign Up
         </BaseButton>
       </template>
@@ -69,7 +69,7 @@ function changeLang(lang: Locale) {
             <DropdownMenuItem
               v-for="item in menuItems" :key="item.label"
               class="hover:text-white hover:bg-page hover:font-bold    p-0"
-              @click="router.push(item.hash || '/')"
+              @click="routerPush(item.hash || '/')"
             >
               <div class="pl-[20px] pr-[10px] h-[46px] flex items-center cursor-pointer">
                 <i

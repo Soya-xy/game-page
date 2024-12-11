@@ -4,7 +4,6 @@ import Checkbox from '../ui/checkbox/Checkbox.vue'
 
 const showPassword = ref(false)
 const remember = ref(false)
-const router = useRouter()
 const schema = {
   mobile: z.string().min(2).max(50).default(localStorage.getItem('mobile') || ''),
   password: z.string().optional().default(localStorage.getItem('password') || ''),
@@ -115,7 +114,7 @@ async function onSubmit(e: any) {
         <div class="md:text-[14px] text-[12px] text-[--bc-textColor]">
           <div class="flex md:block gap-x-[5px]">
             Don't have an account?
-            <div class="text-active font-[900] cursor-pointer" @click="router.push('/register')">
+            <div class="text-active font-[900] cursor-pointer" @click="routerPush('/register')">
               Sign Up
             </div>
           </div>

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const router = useRouter()
 const showRain = ref<boolean>(false)
 </script>
 
@@ -27,11 +26,11 @@ const showRain = ref<boolean>(false)
     <div class="flex items-center font-bold mt-[10px]">
       <button
         class="h-[40px] flex-1 bg-[--bc-bgColor9] border-radius-0 text-white mr-[10px]"
-        @click="router.push('/login')"
+        @click="routerPush('/login')"
       >
         Sign In
       </button>
-      <button class="h-[40px] flex-1 bg-active border-radius-0 text-font" @click="router.push('/register')">
+      <button class="h-[40px] flex-1 bg-active border-radius-0 text-font" @click="routerPush('/register')">
         Sign Up
       </button>
     </div>

@@ -2,7 +2,6 @@
 import { isClient } from '@vueuse/core'
 // import cas
 const { isOpen } = useMenu()
-const router = useRouter()
 const menuItems = [
   { name: 'Casino', href: '/casino', icon: 'casino', iconType: 'svg' },
   { name: 'Sports', href: '/sports', icon: 'sport', iconType: 'svg' },
@@ -42,7 +41,7 @@ if (isClient) {
         <div
           v-for="item in menuItems" :key="item.name"
           class="h-[40px] text-white text-[14px] font-semibold bg-tab cursor-pointer rounded-[10px] overflow-hidden"
-          @click="router.push(item.href)"
+          @click="routerPush(item.href)"
         >
           <div class="h-full flex items-center relative hover-bg-linear-3">
             <div class="w-[40px] h-[40px] flex items-center justify-center">
@@ -100,7 +99,7 @@ if (isClient) {
           >
             <div
               class="flex justify-center h-[40px] w-[40px] cursor-pointer flex items-center justify-center  hover-bg-linear-3 rounded-[10px]"
-              @click="router.push(item.href)"
+              @click="routerPush(item.href)"
             >
               <i
                 v-if="item.iconType !== 'svg'"

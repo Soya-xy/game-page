@@ -3,6 +3,7 @@ import type { Locale } from '@intlify/core-base'
 import { ref } from 'vue'
 
 const route = useRoute()
+console.log('%c🤪 ~ file: /Users/soya/Desktop/game-page/components/Layout/WapTabbar.vue:5 [route] -> route : ', 'color: #a4f7bd', route)
 const router = useRouter()
 const isOpen = ref(false)
 const menuItems = [
@@ -15,8 +16,10 @@ const menuItems = [
   { name: 'Install', href: '/install', icon: 'icon-n-install' },
   { name: 'Live Chat', href: '/livechat', icon: 'icon-n-livechat' },
 ]
+
 const langModal = ref<boolean>(false)
 const { setLocale } = useI18n()
+
 function changeLang(lang: Locale) {
   setLocale(lang)
   router.replace('/')
@@ -40,45 +43,45 @@ function changeLang(lang: Locale) {
       </div>
       <div
         class="flex-1 flex flex-col items-center justify-center text-[10px] space-y-[2px]"
-        @click="router.push('/casino')"
+        @click="routerPush('/casino')"
       >
         <div class="flex items-center justify-center" style="width: 22px; height: 22px;">
-          <i-svg-casino :class="{ active: route.path === '/casino' }" />
+          <i-svg-casino :class="{ active: route.path.includes('/casino') }" />
         </div>
-        <div class="text-center whitespace-nowrap" :class="{ active: route.path === '/casino' }">
+        <div class="text-center whitespace-nowrap" :class="{ active: route.path.includes('/casino') }">
           Casino
         </div>
       </div>
       <div
         class="flex-1 flex flex-col items-center justify-center text-[10px] space-y-[2px]"
-        @click="router.push('/affiliate')"
+        @click="routerPush('/affiliate')"
       >
         <div class="flex items-center justify-center" style="width: 23px; height: 23px; ">
-          <i-svg-affiliate :class="{ active: route.path === '/affiliate' }" />
+          <i-svg-affiliate :class="{ active: route.path.includes('/affiliate') }" />
         </div>
-        <div class="text-center whitespace-nowrap" :class="{ active: route.path === '/affiliate' }">
+        <div class="text-center whitespace-nowrap" :class="{ active: route.path.includes('/affiliate') }">
           Affiliate
         </div>
       </div>
       <div
         class="flex-1 flex flex-col items-center justify-center text-[10px] space-y-[2px] "
-        @click="router.push('/sports')"
+        @click="routerPush('/sports')"
       >
         <div class="flex items-center justify-center" style="width: 22px; height: 22px;">
-          <i-svg-sport :class="{ active: route.path === '/sports' }" />
+          <i-svg-sport :class="{ active: route.path.includes('/sports') }" />
         </div>
-        <div class="text-center whitespace-nowrap" :class="{ active: route.path === '/sports' }">
+        <div class="text-center whitespace-nowrap" :class="{ active: route.path.includes('/sports') }">
           Sports
         </div>
       </div>
       <div
         class="flex-1 flex flex-col items-center justify-center text-[10px] space-y-[2px]"
-        @click="router.push('/account')"
+        @click="routerPush('/account')"
       >
         <div class="flex items-center justify-center" style="width: 23px; height: 23px;">
-          <i-svg-account :class="{ active: route.path === '/account' }" />
+          <i-svg-account :class="{ active: route.path.includes('/account') }" />
         </div>
-        <div :class="{ active: route.path === '/account' }">
+        <div :class="{ active: route.path.includes('/account') }">
           Account
         </div>
       </div>
@@ -94,7 +97,7 @@ function changeLang(lang: Locale) {
               class="h-[40px] text-white text-[14px] font-semibold bg-color2 cursor-pointer rounded overflow-hidden"
               @click="() => {
                 isOpen = false
-                router.push(item.href)
+                routerPush(item.href)
               }"
             >
               <div class="h-full flex items-center relative hover-bg-linear-3">
