@@ -1,9 +1,18 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import type { Locale } from '@intlify/core-base'
 import { cn } from '~/lib/utils'
 
 const userStore = useUserStore()
 const { token } = storeToRefs(userStore)
+const { setLocale } = useI18n()
+const router = useRouter()
+const showLanguageModal = ref<boolean>(false)
+
+function changeLang(lang: Locale) {
+  setLocale(lang)
+  router.replace('/')
+  showLanguageModal.value = false
+}
 
 const userList = computed(() => {
   if (!token) {
@@ -105,7 +114,7 @@ const showModal = ref<boolean>(false)
       </div>
       <i class="inline-block h-[max-content] w-[max-content] icon-new-back text-color rotate-[180deg] text-[13px]" />
     </button>
-    <div class="flex items-center pl-[15px] pr-[12px] h-[40px] w-full shrink-0">
+    <div class="flex items-center pl-[15px] pr-[12px] h-[40px] w-full shrink-0" @click="showLanguageModal = true">
       <div class="flex items-center mr-[14px] flex-1">
         <i class="inline-block h-[max-content] w-[max-content] icon-new-lang text-[20px] text-color mr-[14px] " />
         <span class="text-white">{{ $t('lang.name') }}</span>
@@ -139,6 +148,14 @@ const showModal = ref<boolean>(false)
         Cancel
       </button>
     </div>
+  </BaseModal>
+  <BaseModal v-model:show="showLanguageModal" wap-content-class="p-0 z-[555]" overlay-class="z-[550]">
+    <template #title>
+      <div class="flex justify-between items-center">
+        Switch Language
+      </div>
+    </template>
+    <BaseLang @change="changeLang" />
   </BaseModal>
 </template>
 

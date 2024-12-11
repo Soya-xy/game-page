@@ -1,6 +1,7 @@
 import { isClient } from '@vueuse/core'
 import { isEmpty } from 'ramda'
 import { joinURL } from 'ufo'
+import { currencyMap } from '~/@types/constants'
 
 // Scheme: https://tools.ietf.org/html/rfc3986#section-3.1
 // Absolute URL: https://tools.ietf.org/html/rfc3986#section-4.3
@@ -54,5 +55,12 @@ export function toCurrency(value: number | string | undefined) {
   if (isEmpty(value)) {
     value = 0
   }
-  return Number(value).toLocaleString(useI18n().locale.value, { style: 'currency', currency: 'USD' })
+  const { locale } = useI18n()
+
+  const currency = currencyMap[locale.value]
+  const formatter = new Intl.NumberFormat(locale.value, {
+    style: 'currency',
+    currency,
+  })
+  return formatter.format(Number(value))
 }

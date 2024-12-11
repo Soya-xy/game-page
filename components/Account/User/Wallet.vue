@@ -25,7 +25,7 @@
           Cash
         </div>
         <div class="font-bold text-white">
-          <span class="whitespace-pre">R$0.07</span>
+          <span class="whitespace-pre">{{ toCurrency(0.07) }}</span>
         </div>
       </div>
       <div class="w-[1px] h-[20px] bg-color5 shrink-0" />
