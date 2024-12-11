@@ -86,11 +86,11 @@ function copyUrl(str: string) {
       </div>
       <div class="mt-[10px]">
         <div class="flex items-center">
-          <div class="h-[1px] flex-1 bg-color-btn-2" />
+          <div class="h-[1px] flex-1 bg-[--bc-bgColor9]" />
           <div class="mx-[10px] text-color text-[14px]">
             OR
           </div>
-          <div class="h-[1px] flex-1 bg-color-btn-2" />
+          <div class="h-[1px] flex-1 bg-[--bc-bgColor9]" />
         </div>
         <div class="flex items-center pt-[6px] justify-around">
           <Image

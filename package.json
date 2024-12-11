@@ -20,6 +20,7 @@
     "@number-flow/vue": "^0.3.2",
     "@vee-validate/zod": "^4.14.7",
     "@vueuse/core": "^12.0.0",
+    "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "colorthief": "^2.6.0",
@@ -27,6 +28,7 @@
     "floating-vue": "^5.2.2",
     "lucide-vue-next": "^0.468.0",
     "motion-v": "^0.4.0",
+    "postcss": "^8.4.49",
     "radix-vue": "^1.9.11",
     "ramda": "^0.30.1",
     "tailwind-merge": "^2.5.5",
@@ -95,6 +97,19 @@
   "lint-staged": {
     "*": [
       "eslint --fix"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.01%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      ">0.01%",
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   }
 }

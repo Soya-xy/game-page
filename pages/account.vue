@@ -5,9 +5,7 @@ definePageMeta({
 </script>
 
 <template>
-  <div>
-    account
-  </div>
+  <Account />
 </template>
 
 <style>

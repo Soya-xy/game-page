@@ -11,7 +11,14 @@ export default resolveConfig({
   darkMode: ['class', '[data-theme="dark"]'],
   safelist: ['dark'],
   prefix: '',
-
+  content: [
+    './components/**/*.{js,vue,ts}',
+    './layouts/**/*.vue',
+    './pages/**/*.vue',
+    './plugins/**/*.{js,ts}',
+    './app.vue',
+    './error.vue',
+  ],
   theme: {
     container: {
       center: true,
@@ -121,6 +128,7 @@ export default resolveConfig({
         svg: getCollections(resolve(__dirname, './assets/icons/svg')),
       },
     }),
+
   ],
 })
 

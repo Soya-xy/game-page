@@ -12,6 +12,7 @@ html {
   --bc-textColor: #bec7ca;
   --bc-fontColor: #292d2e;
   --bc-buttonColor: #ffffff1a;
+  --bc-buttonColor2: #ffffff4d;
   --bc-iconColor: #b3b8c1;
   --bc-headerColor: #2a6d57;
   --bc-activeColor: #2dee88;
@@ -58,6 +59,7 @@ html {
   --bc-activityWhite: 236, 240, 246;
   --bc-fontActivity: #4d4d4d;
   --bc-popupColor: #2e3031;
+  --bc-yellowColor: #773c1a;
 }
 
 /* html[data-theme='dark'] {
@@ -542,4 +544,27 @@ html {
 
 .bg-color-alpha-black-04 {
   background: #0006;
+}
+
+.bg-color-linear-03 {
+  background: linear-gradient(0deg, #3d2857 12.58%, #1d2027 95.76%);
+}
+
+.bg-color-linear-02 {
+  background: linear-gradient(0deg, #3e2020 13.78%, #1d2027 113.26%);
+}
+
+.bg-color-linear-25 {
+  background: linear-gradient(270deg, #f5c377, #bf823b);
+}
+
+.text-color-activity-9 {
+  background: linear-gradient(90deg, #f90, #ec0039);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-color-linear-39 {
+  background: linear-gradient(180deg, #fffae1, #f1be74 75.63%);
 }

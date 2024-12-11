@@ -59,7 +59,7 @@ function showDetail() {
       <BonusDetails />
     </div>
   </BaseModal>
-  <BaseDrawer v-model:open="showCode" content-class="z-[999] p-0" header-class="rounded-t-[10px]">
+  <BaseDrawer v-model:open="showCode" content-class="z-[999] p-0" header-class="rounded-t-[10px] !bg-color-pop-16">
     <template #title>
       <p class="font-bold text-white">
         Redeem Rewards Code

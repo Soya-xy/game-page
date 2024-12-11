@@ -52,7 +52,7 @@ const { isPc } = useDevice()
             <div>
               200XP to VIP 2
               <i class="inline-block h-[max-content] w-[max-content] icon-new-info-normal cursor-pointer ml-[10px] relative hover:text-white">
-                <div class="opacity-0 hidden select-none pointer-events-none invisible absolute w-[400px] left-0 top-[26px] p-[10px] pr-[14px] box-shadow-02 border-radius-0 bg-color-btn-2 z-[200]">
+                <div class="opacity-0 hidden select-none pointer-events-none invisible absolute w-[400px] left-0 top-[26px] p-[10px] pr-[14px] box-shadow-02 border-radius-0 bg-[--bc-bgColor9] z-[200]">
                   <ul class="text-[14px] list-disc list-outside text-color pl-[20px]">
                     <li>Bet R$1.00 = 1EXP</li>
                   </ul>

@@ -1,7 +1,17 @@
 <script lang="ts" setup>
+import type { Locale } from '@intlify/core-base'
+
 const router = useRouter()
 const userStore = useUserStore()
 const { token } = storeToRefs(userStore)
+const showLanguageModal = ref<boolean>(false)
+const { setLocale } = useI18n()
+
+function changeLang(lang: Locale) {
+  setLocale(lang)
+  router.replace('/')
+  showLanguageModal.value = false
+}
 </script>
 
 <template>
@@ -23,13 +33,21 @@ const { token } = storeToRefs(userStore)
         >
           Sign Up
         </button>
-        <div class="w-[34px] h-[34px] flex items-center justify-center relative bg-button rounded-[10px]">
+        <div class="w-[34px] h-[34px] flex items-center justify-center relative bg-button rounded-[10px]" @click="showLanguageModal = true">
           <i class="inline-block h-[max-content] w-[max-content] icon-n-lang text-[20px]" />
         </div>
       </div>
       <LayoutUserWallet v-else />
     </div>
   </div>
+  <BaseModal v-model:show="showLanguageModal" wap-content-class="p-0 z-[555]" overlay-class="z-[550]">
+    <template #title>
+      <div class="flex justify-between items-center">
+        Switch Language
+      </div>
+    </template>
+    <BaseLang @change="changeLang" />
+  </BaseModal>
 </template>
 
 <style></style>

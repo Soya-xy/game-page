@@ -99,6 +99,12 @@ export default defineNuxtConfig({
       // ignore: ['/hi'],
     },
   },
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
   debug: process.env.NODE_ENV === 'development',
   eslint: {
     config: {
