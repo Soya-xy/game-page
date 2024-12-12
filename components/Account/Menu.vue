@@ -7,6 +7,7 @@ const { token } = storeToRefs(userStore)
 const { setLocale } = useI18n()
 const router = useRouter()
 const showLanguageModal = ref<boolean>(false)
+const showProfileHelp = ref<boolean>(false)
 
 function changeLang(lang: Locale) {
   setLocale(lang)
@@ -84,7 +85,9 @@ const menuList = computed(() => {
       {
         name: 'FAQ & Feedback',
         icon: 'icon-new-help',
-        href: '/faq',
+        onClick() {
+          showProfileHelp.value = true
+        },
       },
       {
         name: 'Account settings',
@@ -99,6 +102,15 @@ const menuList = computed(() => {
   }
 })
 const showModal = ref<boolean>(false)
+
+function handleClick(e: any) {
+  if (e.onClick) {
+    e.onClick()
+  }
+  if (e.href) {
+    routerPush(e.href)
+  }
+}
 </script>
 
 <template>
@@ -118,7 +130,7 @@ const showModal = ref<boolean>(false)
   <div class="text-color w-full border-radius-0 bg-color2 mt-[15px]">
     <button
       v-for="item in menuList" :key="item.name" class="flex items-center pl-[15px] pr-[12px] h-[40px] w-full"
-      @click="item.href ? routerPush(item.href) : null"
+      @click="handleClick(item)"
     >
       <div class="flex items-center flex-1 overflow-hidden mr-[14px] h-full">
         <i class="inline-block h-[max-content] w-[max-content] text-[20px]" :class="cn(item.color, item.icon)" /><span
@@ -169,6 +181,14 @@ const showModal = ref<boolean>(false)
       </div>
     </template>
     <BaseLang @change="changeLang" />
+  </BaseModal>
+  <BaseModal v-model:show="showProfileHelp" wap-content-class="p-0 z-[555] h-[100vh]" overlay-class="z-[550]">
+    <template #title>
+      <div class="flex justify-between items-center text-white">
+        Help & Feedback
+      </div>
+    </template>
+    <ProfileHelp />
   </BaseModal>
 </template>
 
