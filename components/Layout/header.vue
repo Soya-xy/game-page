@@ -8,6 +8,8 @@ const { token, user } = storeToRefs(userStore)
 const { toggleMenu, isOpen } = useMenu()
 const showLanguageModal = ref<boolean>(false)
 
+const open = defineEmit<{ (type: string): void }>()
+
 // 添加菜单配置数组
 const menuItems = [
   { label: 'Wallet', icon: 'icon-n-wallet' },
@@ -42,18 +44,44 @@ function changeLang(lang: Locale) {
       <LayoutSearch />
       <LayoutUserWallet v-if="token" />
       <template v-else>
-        <BaseButton class="px-[17px] h-[40px] min-w-[86px] font-extrabold flex items-center justify-center bg-button rounded-[8px] text-white" @click="routerPush('/login')">
+        <BaseButton
+          class="px-[17px] h-[40px] min-w-[86px] font-extrabold flex items-center justify-center bg-button rounded-[8px] text-white"
+          @click="routerPush('/login')"
+        >
           Sign in
         </BaseButton>
 
-        <BaseButton class="px-[17px] h-[40px] min-w-[86px] font-extrabold flex items-center justify-center rounded-[8px] text-white bg-button-linear" @click="routerPush('/register')">
+        <BaseButton
+          class="px-[17px] h-[40px] min-w-[86px] font-extrabold flex items-center justify-center rounded-[8px] text-white bg-button-linear"
+          @click="routerPush('/register')"
+        >
           Sign Up
         </BaseButton>
       </template>
 
-      <BaseIconButton>
-        <i-svg-chat class="w-[25px] h-[24px]" />
-      </BaseIconButton>
+      <div class="flex h-[40px] rounded-[8px] items-center bg-[--bc-buttonColor]">
+        <div
+          class="bg-button flex items-center justify-center  rounded-[8px] w-[40px] h-[40px] cursor-pointer !bg-transparent"
+          @click="open('Chat')"
+        >
+          <div class="relative">
+            <div class="flex items-center justify-center menu-svg" style="width: 25px; height: 24px; --89bcd300: 1;">
+              <i-svg-chat class="w-[25px] h-[24px]" />
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-button flex items-center justify-center  rounded-[8px] w-[40px] h-[40px] cursor-pointer !bg-transparent"
+          @click="open('Notification')"
+        >
+          <div class="relative">
+            <div class="flex items-center justify-center menu-svg">
+              <i-svg-notification class="w-[25px] h-[24px]" />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <BaseIconButton @click="showLanguageModal = true">
         <i class="i-carbon-earth w-[25px] h-[24px]" />
       </BaseIconButton>
@@ -68,8 +96,7 @@ function changeLang(lang: Locale) {
           >
             <DropdownMenuItem
               v-for="item in menuItems" :key="item.label"
-              class="hover:text-white hover:bg-page hover:font-bold    p-0"
-              @click="routerPush(item.hash || '/')"
+              class="hover:text-white hover:bg-page hover:font-bold    p-0" @click="routerPush(item.hash || '/')"
             >
               <div class="pl-[20px] pr-[10px] h-[46px] flex items-center cursor-pointer">
                 <i
@@ -83,10 +110,7 @@ function changeLang(lang: Locale) {
             </DropdownMenuItem>
             <DropdownMenuSeparator class="bg-button" />
 
-            <DropdownMenuItem
-              class="hover:text-white hover:bg-page hover:font-bold    p-0"
-              @click="userStore.logout"
-            >
+            <DropdownMenuItem class="hover:text-white hover:bg-page hover:font-bold    p-0" @click="userStore.logout">
               <div class="pl-[20px] pr-[10px] h-[46px] flex items-center cursor-pointer">
                 <i
                   class="inline-block h-[max-content] w-[max-content] cursor-pointer mr-[14px] text-[20px] text-icon  icon-n-sign-out"
