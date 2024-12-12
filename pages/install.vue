@@ -56,7 +56,7 @@ function toggleOpen() {
                 </div>
               </div>
               <div
-                class="sticky top-0 z-[20] w-full flex items-center bg-color-linear-12 text-white shrink-0 !h-[52px] !px-[15px]"
+                class="sticky top-0 z-[20] w-full flex items-center bg-linear-12 text-white shrink-0 !h-[52px] !px-[15px]"
               >
                 <div class="flex-1 flex items-center">
                   <div class="text-[18px] font-bold text-white">
@@ -132,7 +132,7 @@ function toggleOpen() {
                       class="bg-color-4 border-radius-0 w-full absolute z-[15] left-0 top-[0] -translate-y-[100%] transition-all overflow-hidden box-shadow-02 max-h-0"
                     >
                       <li
-                        class="flex items-center justify-center px-[15px] relative cursor-pointer bg-color-btn-1 text-white font-bold min-h-[36px]"
+                        class="flex items-center justify-center px-[15px] relative cursor-pointer bg-[--bc-searchBtnColor] text-white font-bold min-h-[36px]"
                       >
                         <span>English</span><button
                           class="absolute inset-y-0 right-[15px] flex items-center"

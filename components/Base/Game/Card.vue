@@ -148,7 +148,7 @@ function openGame() {
             <div class="flex gap-x-[8px] text-[12px]">
               <div class="rounded-[10px] w-[34.37%] shrink-0">
                 <div
-                  class="h-[0] relative bg-no-repeat bg-cover bg-center rounded-[inherit] pb-[133.333333%] bg-color-linear-12"
+                  class="h-[0] relative bg-no-repeat bg-cover bg-center rounded-[inherit] pb-[133.333333%] bg-linear-12"
                 >
                   <Image
                     :src="info.picUrl" class="absolute top-[0] left-[0] w-full h-full rounded-[inherit]"

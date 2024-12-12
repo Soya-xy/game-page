@@ -13,7 +13,7 @@ const { isPc } = useDevice()
   >
     <div class="w-full h-[200px] flex flex-col">
       <div class="flex w-full justify-between h-full">
-        <div class="md:ml-[114px] h-[184px] shrink-0 relative">
+        <div class="ml-[114px] h-[184px] shrink-0 relative">
           <Image src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/vip/l/vip1_l.png" alt="" importance="auto" class="!h-auto md:!h-full" />
         </div>
         <div class="flex flex-col justify-between pt-[12px] pb-[28px] flex-1 max-w-[800px] ml-auto mr-[5px]">
@@ -92,7 +92,7 @@ const { isPc } = useDevice()
         </div>
       </div>
       <div class="flex-1 overflow-y-auto overflow-hidden">
-        <div v-for="(item, index) in levelList" :key="index" class="flex items-center px-[20px] h-[46px] text-[--bc-textColor] vip-level-item bg-color-linear-12">
+        <div v-for="(item, index) in levelList" :key="index" class="flex items-center px-[20px] h-[46px] text-[--bc-textColor] vip-level-item bg-linear-12">
           <div class="flex-1 shrink-0 flex items-center">
             <Image :src="item.icon" alt="" importance="auto" class="shrink-0 mr-[6px] !h-auto" />
             <span>{{ item.name }}</span>

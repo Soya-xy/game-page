@@ -64,7 +64,7 @@ export function toCurrency(value: number | string | undefined) {
     style: 'currency',
     currency,
   })
-  return formatter.format(Number(value))
+  return formatter.format(Number(value || 0))
 }
 
 export function routerPush(path: string) {

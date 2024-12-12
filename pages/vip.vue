@@ -7,7 +7,7 @@ definePageMeta({
   noHeader: true,
 })
 const currentLevel = ref(1)
-
+const { isPc } = useDevice()
 const { data: levelList } = await asyncLevelList()
 
 const vipFaq = ref([
@@ -26,36 +26,38 @@ provide('levelList', readonly(levelList.value!))
 
 <template>
   <div class="container @container flex flex-col gap-y-[12px] relative z-[20] sm:px-[24px] !px-0 pb-[24px]">
-    <div class="flex overflow-x-hidden w-full">
+    <VipHeader v-if="!isPc" />
+    <div class="flex overflow-x-hidden w-full mt-[56px] md:mt-0">
       <div v-if="levelList.length > 0" class="flex flex-col w-full">
         <div class="flex flex-wrap text-[14px] relative bg-inherit">
           <div class="border-radius-0 w-full md:mt-[20px] pb-[50px] md:px-[15px]">
-            <VipBanner />
+            <VipBanner v-if="isPc" />
+            <VipWapBanner v-else />
             <VipLevel v-model="currentLevel" />
           </div>
-          <div class="px-[15px] w-full">
-            <VipModule :current-level="currentLevel" />
-            <div class="mb-[40px] w-full">
-              <h3 class="text-[20px] px-[20px] font-bold text-white mb-[20px]">
+          <div class="w-full">
+            <VipModule :current-level="currentLevel" class="px-[15px]" />
+            <div class="md:mb-[40px] mb-[25px] w-full bg-[--bc-color-3] md:bg-none p-[15px] md:p-0">
+              <h3 class="md:text-[20px] text-[16px] md:px-[20px] font-bold text-white mb-[20px] mb-[10px]">
                 More
               </h3>
-              <div class="p-[20px] bg-[--bc-color-3] border-radius-1">
-                <p class="mb-[10px] text-[14px] text-color">
+              <div class="md:p-[20px] bg-[--bc-color-3] border-radius-1">
+                <p class="mb-[10px] md:text-[14px] text-[12px] text-color">
                   Please see our promotions for more details.
                 </p>
-                <button class="main-color-btn text-font w-[max-content] px-[25px] text-[12px] font-bold h-[40px] border-radius-0 min-w-[130px]">
+                <button class="bg-active text-font w-[max-content] px-[25px] text-[12px] font-bold h-[40px] border-radius-0 min-w-[130px]">
                   Promotions
                 </button>
               </div>
             </div>
             <!-- FAQ -->
-            <div class="w-full mb-[40px]">
-              <h3 class="text-[20px] px-[20px] font-bold text-white mb-[20px]">
+            <div class="w-full mb-[40px] px-[15px] ">
+              <h3 class="text-[20px] md:px-[20px] font-bold text-white mb-[20px]">
                 FAQ
               </h3>
               <BaseAccordion v-model="currentIndex" type="single" class="w-full" collapsible>
-                <BaseAccordionItem v-for="(item, index) in vipFaq" :key="index" :value="index.toString()">
-                  <BaseAccordionTrigger class="bg-color2 px-[18px] text-[13px]" :class="{ 'text-white font-bold': index === currentIndex }">
+                <BaseAccordionItem v-for="(item, index) in vipFaq" :key="index" :value="index.toString()" class="my-[6px]">
+                  <BaseAccordionTrigger class="bg-color2 px-[18px] md:text-[13px] text-[12px] py-[9px] md:py-4" :class="{ 'text-white font-bold': index === currentIndex }">
                     {{ item.title }}
                   </BaseAccordionTrigger>
                   <BaseAccordionContent>

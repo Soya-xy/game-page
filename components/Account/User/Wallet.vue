@@ -38,7 +38,7 @@
         </div>
       </div>
     </div>
-    <div class="w-full h-[1px] bg-color-btn-2 shrink-0 my-[10px]" />
+    <div class="w-full h-[1px] bg-[--bc-bgColor9] shrink-0 my-[10px]" />
     <div class="flex space-x-[4px] pb-[5px]">
       <button class="flex-1 flex flex-col items-center justify-center">
         <i

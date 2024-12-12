@@ -221,8 +221,6 @@
 }
 
 .bg-color-linear-12 {
-  background: -moz-linear-gradient(right, #303339 0, #303339 100%);
-  background: -o-linear-gradient(right, #303339 0, #303339 100%);
   background: linear-gradient(270deg, #303339, #303339);
 }
 
