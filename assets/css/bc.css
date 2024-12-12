@@ -10,6 +10,7 @@ html {
   --bc-tabColor: #323838;
   --bc-searchBtnColor: #3c4243;
   --bc-textColor: #bec7ca;
+  --bc-textActive: #0f0f0f;
   --bc-fontColor: #292d2e;
   --bc-buttonColor: #ffffff1a;
   --bc-buttonColor2: #ffffff4d;
@@ -18,6 +19,7 @@ html {
   --bc-activeColor: #2dee88;
   --bc-activeColor2: #33ee87;
   --bc-activeColor3: #2bed86;
+  --bc-activeColor4: #65e5a9;
   --bc-noActiveColor: #2dee881a;
   --bc-noActiveColor2: #2dee8866;
   --bc-noActiveColor3: #2dee8800;
@@ -56,11 +58,14 @@ html {
   --bc-linearColor05: linear-gradient(180deg, #516382, #97a8c7);
   --bc-alphaBlack1a: #0000001a;
   --bc-alphaBlack4a: #0000004d;
+  --bc-alphaBlackB3: #000000b3;
   --bc-activity35: #272c35;
   --bc-activityWhite: 236, 240, 246;
   --bc-fontActivity: #4d4d4d;
   --bc-popupColor: #2e3031;
   --bc-yellowColor: #773c1a;
+  --bc-alphaWhite6: #ffffffe6;
+  --bc-gachaponColor: #00c2c2;
 }
 
 /* html[data-theme='dark'] {
@@ -216,6 +221,10 @@ html {
 
 .bg-chest {
   background: linear-gradient(180deg, #fea01380, #fea01326 35%, #fea0131a, #fea01326 65%, #fea01380);
+}
+
+.bg-color-linear-24 {
+  background: linear-gradient(180deg, #fff7bc, #ffe766 44.79%, #ffb932 53.65%, #ffcf54 94.9%, #ffebb9 99.58%);
 }
 
 /*向左滑动*/
@@ -494,9 +503,11 @@ html {
 .drop-shadow-color-btn-2 {
   filter: drop-shadow(1px 1px 1px var(--bc-bgColor9)) drop-shadow(-1px -1px 1px var(--bc-bgColor9));
 }
+
 .bg-color-linear-13 {
   background: var(--bc-linearColor5);
 }
+
 .bg-color-linear-14 {
   background: linear-gradient(180deg, #242b28, #1a2222);
 }
