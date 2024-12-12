@@ -26,14 +26,15 @@ export function createHttpClient(isServer: boolean): $Fetch {
       }
 
       const expiresTime = localStorage.getItem('expiresTime')
-      const token = localStorage.getItem('token')
-      // 如果当前时间还有1分钟就过期，则重新刷新token
+      let token = localStorage.getItem('token')
+      // 如果当前时间还有1分钟就过期 或者已经过期，则重新刷新token
       if (
-        dayjs().isAfter(dayjs(Number(expiresTime)).subtract(1, 'minute'))
+        (dayjs().isAfter(dayjs(Number(expiresTime)).subtract(1, 'minute')) || dayjs().isAfter(dayjs(Number(expiresTime))))
         && !(request as string).includes('refresh-token')
         && token
       ) {
         await nuxtApp.runWithContext(async () => await useUserStore().refreshToken())
+        token = localStorage.getItem('token')
       }
 
       if (token) {

@@ -24,9 +24,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
       }
     }
   }
-  else {
-    to.meta.pageTransition = from.meta.pageTransition = {}
-  }
 
   // 客户端获取用户信息
   if (import.meta.client) {
@@ -35,18 +32,14 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     if (userStore.token) {
       userStore.getUserInfo()
     }
-  }
 
-  // 如果路由相同，则不进行操作
-  if (to.path === from.path)
-    return
-  // TODO: Server端无法获取hash，所以需要手动处理
-  if (!isEmpty(to.hash)) {
-    if (isPc.value) {
-      openRouterModal(to.path, {
-        hash: `#${to.path}`,
-      })
-      return
+    // Server端无法获取hash，所以需要在客户端处理
+    if (!isEmpty(to.hash)) {
+      if (isPc.value) {
+        openRouterModal(to.hash.slice(1), {
+          hash: to.hash,
+        })
+      }
     }
   }
 
@@ -63,16 +56,5 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         hash: `#${to.path}`,
       })
     }
-    else {
-      navigateTo(to.path)
-    }
   }
-
-  if (to.path !== '/login')
-    return
-
-  if (!isPc.value)
-    return
-
-  return true
 })

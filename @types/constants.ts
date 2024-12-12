@@ -26,6 +26,12 @@ export const currentSupportedLanguages: Locale[] = [
   // 'ko',
   // 'tr',
 ]
+
+export const currencyMap = {
+  'en': 'USD',
+  'zh-CN': 'CNY',
+}
+
 export const dayjsLocaleImportMap = {
   en: ['en', () => import('dayjs/locale/en')],
 }

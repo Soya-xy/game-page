@@ -9,16 +9,18 @@ import { cn } from '~/lib/utils'
 
 const contentClass = defineProp<string>()
 const wapContentClass = defineProp<string>()
+const wapHeaderClass = defineProp<string>()
 const direction = defineProp<string>()
 const overlayClass = defineProp<string>()
 const closeClass = defineProp<string>()
-const enterAnimation = ref(0)
 const noClose = defineProp<boolean>(false)
-const { isPc } = useDevice()
 const show = defineModel<boolean>('show', {
   type: Boolean,
   required: true,
 })
+
+const enterAnimation = ref(0)
+const { isPc } = useDevice()
 
 watch(show, (val) => {
   if (val) {
@@ -64,7 +66,7 @@ function closeModal() {
       </DialogContent>
     </DialogPortal>
   </Dialog>
-  <BaseDrawer v-else v-model:open="show" :direction :content-class="wapContentClass" :overlay-class>
+  <BaseDrawer v-else v-model:open="show" :direction :content-class="wapContentClass" :header-class="wapHeaderClass" :overlay-class>
     <template #title>
       <slot name="title" />
     </template>

@@ -1,5 +1,9 @@
+import type { RouteLocationAsRelativeI18n } from 'vue-router'
+import type { RouteNamedMapI18n } from 'vue-router/auto-routes'
 import { isClient } from '@vueuse/core'
+import { isEmpty } from 'ramda'
 import { joinURL } from 'ufo'
+import { currencyMap } from '~/@types/constants'
 
 // Scheme: https://tools.ietf.org/html/rfc3986#section-3.1
 // Absolute URL: https://tools.ietf.org/html/rfc3986#section-4.3
@@ -49,6 +53,20 @@ export function http2ws(url: string) {
 }
 
 // 根据i18n转换货币符号
-export function toCurrency(value: number) {
-  return Number(value).toLocaleString(useI18n().locale.value, { style: 'currency', currency: 'USD' })
+export function toCurrency(value: number | string | undefined) {
+  if (isEmpty(value)) {
+    value = 0
+  }
+  const { locale } = useI18n()
+
+  const currency = currencyMap[locale.value]
+  const formatter = new Intl.NumberFormat(locale.value, {
+    style: 'currency',
+    currency,
+  })
+  return formatter.format(Number(value))
+}
+
+export function routerPush(path: string) {
+  navigateTo(useNuxtApp().$localeRoute((path as keyof RouteNamedMapI18n | (Omit<RouteLocationAsRelativeI18n, 'path'>)))?.fullPath)
 }

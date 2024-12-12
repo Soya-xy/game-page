@@ -1266,8 +1266,6 @@
 }
 
 .text-color-activity-9 {
-  background: -moz-linear-gradient(left, #f90 0, #ec0039 100%);
-  background: -o-linear-gradient(left, #f90 0, #ec0039 100%);
   background: linear-gradient(90deg, #f90, #ec0039);
   -webkit-background-clip: text;
   background-clip: text;
@@ -1386,7 +1384,7 @@
   border-color: #303434;
 }
 
-.border-color-4 {
+.border-[--bc-bgColor2] {
   border-color: #2c3031;
 }
 

@@ -1,7 +1,6 @@
 /**
  * 添加收藏
  * @param spuId 游戏 SPU
- * @returns
  */
 export async function addFavorite(spuId: number | string) {
   return useNuxtApp().$clientApi('/product/favorite/create', {
@@ -15,7 +14,6 @@ export async function addFavorite(spuId: number | string) {
 /**
  * 移除收藏
  * @param spuId 游戏 SPU
- * @returns
  */
 export async function removeFavorite(spuId: number | string) {
   return useNuxtApp().$clientApi('/product/favorite/delete', {
@@ -29,7 +27,6 @@ export async function removeFavorite(spuId: number | string) {
 /**
  * 获取是否收藏
  * @param spuId 游戏 SPU
- * @returns
  */
 export async function getFavorite(spuId: number | string) {
   return useNuxtApp().$clientApi<boolean>('/product/favorite/exits', {

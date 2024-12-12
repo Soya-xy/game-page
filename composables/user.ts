@@ -1,8 +1,9 @@
 import { useToast } from '@/components/ui/toast/use-toast'
-import { login as loginApi, register as registerApi } from '~/api/user'
+import { login as loginApi, register as registerApi, type UserInfo } from '~/api/user'
 
 export const useUserStore = defineStore('user', () => {
   const user = ref(JSON.parse(localStorage.getItem('user') || '{}') || undefined)
+  const userInfo = ref<UserInfo | undefined>(JSON.parse(localStorage.getItem('userInfo') || '{}') || undefined)
   const token = ref(localStorage.getItem('token') || undefined)
   const { isPc } = useDevice()
   const { closeRouterModal } = useModal()
@@ -80,8 +81,23 @@ export const useUserStore = defineStore('user', () => {
   const getUserInfo = async () => {
     const { $clientApi } = useNuxtApp()
     const res = await $clientApi('/member/user/get')
-    user.value = res.data
+    localStorage.setItem('userInfo', JSON.stringify(res))
+    userInfo.value = res
   }
 
-  return { user, login, register, token, refreshToken, handleLogin, logout, getUserInfo }
+  const updateUserInfo = async (data: any) => {
+    const { $clientApi } = useNuxtApp()
+    try {
+      await $clientApi('/member/user/update', {
+        method: 'PUT',
+        body: data,
+      })
+      getUserInfo()
+    }
+    catch (error) {
+      console.error(error)
+    }
+  }
+
+  return { user, userInfo, login, register, token, refreshToken, handleLogin, logout, getUserInfo, updateUserInfo }
 })

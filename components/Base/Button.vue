@@ -1,10 +1,12 @@
 <script setup lang="ts">
+const loading = defineProp()
 </script>
 
 <template>
-  <button
-    class="px-[17px] h-[40px] min-w-[86px] font-extrabold flex items-center justify-center bg-button rounded-[8px] text-white"
-  >
-    <slot />
+  <button>
+    <slot v-if="!loading" />
+    <div v-else class="w-full h-full flex items-center justify-center">
+      <div class="dot-collision dot-collision-0" />
+    </div>
   </button>
 </template>

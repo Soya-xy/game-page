@@ -1,11 +1,10 @@
 <script lang="ts" setup>
-definePageMeta({
-  pageIndex: PageIndexEnum.account,
-})
+
 </script>
 
 <template>
-  <Account />
+  <AccountUserInfo />
+  <AccountUserWallet />
 </template>
 
 <style>
