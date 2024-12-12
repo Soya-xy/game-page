@@ -4,7 +4,7 @@ import { useMenu } from '@/composables/menu'
 
 const router = useRouter()
 const userStore = useUserStore()
-const { token, user } = storeToRefs(userStore)
+const { token, userInfo } = storeToRefs(userStore)
 const { toggleMenu, isOpen } = useMenu()
 const showLanguageModal = ref<boolean>(false)
 
@@ -88,7 +88,7 @@ function changeLang(lang: Locale) {
       <template v-if="token">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <BaseAvatar :src="user?.avatar" :alt="user?.nickname" />
+            <BaseAvatar :src="userInfo.avatar" :alt="userInfo.nickname" />
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="end"
