@@ -12,9 +12,9 @@
         If you have a large audience and followers. We have special conditions for you to customize your referral
         program!
       </div>
-      <div class="flex gap-[20px]">
+      <div class="flex w-full">
         <button
-          class="border-radius-0 text-white text-[12px] px-[15px] w-[max-content] min-w-[300px] h-[46px] bg-color"
+          class="border-radius-0 text-white text-[12px] px-[15px] w-full min-w-[300px] md:h-[46px] h-[40px] bg-color"
         >
           Telegram:@ThaliaSilva55
         </button>

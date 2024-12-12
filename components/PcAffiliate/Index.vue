@@ -3,6 +3,7 @@
 
 <template>
   <PcAffiliateInvite />
+  <PcAffiliateRoulette />
   <PcAffiliateRules />
   <PcAffiliateLiveRewards />
   <PcAffiliateRewards />

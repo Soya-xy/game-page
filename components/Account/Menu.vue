@@ -54,18 +54,22 @@ const menuList = computed(() => {
         name: 'Live Chat',
         icon: 'icon-new-live-support',
         color: 'text-active',
+        href: '/live-chat',
       },
       {
         name: 'Rewards',
         icon: 'icon-new-bonus',
+        href: '/bonus',
       },
       {
         name: 'Affiliate',
         icon: 'icon-new-affiliate',
+        href: '/affiliate',
       },
       {
         name: 'Install',
         icon: 'icon-new-install',
+        href: '/install',
       },
     ]
   }
@@ -75,10 +79,12 @@ const menuList = computed(() => {
         name: 'Live Chat',
         icon: 'icon-new-live-support',
         color: 'text-active',
+        href: '/live-chat',
       },
       {
         name: 'FAQ & Feedback',
         icon: 'icon-new-help',
+        href: '/faq',
       },
       {
         name: 'Account settings',
@@ -87,6 +93,7 @@ const menuList = computed(() => {
       {
         name: 'Install',
         icon: 'icon-new-install',
+        href: '/install',
       },
     ]
   }
@@ -96,7 +103,10 @@ const showModal = ref<boolean>(false)
 
 <template>
   <div v-if="userList.length" class="text-color w-full border-radius-0 bg-color2 mt-[15px]">
-    <button v-for="item in userList" :key="item.name" class="flex items-center pl-[15px] pr-[12px] h-[40px] w-full ">
+    <button
+      v-for="item in userList" :key="item.name" class="flex items-center pl-[15px] pr-[12px] h-[40px] w-full"
+      @click="item.href ? routerPush(item.href) : null"
+    >
       <div class="flex items-center flex-1 overflow-hidden mr-[14px] h-full">
         <i v-if="!item.url" class="inline-block h-[max-content] w-[max-content] text-[20px]" :class="cn(item?.icon)" />
         <Image v-else :src="item.url" alt="" class="w-[20px] !h-auto" />
@@ -106,7 +116,10 @@ const showModal = ref<boolean>(false)
     </button>
   </div>
   <div class="text-color w-full border-radius-0 bg-color2 mt-[15px]">
-    <button v-for="item in menuList" :key="item.name" class="flex items-center pl-[15px] pr-[12px] h-[40px] w-full ">
+    <button
+      v-for="item in menuList" :key="item.name" class="flex items-center pl-[15px] pr-[12px] h-[40px] w-full"
+      @click="item.href ? routerPush(item.href) : null"
+    >
       <div class="flex items-center flex-1 overflow-hidden mr-[14px] h-full">
         <i class="inline-block h-[max-content] w-[max-content] text-[20px]" :class="cn(item.color, item.icon)" /><span
           class="flex-1 truncate text-left ml-[14px] text-white"

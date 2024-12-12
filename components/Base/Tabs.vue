@@ -1,5 +1,8 @@
 <script lang="ts" setup>
+import { cn } from '@/lib/utils'
+
 const list = defineProp<string[] | { title: string, icon?: string, badge?: number, value?: string }[]>()
+const itemClass = defineProp<string>()
 const modelValue = defineModel<number>()
 </script>
 
@@ -10,7 +13,10 @@ const modelValue = defineModel<number>()
     <div
       v-for="(item, index) in list" :key="index"
       class="h-full flex-[0_0_auto] md:flex-none md:w-[200px] px-[4px] flex items-center cursor-pointer justify-center text-xs relative"
-      :class="index === modelValue ? 'bg-linear-color-4 text-white font-bold' : ''" @click="modelValue = index"
+      :class="cn(
+        index === modelValue ? 'bg-linear-color-4 text-white font-bold' : '',
+        itemClass,
+      )" @click="modelValue = index"
     >
       <template v-if="typeof item === 'string'">
         {{ item }}

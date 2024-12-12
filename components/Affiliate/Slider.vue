@@ -52,7 +52,7 @@ const showRules = ref(false)
     </div>
   </div>
 
-  <BaseDrawer v-model:open="showRules" direction="right" content-class="z-[999] h-[100vh]" overlay-class="z-[999]">
+  <BaseDrawer v-model:open="showRules" direction="right" content-class="z-[999] h-[100vh]" overlay-class="z-[999]" header-class="bg-transparent">
     <template #title>
       Rules
     </template>

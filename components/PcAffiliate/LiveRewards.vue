@@ -54,7 +54,7 @@ useSwiper(containerRef, {
                   <div class="text-white">
                     {{ i }}
                   </div>
-                  <div class="text-color">
+                  <div class="text-color text-[14px]">
                     Commission <span class="text-green">R$1.04</span>
                   </div>
                 </div>

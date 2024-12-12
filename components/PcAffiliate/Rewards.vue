@@ -41,7 +41,7 @@ const list = ref([
             <span v-html="item.desc" />
           </div>
           <button
-            class="px-[15px] md:h-[46px] h-[40px] shrink-0 font-bold md:min-w-[240px] min-w-[120px] w-[max-content] border-radius-0 main-color-btn text-font text-[14px]"
+            class="px-[15px] md:h-[46px] h-[40px] shrink-0 font-bold md:min-w-[240px] min-w-[120px] w-[max-content] border-radius-0 bg-active text-font md:text-[14px] text-[12px]"
             @click="item.onClick"
           >
             Details
