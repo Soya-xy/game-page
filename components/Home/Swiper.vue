@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import { addBrowser, asyncBannerList } from '~/api/banner'
 
+defineOptions({
+  inheritAttrs: false,
+})
+
 const store = useUserStore()
 const { token } = storeToRefs(store)
 const containerRef = ref()
@@ -56,7 +60,7 @@ const eventHandler = useTrack((id: number) => {
 </script>
 
 <template>
-  <div v-if="token" class="min-h-[125px] flex flex-col gap-y-[12px]">
+  <div v-show="token" class="min-h-[125px] flex flex-col gap-y-[12px]">
     <ClientOnly>
       <swiper-container ref="containerRef" :init="false" class="w-full h-full">
         <swiper-slide v-for="(game, index) in games" :key="index" class="w-auto h-[41.315%]">
@@ -72,5 +76,5 @@ const eventHandler = useTrack((id: number) => {
       <div class="my-pagination flex justify-center items-center gap-[4px]" />
     </ClientOnly>
   </div>
-  <HomeBanner v-else />
+  <HomeBanner v-show="!token" />
 </template>

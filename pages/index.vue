@@ -35,7 +35,7 @@ function getComponent(type: ModuleType) {
     <ClientOnly>
       <div class="container @container flex flex-col gap-y-[12px] mt-[12px] relative z-[20] sm:px-[24px]">
         <template v-for="item in data" :key="item.id">
-          <component :is="getComponent(item.moduleType)" :id="item.id" :title="item.title" />
+          <component :is="getComponent(item.moduleType)" v-bind="item" />
         </template>
         <div v-if="isPc" class="right-[20px] bottom-[40px] cursor-pointer fixed z-[120] w-[120px]">
           <HomeInviteWheel />

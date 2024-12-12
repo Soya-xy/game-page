@@ -16,7 +16,7 @@ function scrollHandler() {
 }
 
 onMounted(() => {
-  main.value?.addEventListener('wheel', scrollHandler)
+  main.value?.addEventListener('wheel', scrollHandler, { passive: true })
 })
 
 onUnmounted(() => {

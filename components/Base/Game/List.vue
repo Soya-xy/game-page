@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
-import { asyncGameByTag, asyncModuleData, getGameByTag, getModuleDataGame } from '~/api/home'
+import { getGameByTag, getModuleDataGame } from '~/api/home'
 
 const id = defineProp('')
 const type = defineProp('')
@@ -51,20 +51,21 @@ const data = ref<any>([])
 
 async function fetchGameData(pageNo = 1) {
   if (type.value) {
-    const { data: gameList } = await asyncGameByTag(type.value)
+    const gameList = await getGameByTag(type.value)
 
-    if (gameList.value)
-      return gameList.value || []
+    if (gameList)
+      return gameList || []
   }
 
   if (id.value) {
-    const { data: gameList } = await asyncModuleData({
+    const gameList = await getModuleDataGame({
       id: id.value,
       pageNo,
       pageSize: 30,
     })
-    if (gameList.value)
-      return gameList.value.list || []
+
+    if (gameList)
+      return gameList.list || []
   }
 
   return []
