@@ -1,6 +1,12 @@
 <script lang="ts" setup>
 const noRules = defineProp<boolean>(false)
 const showRules = ref(false)
+const affiliate = useAffiliate()
+const { activity } = storeToRefs(affiliate)
+const sliderValue = ref<number>(0)
+function handleSliderChange(value: number) {
+  sliderValue.value = value
+}
 </script>
 
 <template>
@@ -12,16 +18,16 @@ const showRules = ref(false)
       />
       <div>
         <div class="mb-[4px]">
-          Recommended <span class="text-white">&gt; 100</span>
+          Recommended <span class="text-white">&gt; {{ activity?.[sliderValue]?.maxParticipants }}</span>
           <i
             class="inline-block h-[max-content] w-[max-content] icon-new-personal text-[10px] text-color ml-[4px]"
           />
         </div>
-        <div>Commission <span class="text-white">&gt; R$5,000 / Month</span></div>
+        <div>Commission <span class="text-white">&gt; {{ toCurrency(activity?.[sliderValue]?.maxReward) }} / Month</span></div>
       </div>
     </div>
     <div class="relative  bg-[--bc-bgColor9] h-[6px] w-[60px] rounded-tl-[3px] rounded-bl-[3px]">
-      <PcAffiliateSlider />
+      <PcAffiliateSlider @change="handleSliderChange" />
     </div>
   </div>
   <div class="flex flex-col relative">

@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 const current = ref(0)
 const currentList = ref(['Today team data', 'Total team data'])
+const affiliate = useAffiliate()
+const { summary } = storeToRefs(affiliate)
 </script>
 
 <template>
@@ -13,7 +15,7 @@ const currentList = ref(['Today team data', 'Total team data'])
           Sign Up
         </div>
         <div class="text-color font-semibold text-[12px]">
-          0
+          {{ current === 0 ? summary?.todayBrokerageUserCount : summary?.totalBrokerageUserCount }}
         </div>
       </div>
       <div class="w-[50%] shrink-0 text-center">
@@ -21,7 +23,7 @@ const currentList = ref(['Today team data', 'Total team data'])
           First Deposit
         </div>
         <div class="text-color font-semibold text-[12px]">
-          0
+          {{ current === 0 ? summary?.todayBrokerageUserCount : summary?.totalBrokerageUserCount }}
         </div>
       </div>
       <div class="w-[50%] shrink-0 text-center">
@@ -29,15 +31,7 @@ const currentList = ref(['Today team data', 'Total team data'])
           Valid bet
         </div>
         <div class="text-color font-semibold text-[12px]">
-          <span class="whitespace-pre">R$0.00</span>
-        </div>
-      </div>
-      <div class="w-[50%] shrink-0 text-center invisible select-none pointer-events-none opacity-0">
-        <div class="text-color-text-2 text-[10px] mb-[2px]">
-          Valid bet
-        </div>
-        <div class="text-color font-semibold text-[12px]">
-          <span class="whitespace-pre">R$0.00</span>
+          <span class="whitespace-pre">{{ toCurrency(current === 0 ? summary?.todayBrokerageUserCount : summary?.totalBrokerageUserCount) }}</span>
         </div>
       </div>
     </div>

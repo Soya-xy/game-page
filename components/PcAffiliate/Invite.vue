@@ -45,7 +45,7 @@ const showDetail = ref<boolean>(false)
     </button>
   </div>
   <ClientOnly v-else>
-    <div class="mt-[40px] w-full overflow-visbile">
+    <div class="mt-[40px] w-full">
       <div class="text-[20px] font-bold text-white">
         Affiliate
       </div>
@@ -334,7 +334,7 @@ const showDetail = ref<boolean>(false)
                   </span>
                 </div>
                 <button
-                  class="shrink-0 text-[14px] border-radius-0 -mt-[6px] text-font bg-active h-[46px] font-bold w-full pointer-events-none"
+                  class="shrink-0 text-[14px] border-radius-0 -mt-[6px] text-font bg-active h-[46px] font-bold w-full pointer-events-none cursor-pointer"
                 >
                   Claim
                 </button>
@@ -345,15 +345,17 @@ const showDetail = ref<boolean>(false)
       </div>
     </div>
   </ClientOnly>
-  <BaseModal v-model:show="showDetail">
+  <BaseModal v-model:show="showDetail" content-class="!rounded-[10px] bg-popup min-w-[700px] max-w-[800px]">
     <template #title>
       <div class="flex justify-between items-center h-[76px] px-[20px] bg-color-pop-16 text-white rounded-[10px]">
         History
       </div>
     </template>
-    <div class="flex justify-between items-center gap-x-[10px]">
-      <BaseDatePicker v-model:date="date" />
-      <BaseDatePicker v-model:date="date" />
+    <div class="h-[max-content]  px-[15px] flex flex-col gap-[10px]">
+      <div class="flex justify-between items-center gap-x-[10px] h-[40px] w-[200px]">
+        <BaseDatePicker v-model:date="date" />
+      </div>
+      <AffiliateTable :time="date" />
     </div>
   </BaseModal>
 </template>

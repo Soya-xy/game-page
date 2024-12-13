@@ -39,3 +39,11 @@ export interface AffiliateLevel {
   remarks: string
   createTime: string
 }
+
+export interface AffiliateInvite {
+  status: number
+  id: string
+  statusName: string
+  price: number
+  createTime: string
+}

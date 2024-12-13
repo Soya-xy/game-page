@@ -32,7 +32,6 @@ export const useAffiliate = defineStore('affiliate', () => {
         item.sort((a, b) => a.tier - b.tier)
         return item
       })
-      console.log('%c🤪 ~ file: /Users/soya/Desktop/game-page/composables/useAffiliate.ts:26 [useAffiliate/defineStore/init] -> levelList : ', 'color: #406bb3', levelList)
 
       summary.value = summaryData
       code.value = codeData

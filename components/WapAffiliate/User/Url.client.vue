@@ -5,6 +5,9 @@ import { useToast } from '~/components/ui/toast'
 
 const { copy } = useClipboard()
 const { toast } = useToast()
+const affiliate = useAffiliate()
+const { code, maxReward } = storeToRefs(affiliate)
+
 function copyUrl(str: string) {
   copy(str)
   toast({
@@ -30,7 +33,7 @@ function copyUrl(str: string) {
           INVITE FRIENDS TO EARN
         </div>
         <div class="text-color-linear-20 font-black text-[18px] whitespace-pre-wrap">
-          70%Commission
+          {{ maxReward }}Commission
         </div>
       </div>
     </div>
@@ -41,7 +44,8 @@ function copyUrl(str: string) {
       <div class="flex">
         <div class="w-[86px] h-[86px] p-[3px] bg-[#FFF]">
           <VueQrcode
-            :margin="2" value="https://www.1stg.me" :color="{ dark: '#000000ff', light: '#ffffffff' }"
+            v-if="code?.brokeragePromotionUrl"
+            :margin="2" :value="code.brokeragePromotionUrl" :color="{ dark: '#000000ff', light: '#ffffffff' }"
             type="image/png"
           />
         </div>
@@ -54,11 +58,15 @@ function copyUrl(str: string) {
                 Link
               </div>
               <div class="h-full flex items-center flex-1 shrink-0 relative overflow-hidden">
-                <input class="h-full flex-1 min-w-[60px] bg-transparent text-white placeholder:font-normal">
+                <input
+                  class="h-full flex-1 min-w-[60px] bg-transparent text-white placeholder:font-normal"
+                  :value="code?.brokeragePromotionUrl"
+                  disabled
+                >
               </div>
               <button
                 class="bg-active text-font font-bold text-[12px] rounded-[3px] h-[30px] px-[8px]"
-                @click="copyUrl('url')"
+                @click="copyUrl(code!.brokeragePromotionCode)"
               >
                 Copy
               </button>
@@ -72,11 +80,15 @@ function copyUrl(str: string) {
                 Code
               </div>
               <div class="h-full flex items-center flex-1 shrink-0 relative overflow-hidden">
-                <input class="h-full flex-1 min-w-[60px] bg-transparent text-white placeholder:font-normal">
+                <input
+                  class="h-full flex-1 min-w-[60px] bg-transparent text-white placeholder:font-normal"
+                  :value="code?.brokeragePromotionCode"
+                  disabled
+                >
               </div>
               <button
                 class="bg-active text-font font-bold text-[12px] rounded-[3px] h-[30px] px-[8px]"
-                @click="copyUrl('code')"
+                @click="copyUrl(code!.brokeragePromotionCode)"
               >
                 Copy
               </button>
