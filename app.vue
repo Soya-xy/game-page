@@ -8,8 +8,12 @@ const nuxtApp = useNuxtApp()
 const { layout, ready } = useLayoutState()
 const once = ref(true)
 const { isPageLoading } = useLoading()
+const route = useRoute()
 
 nuxtApp.hook('page:loading:start', () => {
+  if (!route.hash)
+    return
+
   isPageLoading.value = true
 })
 
@@ -26,7 +30,7 @@ useHead({
 </script>
 
 <template>
-  <VitePwaManifest />
+  <NuxtPwaManifest />
   <BaseSpin v-if="once" />
   <Suspense>
     <template v-if="ready">

@@ -13,6 +13,7 @@ export async function asyncInstall(platform: string) {
  */
 export async function asyncInstallRecords(platform: string) {
   return useNuxtApp().$clientApi('/help/app-download-records/create-download-records', {
+    method: 'post',
     params: {
       platform,
     },

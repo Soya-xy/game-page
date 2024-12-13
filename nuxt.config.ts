@@ -43,6 +43,7 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+        { rel: 'preload', href: 'https://afunimg8.com' },
       ],
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -83,11 +84,15 @@ export default defineNuxtConfig({
     payloadExtraction: false,
     renderJsonPayloads: true,
     typedPages: true,
+    buildCache: true,
   },
-
   compatibilityDate: '2024-08-14',
 
   nitro: {
+    compressPublicAssets: {
+      gzip: true,
+      brotli: true,
+    },
     esbuild: {
       options: {
         target: 'esnext',
@@ -105,7 +110,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  debug: process.env.NODE_ENV === 'development',
+  // debug: process.env.NODE_ENV === 'development',
   eslint: {
     config: {
       standalone: false,
@@ -142,7 +147,6 @@ export default defineNuxtConfig({
       edition: 'johnsonEdition',
     },
   },
-
   pwa,
 
   shadcn: {

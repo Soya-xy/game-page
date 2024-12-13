@@ -16,7 +16,7 @@ function changeLang(lang: Locale) {
 }
 
 const userList = computed(() => {
-  if (!token) {
+  if (!token.value) {
     return []
   }
   return [
@@ -49,7 +49,7 @@ const userList = computed(() => {
 })
 
 const menuList = computed(() => {
-  if (!token) {
+  if (!token.value) {
     return [
       {
         name: 'Live Chat',

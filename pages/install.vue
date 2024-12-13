@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { asyncInstallRecords } from '~/api/install'
+
 const router = useRouter()
 const { isPc } = useDevice()
 const open = ref<boolean>(false)
@@ -11,16 +13,30 @@ async function download(type: string) {
   switch (type) {
     case 'Android':
       // const { data } = await asyncInstall('Android')
+      await asyncInstallRecords('Android')
       break
 
     default:
       break
   }
 }
+function pwaInstall() {
+  const pwa = useNuxtApp().$pwa
+
+  if (pwa?.showInstallPrompt) {
+    pwa.install()
+  }
+  else {
+    throw createError({
+      statusCode: 400,
+      message: 'Something went wrong installing the application, please try again later or contact support.',
+    })
+  }
+}
 </script>
 
 <template>
-  <div>
+  <div @click="pwaInstall">
     <div v-if="isPc" id="page-pc" class="min-h-[100vh] flex flex-col overflow-auto">
       <div class="flex overflow-x-hidden">
         <div class="flex-1 overflow-x-hidden">
@@ -49,7 +65,7 @@ async function download(type: string) {
           class="w-[300px] h-full shrink-0 relative overflow-hidden transition-all duration-300 bg-color-2 z-[100] -ml-[310px]"
         >
           <div
-            class="w-[300px] chat-height bg-[--bc-searchColor] fixed z-[250 overflow-hidden max-h-full transition-all duration-300 flex flex-col -right-[310px]"
+            class="w-[300px] chat-height bg-[--bc-searchColor] fixed z-[250] overflow-hidden max-h-full transition-all duration-300 flex flex-col -right-[310px]"
           >
             <div class="flex-1 flex flex-col overflow-hidden w-full">
               <div class="app-loading back-color-1 !absolute">
