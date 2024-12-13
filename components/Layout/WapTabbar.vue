@@ -3,7 +3,6 @@ import type { Locale } from '@intlify/core-base'
 import { ref } from 'vue'
 
 const route = useRoute()
-console.log('%c🤪 ~ file: /Users/soya/Desktop/game-page/components/Layout/WapTabbar.vue:5 [route] -> route : ', 'color: #a4f7bd', route)
 const router = useRouter()
 const isOpen = ref(false)
 const menuItems = [
@@ -88,7 +87,7 @@ function changeLang(lang: Locale) {
     </div>
     <Drawer v-model:open="isOpen" direction="left">
       <DrawerContent class="h-[calc(100vh-90px)] mb-[50px] pb-[70px] bg-color">
-        <div class="flex flex-col pt-[10px] gap-[5px] mx-[3.3%] pt-[20px]">
+        <div class="flex flex-col pt-[10px] gap-[5px] mx-[3.3%] md:pt-[20px]">
           <BaseInvitation />
           <BaseSlideBarTab />
           <nav class="flex flex-col gap-[5px]">

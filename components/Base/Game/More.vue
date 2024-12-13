@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { getGameByTag } from '~/api/home'
-import { getRouterHash } from '~/lib/utils'
+import { capitalizeFirstLetter, getRouterHash } from '~/lib/utils'
 
 const title = defineProp<string>('')
 const hash = defineProp<string>('')
@@ -50,15 +50,15 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
-    {{ title }}
+  <div class="md:flex hidden justify-between text-white items-center h-[54px] px-[20px] bg-color2 md:rounded-[10px]">
+    {{ title || capitalizeFirstLetter(getRouterHash(hash)) }}
   </div>
   <div
     ref="containerRef"
-    class="w-[700px] h-[90vh] max-h-[70vh] px-[15px] flex flex-col m-auto rounded-[10px]  overflow-y-auto"
+    class="md:w-[700px] md:h-[max-content] w-full md:max-h-[70vh] px-[15px] md:py-0 py-[15px] flex flex-col mx-auto rounded-[10px] overflow-y-auto h-[calc(100vh-100px)]"
   >
     <div
-      class="grid grid-cols-5 gap-[10px]"
+      class="grid md:grid-cols-5 grid-cols-3 gap-[10px]"
     >
       <div v-for="(item, index) in gameList" :key="index">
         <BaseGameCard :info="item" />

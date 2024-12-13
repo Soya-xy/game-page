@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import { Progress } from '@/components/ui/progress'
+
+const show = ref<boolean>(false)
 </script>
 
 <template>
@@ -30,6 +32,7 @@ import { Progress } from '@/components/ui/progress'
           </p>
           <button
             class="rounded-[6px] w-[max-content] min-w-[95px] main-color-btn h-[34px] text-[15px] text-font flex items-center justify-center px-[15px] mt-[8px] z-[1]"
+            @click="show = true"
           >
             Withdraw
           </button>
@@ -37,6 +40,9 @@ import { Progress } from '@/components/ui/progress'
       </div>
     </div>
   </div>
+  <BaseModal v-model:show="show" content-class="mx-auto w-[90%] min-w-[640px] max-w-[1414px] px-32px">
+    <TurnTable />
+  </BaseModal>
 </template>
 
 <style></style>

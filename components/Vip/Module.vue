@@ -2,10 +2,12 @@
 import type { VipLevel } from '~/api/vip'
 
 const currentLevel = defineProp<number>(1)
+const noLogin = defineProp<boolean>(false)
 const levelList = inject<VipLevel[]>('levelList')
 const nowLevel = computed(() => {
   if (!levelList)
     return {} as VipLevel
+  console.log('%c🤪 ~ file: /Users/soya/Desktop/game-page/components/Vip/Module.vue:8 [nowLevel/computed] -> levelList : ', 'color: #d4efce', levelList)
 
   return levelList.find(level => level.id === currentLevel.value)!
 })
@@ -15,7 +17,8 @@ const nowLevel = computed(() => {
   <div class="md:mb-[40px] mb-[25px] w-full">
     <h3 class="md:text-[20px] text-[15px] font-bold md:mb-[20px]">
       <div class="text-[--bc-color20]">
-        <span class="text-white">VIP {{ currentLevel }}</span> Benefits
+        <span v-if="!noLogin" class="text-white">VIP {{ currentLevel }}</span> Benefits
+        <span v-if="noLogin" class="text-white">Benefits</span>
       </div>
     </h3>
     <div class="grid gap-[10px]" style="grid-template-columns: repeat(auto-fill, minmax(335px, 1fr));">
@@ -24,7 +27,7 @@ const nowLevel = computed(() => {
       >
         <div class="flex items-center flex-1 w-full">
           <div
-            v-if="!nowLevel.bonusRain"
+            v-if="!nowLevel?.bonusRain && !noLogin"
             class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1] border-radius-1"
           />
           <div
@@ -47,7 +50,7 @@ const nowLevel = computed(() => {
       >
         <div class="flex items-center flex-1 w-full">
           <div
-            v-if="nowLevel.levelBonus <= 0"
+            v-if="nowLevel.levelBonus <= 0 && !noLogin"
             class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1] border-radius-1"
           />
           <div
@@ -64,7 +67,7 @@ const nowLevel = computed(() => {
           </div>
         </div>
         <div
-          v-if="nowLevel.levelBonus > 0"
+          v-if="nowLevel.levelBonus > 0 && !noLogin"
           class="relative flex justify-center items-center w-full md:h-[30px] h-[20px] md:pl-[8px] pl-[15px] md:pr-[22px] pr-[21px] bg-[--bc-color19] border-radius-0"
         >
           <p class="md:text-[14px] text-[12px] shrink-0 truncate whitespace-pre text-center">
@@ -79,7 +82,7 @@ const nowLevel = computed(() => {
       >
         <div class="flex items-center flex-1 w-full">
           <div
-            v-if="nowLevel.weeklyBonus <= 0"
+            v-if="nowLevel.weeklyBonus <= 0 && !noLogin"
             class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1] border-radius-1"
           />
           <div
@@ -96,7 +99,7 @@ const nowLevel = computed(() => {
           </div>
         </div>
         <div
-          v-if="nowLevel.weeklyBonus > 0"
+          v-if="nowLevel.weeklyBonus > 0 && !noLogin"
           class="relative flex justify-center items-center w-full md:h-[30px] h-[20px] md:pl-[8px] pl-[15px] md:pr-[22px] pr-[21px] bg-[--bc-color19] border-radius-0"
         >
           <p class="md:text-[14px] text-[12px] shrink-0 truncate whitespace-pre text-center">
@@ -112,7 +115,7 @@ const nowLevel = computed(() => {
       >
         <div class="flex items-center flex-1 w-full">
           <div
-            v-if="nowLevel.dailyBonus <= 0"
+            v-if="nowLevel.dailyBonus <= 0 && !noLogin"
             class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1] border-radius-1"
           />
           <div
@@ -129,14 +132,14 @@ const nowLevel = computed(() => {
           </div>
         </div>
         <div
-          v-if="nowLevel.dailyBonus > 0"
+          v-if="nowLevel.dailyBonus > 0 && !noLogin"
           class="relative flex justify-center items-center w-full md:h-[30px] h-[20px] md:pl-[8px] pl-[15px] md:pr-[22px] pr-[21px] bg-[--bc-color19] border-radius-0"
         >
           <p class="md:text-[14px] text-[12px] shrink-0 truncate whitespace-pre text-center">
             Bet
-            <span class="text-white font-bold">R$5,000.00</span>
+            <span class="text-white font-bold">{{ toCurrency(nowLevel.dailyBonus) }}</span>
             daily,get
-            <span class="text-white font-bold">R$20.00</span> rewards.
+            <span class="text-white font-bold">{{ toCurrency(nowLevel.dailyExperience) }}</span> rewards.
           </p>
         </div>
       </div>
@@ -146,7 +149,7 @@ const nowLevel = computed(() => {
       >
         <div class="flex items-center flex-1 w-full">
           <div
-            v-if="nowLevel.monthlyBonus <= 0"
+            v-if="nowLevel.monthlyBonus <= 0 && !noLogin"
             class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1] border-radius-1"
           />
           <div
@@ -163,14 +166,14 @@ const nowLevel = computed(() => {
           </div>
         </div>
         <div
-          v-if="nowLevel.monthlyBonus > 0"
+          v-if="nowLevel.monthlyBonus > 0 && !noLogin"
           class="relative flex justify-center items-center w-full md:h-[30px] h-[20px] md:pl-[8px] pl-[15px] md:pr-[22px] pr-[21px] bg-[--bc-color19] border-radius-0"
         >
           <p class="md:text-[14px] text-[12px] shrink-0 truncate whitespace-pre text-center">
             Bet
-            <span class="text-white font-bold">R$200,000.00</span>
+            <span class="text-white font-bold">{{ toCurrency(nowLevel.monthlyBonus) }}</span>
             monthly, get
-            <span class="text-white font-bold">R$7,777.00</span>
+            <span class="text-white font-bold">{{ toCurrency(nowLevel.monthlyExperience) }}</span>
             rewards.
           </p>
         </div>
@@ -182,7 +185,7 @@ const nowLevel = computed(() => {
       >
         <div class="flex items-center flex-1 w-full">
           <div
-            v-if="!nowLevel.exclusiveVip"
+            v-if="!nowLevel.exclusiveVip && !noLogin"
             class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1] border-radius-1"
           />
           <div
@@ -205,7 +208,7 @@ const nowLevel = computed(() => {
       >
         <div class="flex items-center flex-1 w-full">
           <div
-            v-if="!nowLevel.exclusiveBonuses"
+            v-if="!nowLevel.exclusiveBonuses && !noLogin"
             class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1] border-radius-1"
           />
           <div
@@ -228,7 +231,7 @@ const nowLevel = computed(() => {
       >
         <div class="flex items-center flex-1 w-full">
           <div
-            v-if="!nowLevel.premiumGiveaways"
+            v-if="!nowLevel.premiumGiveaways && !noLogin"
             class="absolute bg-[--bc-alphaBlack] w-full h-full top-0 left-0 z-[1] border-radius-1"
           />
           <div

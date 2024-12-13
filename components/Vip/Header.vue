@@ -13,7 +13,7 @@ function handleBack() {
 </script>
 
 <template>
-  <div class=" flex items-center text-white w-full h-[56px] top-0 z-[20] shrink-0 bg-[--bc-color-3] !fixed">
+  <div class=" flex items-center text-white w-full h-[56px] top-0 z-[20] shrink-0 bg-[--bc-color-3] !fixed ml:hidden">
     <div class="flex-1 flex items-center">
       <button class="pr-[10px] pl-[15px] text-[15px] h-full flex items-center" @click="handleBack">
         <i class="inline-block h-[max-content] w-[max-content] icon-new-back" />

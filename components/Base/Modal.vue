@@ -7,12 +7,14 @@ import {
 
 import { cn } from '~/lib/utils'
 
+const useWap = defineProp<boolean>(true)
 const contentClass = defineProp<string>()
 const wapContentClass = defineProp<string>()
 const wapHeaderClass = defineProp<string>()
 const direction = defineProp<string>()
 const overlayClass = defineProp<string>()
 const closeClass = defineProp<string>()
+const noWapHeader = defineProp<boolean>()
 const noClose = defineProp<boolean>(false)
 const show = defineModel<boolean>('show', {
   type: Boolean,
@@ -44,7 +46,7 @@ function closeModal() {
 </script>
 
 <template>
-  <Dialog v-if="isPc" v-model:open="show" modal>
+  <Dialog v-if="isPc || !useWap" v-model:open="show" modal>
     <DialogPortal>
       <DialogContent
         disable-outside-pointer-events :class="cn(
@@ -66,7 +68,8 @@ function closeModal() {
       </DialogContent>
     </DialogPortal>
   </Dialog>
-  <BaseDrawer v-else v-model:open="show" :direction :content-class="wapContentClass" :header-class="wapHeaderClass" :overlay-class>
+
+  <BaseDrawer v-else-if="useWap" v-model:open="show" :direction :content-class="wapContentClass" :header-class="wapHeaderClass" :overlay-class :no-header="noWapHeader">
     <template #title>
       <slot name="title" />
     </template>

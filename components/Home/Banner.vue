@@ -26,6 +26,7 @@
         </div>
         <button
           class="rounded-sm w-[max-content] min-w-[300px] main-color-btn h-[42px] text-[15px] text-black flex items-center justify-center px-[30px] z-[1] hover:brightness-105"
+          @click="routerPush('/login')"
         >
           Join
           Now

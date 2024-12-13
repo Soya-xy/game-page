@@ -35,8 +35,9 @@ const show = ref(false)
   </div>
   <BaseModal
     v-model:show="show"
-    content-class="mx-auto w-full max-w-[520px] h-[max-content] !min-w-[200px] !bg-transparent z-[555]" no-close
-    overlay-class="z-[550]"
+    :use-wap="false"
+    content-class="mx-auto w-full max-w-[520px] h-[max-content] !min-w-[200px] !bg-transparent z-[555]"
+    no-close overlay-class="z-[550]"
   >
     <InviteWapTurntable class="!mx-auto" @close="show = false" />
   </BaseModal>

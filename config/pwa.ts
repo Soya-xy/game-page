@@ -1,4 +1,5 @@
 import type { ModuleOptions } from '@vite-pwa/nuxt'
+import process from 'node:process'
 import { appDescription, appName } from '../constants/index'
 
 const scope = '/'
@@ -67,7 +68,7 @@ export const pwa: ModuleOptions = {
     installPrompt: true,
   },
   devOptions: {
-    enabled: true,
+    enabled: process.env.VITE_PLUGIN_PWA === 'true',
     navigateFallback: scope,
     type: 'module',
   },
