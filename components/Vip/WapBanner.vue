@@ -2,7 +2,6 @@
 import type { VipLevel } from '~/api/vip'
 import { Dropdown } from 'floating-vue'
 
-const { userInfo } = useUserStore()
 const levelList = inject<VipLevel[]>('levelList')
 const current = ref(0)
 const currentList = ref([{
@@ -19,6 +18,8 @@ const currentList = ref([{
   value: 'monthlyBonus',
 }])
 const showBenefits = ref<boolean>(false)
+const user = useUserStore()
+const { userInfo } = storeToRefs(user)
 </script>
 
 <template>
@@ -39,17 +40,17 @@ const showBenefits = ref<boolean>(false)
             <div>
               <h4 class="text-color font-bold mb-[4px]">
                 <div>
-                  yi Soya
+                  {{ userInfo?.nickname }}
                 </div>
               </h4>
               <h2 class="text-[15px] font-bold text-white">
-                VIP 1
+                VIP {{ userInfo?.userVip?.vipLevel }}
               </h2>
             </div>
           </div>
           <div class="text-[10px] mt-[16px]">
             <div class="text-center text-white">
-              0xp
+              {{ userInfo?.userVip?.vipCoin }}xp
             </div>
             <div class="h-[6px] rounded-[3px] bg-color my-[4px]">
               <div class="bg-active text-color h-full rounded-[inherit] overflow-hidden" style="width: 10%;" />
@@ -71,7 +72,7 @@ const showBenefits = ref<boolean>(false)
         </p>
         <div class="w-[60%] text-color flex items-center relative">
           <p>
-            200XP to VIP 2
+            {{ (userInfo?.userVip?.nextCoin || 0) - (userInfo?.userVip?.vipCoin || 0) }}XP to VIP {{ (userInfo?.userVip?.vipLevel || 0) + 1 }}
           </p>
           <Dropdown :distance="6" :skidding="-50" no-arrow placement="auto" popper-class="vip">
             <i

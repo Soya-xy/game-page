@@ -22,9 +22,9 @@ function handleModal(item: PromotionArticleResponse) {
 </script>
 
 <template>
-  <div class="max-w-[1414px] flex mx-auto flex-col gap-y-[12px] mt-[12px] relative z-[20] sm:px-[20px] ">
+  <div class="container @container flex mx-auto flex-col gap-y-[12px] mt-[12px] relative z-[20] sm:px-[20px] ">
     <div class="pt-[30px] md:pt-0 px-[15px] md:px-0">
-      <div class="grid mt-[20px]  md:grid-cols-3 gap-[15px] sm:grid-cols-2">
+      <div class="grid mt-[20px] md:grid-cols-2 xl:grid-cols-3 gap-[15px]">
         <div
           v-for="(item, idx) in listData" :key="idx"
           class="bg-color2 border-radius-0 shrink-0 pb-[20px] flex flex-col items-center justify-between overflow-hidden"
@@ -52,14 +52,21 @@ function handleModal(item: PromotionArticleResponse) {
       </div>
     </div>
 
-    <BaseModal v-model:show="showModal" content-class="!rounded-[10px] bg-popup min-w-[700px] max-w-[800px]">
+    <BaseModal v-model:show="showModal" content-class="!rounded-[10px] bg-popup w-[500px] max-w-[800px]">
       <template #title>
         <div class="flex justify-between items-center h-[54px] px-[20px] bg-color-pop-16 rounded-t-[10px] text-white">
           Promotion
         </div>
       </template>
-      <div class="h-[700px] overflow-y-auto px-[40px] py-[20px]">
+      <div class="h-[700px] overflow-y-auto py-[20px] flex flex-col">
         <div v-html="modalData?.content" />
+      </div>
+      <div class="px-[40px]">
+        <div class="shrink-0 mt-[20px]">
+          <button class="bg-active text-font font-bold h-[46px] w-full border-radius-0 text-[14px] mb-[10px]">
+            Deposit
+          </button>
+        </div>
       </div>
     </BaseModal>
   </div>
