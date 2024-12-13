@@ -15,7 +15,7 @@ const show = ref<boolean>(false)
         <h3 class="text-[20px] font-semibold text-white uppercase">
           Invite Roulette
         </h3>
-        <p class="text-color-text-1 text-[16px]">
+        <p class="text-color text-[16px]">
           Invite friends and get rewards
         </p>
         <div class="h-[8px] rounded-full bg-[--bc-alphaBlack4a] relative mt-[37px]">

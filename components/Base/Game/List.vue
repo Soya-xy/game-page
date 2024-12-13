@@ -125,7 +125,7 @@ function next(type: 'up' | 'down') {
           <div
             v-if="haveMore" class="
               h-[32px] px-2 font-bold
-              text-sm text-primary cursor-pointer
+              text-sm text-white cursor-pointer
               bg-page rounded-[8px] flex justify-center items-center
             " @click="drawerOpen = true"
           >
@@ -156,7 +156,13 @@ function next(type: 'up' | 'down') {
         </swiper-slide>
       </swiper-container>
     </ClientOnly>
-    <BaseModal v-model:show="drawerOpen">
+    <BaseModal
+      v-model:show="drawerOpen" wap-content-class="h-[100vh] z-[555] p-0" content-class="z-[555] pb-[15px]" overlay-class="z-[550]"
+      direction="right"
+    >
+      <template #title>
+        {{ title }}
+      </template>
       <BaseGameMore :get-data="getMoreFetch" :title="title" />
     </BaseModal>
   </div>

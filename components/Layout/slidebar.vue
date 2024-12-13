@@ -1,11 +1,13 @@
 <script setup>
 import { isClient } from '@vueuse/core'
-// import cas
+
 const { isOpen } = useMenu()
+const route = useRoute()
+
 const menuItems = [
   { name: 'Casino', href: '/casino', icon: 'casino', iconType: 'svg' },
   { name: 'Sports', href: '/sports', icon: 'sport', iconType: 'svg' },
-  { name: 'Bonus Games', href: '/lottery', icon: 'lotter', iconType: 'svg' },
+  { name: 'Bonus Games', href: '/gametag/hot', icon: 'lotter', iconType: 'svg' },
   { name: 'VIP Club', href: '/vip', icon: 'icon-n-vip' },
   { name: 'Affiliate', href: '/affiliate', icon: 'icon-n-affiliate' },
   { name: 'Promotion', href: '/promotion', icon: 'icon-n-bonus' },
@@ -43,7 +45,12 @@ if (isClient) {
           class="h-[40px] text-white text-[14px] font-semibold bg-tab cursor-pointer rounded-[10px] overflow-hidden"
           @click="routerPush(item.href)"
         >
-          <div class="h-full flex items-center relative hover-bg-linear-3">
+          <div
+            class="h-full flex items-center relative hover-bg-linear-3"
+            :class="{
+              'bg-linear-3': route?.path?.includes(item.href),
+            }"
+          >
             <div class="w-[40px] h-[40px] flex items-center justify-center">
               <i
                 v-if="item.iconType !== 'svg'"
@@ -98,7 +105,10 @@ if (isClient) {
             arrow-color="var(--bc-bgColor6)"
           >
             <div
-              class="flex justify-center h-[40px] w-[40px] cursor-pointer flex items-center justify-center  hover-bg-linear-3 rounded-[10px]"
+              class="flex justify-center h-[40px] w-[40px] cursor-pointer  items-center  hover-bg-linear-3 rounded-[10px]"
+              :class="{
+                'bg-linear-3': route?.path?.includes(item.href),
+              }"
               @click="routerPush(item.href)"
             >
               <i

@@ -22,3 +22,8 @@ export function getRouterHash(hash: string) {
     return routerHash.split(`${RouterHash.Tag}/`)[1]
   return ''
 }
+
+// 首字母大写
+export function capitalizeFirstLetter(str: string = '') {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
