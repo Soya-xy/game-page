@@ -30,7 +30,7 @@ useHead({
 </script>
 
 <template>
-  <VitePwaManifest />
+  <NuxtPwaManifest />
   <BaseSpin v-if="once" />
   <Suspense>
     <template v-if="ready">

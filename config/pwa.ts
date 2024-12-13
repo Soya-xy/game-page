@@ -1,5 +1,4 @@
 import type { ModuleOptions } from '@vite-pwa/nuxt'
-import process from 'node:process'
 import { appDescription, appName } from '../constants/index'
 
 const scope = '/'
@@ -8,29 +7,21 @@ export const pwa: ModuleOptions = {
   registerType: 'autoUpdate',
   scope,
   base: scope,
+  strategies: 'generateSW',
   manifest: {
     id: scope,
     scope,
     name: appName,
     short_name: appName,
     description: appDescription,
-    theme_color: '#ffffff',
+    start_url: scope,
+    background_color: '#162326',
+    theme_color: '#162326',
     icons: [
       {
-        src: 'pwa-192x192.png',
+        src: 'favicon.ico',
         sizes: '192x192',
         type: 'image/png',
-      },
-      {
-        src: 'pwa-512x512.png',
-        sizes: '512x512',
-        type: 'image/png',
-      },
-      {
-        src: 'maskable-icon.png',
-        sizes: '512x512',
-        type: 'image/png',
-        purpose: 'any maskable',
       },
     ],
   },
@@ -72,8 +63,12 @@ export const pwa: ModuleOptions = {
   },
   registerWebManifestInRouteRules: true,
   writePlugin: true,
+  client: {
+    installPrompt: true,
+  },
   devOptions: {
-    enabled: process.env.VITE_PLUGIN_PWA === 'true',
+    enabled: true,
     navigateFallback: scope,
+    type: 'module',
   },
 }
