@@ -2,6 +2,10 @@
 definePageMeta({
   pageIndex: PageIndexEnum.affiliate,
 })
+
+const affiliate = useAffiliate()
+
+await affiliate.init()
 </script>
 
 <template>

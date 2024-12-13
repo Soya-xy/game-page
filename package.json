@@ -19,6 +19,7 @@
     "@iconify/utils": "^2.2.0",
     "@number-flow/vue": "^0.3.2",
     "@vee-validate/zod": "^4.14.7",
+    "@vuepic/vue-datepicker": "^10.0.0",
     "@vueuse/core": "^12.0.0",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",

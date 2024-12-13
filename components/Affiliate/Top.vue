@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-
+const affiliate = useAffiliate()
+const { maxReward } = storeToRefs(affiliate)
 </script>
 
 <template>
@@ -8,7 +9,7 @@
       <div class="w-[66px] h-[66px] overflow-hidden mr-[10px] shrink-0 relative p-[2px]">
         <img src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/referAndEarn/person_a.png?t20240111" alt="" importance="auto" class="w-full" lazy="">
       </div><div class="text-color-linear-20">
-        You can make money by referring friends to AFUN.COM and earn up to 70% commission rewards！
+        You can make money by referring friends to AFUN.COM and earn up to {{ maxReward }} commission rewards！
       </div>
     </div><div class="flex text-[11px] justify-between mt-[10px] gap-[4px]" style="font-size: clamp(10px, 2.9333vw, 12px);">
       <div class="flex-[10] shrink-0">

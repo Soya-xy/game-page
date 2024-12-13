@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const affiliate = useAffiliate()
+const { record } = storeToRefs(affiliate)
 const containerRef = ref()
 useSwiper(containerRef, {
   slidesPerView: 2,
@@ -28,31 +30,35 @@ useSwiper(containerRef, {
             Send total commission
           </div>
           <div class="text-color-linear-20 text-[12px] font-black whitespace-pre">
-            <span class="whitespace-pre">R$22,015,960.65</span>
+            <span class="whitespace-pre">{{ toCurrency(record?.totalCommission) }}</span>
           </div>
         </div>
       </div>
       <div class="w-full h-[1px] shrink-0 bg-color5" />
       <div class="shrink-0 overflow-hidden w-full h-[40px]">
         <swiper-container ref="containerRef" :init="false" class="flex justify-start w-full">
-          <swiper-slide v-for="i in 10" :key="i">
+          <swiper-slide v-for="i, idx in record?.respVOList" :key="idx">
             <div class="h-[15px]">
               <div class="h-[15px] flex items-center">
                 <div
                   class="w-[17px] h-[17px] rounded-full bg-no-repeat bg-cover bg-center relative mr-[20px]"
-                  style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/userinfo/header/h_3.jpg?t=20231004);"
+                  :style="{
+                    backgroundImage: `url(${i.avatar})`,
+                  }"
                 >
                   <div
                     class="w-[8px] h-[8px] bg-no-repeat bg-cover bg-center absolute -right-[8px] top-[10px]"
-                    style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/vip/s/vip4.png);"
+                    :style="{
+                      backgroundImage: `url(${i.level})`,
+                    }"
                   />
                 </div>
                 <div class="flex flex-wrap gap-[4px] text-[10px]">
                   <div class="text-white">
-                    {{ i }}
+                    {{ i.userName }}
                   </div>
                   <div class="text-color">
-                    Commission <span class="text-green">R$1.04</span>
+                    Commission <span class="text-green">{{ toCurrency(i.price) }}</span>
                   </div>
                 </div>
               </div>

@@ -2,8 +2,12 @@
 const showRules = ref<boolean>(false)
 const showQa = ref<boolean>(false)
 const isSlots = defineProp<boolean>()
+
+const affiliate = useAffiliate()
+const { activity, maxReward } = storeToRefs(affiliate)
+const sliderValue = ref<number>(0)
 function handleSliderChange(value: number) {
-  console.log('%c🤪 ~ file: /Users/soya/Desktop/game-page/components/Affiliate/Rules.vue:50 [handleSliderChange] -> value : ', 'color: #48347f', value)
+  sliderValue.value = value
 }
 </script>
 
@@ -42,7 +46,10 @@ function handleSliderChange(value: number) {
             <div class="text-active text-[15px] underline text-left cursor-pointer" @click="showQa = true">
               Commission calculation rules
             </div>
-            <div class="text-active text-[15px] underline cursor-pointer text-left min-w-[345px]" @click="showRules = true">
+            <div
+              class="text-active text-[15px] underline cursor-pointer text-left min-w-[345px]"
+              @click="showRules = true"
+            >
               Commission reward rules
             </div>
           </div>
@@ -55,12 +62,15 @@ function handleSliderChange(value: number) {
               <div>
                 <div class="mb-[16px]">
                   Recommended
-                  <span class="text-white">&gt; 100</span>
+                  <span class="text-white">&gt; {{ activity?.[sliderValue]?.maxParticipants }}</span>
                   <i
                     class="inline-block h-[max-content] w-[max-content] icon-new-personal cursor-pointer text-[20px] text-color ml-[4px]"
                   />
                 </div>
-                <div>Commission <span class="text-white">R$5,000 / Month</span></div>
+                <div>
+                  Commission <span class="text-white">{{ toCurrency(activity?.[sliderValue]?.maxReward) }} /
+                    Month</span>
+                </div>
               </div>
             </div>
             <div class="w-[220px] h-[50px] flex items-center">
@@ -105,7 +115,7 @@ function handleSliderChange(value: number) {
               />
             </div>
             <div class="text-color-linear-20">
-              You can make money by referring friends to AFUN.COM and earn up to 70% commission rewards！
+              You can make money by referring friends to AFUN.COM and earn up to {{ maxReward }} commission rewards！
             </div>
           </div>
           <div class="flex text-[12px] justify-between mt-[10px]">
@@ -148,11 +158,11 @@ function handleSliderChange(value: number) {
   </BaseModal>
   <BaseModal v-model:show="showQa" content-class="w-[500px] h-[700px]">
     <template #title>
-      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
+      <div class="flex justify-between items-center h-[76px] px-[20px] bg-color-pop-16 rounded-[10px]">
         Rules
       </div>
     </template>
-    <div class="flex-1 overflow-hidden flex flex-col px-[40px] pb-[30px]">
+    <div class="flex-1 overflow-hidden flex flex-col px-[40px] pb-[30px] ">
       <div class="flex-1 overflow-y-auto">
         <AffiliateRules title="Commission reward" />
         <AffiliateLevel />

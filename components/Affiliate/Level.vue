@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-
+// const affiliate = useAffiliate()
+// const { level } = storeToRefs(affiliate)
 </script>
 
 <template>

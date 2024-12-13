@@ -19,12 +19,14 @@ const showDrawer = ref<boolean>(false)
       <AffiliateSlider />
     </div>
   </div>
-  <BaseDrawer v-model:open="showDrawer" direction="right" content-class="z-[999] h-[100vh]" overlay-class="z-[999]">
+  <BaseDrawer v-model:open="showDrawer" direction="right" content-class="z-[999] h-[100vh] p-0" overlay-class="z-[999]">
     <template #title>
       Commission
     </template>
-    <AffiliateRules />
-    <AffiliateLevel />
+    <div class="p-[15px]">
+      <AffiliateRules />
+      <AffiliateLevel />
+    </div>
   </BaseDrawer>
 </template>
 

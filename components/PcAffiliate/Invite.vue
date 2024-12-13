@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { Dropdown } from 'floating-vue'
+import { ref } from 'vue'
 import VueQrcode from 'vue-qrcode'
 import { useToast } from '../ui/toast'
 
@@ -7,13 +8,21 @@ const user = useUserStore()
 const { token } = storeToRefs(user)
 const { copy } = useClipboard()
 const { toast } = useToast()
-function copyUrl(str: string) {
+const date = ref(new Date())
+function copyUrl(str: string | undefined) {
+  if (!str)
+    return
+
   copy(str)
   toast({
     title: 'Copied',
     description: 'Copied to clipboard',
   })
 }
+
+const affiliate = useAffiliate()
+const { summary, code, maxReward } = storeToRefs(affiliate)
+const showDetail = ref<boolean>(false)
 </script>
 
 <template>
@@ -26,7 +35,7 @@ function copyUrl(str: string) {
         INVITE FRIENDS TO EARN
       </div>
       <div class="text-[40px] text-color-linear-20 font-black max-w-[80%] mt-[4px] whitespace-pre-wrap w-[max-content]">
-        70%Commission
+        {{ maxReward }}Commission
       </div>
     </div>
     <button
@@ -50,7 +59,7 @@ function copyUrl(str: string) {
             <div>
               <div class="flex flex-col h-[142px]">
                 <div class="text-[25px] text-color-linear-20 font-black w-[80%] mb-[4px] whitespace-pre-wrap">
-                  70%Commission
+                  {{ maxReward }}Commission
                 </div>
                 <div class="text-white text-[20px] font-bold uppercase">
                   INVITE FRIENDS TO EARN
@@ -62,8 +71,8 @@ function copyUrl(str: string) {
               <div class="flex">
                 <div class="w-[105px] h-[105px] p-[3px] bg-[#FFF]">
                   <VueQrcode
-                    :margin="2" value="https://www.1stg.me" :color="{ dark: '#000000ff', light: '#ffffffff' }"
-                    type="image/png"
+                    v-if="code?.brokeragePromotionUrl" :margin="2" :value="code.brokeragePromotionUrl"
+                    :color="{ dark: '#000000ff', light: '#ffffffff' }" type="image/png"
                   />
                 </div>
                 <div class="flex-1 ml-[10px] min-w-[100px]">
@@ -77,12 +86,12 @@ function copyUrl(str: string) {
                       <div class="h-full flex items-center flex-1 shrink-0 relative overflow-hidden">
                         <input
                           class="h-full flex-1 min-w-[60px] bg-transparent text-white placeholder:font-normal"
-                          disabled
+                          disabled :value="code?.brokeragePromotionUrl"
                         >
                       </div>
                       <i
                         class="inline-block h-[max-content] w-[max-content] icon-new-copy cursor-pointer text-[20px] text-[--bc-color20]"
-                        @click="copyUrl('url')"
+                        @click="copyUrl(code?.brokeragePromotionUrl)"
                       />
                     </div>
                   </div>
@@ -96,12 +105,12 @@ function copyUrl(str: string) {
                       <div class="h-full flex items-center flex-1 shrink-0 relative overflow-hidden">
                         <input
                           class="h-full flex-1 min-w-[60px] bg-transparent text-white placeholder:font-normal"
-                          disabled
+                          disabled :value="code?.brokeragePromotionCode"
                         >
                       </div>
                       <i
                         class="inline-block h-[max-content] w-[max-content] icon-new-copy cursor-pointer text-[20px] text-[--bc-color20]"
-                        @click="copyUrl('code')"
+                        @click="copyUrl(code?.brokeragePromotionCode)"
                       />
                     </div>
                   </div>
@@ -173,7 +182,7 @@ function copyUrl(str: string) {
                       Sign Up
                     </div>
                     <div class="text-[16px] text-color font-semibold">
-                      0
+                      {{ summary?.todayBrokerageUserCount }}
                     </div>
                   </div>
                   <div
@@ -183,7 +192,7 @@ function copyUrl(str: string) {
                       First Deposit
                     </div>
                     <div class="text-[16px] text-color font-semibold">
-                      0
+                      {{ summary?.todayFirstDeposit }}
                     </div>
                   </div>
                   <div
@@ -193,17 +202,7 @@ function copyUrl(str: string) {
                       Valid bet
                     </div>
                     <div class="text-[16px] text-color font-semibold">
-                      <span class="whitespace-pre">R$0.00</span>
-                    </div>
-                  </div>
-                  <div
-                    class="flex flex-col items-center justify-center shrink-0 border-[1px] border-dashed border-[--bc-bgColor9] border-radius-0 invisible"
-                  >
-                    <div class="text-[14px] text-[--bc-color20] mb-[2px]">
-                      Valid bet
-                    </div>
-                    <div class="text-[16px] text-color font-semibold">
-                      <span class="whitespace-pre">R$0.00</span>
+                      <span class="whitespace-pre">{{ toCurrency(summary?.todayBrokerageUserCount) }}</span>
                     </div>
                   </div>
                 </div>
@@ -238,7 +237,7 @@ function copyUrl(str: string) {
                       Sign Up
                     </div>
                     <div class="text-[16px] text-color font-semibold">
-                      0
+                      {{ summary?.totalBrokerageUserCount }}
                     </div>
                   </div>
                   <div
@@ -248,7 +247,7 @@ function copyUrl(str: string) {
                       First Deposit
                     </div>
                     <div class="text-[16px] text-color font-semibold">
-                      0
+                      {{ summary?.totalFirstDeposit }}
                     </div>
                   </div>
                   <div
@@ -258,17 +257,7 @@ function copyUrl(str: string) {
                       Valid bet
                     </div>
                     <div class="text-[16px] text-color font-semibold">
-                      <span class="whitespace-pre">R$0.00</span>
-                    </div>
-                  </div>
-                  <div
-                    class="flex flex-col items-center justify-center shrink-0 border-[1px] border-dashed border-[--bc-bgColor9] border-radius-0 invisible"
-                  >
-                    <div class="text-[14px] text-[--bc-color20] mb-[2px]">
-                      Valid bet
-                    </div>
-                    <div class="text-[16px] text-color font-semibold">
-                      <span class="whitespace-pre">R$0.00</span>
+                      <span class="whitespace-pre">{{ toCurrency(summary?.totalBrokerageUserCount) }}</span>
                     </div>
                   </div>
                 </div>
@@ -289,7 +278,9 @@ function copyUrl(str: string) {
                         Total Rewards
                       </div>
                       <div class="text-[30px] font-bold text-color-linear-20">
-                        <span class="whitespace-pre">R$0.00</span>
+                        <span class="whitespace-pre">
+                          {{ toCurrency(summary?.withdrawPrice) }}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -306,7 +297,7 @@ function copyUrl(str: string) {
                       </div>
                       <div class="text-[30px] font-bold flex justify-between items-center">
                         <div class="text-color-linear-20">
-                          0
+                          {{ summary?.totalBrokerageUserCount }}
                         </div>
                       </div>
                     </div>
@@ -315,7 +306,11 @@ function copyUrl(str: string) {
                 <div class="flex justify-between shrink-0">
                   <div class="text-white font-bold text-[20px]">
                     Uncollected commissions
-                  </div><button class="underline text-[--bc-color20] text-[14px] cursor-pointer hover:text-white">
+                  </div>
+                  <button
+                    class="underline text-[--bc-color20] text-[14px] cursor-pointer hover:text-white"
+                    @click="showDetail = true"
+                  >
                     Details
                   </button>
                 </div>
@@ -327,12 +322,16 @@ function copyUrl(str: string) {
                       Exclusive Commission
                     </div>
                     <div class="text-[16px] text-color mt-[2px]">
-                      <span class="whitespace-pre">R$0.00</span>
+                      <span class="whitespace-pre">
+                        {{ toCurrency(summary?.brokeragePrice) }}
+                      </span>
                     </div>
                   </div>
                 </div>
                 <div class="text-white font-bold text-center text-[30px] shrink-0 leading-[1]">
-                  <span class="whitespace-pre">R$0.00</span>
+                  <span class="whitespace-pre">
+                    {{ toCurrency(summary?.brokeragePrice) }}
+                  </span>
                 </div>
                 <button
                   class="shrink-0 text-[14px] border-radius-0 -mt-[6px] text-font bg-active h-[46px] font-bold w-full pointer-events-none"
@@ -346,6 +345,17 @@ function copyUrl(str: string) {
       </div>
     </div>
   </ClientOnly>
+  <BaseModal v-model:show="showDetail">
+    <template #title>
+      <div class="flex justify-between items-center h-[76px] px-[20px] bg-color-pop-16 text-white rounded-[10px]">
+        History
+      </div>
+    </template>
+    <div class="flex justify-between items-center gap-x-[10px]">
+      <BaseDatePicker v-model:date="date" />
+      <BaseDatePicker v-model:date="date" />
+    </div>
+  </BaseModal>
 </template>
 
 <style></style>

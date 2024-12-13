@@ -1,10 +1,12 @@
 <script lang="ts" setup>
+import type { Wallet } from '~/api/user/type'
 import { ref } from 'vue'
+import { getWallet } from '~/api/user/wallet'
 
 const open = ref<boolean>(false)
 const mobileOpen = ref<boolean>(false)
 const { isPc } = useDevice()
-
+const wallet = ref<Wallet>()
 function toggleOpen() {
   if (isPc.value) {
     open.value = !open.value
@@ -13,6 +15,10 @@ function toggleOpen() {
     mobileOpen.value = !mobileOpen.value
   }
 }
+
+getWallet().then((res) => {
+  wallet.value = res
+})
 </script>
 
 <template>
@@ -23,7 +29,7 @@ function toggleOpen() {
         importance="auto" class=" shrink-0 w-[24px] !h-[24px]"
       />
       <div class="mr-[12px] ml-[6px]">
-        <span class="whitespace-pre">0.07</span>
+        <span class="whitespace-pre">{{ toCurrency(wallet?.balance) }}</span>
         <div class="text-[12px] text-color">
           <span class="whitespace-pre font-[400]">0.00</span>
         </div>
