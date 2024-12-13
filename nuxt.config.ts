@@ -85,7 +85,6 @@ export default defineNuxtConfig({
     renderJsonPayloads: true,
     typedPages: true,
     buildCache: true,
-
   },
   compatibilityDate: '2024-08-14',
 
@@ -148,7 +147,6 @@ export default defineNuxtConfig({
       edition: 'johnsonEdition',
     },
   },
-
   pwa,
 
   shadcn: {

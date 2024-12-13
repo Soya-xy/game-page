@@ -6,7 +6,7 @@ const needModalPath = ['/login', '/register', '/gametag/hot', '/profile']
 export default defineNuxtRouteMiddleware(async (to, from) => {
   const { openRouterModal } = useModal()
   const { isPc } = useDevice()
-
+  const i18n = useNuxtApp().$i18n
   // 过渡效果只在移动端生效
   if (to.path !== from.path && !isPc.value) {
     const pageToIndex = to.meta.pageIndex as number
@@ -25,8 +25,31 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     }
   }
 
-  // 客户端获取用户信息
-  if (import.meta.client) {
+  const needModal = needModalPath.find(path => to.path.includes(path))
+  let toHash = to.hash
+  let toPath = to.path
+  if (i18n.defaultLocale !== i18n.locale.value) {
+    toHash = to.hash.replaceAll(`/${i18n.locale.value}`, '')
+    toPath = to.path.replaceAll(`/${i18n.locale.value}`, '')
+  }
+
+  // 需要弹窗的路由 pc端需要弹窗，移动端需要跳转
+  if (needModal) {
+    // 获取当前i18n的locale
+    if (isPc.value) {
+      openRouterModal(toPath, {
+        hash: `#${toPath}`,
+      })
+      return navigateTo({
+        path: from.path,
+        query: from.query,
+        hash: `#${toPath}`,
+      })
+    }
+  }
+
+  // 客户端获取路由信息 首屏需要获取路由信息
+  if (import.meta.client && to.fullPath === from.fullPath) {
     window.scrollTo(0, 0)
     const userStore = useUserStore()
     if (userStore.token) {
@@ -34,27 +57,12 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     }
 
     // Server端无法获取hash，所以需要在客户端处理
-    if (!isEmpty(to.hash)) {
+    if (!isEmpty(toHash)) {
       if (isPc.value) {
-        openRouterModal(to.hash.slice(1), {
-          hash: to.hash,
+        openRouterModal(toHash.slice(1), {
+          hash: toHash,
         })
       }
-    }
-  }
-
-  // 需要弹窗的路由 pc端需要弹窗，移动端需要跳转
-  if (needModalPath.includes(to.path)) {
-    if (isPc.value) {
-      openRouterModal(to.path, {
-        hash: `#${to.path}`,
-      })
-
-      return navigateTo({
-        path: from.path,
-        query: from.query,
-        hash: `#${to.path}`,
-      })
     }
   }
 })
