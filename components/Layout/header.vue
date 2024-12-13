@@ -7,6 +7,7 @@ const userStore = useUserStore()
 const { token, userInfo } = storeToRefs(userStore)
 const { toggleMenu, isOpen } = useMenu()
 const showLanguageModal = ref<boolean>(false)
+const showSettingModel = ref<boolean>(false)
 
 const open = defineEmit<{ (type: string): void }>()
 
@@ -18,9 +19,19 @@ const menuItems = [
   { label: 'Transaction', icon: 'icon-n-transaction-history' },
   { label: 'Bets History', icon: 'icon-n-bet-history' },
   { label: 'Free bets', icon: 'icon-n-free' },
-  { label: 'Setting', icon: 'icon-n-security-settings' },
+  { label: 'Setting', icon: 'icon-n-security-settings', onClick() { showSettingModel.value = true } },
   { label: 'Install', icon: 'icon-n-install' },
 ]
+
+function handleClick(e: any) {
+  if (e.onClick) {
+    e.onClick()
+  }
+  if (e.hash) {
+    routerPush(e.hash)
+  }
+}
+
 const { setLocale } = useI18n()
 function changeLang(lang: Locale) {
   setLocale(lang)
@@ -96,7 +107,7 @@ function changeLang(lang: Locale) {
           >
             <DropdownMenuItem
               v-for="item in menuItems" :key="item.label"
-              class="hover:text-white hover:bg-page hover:font-bold    p-0" @click="routerPush(item.hash || '/')"
+              class="hover:text-white hover:bg-page hover:font-bold    p-0" @click="handleClick(item)"
             >
               <div class="pl-[20px] pr-[10px] h-[46px] flex items-center cursor-pointer">
                 <i
@@ -130,5 +141,14 @@ function changeLang(lang: Locale) {
       </div>
     </template>
     <BaseLang @change="changeLang" />
+  </BaseModal>
+  <!-- Setting -->
+  <BaseModal v-model:show="showSettingModel" content-class="!min-h-[70vh] overflow-y-scroll=">
+    <template #title>
+      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
+        Setting
+      </div>
+    </template>
+    <Setting />
   </BaseModal>
 </template>
