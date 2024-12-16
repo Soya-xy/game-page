@@ -1,5 +1,25 @@
 <script lang="ts" setup>
-import { footerList, joinList } from '~/@types/constants'
+import type { ResourceConfig } from '~/api/help/type'
+import { footerList } from '~/@types/constants'
+import { resourceUrl } from '~/api/help'
+
+const { data: joinList } = useAPI<ResourceConfig[]>(resourceUrl, {
+  params: {
+    resourceCategory: 'contact',
+  },
+})
+
+const { data: footerIcon } = useAPI<ResourceConfig[]>(resourceUrl, {
+  params: {
+    resourceCategory: '18',
+  },
+})
+
+const { data: footerIcon2 } = useAPI<ResourceConfig[]>(resourceUrl, {
+  params: {
+    resourceCategory: 'Safety',
+  },
+})
 </script>
 
 <template>
@@ -26,8 +46,8 @@ import { footerList, joinList } from '~/@types/constants'
               Join our Community
             </h4>
             <div class="gap-x-[30px] gap-y-[20px] flex items-center flex-wrap">
-              <a v-for="item in joinList" :key="item.name" class="footer-link shrink-0 cursor-pointer" target="_blank">
-                <Image :src="item.url" class="w-[40px] h-[40px]" lazy />
+              <a v-for="(item, idx) in joinList" :key="idx" class="footer-link shrink-0 cursor-pointer" target="_blank" :href="item.description">
+                <Image :src="item.configValue" class="w-[40px] h-[40px]" lazy />
               </a>
             </div>
           </div>
@@ -52,16 +72,17 @@ import { footerList, joinList } from '~/@types/constants'
             <div class="flex flex-col mb-[12px] gap-[8px]">
               <div class="flex items-center gap-[50px]" style="height: 90px;">
                 <div class="h-full shrink-0 cursor-pointer" style="width: 90px;">
-                  <iframe
-                    id="koyoz" class="w-full h-full" src="https://www.afun.global/res/sel.html" frameborder="0"
-                    scrolling="no" crossorigin="anonymous"
-                  />
+                  <a :href="footerIcon2[0]?.description" target="_blank">
+                    <img :src="footerIcon2[0]?.configValue" class="w-full h-full">
+                  </a>
                 </div>
                 <div class="h-full shrink-0">
-                  <img
-                    src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/home/footer-icon-2.png?t20231225"
-                    alt="footer" importance="auto" class="h-full"
-                  >
+                  <a :href="footerIcon[0]?.description" target="_blank">
+                    <img
+                      :src="footerIcon[0]?.configValue"
+                      alt="footer" importance="auto" class="h-full"
+                    >
+                  </a>
                 </div>
               </div>
             </div>
