@@ -72,14 +72,14 @@ const { data: footerIcon2 } = useAPI<ResourceConfig[]>(resourceUrl, {
             <div class="flex flex-col mb-[12px] gap-[8px]">
               <div class="flex items-center gap-[50px]" style="height: 90px;">
                 <div class="h-full shrink-0 cursor-pointer" style="width: 90px;">
-                  <a :href="footerIcon2[0]?.description" target="_blank">
-                    <img :src="footerIcon2[0]?.configValue" class="w-full h-full">
+                  <a :href="footerIcon2?.[0]?.description" target="_blank">
+                    <img :src="footerIcon2?.[0]?.configValue" class="w-full h-full">
                   </a>
                 </div>
                 <div class="h-full shrink-0">
-                  <a :href="footerIcon[0]?.description" target="_blank">
+                  <a :href="footerIcon?.[0]?.description" target="_blank">
                     <img
-                      :src="footerIcon[0]?.configValue"
+                      :src="footerIcon?.[0]?.configValue"
                       alt="footer" importance="auto" class="h-full"
                     >
                   </a>

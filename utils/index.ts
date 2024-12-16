@@ -53,7 +53,7 @@ export function http2ws(url: string) {
 }
 
 // 根据i18n转换货币符号
-export function toCurrency(value: number | string | undefined) {
+export function toCurrency(value: number | string | undefined, color?: string) {
   if (isEmpty(value)) {
     value = 0
   }
@@ -64,7 +64,12 @@ export function toCurrency(value: number | string | undefined) {
     style: 'currency',
     currency,
   })
-  return formatter.format(Number(value || 0))
+
+  return formatter.formatToParts(Number(value || 0)).map((p) => {
+    if (p.type === 'currency' && color)
+      return `<span class="${color}">${p.value}</span>`
+    return p.value
+  }).join('')
 }
 
 export function routerPush(path: string) {
