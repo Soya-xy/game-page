@@ -9,7 +9,7 @@ setInterval(() => {
 
 <template>
   <div
-    class="relative w-auto rounded-[10px] bg-no-repeat bg-cover overflow-hidden h-[120px] px-[36px] font-extrabold text-e-g-color-14 flex items-center justify-between
+    class="relative w-auto rounded-[10px] bg-no-repeat bg-cover overflow-hidden h-[120px] px-[36px] font-extrabold text-white flex items-center justify-between
     max-md:gap-y-[20px] max-md:flex-col max-md:justify-center max-md:h-[180px]"
     style="background-image: url(/images/afun/e_bg_pc.avif);"
   >

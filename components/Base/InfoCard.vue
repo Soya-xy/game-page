@@ -38,7 +38,10 @@ const description = defineProp('')
   background-image: linear-gradient(270deg, rgba(255, 218, 24, 0.2), transparent 75%);
 }
 
-.bg-image3 {
+/* .bg-image3 {
   background-image: linear-gradient(270deg, rgba(239, 56, 255, 0.2), transparent 75%);
+} */
+.bg-image3 {
+  background-image: linear-gradient(90deg, #1874ff00 0.28%, #1874ff33 83.61%);
 }
 </style>
