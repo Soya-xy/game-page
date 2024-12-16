@@ -12,6 +12,7 @@ html {
   --bc-searchBtnColor: #3c4243;
   --bc-textColor: #bec7ca;
   --bc-textActive: #0f0f0f;
+  --bc-errorColor: #ec0048;
   --bc-fontColor: #292d2e;
   --bc-buttonColor: #ffffff1a;
   --bc-buttonColor2: #ffffff4d;
@@ -606,4 +607,11 @@ html {
 
 .box-shadow-07 {
   box-shadow: -8px 0 8px #00000040;
+}
+
+.text-color-linear-05 {
+  background: linear-gradient(180deg, #516382, #97a8c7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
 }

@@ -1,8 +1,10 @@
-<script setup>
+<script setup lang="ts">
 import VueDatePicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
 
-const date = defineModel('date')
+const date = defineModel<string | Date>()
+const placeholder = defineProp<string>('')
+const contentClass = defineProp<string>('')
 const isOpen = ref(false)
 const datePickerRef = ref(null)
 </script>
@@ -11,18 +13,19 @@ const datePickerRef = ref(null)
   <VueDatePicker
     ref="datePickerRef"
     v-model="date"
-    class="text-input relative"
+    :class="`text-input relative ${contentClass}`"
     auto-apply
     hide-input-icon
     dark
+    :placeholder
     :enable-time-picker="false"
-    placeholder="Start Typing ..."
     :action-row="{
       showSelect: false,
       showCancel: false,
       showNow: false,
       showPreview: false,
     }"
+    v-bind="$attrs"
     @open="isOpen = true"
     @closed="isOpen = false"
   >

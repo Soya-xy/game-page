@@ -1,10 +1,11 @@
 <script setup>
 import { isClient } from '@vueuse/core'
+import { ref } from 'vue'
 
 const { isOpen } = useMenu()
 const route = useRoute()
-
 const menuItems = [
+  { name: 'Popular', href: '/gametag/hot', icon: 'icon-n-recommend' },
   { name: 'Casino', href: '/casino', icon: 'casino', iconType: 'svg' },
   { name: 'Sports', href: '/sports', icon: 'sport', iconType: 'svg' },
   { name: 'Bonus Games', href: '/gametag/hot', icon: 'lotter', iconType: 'svg' },
@@ -14,7 +15,7 @@ const menuItems = [
   { name: 'Install', href: '/install', icon: 'icon-n-install' },
   { name: 'Live Chat', href: '/livechat', icon: 'icon-n-livechat' },
 ]
-
+const showLanguageModal = ref(false)
 onMounted(() => {
   if (window.innerWidth < 1280) {
     isOpen.value = false
@@ -28,6 +29,12 @@ if (isClient) {
     }
   })
 }
+
+function changeLang(lang) {
+  setLocale(lang)
+  router.replace('/')
+  showLanguageModal.value = false
+}
 </script>
 
 <template>
@@ -40,42 +47,49 @@ if (isClient) {
       <BaseInvitation />
       <BaseSlideBarTab />
       <nav class="flex flex-col gap-[5px]">
-        <div
+        <template
           v-for="item in menuItems" :key="item.name"
-          class="h-[40px] text-white text-[14px] font-semibold bg-tab cursor-pointer rounded-[10px] overflow-hidden"
-          @click="routerPush(item.href)"
         >
           <div
-            class="h-full flex items-center relative hover-bg-linear-3"
-            :class="{
-              'bg-linear-3': route?.path?.includes(item.href),
-            }"
+            v-if="item.name !== 'Popular'"
+            class="h-[40px] text-white text-[14px] font-semibold bg-tab cursor-pointer rounded-[10px] overflow-hidden"
+            @click="routerPush(item.href)"
           >
-            <div class="w-[40px] h-[40px] flex items-center justify-center">
-              <i
-                v-if="item.iconType !== 'svg'"
-                class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[22px] text-e-g-color-108 "
-                :class="item.icon"
-              />
-              <template v-else>
-                <i-svg-casino v-if="item.icon === 'casino'" class="scale-[1.5]" />
-                <i-svg-sport v-else-if="item.icon === 'sport'" class="scale-[1.5]" />
-                <i-svg-lotter v-else-if="item.icon === 'lotter'" class="scale-[1.5]" />
-              </template>
+            <div
+              class="h-full flex items-center relative hover-bg-linear-3"
+              :class="{
+                'bg-linear-3': route?.path?.includes(item.href),
+              }"
+            >
+              <div class="w-[40px] h-[40px] flex items-center justify-center">
+                <i
+                  v-if="item.iconType !== 'svg'"
+                  class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[22px] text-icon "
+                  :class="item.icon"
+                />
+                <template v-else>
+                  <i-svg-casino v-if="item.icon === 'casino'" class="scale-[1.5]" />
+                  <i-svg-sport v-else-if="item.icon === 'sport'" class="scale-[1.5]" />
+                  <i-svg-lotter v-else-if="item.icon === 'lotter'" class="scale-[1.5]" />
+                </template>
+              </div>
+              <p v-if="!item.name.includes('VIP')" class="text-[14px] flex-1">
+                {{ item.name }}
+              </p>
+              <p v-else class="text-[14px] flex-1">
+                <span v-html="item.name.replace('VIP', `<span class='text-green'>VIP</span>`)" />
+              </p>
             </div>
-            <p v-if="!item.name.includes('VIP')" class="text-[14px] flex-1">
-              {{ item.name }}
-            </p>
-            <p v-else class="text-[14px] flex-1">
-              <span v-html="item.name.replace('VIP', `<span class='text-green'>VIP</span>`)" />
-            </p>
           </div>
-        </div>
-        <div class="h-[40px] text-white text-[14px] font-semibold bg-tab cursor-pointer rounded-[10px] overflow-hidden">
+        </template>
+        <div
+          class="h-[40px] text-white text-[14px] font-semibold bg-tab cursor-pointer rounded-[10px] overflow-hidden"
+          @click="showLanguageModal = true"
+        >
           <div class="h-full flex items-center relative hover-bg-linear-3">
             <div class="w-[40px] h-[40px] flex items-center justify-center">
               <i
-                class="inline-block h-[max-content] w-[max-content] icon-n-lang cursor-pointer text-[22px] text-e-g-color-108 "
+                class="inline-block h-[max-content] w-[max-content] icon-n-lang cursor-pointer text-[22px] text-icon "
               />
             </div>
             <p class="text-[14px] flex-1">
@@ -94,7 +108,7 @@ if (isClient) {
         'opacity-100 translate-y-0': !isOpen,
       }"
     >
-      <BaseInvitation is-icon />
+      <!-- <BaseInvitation is-icon /> -->
 
       <ClientOnly>
         <nav class="mt-5 flex flex-col gap-[5px] items-center">
@@ -113,7 +127,7 @@ if (isClient) {
             >
               <i
                 v-if="item.iconType !== 'svg'"
-                class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[22px] text-e-g-color-108 "
+                class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[24px] text-icon hover:text-white"
                 :class="item.icon"
               />
               <template v-else>
@@ -128,8 +142,35 @@ if (isClient) {
               </div>
             </template>
           </BaseTooltip>
+          <BaseTooltip
+            side="right"
+            :side-offset="10"
+            arrow-color="var(--bc-bgColor6)"
+          >
+            <div
+              class="flex justify-center h-[40px] w-[40px] cursor-pointer  items-center  hover-bg-linear-3 rounded-[10px]"
+              @click="showLanguageModal = true"
+            >
+              <i
+                class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[24px] text-icon hover:text-white icon-n-lang"
+              />
+            </div>
+            <template #content>
+              <div class="bg-color6 p-[10px] ">
+                {{ $t('lang.name') }}
+              </div>
+            </template>
+          </BaseTooltip>
         </nav>
       </ClientOnly>
     </div>
   </div>
+  <BaseModal v-model:show="showLanguageModal">
+    <template #title>
+      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
+        Switch Language
+      </div>
+    </template>
+    <BaseLang @change="changeLang" />
+  </BaseModal>
 </template>

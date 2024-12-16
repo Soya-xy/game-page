@@ -70,3 +70,7 @@ export function toCurrency(value: number | string | undefined) {
 export function routerPush(path: string) {
   navigateTo(useNuxtApp().$localeRoute((path as keyof RouteNamedMapI18n | (Omit<RouteLocationAsRelativeI18n, 'path'>)))?.fullPath)
 }
+
+export function isEmail(email: string) {
+  return /^[\w-]+@[\w-]+(?:\.[\w-]+)+$/.test(email)
+}

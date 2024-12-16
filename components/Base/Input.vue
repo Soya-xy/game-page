@@ -6,12 +6,19 @@ const type = defineProp<HTMLInputElement['type']>('text')
 const iconClass = defineProp<string>()
 const allowClear = defineProp<boolean>(false)
 const modelValue = defineModel<string>()
+const error = defineProp<boolean>(false)
 const clickIcon = defineEmit()
+
+const isFocus = ref(false)
 </script>
 
 <template>
   <div
-    class="w-full rounded-[10px] flex items-center shrink-0 border-[--bc-bgColor5] border border-solid relative  h-[40px] text-[14px] hover:border-[--bc-activeColor] bg-[--bc-searchColor]"
+    class="w-full rounded-[10px] flex items-center shrink-0 border-[--bc-bgColor5] border border-solid relative  h-[40px] text-[14px] hover:border-[--bc-activeColor] bg-[--bc-searchColor] "
+    :class="{
+      '!border-[--bc-errorColor]': error,
+      '!border-[--bc-activeColor]': isFocus,
+    }"
   >
     <slot v-if="$slots.prefix" name="prefix" />
     <Input
@@ -20,6 +27,8 @@ const clickIcon = defineEmit()
       :type
       :placeholder
       v-bind="$attrs"
+      @focus="isFocus = true"
+      @blur="isFocus = false"
     />
     <div
       v-if="$slots.icon"
@@ -44,6 +53,7 @@ const clickIcon = defineEmit()
         @click="modelValue = ''"
       />
     </div>
+    <slot v-if="$slots.suffix" name="suffix" />
   </div>
 </template>
 

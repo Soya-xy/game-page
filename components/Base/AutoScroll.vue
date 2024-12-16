@@ -57,13 +57,15 @@ onMounted(() => {
 </script>
 
 <template>
-  <VirtList
-    ref="el" :fixed :item-key="idKey" :list="list" :min-size :item-gap
-  >
-    <template #default="{ itemData }">
-      <slot :item-data="itemData" />
-    </template>
-  </VirtList>
+  <ClientOnly>
+    <VirtList
+      ref="el" :fixed :item-key="idKey" :list="list" :min-size :item-gap
+    >
+      <template #default="{ itemData }">
+        <slot :item-data="itemData" />
+      </template>
+    </VirtList>
+  </ClientOnly>
 </template>
 
 <style>

@@ -1,15 +1,8 @@
 <script lang="ts" setup>
+import type { Game } from '~/api/game/type'
 import { ref } from 'vue'
 
-const info = defineProp<{
-  rtp: number
-  name: string
-  picUrl: string
-  greatVictory: string
-  isHot: boolean
-  gameMaintain: boolean
-  brandName: string
-}>(undefined, true)
+const info = defineProp<Game>(undefined, true)
 
 const { isPc } = useDevice()
 const userStore = useUserStore()

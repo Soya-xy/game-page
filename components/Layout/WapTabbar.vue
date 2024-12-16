@@ -103,7 +103,7 @@ function changeLang(lang: Locale) {
                 <div class="w-[40px] h-[40px] flex items-center justify-center">
                   <i
                     v-if="item.iconType !== 'svg'"
-                    class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[22px] text-e-g-color-108 "
+                    class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[22px] text-icon "
                     :class="item.icon"
                   />
                   <template v-else>
@@ -124,7 +124,7 @@ function changeLang(lang: Locale) {
               <div class="h-full flex items-center relative hover-bg-linear-3">
                 <div class="w-[40px] h-[40px] flex items-center justify-center">
                   <i
-                    class="inline-block h-[max-content] w-[max-content] icon-n-lang cursor-pointer text-[22px] text-e-g-color-108 "
+                    class="inline-block h-[max-content] w-[max-content] icon-n-lang cursor-pointer text-[22px] text-icon "
                   />
                 </div>
                 <p class="text-[14px] flex-1">
