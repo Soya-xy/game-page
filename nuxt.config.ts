@@ -33,7 +33,7 @@ export default defineNuxtConfig({
     },
   },
   app: {
-    keepalive: true,
+    // keepalive: true,
     // pageTransition: {
     //   name: 'fade',
     //   mode: 'in-out',
