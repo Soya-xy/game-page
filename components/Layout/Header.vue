@@ -8,12 +8,13 @@ const { token, userInfo } = storeToRefs(userStore)
 const { toggleMenu, isOpen } = useMenu()
 const showLanguageModal = ref<boolean>(false)
 const showSettingModel = ref<boolean>(false)
+const showWalletModel = ref<boolean>(false)
 
 const open = defineEmit<{ (type: string): void }>()
 
 // 添加菜单配置数组
 const menuItems = [
-  { label: 'Wallet', icon: 'icon-n-wallet' },
+  { label: 'Wallet', icon: 'icon-n-wallet', hash: '/wallet' },
   { label: 'Withdraw', icon: 'icon-n-withdraw' },
   { label: 'Profile', icon: 'icon-n-personal', hash: '/profile' },
   { label: 'Transaction', icon: 'icon-n-transaction-history' },
@@ -150,5 +151,13 @@ function changeLang(lang: Locale) {
       </div>
     </template>
     <Setting />
+  </BaseModal>
+  <!-- Wallet -->
+  <BaseModal v-model:show="showWalletModel">
+    <template #title>
+      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
+        Wallet
+      </div>
+    </template>
   </BaseModal>
 </template>

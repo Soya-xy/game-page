@@ -8,6 +8,7 @@ html {
   --bc-bgColor8: #292c2b;
   --bc-bgColor9: #34393a;
   --bc-bgColor10: #f3df00;
+  --bc-bgColor11: #2dee8833;
   --bc-tabColor: #323838;
   --bc-searchBtnColor: #3c4243;
   --bc-textColor: #bec7ca;
@@ -40,6 +41,7 @@ html {
     var(--bc-activeColor) 94.79%
   );
   --bc-linearColor5: linear-gradient(0deg, #1d2027, #1b2746 84%);
+  --bc-linearColor6: linear-gradient(90deg, #f90, #ec0039);
   --bc-color-3: #303434;
   --bc-shadow: 8px 0 8px #00000040;
   --bc-hoverButtonColor: linear-gradient(90deg, var(--bc-noActiveColor), var(--bc-noActiveColor3)),
@@ -67,6 +69,7 @@ html {
   --bc-yellowColor: #773c1a;
   --bc-alphaWhite6: #ffffffe6;
   --bc-gachaponColor: #00c2c2;
+  --bc-border-1: #ff7300;
 }
 
 /* html[data-theme='dark'] {
@@ -94,6 +97,10 @@ html {
 
 .bg-linear-color-4 {
   background-image: var(--bc-linearColor4) !important;
+}
+
+.bg-linear-color-7 {
+  background-image: var(--bc-linearColor6) !important;
 }
 
 .bg-linear-color-2 {

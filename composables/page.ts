@@ -8,6 +8,7 @@ export enum PageIndexEnum {
   affiliate = 107, // 推广中心
   register = 108, // 注册页面
   login = 109, // 登录页面
+  deposit = 110, // 充值页面
   brandAmbassador = 1001, //
   bonusCenter = 1000, // 奖金中心
   game = 1002, // 游戏页面
