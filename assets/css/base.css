@@ -1,6 +1,7 @@
 html,
 #shadow-html {
   font-family: 'Inter', system-ui, sans-serif !important;
+  scroll-behavior: smooth;
 }
 
 body,

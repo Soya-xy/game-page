@@ -200,7 +200,7 @@ onUnmounted(() => {
             @click="() => startRotate(4)"
           >
             <div
-              class="w-[61.44%] h-[61.44%] text-e-g-color-88 leading-[1] text-center pt-[12.65%] relative cursor-pointer"
+              class="w-[61.44%] h-[61.44%] text-[--bc-textColor3] leading-[1] text-center pt-[12.65%] relative cursor-pointer"
             >
               <div class="absolute w-[71%] top-[45%] right-[-31%] pointer-events-none">
                 <!-- <i-svg-mouse /> -->

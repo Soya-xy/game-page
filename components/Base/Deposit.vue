@@ -67,7 +67,7 @@ onMounted(() => {
           </button>
           <dd class="hidden items-center gap-[15px] mt-[20px]">
             <button
-              class="rounded-[10px] w-[max-content] min-w-[154px] h-[42px] text-[15px] text-white font-semibold flex items-center justify-center px-[15px] bg-e-g-color-13 hover:brightness-105"
+              class="rounded-[10px] w-[max-content] min-w-[154px] h-[42px] text-[15px] text-white font-semibold flex items-center justify-center px-[15px] bg-page hover:brightness-105"
             >
               Detail
             </button>

@@ -29,6 +29,7 @@ export interface UserInfo {
   verifyMobile: boolean
   sex: number | null
   giveAmountPoint: number
+  balance: number
   registerTime: number
   birth: number | null
   account: string

@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import { asyncLevelList } from '~/api/vip'
 
-const currentLevel = ref(1)
+const user = useUserStore()
+const { userInfo } = storeToRefs(user)
+const currentLevel = ref(userInfo?.value?.userVip?.vipLevel || 1)
 const { isPc } = useDevice()
 const { data: levelList } = await asyncLevelList()
 

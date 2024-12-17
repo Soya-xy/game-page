@@ -23,7 +23,7 @@ const description = defineProp('')
       </div>
       {{ name }}
     </div>
-    <p class="w-[65.22%] xl:text-[14px] font-semibold text-e-g-color-20 relative z-[1]">
+    <p class="w-[65.22%] xl:text-[14px] font-semibold text-color relative z-[1]">
       {{ description }}
     </p>
   </div>
@@ -38,7 +38,10 @@ const description = defineProp('')
   background-image: linear-gradient(270deg, rgba(255, 218, 24, 0.2), transparent 75%);
 }
 
-.bg-image3 {
+/* .bg-image3 {
   background-image: linear-gradient(270deg, rgba(239, 56, 255, 0.2), transparent 75%);
+} */
+.bg-image3 {
+  background-image: linear-gradient(90deg, #1874ff00 0.28%, #1874ff33 83.61%);
 }
 </style>

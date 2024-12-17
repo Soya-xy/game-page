@@ -41,7 +41,7 @@ const show = ref<boolean>(false)
     </div>
   </div>
   <BaseModal v-model:show="show" content-class="mx-auto w-[90%] min-w-[640px] max-w-[1414px] px-32px">
-    <TurnTable />
+    <TurnTable @close="show = false" />
   </BaseModal>
 </template>
 

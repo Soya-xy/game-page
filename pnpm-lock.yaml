@@ -74,6 +74,9 @@ importers:
       vue-qrcode:
         specifier: ^2.2.2
         version: 2.2.2(qrcode@1.5.4)(vue@3.5.13(typescript@5.7.2))
+      vue-virt-list:
+        specifier: ^1.5.5
+        version: 1.5.5(vue@3.5.13(typescript@5.7.2))
       vue3-lottie:
         specifier: ^3.3.1
         version: 3.3.1(vue@3.5.13(typescript@5.7.2))
@@ -7111,6 +7114,15 @@ packages:
     hasBin: true
     peerDependencies:
       typescript: '>=5.0.0'
+
+  vue-virt-list@1.5.5:
+    resolution: {integrity: sha512-v7FRpm7/zm/vpgjM9lcyeB9YJvzonAdtzirwY3sfFAYqX/V4tZ0mQsiT1miCwJTNeX63VqlWva+Z3yZodimkvw==}
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^2.0.0 || >=3.0.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
 
   vue3-lottie@3.3.1:
     resolution: {integrity: sha512-60uQmx4eefi3FdPjAxWnblrgJJjnVTXUA6e4BAI3jGzgOSR76pyzL1rrWDiyPmMFo4mTw4wGTW6Gbkg3HR1mYw==}
@@ -15795,6 +15807,11 @@ snapshots:
       '@vue/language-core': 2.1.10(typescript@5.7.2)
       semver: 7.6.3
       typescript: 5.7.2
+
+  vue-virt-list@1.5.5(vue@3.5.13(typescript@5.7.2)):
+    dependencies:
+      vue: 3.5.13(typescript@5.7.2)
+      vue-demi: 0.14.10(vue@3.5.13(typescript@5.7.2))
 
   vue3-lottie@3.3.1(vue@3.5.13(typescript@5.7.2)):
     dependencies:

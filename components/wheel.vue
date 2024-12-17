@@ -22,11 +22,11 @@
         <div class="invite-wheel2-sum font-[800] relative text-[54px]" data-text="$93.26">
           $93.26
         </div>
-        <p class="text-e-g-color-14 font-medium leading-[1] text-[24px]">
+        <p class="text-white font-medium leading-[1] text-[24px]">
           <span class="text-e-g-color-123">$6.74</span> more for withdrawal.
         </p>
       </div>
-    </div><button class="h-[69px] font-bold text-e-g-color-88 rounded-full bg-color-linear-24">
+    </div><button class="h-[69px] font-bold text-[--bc-textColor3] rounded-full bg-color-linear-24">
       <h3 class="text-[21px]">
         Convide amigos
       </h3>

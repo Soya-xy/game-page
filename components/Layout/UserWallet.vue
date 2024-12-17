@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import type { Wallet } from '~/api/user/type'
 import { ref } from 'vue'
-import { getWallet } from '~/api/user/wallet'
 
 const open = ref<boolean>(false)
 const mobileOpen = ref<boolean>(false)
 const { isPc } = useDevice()
-const wallet = ref<Wallet>()
+const userStore = useUserStore()
+const { userInfo } = storeToRefs(userStore)
+
 function toggleOpen() {
   if (isPc.value) {
     open.value = !open.value
@@ -15,10 +15,6 @@ function toggleOpen() {
     mobileOpen.value = !mobileOpen.value
   }
 }
-
-getWallet().then((res) => {
-  wallet.value = res
-})
 </script>
 
 <template>
@@ -29,9 +25,9 @@ getWallet().then((res) => {
         importance="auto" class=" shrink-0 w-[24px] !h-[24px]"
       />
       <div class="mr-[12px] ml-[6px]">
-        <span class="whitespace-pre">{{ toCurrency(wallet?.balance) }}</span>
+        <span class="whitespace-pre">{{ toCurrency(userInfo?.balance) }}</span>
         <div class="text-[12px] text-color">
-          <span class="whitespace-pre font-[400]">0.00</span>
+          <span class="whitespace-pre font-[400]">{{ toCurrency(userInfo?.giveAmountPoint) }}</span>
         </div>
       </div>
       <DropdownMenu v-model:open="open" class="!p-0">
@@ -77,7 +73,7 @@ getWallet().then((res) => {
                           <div class="text-color mr-[10px]">
                             Cash
                           </div>
-                          <span class="whitespace-pre">R$0.07</span>
+                          <span class="whitespace-pre">{{ toCurrency(userInfo?.balance) }}</span>
                         </div>
                         <div class="flex items-center justify-end mt-[12px]">
                           <div class="flex items-center px-[4px]">
@@ -88,7 +84,7 @@ getWallet().then((res) => {
                           <div class="text-color mr-[10px]">
                             Bonus
                           </div>
-                          <span class="whitespace-pre">R$0.00</span>
+                          <span class="whitespace-pre">{{ toCurrency(userInfo?.giveAmountPoint) }}</span>
                         </div>
                       </div>
                     </div>
