@@ -8,17 +8,18 @@ const { token, userInfo } = storeToRefs(userStore)
 const { toggleMenu, isOpen } = useMenu()
 const showLanguageModal = ref<boolean>(false)
 const showSettingModel = ref<boolean>(false)
+const showWalletModel = ref<boolean>(false)
 
 const open = defineEmit<{ (type: string): void }>()
 
 // 添加菜单配置数组
 const menuItems = [
-  { label: 'Wallet', icon: 'icon-n-wallet' },
+  { label: 'Wallet', icon: 'icon-n-wallet', hash: '/wallet' },
   { label: 'Withdraw', icon: 'icon-n-withdraw' },
   { label: 'Profile', icon: 'icon-n-personal', hash: '/profile' },
   { label: 'Transaction', icon: 'icon-n-transaction-history' },
   { label: 'Bets History', icon: 'icon-n-bet-history' },
-  // { label: 'Free bets', icon: 'icon-n-free' },
+  { label: 'Free bets', icon: 'icon-n-free' },
   { label: 'Setting', icon: 'icon-n-security-settings', onClick() { showSettingModel.value = true } },
   { label: 'Install', icon: 'icon-n-install' },
 ]
@@ -143,7 +144,20 @@ function changeLang(lang: Locale) {
     <BaseLang @change="changeLang" />
   </BaseModal>
   <!-- Setting -->
-  <BaseModal v-model:show="showSettingModel" content-class="h-[700px] overflow-y-scroll=">
+  <BaseModal v-model:show="showSettingModel" content-class="!min-h-[70vh] overflow-y-scroll=">
+    <template #title>
+      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
+        Setting
+      </div>
+    </template>
     <Setting />
+  </BaseModal>
+  <!-- Wallet -->
+  <BaseModal v-model:show="showWalletModel">
+    <template #title>
+      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
+        Wallet
+      </div>
+    </template>
   </BaseModal>
 </template>
