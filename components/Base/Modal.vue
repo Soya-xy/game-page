@@ -46,7 +46,7 @@ function closeModal() {
 </script>
 
 <template>
-  <Dialog v-if="isPc || !useWap" v-model:open="show" modal>
+  <Dialog v-if="(isPc || !useWap) && show" id="modalalaal" v-model:open="show" modal>
     <DialogPortal>
       <DialogContent
         disable-outside-pointer-events :class="cn(
@@ -55,11 +55,7 @@ function closeModal() {
           enterAnimation === 1 && 'DialogContentOpen',
           enterAnimation === 2 && 'DialogContentClosed',
           contentClass,
-        )"
-        :overlay-class
-        :close-class
-        :no-close
-        @close="closeModal"
+        )" :overlay-class :close-class :no-close @close="closeModal"
       >
         <DialogTitle v-if="$slots.title">
           <slot name="title" />
@@ -69,7 +65,10 @@ function closeModal() {
     </DialogPortal>
   </Dialog>
 
-  <BaseDrawer v-else-if="useWap" v-model:open="show" :direction :content-class="wapContentClass" :header-class="wapHeaderClass" :overlay-class :no-header="noWapHeader">
+  <BaseDrawer
+    v-else-if="useWap" v-model:open="show" :direction :content-class="wapContentClass"
+    :header-class="wapHeaderClass" :overlay-class :no-header="noWapHeader"
+  >
     <template #title>
       <slot name="title" />
     </template>

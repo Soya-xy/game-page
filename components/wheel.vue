@@ -26,7 +26,7 @@
           <span class="text-e-g-color-123">$6.74</span> more for withdrawal.
         </p>
       </div>
-    </div><button class="h-[69px] font-bold text-e-g-color-88 rounded-full bg-color-linear-24">
+    </div><button class="h-[69px] font-bold text-[--bc-textColor3] rounded-full bg-color-linear-24">
       <h3 class="text-[21px]">
         Convide amigos
       </h3>

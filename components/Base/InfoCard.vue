@@ -23,7 +23,7 @@ const description = defineProp('')
       </div>
       {{ name }}
     </div>
-    <p class="w-[65.22%] xl:text-[14px] font-semibold text-e-g-color-20 relative z-[1]">
+    <p class="w-[65.22%] xl:text-[14px] font-semibold text-color relative z-[1]">
       {{ description }}
     </p>
   </div>

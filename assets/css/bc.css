@@ -8,6 +8,7 @@ html {
   --bc-bgColor8: #292c2b;
   --bc-bgColor9: #34393a;
   --bc-bgColor10: #f3df00;
+  --bc-textColor100: #eeb31b;
   --bc-tabColor: #323838;
   --bc-searchBtnColor: #3c4243;
   --bc-textColor: #bec7ca;
@@ -68,6 +69,7 @@ html {
   --bc-yellowColor: #773c1a;
   --bc-alphaWhite6: #ffffffe6;
   --bc-gachaponColor: #00c2c2;
+  --bc-transparentColor: #4dc07426;
 }
 
 /* html[data-theme='dark'] {

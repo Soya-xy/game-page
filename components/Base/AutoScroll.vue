@@ -49,7 +49,8 @@ function startAutoScroll() {
   }, 500)
 }
 
-onMounted(() => {
+onMounted(async () => {
+  await nextTick()
   if (el.value) {
     startAutoScroll()
   }
