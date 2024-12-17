@@ -16,7 +16,7 @@ const isError = ref(false)
 
   <div
     v-else
-    class="flex flex-col items-center justify-center gap-4 "
+    class="flex flex-col items-center justify-center gap-4 h-full"
   >
     <NuxtImg
       src="/images/afun/game_img_fial.png" class="w-[54%]"

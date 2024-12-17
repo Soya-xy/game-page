@@ -37,7 +37,7 @@ const { data: games } = await asyncHomeBigWins()
           </div>
           <div class="text-center text-[10px] mt-[2px]  flex flex-col items-center">
             <span class="text-color font-[600]">
-              {{ replaceMiddle(game.gameName) }}
+              {{ replaceMiddle(game.gameName) || '&nbsp;' }}
             </span>
             <span class="text-green  font-[800]">
               ${{ (game.winAmount || 0).toFixed(2).toLocaleString() }}

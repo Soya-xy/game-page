@@ -13,6 +13,7 @@ definePageMeta({
 const { data } = await asyncHomeData()
 
 const { isPc } = useDevice()
+
 // if (error.value) {
 //   navigateTo('/error')
 // }
