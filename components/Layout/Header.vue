@@ -19,7 +19,7 @@ const menuItems = [
   { label: 'Profile', icon: 'icon-n-personal', hash: '/profile' },
   { label: 'Transaction', icon: 'icon-n-transaction-history' },
   { label: 'Bets History', icon: 'icon-n-bet-history' },
-  { label: 'Free bets', icon: 'icon-n-free' },
+  // { label: 'Free bets', icon: 'icon-n-free' },
   { label: 'Setting', icon: 'icon-n-security-settings', onClick() { showSettingModel.value = true } },
   { label: 'Install', icon: 'icon-n-install' },
 ]
@@ -50,7 +50,7 @@ function changeLang(lang: Locale) {
   >
     <div class="flex items-center gap-[27px] ml-[22px]">
       <BaseToggleMenu :class="isOpen ? 'rotate-180' : ''" @click="toggleMenu" />
-      <Image src="/images/logo.avif" class="!h-[44px]" @click="routerPush('/')" />
+      <Image src="/images/logo.avif" class="!h-[44px] cursor-pointer" @click="routerPush('/')" />
     </div>
     <div class="flex items-center px-[12px] gap-[12px]">
       <LayoutSearch />
@@ -137,7 +137,7 @@ function changeLang(lang: Locale) {
   </header>
   <BaseModal v-model:show="showLanguageModal">
     <template #title>
-      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
+      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2  border-radius-0">
         Switch Language
       </div>
     </template>

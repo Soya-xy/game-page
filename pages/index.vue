@@ -7,7 +7,7 @@ import { PageIndexEnum } from '~/composables/page'
 
 definePageMeta({
   pageIndex: PageIndexEnum.home,
-  haveFooter: true,
+  noFooter: true,
 })
 
 const { data } = await asyncHomeData()

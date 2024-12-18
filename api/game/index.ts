@@ -1,3 +1,17 @@
+// const ProductListUrl = `/product/category/list-by-id`
+const ProductSearchUrl = `/product/category/list-by-name`
+const PopularListUrl = `/product/category/list-recommend-game`
+
+export function getProductList(params: Record<string, any>) {
+  return useNuxtApp().$clientApi(ProductSearchUrl, {
+    params,
+  })
+}
+
+export function getPopularList() {
+  return useNuxtApp().$clientApi(PopularListUrl)
+}
+
 /**
  * 添加收藏
  * @param spuId 游戏 SPU

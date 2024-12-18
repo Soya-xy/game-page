@@ -11,6 +11,7 @@ const moreFetch = defineProp<(opt: any) => Promise<any[]>>()
 const containerRef = ref()
 const page = ref(1)
 const drawerOpen = ref(false)
+const { isPc } = useDevice()
 const swiper = useSwiper(containerRef, {
   slidesPerView: 3,
   slidesPerGroup: 3,
@@ -160,7 +161,7 @@ function next(type: 'up' | 'down') {
       v-model:show="drawerOpen" wap-content-class="h-[100vh] z-[555] p-0" content-class="z-[555] pb-[15px]" overlay-class="z-[550]"
       direction="right"
     >
-      <template #title>
+      <template v-if="!isPc" #title>
         {{ title }}
       </template>
       <BaseGameMore :get-data="getMoreFetch" :title="title" />

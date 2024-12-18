@@ -10,17 +10,23 @@ const page = ref(1)
 const bonusCode = ref('')
 const data = ref<RecordPage[]>([])
 async function load(e?: any) {
-  const res = await getRecordPage({
-    pageNo: page.value,
-    pageSize: 10,
-    bonusCode: bonusCode.value,
-  })
-  if (data.value.length > res.total || !res.list.length) {
-    e?.complete()
-  }
+  try {
+    const res = await getRecordPage({
+      pageNo: page.value,
+      pageSize: 10,
+      bonusCode: bonusCode.value,
+    })
+    if (data.value.length > res.total || !res.list.length) {
+      return e?.complete()
+    }
 
-  if (res.list) {
-    data.value.push(...res.list)
+    if (res.list) {
+      data.value.push(...res.list)
+      e.loaded()
+    }
+  }
+  catch {
+    e.error()
   }
 }
 
@@ -35,8 +41,8 @@ watch(bonusCode, () => {
 </script>
 
 <template>
-  <div class="h-full flex flex-col">
-    <div class="flex-1 overflow-hidden flex flex-col md:p-[20px] md:pb-[30px] p-[15px]">
+  <div class="md:h-[700px] h-full flex flex-col">
+    <div class="flex-1 overflow-hidden flex flex-col md:p-[20px] md:mb-[30px] p-[15px]">
       <div class="flex-1 overflow-y-auto">
         <div class="text-[20px] font-bold mb-[10px] text-white">
           Bonus Categories
@@ -67,7 +73,9 @@ watch(bonusCode, () => {
           </div>
           <BaseSelect v-model:value="bonusCode" :options="options" />
         </div>
-        <div class="bg-color2 border-[1px] border-solid border-[--bc-bgColor2] rounded-[8px] md:text-[14px] text-[12px]">
+        <div
+          class="bg-color2 border-[1px] border-solid border-[--bc-bgColor2] rounded-[8px] md:text-[14px] text-[12px]"
+        >
           <div
             class="bg-[--bc-color-3] px-[5px] h-[40px] text-[--bc-color20] flex items-center justify-center sticky left-0 -top-[1px]"
           >
@@ -82,7 +90,10 @@ watch(bonusCode, () => {
             </div>
           </div>
           <div v-if="data.length">
-            <div v-for="item, idx in data" :key="idx" class="text-white px-[5px] h-[40px] flex items-center justify-center">
+            <div
+              v-for="item, idx in data" :key="idx"
+              class="text-white px-[5px] h-[40px] flex items-center justify-center"
+            >
               <div class="w-[25%] text-left">
                 {{ item.title }}
               </div>

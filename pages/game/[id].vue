@@ -6,23 +6,21 @@ const { toast } = useToast()
 const params = useRoute().params as { id: string }
 const id = params.id
 const isFavorite = ref(false)
+
 async function handleFavorite() {
   isFavorite.value = await getFavorite(id)
   if (isFavorite.value) {
     await removeFavorite(id)
-    return toast({
-      title: 'UnBookmarked!',
-      class: 'my-toast bg-green',
-    })
   }
   else {
     await addFavorite(id)
-    return toast({
-      title: 'Bookmarked!',
-      class: 'my-toast bg-green',
-    })
   }
+
   isFavorite.value = !isFavorite.value
+  toast({
+    title: isFavorite.value ? 'Bookmarked' : 'UnBookmarked!',
+    class: 'my-toast bg-green',
+  })
 }
 onMounted(async () => {
   isFavorite.value = await getFavorite(id)
@@ -47,7 +45,7 @@ onMounted(async () => {
           <div class="flex">
             <i
               class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[18px]"
-              :class=" isFavorite ? 'icon-new-love text-[--bc-textColor3]' : 'icon-new-favorites-soild text-white'"
+              :class="isFavorite ? 'icon-new-love text-[--bc-textColor3]' : 'icon-new-favorites-soild text-white'"
               @click="handleFavorite"
             />
           </div>

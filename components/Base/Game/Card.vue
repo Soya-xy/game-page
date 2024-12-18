@@ -1,18 +1,37 @@
 <script lang="ts" setup>
 import type { Game } from '~/api/game/type'
 import { ref } from 'vue'
+import { addFavorite, removeFavorite } from '~/api/game'
+import { useToast } from '~/components/ui/toast'
 
 const info = defineProp<Game>(undefined, true)
 
 const { isPc } = useDevice()
 const userStore = useUserStore()
 const { token } = storeToRefs(userStore)
-
+const { toast } = useToast()
 const isOpen = ref<boolean>(false)
 function openGame() {
   if (!isPc.value) {
     isOpen.value = true
   }
+}
+
+function handleFavorite(item: Game) {
+  if (item.favorite) {
+    removeFavorite(item.id)
+  }
+  else {
+    addFavorite(item.id)
+  }
+
+  item.favorite = !item.favorite
+
+  toast({
+    title: item.favorite ? 'Bookmarked' : 'UnBookmarked!',
+    class: 'my-toast bg-green',
+    duration: 1000,
+  })
 }
 </script>
 
@@ -127,12 +146,14 @@ function openGame() {
               style="font-size: min(max(12px, 1.0417vw), 20px);"
             ><i
               class="inline-block i-mdi-heart-outline  text-[18px] cursor-pointer text-color"
+              :class="{ '!text-[--bc-textColor3] !i-mdi-heart': info.favorite }"
+              @click="handleFavorite(info)"
             /></span>
           </div>
         </div>
       </div>
       <!-- 手机端弹窗 -->
-      <BaseDrawer v-model:open="isOpen" content-class="z-[555]" overlay-class="z-[550]">
+      <BaseDrawer v-model:open="isOpen" content-class="z-[555]" overlay-class="z-[550]" header-class="bg-transparent">
         <template #title>
           Game Details
         </template>
@@ -165,7 +186,10 @@ function openGame() {
                       </div>
                     </div>
                     <span class="text-[20px] shrink-0">
-                      <i class="inline-block h-[max-content] w-[max-content] icon-new-favorites-soild" />
+                      <i
+                        class="inline-block h-[max-content] w-[max-content] icon-new-favorites-soild"
+                        @click="handleFavorite(info)"
+                      />
                     </span>
                   </div>
                   <div class="text-linearColor font-[500] text-color mt-[4px]">

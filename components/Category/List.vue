@@ -115,7 +115,11 @@ async function loadGames(e?: any) {
       picUrl: v.picUrl,
       count: v.count,
     }))
-  }))
+  })).catch(() => {
+    e?.error()
+  }).finally(() => {
+    loadGameing.value = false
+  })
 }
 
 async function getMore(id: number, opt: any) {

@@ -13,6 +13,8 @@ const list = Array.from({ length: 1000 }, (_, index) => ({
 const close = defineEmit()
 const showWithdraw = ref<boolean>(false)
 const activeIndex = ref<number>(0)
+
+const showFriends = ref<boolean>(false)
 </script>
 
 <template>
@@ -50,15 +52,17 @@ const activeIndex = ref<number>(0)
           </div>
         </div>
       </div>
-      <p class="mt-[20px] text-white font-medium text-[14px] text-center">
-        Remain time <span class="font-bold text-[--bc-bgColor10]">2D: 23H: 52M: 30S</span>
+      <p class="mt-[20px] text-white font-medium text-[14px] text-center flex items-center gap-x-[5px] justify-center">
+        Remain time
+        <Countdown :time="new Date('2024-12-20 12:00:00').getTime()" content-class="!text-[--bc-bgColor10]" />
       </p>
       <button
         class="min-h-[56px] w-full border-radius-0 text-[14px] bg-button-linear font-bold mt-[10px] whitespace-break-spaces"
+        @click="showFriends = true"
       >
         Invite friends get more cash
       </button>
-      <div class="px-[12px] py-[7px] flex items-center bg-[--bc-transparentColor] border-radius-0 mt-[20px]">
+      <div class="px-[12px] py-[7px] flex items-center bg-[--bc-TableTransparentColor] border-radius-0 mt-[20px]">
         <div class="text-[14px] font-semibold flex-1">
           <div class="text-white">
             When your friends place bets, you get high commissions based on their bet amounts.
@@ -116,6 +120,7 @@ const activeIndex = ref<number>(0)
     </div>
   </div>
   <InviteWithdraw v-model:show="showWithdraw" />
+  <InviteFriends v-model:show="showFriends" />
 </template>
 
 <style scoped>

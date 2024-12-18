@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const showDetail = ref(false)
-const date = ref<string | Date>(new Date())
+const date = ref<string | Date>()
 const affiliate = useAffiliate()
 const { summary } = storeToRefs(affiliate)
 </script>
@@ -58,7 +58,7 @@ const { summary } = storeToRefs(affiliate)
     </template>
     <div class="h-[max-content]  p-[15px] flex flex-col gap-[10px]">
       <div class="flex justify-between items-center gap-x-[10px] h-[40px] w-[200px]">
-        <BaseDatePicker v-model:date="date" />
+        <BaseDatePicker v-model:date="date" placeholder="Select date" />
       </div>
       <AffiliateTable :time="date" />
     </div>
