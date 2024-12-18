@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const tab = ref<number>(0)
+const route = useRoute()
+const tab = computed(() => (Number(route.query.type) || 0))
 const tabList = ref([
   {
     label: 'Balance',
@@ -34,7 +35,7 @@ watch(isPc, (newVal) => {
         <div
           v-for="(item, index) in tabList" :key="index" :class="{ 'text-white': index === tab }"
           class="h-[46px] px-[15px] flex items-center hover:text-white rounded-sm cursor-pointer bg-color-2"
-          @click="tab = index"
+          @click="routerReplace(`/wallet?type=${index}`)"
         >
           <i
             :class="[item.icon, { 'text-white': index === tab }]"

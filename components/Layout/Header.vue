@@ -15,7 +15,7 @@ const open = defineEmit<{ (type: string): void }>()
 // 添加菜单配置数组
 const menuItems = [
   { label: 'Wallet', icon: 'icon-n-wallet', hash: '/wallet' },
-  { label: 'Withdraw', icon: 'icon-n-withdraw' },
+  { label: 'Withdraw', icon: 'icon-n-withdraw', hash: '/wallet?type=1' },
   { label: 'Profile', icon: 'icon-n-personal', hash: '/profile' },
   { label: 'Transaction', icon: 'icon-n-transaction-history' },
   { label: 'Bets History', icon: 'icon-n-bet-history' },

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 definePageMeta({
-  pageIndex: PageIndexEnum.deposit,
-  noHeader: true,
+  pageIndex: PageIndexEnum.withdraw,
 })
 const { isPc } = useDevice()
 watch(isPc, (newVal) => {
@@ -14,7 +13,7 @@ watch(isPc, (newVal) => {
 </script>
 
 <template>
-  <BaseDepositPage />
+  <BaseWithdrawPage />
 </template>
 
 <style>

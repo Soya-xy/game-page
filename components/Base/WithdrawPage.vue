@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const isSelect = ref<boolean>(true)
+const isSelect = ref<boolean>(false)
 </script>
 
 <template>
-  <div class="w-[495px] h-full px-[15px] transform-cpu">
+  <div class="w-full md:w-[495px] h-full px-[15px] transform-cpu">
     <div class="flex flex-col gap-y-[10px] h-full overflow-hidden relative bg-[--bc-bgColor] pb-[20px] w-full">
       <div class="text-white px-[15px] bg-[--bc-color-3]">
         <div class="h-[55px] flex items-center justify-between text-[16px] font-bold">

@@ -79,6 +79,7 @@ const showProfile = ref<boolean>(false)
         class="inline-block h-[max-content] w-[max-content] icon-new-withdraw text-[80px] absolute top-[6px] right-0 text-[--bc-alphaBlack1a]"
       /><button
         class="w-full h-full flex items-center justify-start px-[14px] absolute top-0 left-0 z-10 text-white font-bold"
+        @click="routerPush('/withdraw')"
       >
         <i class="inline-block h-[max-content] w-[max-content] icon-new-withdraw text-[24px] mr-[12px]" /><span
           class="whitespace-pre-wrap text-left"

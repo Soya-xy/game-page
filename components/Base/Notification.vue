@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { asyncNotifacationList } from '@/api/new/index'
+
 const current = ref<number>(0)
 const currentList = ref<{
   title: string
@@ -51,6 +53,16 @@ const listData = ref([
     isShow: true,
   },
 ])
+
+watch(current, (newval) => {
+  getList(newval + 1)
+}, {
+  immediate: true,
+})
+async function getList(type) {
+  const { list } = await asyncNotifacationList(type)
+  listData.value = list
+}
 </script>
 
 <template>
@@ -74,9 +86,8 @@ const listData = ref([
           {{ item.title }}
         </div>
         <Image
-          v-if="item.img"
-          :src="item.img" alt=""
-          importance="auto" class="my-[8px] border-radius-1 !w-[100%] !h-auto"
+          v-if="item.img" :src="item.img" alt="" importance="auto"
+          class="my-[8px] border-radius-1 !w-[100%] !h-auto"
         />
         <div
           class="text-[12px] md:text-[14px] whitespace-break-spaces gap-[10px] transition-all duration-300 max-h-[max-content] "

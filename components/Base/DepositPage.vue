@@ -164,7 +164,7 @@ const isSelect = ref<boolean>(false)
             <button
               v-for="(item, index) in numList" :key="index"
               :class="{ 'border-[--bc-border-1]': numCurrent === index }"
-              class="rounded-sm font-bold text-white border-solid relative h-[52px] text-[18px] border-[1px] border-[--bc-bgColor5]"
+              class="rounded-sm font-bold text-white border-solid relative h-[52px] text-[12px] md:text-[18px] border-[1px] border-[--bc-bgColor5]"
               @click="numCurrent = index"
             >
               R$
@@ -180,19 +180,7 @@ const isSelect = ref<boolean>(false)
             <div class="text-[12px] mb-[2px]">
               CPF
             </div>
-            <div>
-              <div
-                class="field-container w-full rounded-sm flex items-center shrink-0 border-[--bc-bgColor5] border border-solid relative h-[46px]  text-[14px] px-[16px] gap-[8px] field-container-pc bg-color-search-1"
-              >
-                <div class="h-full flex items-center flex-1 shrink-0 relative overflow-hidden">
-                  <input
-                    class="h-full flex-1 min-w-[60px] field-base text-white placeholder:font-normal !bg-transparent !text-transparent caret-white relative z-[1]"
-                    type="tel" index="0" autocapitalize="off" autocorrect="off" autocomplete="new-text" inputmode="tel"
-                    placeholder="CPF" maxlength="18"
-                  >
-                </div>
-              </div>
-            </div>
+            <BaseInput />
             <p class="text-[12px] mt-[2px]">
               Deposits and withdrawals must use the same CPF, otherwise
               withdrawals cannot be processed smoothly.
