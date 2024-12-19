@@ -5,7 +5,7 @@
 <template>
   <div
     class="text-center flex flex-col justify-between absolute left-0 right-0 top-0 bottom-0 m-auto border-radius-1 bg-no-repeat bg-[length:100%] w-[520px] h-[422px] pt-[35px] px-[45px] pb-[37px]"
-    style="background-image: url(&quot;https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/bg2.png&quot;);"
+    style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/bg2.png);"
   >
     <img
       src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/award_title.png?t=20241121"
