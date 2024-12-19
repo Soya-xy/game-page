@@ -12,6 +12,6 @@ export default nuxt(
     },
   ),
   {
-    ignores: ['scripts/**/*', 'i18n/**/*', 'components/ui/**/*'],
+    ignores: ['scripts/**/*', 'i18n/**/*', 'components/ui/**/*', 'ast-grep/**/*'],
   },
 )

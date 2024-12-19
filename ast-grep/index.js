@@ -36,12 +36,17 @@ async function downloadFile(urls) {
         if (response && response.status() === 200) {
           // 生成输出路径
           const outputPath = path.join(dirPath, fileName)
-          console.log(outputPath)
+
+          const img = await page.select('img')
           // 截图保存
           await page.screenshot({
             path: outputPath,
             fullPage: false,
             type: 'png',
+            clip:{
+              width:img.width(),
+              height: img.height(),
+            },
             captureBeyondViewport: false
           })
 
@@ -57,7 +62,7 @@ async function downloadFile(urls) {
   } catch (error) {
     console.error('下载图片过程中发生错误:', error)
   } finally {
-    await browser.close()
+    // await browser.close()
   }
 }
 
@@ -80,16 +85,7 @@ const MATCH = {
     rule: {
       kind: 'attribute_value',
       regex: STYLE_URL,
-      pattern: '$B',
-    },
-    transform: {
-      URL: {
-        replace: {
-          source: '$B',
-          replace: 'background-image: url\(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02(?<REG>.*)\);',
-          by: $REG
-        }
-      }
+      pattern: '$URL',
     },
   }
 }
@@ -111,7 +107,7 @@ async function main(type) {
       const node = sgNode.findAll(MATCH[type])
       if (node.length > 0) {
         node.forEach(async (item) => {
-          const url = item.getMatch('URL').text()
+          const url = item.getMatch('URL').text()          
           if (url.includes('$')) {
             return
           }
@@ -120,7 +116,9 @@ async function main(type) {
             u = url.split('url(')[1].split(')')[0]
           }
 
-          const newUrl = u.replace(IMG_URL, '/images')
+          // 去掉最后的?
+          let newUrl = u.replace(IMG_URL, '/images')
+          newUrl = newUrl.split('?')[0]
           const dirName = newUrl.split('/').slice(0, -1).join('/')
           const fileName = u.split('/').pop().split('?')[0]
           // 如果文件夹不存在，则创建文件夹
@@ -131,6 +129,11 @@ async function main(type) {
             })
           }
 
+          console.log(fileName)
+          const newContent = content.replaceAll(url, `background-image: url(${newUrl});`)
+          // 写入文件
+          fs.writeFileSync(file, newContent)
+
           urls.push({
             url: u,
             dirPath,
@@ -139,7 +142,7 @@ async function main(type) {
         })
       }
     })
-    // downloadFile(urls)
+    downloadFile(urls)
   }
 }
 
