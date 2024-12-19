@@ -19,6 +19,9 @@ export const activityTypeMap = {
       'Remaining times': 0,
       'Cards': 1,
     },
+    onClick: () => {
+      routerPush('/bonus/gachapon')
+    },
   },
   [ActivityTypeEnum.CheckIn]: {
     id: ActivityTypeEnum.CheckIn,

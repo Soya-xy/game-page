@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { activityTypeMap } from './VipActivityEnum'
 
 const current = ref<number>(0)
-const { isPc } = useDevice()
+
 const currentList = ref<{
   title: string
   icon: string
@@ -26,7 +26,7 @@ const currentList = ref<{
 
 const showRules = ref<boolean>(false)
 const currentRules = ref<any>(null)
-
+const currentItem = ref<any>(null)
 function handleRules(v: any) {
   currentRules.value = v
   showRules.value = true
@@ -97,6 +97,7 @@ function handleRules(v: any) {
 
             <button
               class="shrink-0 h-[36px] text-font border-radius-0 font-bold md:w-full w-[max-content] min-w-[136px] flex items-center justify-center text-[13px] bg-active"
+              @click="currentItem = v"
             >
               <div class="flex items-center justify-center">
                 Details
@@ -116,18 +117,24 @@ function handleRules(v: any) {
   <BaseEmpty v-else />
 
   <BaseModal
-    v-if="isPc"
-    v-model:show="showRules" content-class="!bg-[#F5F8FA] !rounded-[10px]"
-    close-class="!text-white bg-[--bc-alphaBlack] w-[28px] h-[28px] !rounded-full flex items-center justify-center"
+    v-model:show="showRules" content-class="!bg-[#F5F8FA] !rounded-[10px] z-[999]"
+    close-class="!text-white bg-[--bc-alphaBlack] w-[28px] h-[28px] !rounded-full flex items-center justify-center "
+    overlay-class="z-[990]"
+    wap-content-class="z-[999] h-[max-content] p-0"
+    no-header
   >
-    <BonusModal :info="currentRules" />
-  </BaseModal>
-  <BaseDrawer v-else v-model:open="showRules" content-class="z-[999] h-[max-content] p-0" overlay-class="z-[999]" no-header>
-    <div class="absolute top-0 right-0 px-[15px] py-[10px] z-[10]" @click="showRules = false">
+    <div class="absolute top-0 right-0 px-[15px] py-[10px] z-[10] md:hidden" @click="showRules = false">
       <div class="bg-[--bc-alphaBlack] w-[28px] h-[28px] rounded-full flex items-center justify-center font-bold">
         <i class="inline-block h-[max-content] w-[max-content] icon-new-clean-3 text-white text-[12px]" />
       </div>
     </div>
     <BonusModal :info="currentRules" />
-  </BaseDrawer>
+  </BaseModal>
+
+  <BaseModal
+    :show="currentItem?.id === 1" direction="right" wap-content-class="z-[555] h-[100vh] !p-0" content-class="z-[555] w-[500px]"
+    overlay-class="z-[550]" no-header no-close
+  >
+    <Gachapon @close="currentItem = null" />
+  </BaseModal>
 </template>
