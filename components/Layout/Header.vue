@@ -44,15 +44,14 @@ function changeLang(lang: Locale) {
 <template>
   <header
     class="
-      h-[60px] fixed top-0 left-0 right-0 z-[100] w-full bg-inherit flex items-center justify-between shadow-[0_4px_20px_#00000060]
-
-    "
+      h-[60px] fixed top-0 left-0 right-0 z-[100] bg-inherit flex items-center justify-between shadow-[0_4px_20px_#00000060] transition-all duration-300 ease-in-out"
+    :class="{ 'pr-[150px]': !isOpen }"
   >
-    <div class="flex items-center gap-[27px] ml-[22px]">
+    <div class="flex items-center gap-[27px] ml-[22px] w-full">
       <BaseToggleMenu :class="isOpen ? 'rotate-180' : ''" @click="toggleMenu" />
       <Image src="/images/logo.avif" class="!h-[44px] cursor-pointer" @click="routerPush('/')" />
     </div>
-    <div class="flex items-center px-[12px] gap-[12px]">
+    <div class="flex items-center px-[12px] gap-[12px] container @container justify-end w-full mx-auto min-w-[640px]">
       <LayoutSearch />
       <LayoutUserWallet v-if="token" />
       <template v-else>
