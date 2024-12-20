@@ -59,7 +59,7 @@ watch(current, (newval) => {
 }, {
   immediate: true,
 })
-async function getList(type) {
+async function getList(type: number) {
   const { list } = await asyncNotifacationList(type)
   listData.value = list
 }
