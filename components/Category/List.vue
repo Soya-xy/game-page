@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 import { ref } from 'vue'
 import { asyncCategoryList, asyncCategoryListDetail, getCategoryListDetailGame } from '~/api/category'
 
+const search = defineModel<string>('search')
 const { data } = await asyncCategoryList()
 const { makeTree } = useTree({
   id: 'id',
@@ -55,6 +56,16 @@ watch(activeIndex, async () => {
   immediate: true,
 })
 
+watch(search, useDebounceFn(async () => {
+  list.value = []
+  page.value = 1
+
+  loading.value = true
+  await loadGames()
+
+  loading.value = false
+}, 300))
+
 const providerList = ref<any>([])
 
 async function loadGames(e?: any) {
@@ -71,6 +82,7 @@ async function loadGames(e?: any) {
       id: item.id,
       pageNo: page.value,
       pageSize: 100,
+      name: search.value,
     })
     page.value++
 
@@ -132,16 +144,6 @@ async function getMore(id: number, opt: any) {
 function changeHandler(e: string[]) {
   providerValue.value = e
 }
-
-// const target = ref<HTMLElement>()
-// useIntersectionObserver(
-//   target,
-//   ([entry]) => {
-//     if (entry?.isIntersecting) {
-//       loadGames()
-//     }
-//   },
-// )
 </script>
 
 <template>
@@ -157,8 +159,10 @@ function changeHandler(e: string[]) {
       )" @click="activeIndex = index"
     >
       <i
-        class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[16px] mr-[8px] text-icon group-hover:text-white"
-        :class="item.picUrl.replaceAll('sysicon-', 'icon-')"
+        class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[16px] mr-[8px]group-hover:text-white"
+        :class="`${item.picUrl.replaceAll('sysicon-', 'icon-')}
+        ${activeIndex === index ? 'text-active' : 'text-icon'}
+        `"
       />
       <div class="font-bold text-nowrap">
         {{ item.name }}
@@ -184,13 +188,17 @@ function changeHandler(e: string[]) {
   </div>
   <Spin :loading="loading">
     <template v-if="type === 'gameList'">
-      <BaseGameList
-        v-for="(item, idx) in list" :key="idx" :list="item.data" :title="item.name"
-        :more-fetch="(opt: any) => getMore(item.id, opt)"
-      />
+      <template v-if="list.length">
+        <BaseGameList
+          v-for="(item, idx) in list" :key="idx" :list="item.data" :title="item.name"
+          :more-fetch="(opt: any) => getMore(item.id, opt)"
+        />
+      </template>
+      <BaseEmpty v-else />
     </template>
     <template v-if="type === 'game'">
-      <CategoryGame :data="list" />
+      <CategoryGame v-if="list.length" :data="list" />
+      <BaseEmpty v-else />
       <LoadMore :load="loadGames" />
     </template>
 

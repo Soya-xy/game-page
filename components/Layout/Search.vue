@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { isEmpty } from 'ramda'
 import { ref } from 'vue'
 import { getProductList } from '~/api/game'
 
@@ -8,26 +9,35 @@ const search = ref<string>('')
 const isLoading = ref<boolean>(false)
 const list = ref<any[]>([])
 
-async function searchGame(evt: any) {
-  if (!evt.target.value || evt.target.value.length < 3)
+async function searchGame() {
+  if (isEmpty(search.value)) {
+    list.value = []
+    return
+  }
+
+  if ((!search.value || search.value.length < 3))
     return
   isLoading.value = true
   // 判断是否在历史记录中在的就不push
-  if (!historySearch.value.includes(evt.target.value)) {
-    historySearch.value.unshift(evt.target.value)
+  if (!historySearch.value.includes(search.value)) {
+    historySearch.value.unshift(search.value)
     localStorage.setItem('historySearch', JSON.stringify(historySearch.value))
   }
 
   const res = await getProductList({
-    name: evt.target.value,
+    name: search.value,
   })
   list.value = res
   isLoading.value = false
 }
 
-const eventHandler = useDebounceFn((evt: any) => {
-  searchGame(evt)
-}, 300)
+// const eventHandler = useDebounceFn(() => {
+//   searchGame()
+// }, 300)
+
+watch(search, useDebounceFn(() => {
+  searchGame()
+}, 300))
 
 function clearHistory() {
   historySearch.value = []
@@ -39,22 +49,17 @@ function clearHistory() {
   <BaseIconButton @click="show = true">
     <i-svg-search class="w-[25px] h-[24px]" />
   </BaseIconButton>
-  <BaseModal v-model:show="show" content-class="mx-auto min-w-[640px] max-w-[1414px] px-32px max-h-[90vh]">
+  <BaseModal v-model:show="show" content-class="mx-auto min-w-[640px] px-0 min-h-[360px] max-h-[unset] container w-[80%]">
     <div
       class="flex-wrap p-[40px] bg-color2 shadow-bc2 border-radius-1 mx-auto w-full flex flex-col min-h-[360px] overflow-hidden relative"
     >
-      <button class="absolute right-0 top-0 p-[20px]">
-        <i
-          class="inline-block h-[max-content] w-[max-content] icon sysicon-new-clean-3 cursor-pointer hover:-rotate-[180deg] text-color-text-2 hover-text-color transition-all duration-300 text-[16px]"
-        />
-      </button>
-      <div class="w-full shrink-0 items-center overflow-y-auto flex flex-col" style="flex: 1 1 0%;">
+      <div class="w-full shrink-0 items-center overflow-y-auto flex flex-col">
         <div class="text-color font-bold text-[26px]">
           Search
         </div>
         <div class="flex shrink-0 items-center w-full my-[16px] overflow-hidden">
           <div class="flex-1 shrink-0 z-[1] relative overflow-hidden">
-            <BaseInput v-model="search" placeholder="Game or Providers" @input="eventHandler">
+            <BaseInput v-model="search" placeholder="Game or Providers">
               <template #prefix>
                 <i-svg-search class="w-[25px] h-[24px] ml-2" />
               </template>
@@ -81,6 +86,10 @@ function clearHistory() {
               <button
                 v-for="(v, k) in historySearch" :key="k"
                 class="bg-[--bc-color19] text-[14px] h-[46px] px-[14px] flex items-center justify-center rounded-[20px] "
+                @click="() => {
+                  search = v
+                  // searchGame()
+                }"
               >
                 <p class="truncate mr-[8px] leading-[1]">
                   {{ v }}
@@ -97,7 +106,7 @@ function clearHistory() {
             </div>
           </div>
           <!-- 搜索结果 -->
-          <div class="flex w-full items-center mb-[10px]">
+          <div class="flex w-full items-center">
             <i
               class="inline-block h-[max-content] w-[max-content] icon-new-search-max cursor-pointer text-linearColor1 text-[26px]"
             /><span
@@ -105,10 +114,10 @@ function clearHistory() {
             >Results</span>
           </div>
           <BaseEmpty v-if="!list?.length" />
-          <BaseGameList v-else :list="list" />
+          <BaseGameSearchList v-else :list="list" :have-more="false" :slides-per-view="7" />
         </Spin>
         <!-- 热门推荐 -->
-        <div class="flex w-full items-center mb-[10px]">
+        <div class="flex w-full items-center mt-[10px]">
           <i
             class="inline-block h-[max-content] w-[max-content] icon-new-recommend-max cursor-pointer text-linearColor1 text-[26px]"
           /><span
@@ -116,7 +125,7 @@ function clearHistory() {
           >Popular</span>
         </div>
         <div class=" w-full">
-          <BaseGameList type="recommend" />
+          <BaseGameSearchList type="recommend" :slides-per-view="7" />
         </div>
       </div>
     </div>

@@ -103,7 +103,6 @@ async function main(type) {
     files.forEach((file) => {
       const content = fs.readFileSync(file, 'utf-8')
       const sgNode = parse(Lang.Html, content).root()
-
       const node = sgNode.findAll(MATCH[type])
       if (node.length > 0) {
         node.forEach(async (item) => {

@@ -11,7 +11,7 @@ export async function asyncCategoryList() {
   return useAPI<CategoryListProviderResponse[]>(categoryListUrl, undefined, true)
 }
 
-export async function asyncCategoryListDetail(params: { id: string } & Page) {
+export async function asyncCategoryListDetail(params: { id: string, name?: string } & Page) {
   return useAPI<CategoryListResponse>(categoryListDetailUrl, {
     params,
   }, true)
