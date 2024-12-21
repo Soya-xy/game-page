@@ -1,0 +1,13 @@
+diff --git a/dist/index.js b/dist/index.js
+index ae1bfdbc06b328ffd7ebd2be2997b839408dc096..1c80f84ac7097295df85c20ee1ac5bd98d35ff16 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -267,7 +267,7 @@ function ot(t) {
+       window.removeEventListener("scroll", d);
+     });
+   }), Y([n, e, b], () => {
+-    s.value || !e.value || (n.value ? (!window.matchMedia("(display-mode: standalone)").matches && O(), v.value || setTimeout(() => {
++    s.value || !e.value || (n.value ? (v.value && !window.matchMedia("(display-mode: standalone)").matches && O(), v.value || setTimeout(() => {
+       x();
+     }, 500)) : x());
+   }), { restorePositionSetting: x };

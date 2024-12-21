@@ -89,6 +89,9 @@
         "x64",
         "arm64"
       ]
+    },
+    "patchedDependencies": {
+      "vaul-vue": "patches/vaul-vue.patch"
     }
   },
   "simple-git-hooks": {

@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  vaul-vue:
+    hash: xsiausldfcfege6wq53v5xd2mi
+    path: patches/vaul-vue.patch
+
 importers:
 
   .:
@@ -67,7 +72,7 @@ importers:
         version: 1.3.2
       vaul-vue:
         specifier: ^0.2.0
-        version: 0.2.0(radix-vue@1.9.11(vue@3.5.13(typescript@5.7.2)))(vue@3.5.13(typescript@5.7.2))
+        version: 0.2.0(patch_hash=xsiausldfcfege6wq53v5xd2mi)(radix-vue@1.9.11(vue@3.5.13(typescript@5.7.2)))(vue@3.5.13(typescript@5.7.2))
       vee-validate:
         specifier: ^4.14.7
         version: 4.14.7(vue@3.5.13(typescript@5.7.2))
@@ -15600,7 +15605,7 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vaul-vue@0.2.0(radix-vue@1.9.11(vue@3.5.13(typescript@5.7.2)))(vue@3.5.13(typescript@5.7.2)):
+  vaul-vue@0.2.0(patch_hash=xsiausldfcfege6wq53v5xd2mi)(radix-vue@1.9.11(vue@3.5.13(typescript@5.7.2)))(vue@3.5.13(typescript@5.7.2)):
     dependencies:
       '@vueuse/core': 10.11.1(vue@3.5.13(typescript@5.7.2))
       radix-vue: 1.9.11(vue@3.5.13(typescript@5.7.2))
