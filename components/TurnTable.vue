@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import { getRoulette, rouletteInfo } from '~/composables/roulette'
-
-getRoulette()
+initRoulette()
 
 const show = defineModel<boolean>('show', {
   required: true,
@@ -9,8 +7,14 @@ const show = defineModel<boolean>('show', {
 
 const close = defineEmit()
 const showWithdraw = ref<boolean>(false)
-
+const showGet = ref<boolean>(false)
 const showFriends = ref<boolean>(false)
+
+function spinEnd(e: any) {
+  if (e.index === 6) {
+    showGet.value = true
+  }
+}
 </script>
 
 <template>
@@ -19,7 +23,7 @@ const showFriends = ref<boolean>(false)
     :no-close="rouletteInfo?.totalSpinAmount === 0"
   >
     <div v-if="rouletteInfo?.totalSpinAmount !== 0" class="flex bg-color rounded-[10px]">
-      <InviteTurntable class="max-w-[500px]" />
+      <InviteTurntable @show-invite="showFriends = true" @spin-end="spinEnd" />
       <div class="w-[400px] p-[20px] flex flex-col h-full">
         <section class="flex flex-col gap-y-[4px] mb-[10px]">
           <h3 class="flex items-center gap-x-[10px] text-[20px] font-bold text-white mt-[28px]">
@@ -80,7 +84,7 @@ const showFriends = ref<boolean>(false)
             </div>
           </div>
           <i
-            class="inline-block h-[max-content] w-[max-content] icon-n-info-circle-2 cursor-pointer text-[20px] text-[--bc-textColor100]"
+            class="inline-block h-[max-content] w-[max-content] icon-new-info-circle cursor-pointer text-[20px] text-[--bc-textColor100]"
           />
         </div>
         <InviteWinner />
@@ -92,28 +96,5 @@ const showFriends = ref<boolean>(false)
 
   <InviteWithdraw v-model:show="showWithdraw" />
   <InviteFriends v-model:show="showFriends" />
+  <InviteGet v-model:show="showGet" />
 </template>
-
-<style scoped>
-.invite-wheel2-sum {
-  text-shadow:
-    -1px -1px 0 #8f310f,
-    1px -1px 0 #8f310f,
-    -1px 1px 0 #8f310f,
-    1px 1px 0 #8f310f;
-}
-
-.invite-wheel2-sum:before {
-  background: linear-gradient(180deg, #fff 20.83%, #ffeb85, #e9ad35, #f1d97d 81.25%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  content: attr(data-text);
-  left: 0;
-  position: absolute;
-  top: 0;
-  -webkit-text-fill-color: transparent;
-  height: 100%;
-  text-shadow: none;
-  width: 100%;
-}
-</style>

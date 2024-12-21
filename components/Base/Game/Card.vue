@@ -5,7 +5,7 @@ import { addFavorite, removeFavorite } from '~/api/game'
 import { useToast } from '~/components/ui/toast'
 
 const info = defineProp<Game>(undefined, true)
-
+const favorite = defineEmit<[value: boolean]>()
 const { isPc } = useDevice()
 const userStore = useUserStore()
 const { token } = storeToRefs(userStore)
@@ -25,8 +25,9 @@ function handleFavorite(item: Game) {
     addFavorite(item.id)
   }
 
-  item.favorite = !item.favorite
+  favorite(item.favorite)
 
+  item.favorite = !item.favorite
   toast({
     title: item.favorite ? 'Bookmarked' : 'UnBookmarked!',
     class: 'my-toast bg-green',

@@ -67,14 +67,24 @@ async function loadGames(e?: any) {
   }
 }
 
-watch(() => route.query, () => {
+function reload() {
   title.value = list[Number(route.query.type)]
   noData.value = false
   loaded.value = false
   data.value = []
   page.value = 1
   loadGames()
-}, {
+}
+
+function deleteFavorite(e: boolean, id: number) {
+  console.log('%c🤪 ~ file: /Users/soya/Desktop/game-page/pages/collections.vue:79 [deleteFavorite] -> e : ', 'color: #9b5cab', e)
+  if (e) {
+    data.value = data.value.filter(item => item.id !== id)
+    count.value--
+  }
+}
+
+watch(() => route.query, reload, {
   immediate: true,
   deep: true,
 })
@@ -115,7 +125,7 @@ watch(() => route.query, () => {
     </div>
 
     <div class="grid gap-x-[15px] mt-[55px] md:mt-0 gap-y-[16px] md:grid-cols-7 grid-cols-3 h-full">
-      <BaseGameCard v-for="item, idx in data" :key="idx" :info="item" />
+      <BaseGameCard v-for="item, idx in data" :key="idx" :info="item" @favorite="e => deleteFavorite(e, item.id)" />
     </div>
     <LoadMore v-if="!noData" :load="loadGames" />
     <BaseEmpty v-if="loaded && noData" />

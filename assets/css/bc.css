@@ -636,3 +636,32 @@ html {
 .bg-color-linear-07 {
   background: linear-gradient(90deg, #f90, #ec0039);
 }
+
+.text-e-linear-color-10 {
+  background: linear-gradient(180deg, #fff 17.24%, #d6ffd7 51.72%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+}
+
+.invite-wheel2-sum {
+  text-shadow:
+    -1px -1px 0 #8f310f,
+    1px -1px 0 #8f310f,
+    -1px 1px 0 #8f310f,
+    1px 1px 0 #8f310f;
+}
+
+.invite-wheel2-sum:before {
+  background: linear-gradient(180deg, #fff 20.83%, #ffeb85, #e9ad35, #f1d97d 81.25%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  content: attr(data-text);
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-text-fill-color: transparent;
+  height: 100%;
+  text-shadow: none;
+  width: 100%;
+}

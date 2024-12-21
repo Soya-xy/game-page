@@ -2,20 +2,30 @@
 import { Vue3Lottie } from 'vue3-lottie'
 import { getFreeAmountUrl } from '~/api/roulette'
 
-const { data: freeAmount } = useAPI<number>(getFreeAmountUrl, {
+const { data, status } = useAPI<number>(getFreeAmountUrl, {
   default: () => 0,
 })
 
+watch(status, (newVal) => {
+  if (newVal === 'success') {
+    freeAmount.value = data.value
+  }
+}, { immediate: true })
+
 const userStore = useUserStore()
 const { token } = storeToRefs(userStore)
+const { isPageLoading } = useLoading()
 
 const show = ref(false)
 
-function showTurnTable() {
+async function showTurnTable() {
   if (!token.value) {
     routerPush('/login')
     return
   }
+  isPageLoading.value = true
+  await initRoulette()
+  isPageLoading.value = false
   show.value = true
 }
 </script>
@@ -28,7 +38,7 @@ function showTurnTable() {
     <div
       class="font-[600] text-font flex items-center justify-center rounded-full bg-active text-center leading-[1] overflow-hidden text-[12px] h-[23px] px-[10px]"
     >
-      Cash {{ toCurrency(freeAmount) }}
+      Cash {{ toCurrency(data) }}
     </div>
   </div>
   <TurnTable v-if="token" v-model:show="show" />
