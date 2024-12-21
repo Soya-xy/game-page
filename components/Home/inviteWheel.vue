@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import { Vue3Lottie } from 'vue3-lottie'
 
+const userStore = useUserStore()
+const { token } = storeToRefs(userStore)
+
 const show = ref(false)
 </script>
 
@@ -15,9 +18,7 @@ const show = ref(false)
       Cash R$100.00
     </div>
   </div>
-  <BaseModal v-model:show="show" content-class="mx-auto min-w-[444px] max-w-[1414px] px-32px">
-    <TurnTable @close="show = false" />
-  </BaseModal>
+  <TurnTable v-if="token" v-model:show="show" />
 </template>
 
 <style></style>

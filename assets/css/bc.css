@@ -604,6 +604,9 @@ html {
 .bg-color-linear-43 {
   background: linear-gradient(180deg, #397ecc -1.09%, #255fb8 97.83%);
 }
+.bg-color-activity-42 {
+  background: linear-gradient(90deg, #089099, #01ff1a);
+}
 
 .danmu:before {
   border: 5px solid transparent;

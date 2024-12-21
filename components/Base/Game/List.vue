@@ -13,43 +13,40 @@ const containerRef = ref()
 const page = ref(1)
 const drawerOpen = ref(false)
 const { isPc } = useDevice()
-const slidesPerView = defineProp<number | undefined>(undefined)
 const swiper = useSwiper(containerRef, {
-  slidesPerView: slidesPerView.value || 3,
+  slidesPerView: 3,
   slidesPerGroup: 3,
   spaceBetween: 8,
-  breakpoints: slidesPerView.value
-    ? {
-        320: {
-          slidesPerView: 3,
-          slidesPerGroup: 3,
-        },
-        480: {
-          slidesPerView: 3,
-          spaceBetween: 3,
-        },
-        640: {
-          slidesPerView: 3,
-          slidesPerGroup: 3,
-        },
-        700: {
-          slidesPerView: 4,
-          slidesPerGroup: 4,
-        },
-        864: {
-          slidesPerView: 5,
-          slidesPerGroup: 5,
-        },
-        1024: {
-          slidesPerView: 6,
-          slidesPerGroup: 6,
-        },
-        1280: {
-          slidesPerView: 8,
-          slidesPerGroup: 8,
-        },
-      }
-    : undefined,
+  breakpoints: {
+    320: {
+      slidesPerView: 3,
+      slidesPerGroup: 3,
+    },
+    480: {
+      slidesPerView: 3,
+      spaceBetween: 3,
+    },
+    640: {
+      slidesPerView: 3,
+      slidesPerGroup: 3,
+    },
+    700: {
+      slidesPerView: 4,
+      slidesPerGroup: 4,
+    },
+    864: {
+      slidesPerView: 5,
+      slidesPerGroup: 5,
+    },
+    1024: {
+      slidesPerView: 6,
+      slidesPerGroup: 6,
+    },
+    1280: {
+      slidesPerView: 8,
+      slidesPerGroup: 8,
+    },
+  },
 })
 
 const data = ref<any>([])

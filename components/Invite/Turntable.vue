@@ -1,45 +1,17 @@
 <script lang="ts" setup>
 import { Vue3Lottie } from 'vue3-lottie'
-
+import { spinRoulette } from '~/api/roulette'
+import { rouletteList } from '~/composables/roulette'
 // 发出结束事件
 const emit = defineEmits(['spinEnd'])
 
-const inviteWheel = ref({
-  buttonBg: `url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/button${Math.floor(Math.random() * 4)}.png)`,
+const inviteWheel = computed(() => ({
+  buttonBg: `url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/button${rouletteInfo.value?.tickets}.png)`,
   border: `url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/base.png)`,
   light: `url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/light1.png)`,
   dark: `url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/light2.png)`,
   spin: `url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/spin.png?t=20241126)`,
-})
-
-const drawList = ref([
-  {
-    value: '???',
-    img: 'https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/inviteWheel/award1.png?20240911',
-  },
-  {
-    value: '???',
-    img: 'https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/dev_skin/C02/wallet/currency/BRL.png',
-  },
-  {
-    img: 'https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/inviteWheel/award3.png?20240911',
-  },
-  {
-    value: '10',
-  },
-  {
-    value: '50',
-  },
-  {
-    value: '20',
-  },
-  {
-    value: '80',
-  },
-  {
-    value: '30',
-  },
-])
+}))
 
 const nowRotate = ref(0)
 const isAnimating = ref(false)
@@ -99,12 +71,20 @@ function updateAnimation() {
     isSpinning.value = false
     emit('spinEnd', {
       index: targetIndex.value,
-      prize: drawList.value[targetIndex.value],
+      prize: rouletteList.value[targetIndex.value],
     })
     return
   }
 
   windowAnimation.value = requestAnimationFrame(updateAnimation)
+}
+
+async function spin() {
+  if (isSpinning.value)
+    return
+  const res = await spinRoulette()
+  const index = rouletteList.value.findIndex(item => item.id === res.spinId)
+  startRotate(index)
 }
 
 // 修改 startRotate 函数
@@ -170,7 +150,7 @@ onUnmounted(() => {
                 :style="`transform: translate3d(0px, 0px, 0px) rotate(${nowRotate}deg);`"
               >
                 <li
-                  v-for="(item, index) in drawList" :key="index" class="absolute w-full pl-[50%] flex items-center"
+                  v-for="(item, index) in rouletteList" :key="index" class="absolute w-full pl-[50%] flex items-center"
                   :style="`transform: rotate(${45 * (index)}deg);`"
                 >
                   <div
@@ -178,10 +158,13 @@ onUnmounted(() => {
                     style="text-shadow: rgba(0, 0, 0, 0.5) 0px 2.773px 1.387px;"
                   >
                     <div class="rotate-90 font-bold text-center text-[27px] w-[100px]">
-                      <div v-if="item.value">
-                        {{ item.value }}
+                      <div v-if="item.rewardValue > 0">
+                        {{ item.rewardValue }}
                       </div>
-                      <Image v-if="item.img" :src="item.img" class="-rotate-90 mx-auto !h-[48px]" />
+                      <div v-if="item.rewardDesc && item.rewardValue <= 0">
+                        {{ item.rewardDesc }}
+                      </div>
+                      <Image v-if="item.imageUrl" :src="item.imageUrl" class="-rotate-90 mx-auto !h-[48px]" />
                     </div>
                   </div>
                 </li>
@@ -195,7 +178,7 @@ onUnmounted(() => {
         />
         <div
           class="absolute top-0 bottom-0 left-0 right-0 m-auto w-[37.335%] h-[37.335%] bg-no-repeat bg-[length:100%] flex items-center justify-center invite-wheel2-button"
-          @click="() => startRotate(4)"
+          @click="spin"
         >
           <div
             class="w-[61.44%] h-[61.44%] text-[--bc-textColor3] leading-[1] text-center pt-[12.65%] relative cursor-pointer"

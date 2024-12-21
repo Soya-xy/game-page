@@ -1,16 +1,17 @@
 <script lang="ts" setup>
 import { Vue3Lottie } from 'vue3-lottie'
+import { spinRoulette } from '~/api/roulette'
 
 // 发出结束事件
 const emit = defineEmits(['spinEnd', 'close'])
 
-const inviteWheel = ref({
-  buttonBg: `url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/button${Math.floor(Math.random() * 4)}.png)`,
+const inviteWheel = computed(() => ({
+  buttonBg: `url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/button${rouletteInfo.value?.tickets}.png)`,
   border: `url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/base.png)`,
   light: `url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/light1.png)`,
   dark: `url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/light2.png)`,
   spin: `url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/spin.png?t=20241126)`,
-})
+}))
 
 const drawList = ref([
   {
@@ -107,6 +108,14 @@ function updateAnimation() {
   windowAnimation.value = requestAnimationFrame(updateAnimation)
 }
 
+async function spin() {
+  if (isSpinning.value)
+    return
+  const res = await spinRoulette()
+  const index = rouletteList.value.findIndex(item => item.id === res.spinId)
+  startRotate(index)
+}
+
 // 修改 startRotate 函数
 function startRotate(index: number) {
   if (isSpinning.value)
@@ -197,7 +206,7 @@ onUnmounted(() => {
           />
           <div
             class="absolute top-0 bottom-0 left-0 right-0 m-auto w-[37.335%] h-[37.335%] bg-no-repeat bg-[length:100%] flex items-center justify-center invite-wheel2-button"
-            @click="() => startRotate(4)"
+            @click="spin"
           >
             <div
               class="w-[61.44%] h-[61.44%] text-[--bc-textColor3] leading-[1] text-center pt-[12.65%] relative cursor-pointer"
@@ -222,7 +231,7 @@ onUnmounted(() => {
         class="w-[80%] text-color font-medium text-center absolute mx-auto left-0 right-0 flex flex-col bottom-[2.5%] text-[12px] gap-y-[5px]"
       >
         <h2 class="font-bold whitespace-nowrap text-[16px]">
-          Get <span class="text-[#f8f489]">R$100.00</span> for free
+          Get <span class="text-[#f8f489]">{{ toCurrency(rouletteInfo?.freeAmount) }}</span> for free
         </h2>
         <h3>Click on the cards to get rewards</h3>
       </div>

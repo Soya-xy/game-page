@@ -39,12 +39,12 @@ const option = ref([
 const providerOption = ref<Option[]>([])
 const loading = ref(false)
 const page = ref(1)
-const value = ref('Popular')
+const order = ref('Popular')
 const providerValue = ref<string[]>([])
 
 const type = ref<'game' | 'gameList' | 'provider'>()
 
-watch(activeIndex, async () => {
+watch([activeIndex, order], async () => {
   list.value = []
   page.value = 1
 
@@ -83,6 +83,7 @@ async function loadGames(e?: any) {
       pageNo: page.value,
       pageSize: 100,
       name: search.value,
+      order: order.value,
     })
     page.value++
 
@@ -170,10 +171,10 @@ function changeHandler(e: string[]) {
     </button>
   </HScroll>
   <div v-if="type === 'game'" class="flex items-center gap-2">
-    <FilterSelect v-model="value" :option="option">
+    <FilterSelect v-model="order" :option="option">
       <template #placeholder>
         <div class="text-white">
-          Sort by: {{ value }}
+          Sort by: {{ order }}
         </div>
       </template>
     </FilterSelect>

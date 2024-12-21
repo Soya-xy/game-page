@@ -1,5 +1,5 @@
 import type { Page } from '../type'
-import type { CategoryListProviderResponse, CategoryListResponse } from './type'
+import type { CategoryListProviderResponse, CategoryListResponse, CategoryQuery } from './type'
 
 const categoryListUrl = '/api/getCategoryList'
 const categoryListDetailUrl = '/api/getCategoryListDetail'
@@ -11,7 +11,7 @@ export async function asyncCategoryList() {
   return useAPI<CategoryListProviderResponse[]>(categoryListUrl, undefined, true)
 }
 
-export async function asyncCategoryListDetail(params: { id: string, name?: string } & Page) {
+export async function asyncCategoryListDetail(params: CategoryQuery & Page) {
   return useAPI<CategoryListResponse>(categoryListDetailUrl, {
     params,
   }, true)

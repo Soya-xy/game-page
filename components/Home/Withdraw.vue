@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { Progress } from '@/components/ui/progress'
 
+const userStore = useUserStore()
+const { token } = storeToRefs(userStore)
 const show = ref<boolean>(false)
 </script>
 
@@ -40,9 +42,7 @@ const show = ref<boolean>(false)
       </div>
     </div>
   </div>
-  <BaseModal v-model:show="show" content-class="mx-auto w-[90%] min-w-[640px] max-w-[1414px] px-32px">
-    <TurnTable @close="show = false" />
-  </BaseModal>
+  <TurnTable v-if="token" v-model:show="show" />
 </template>
 
 <style></style>
