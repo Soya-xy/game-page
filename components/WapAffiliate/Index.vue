@@ -8,7 +8,7 @@ const currentList = ref(['PANEL', 'FAQ', 'TUTORIAL'])
 <template>
   <div>
     <BaseTabs v-model="current" :list="currentList" item-class="w-[33%]" />
-    <div class="mt-[46px]">
+    <div class="mt-[48px]">
       <template v-if="current === 0">
         <WapAffiliateInvite />
         <div class="flex flex-col px-[15px] gap-[25px] mt-[25px]">

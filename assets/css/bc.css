@@ -31,6 +31,7 @@ html {
   --bc-greenColor: #25d276;
   --bc-langColor: #96e974;
   --bc-transparentColor: #ffffff0d;
+  --bc-transparentColor80: #ffffff80;
   --bc-alphaBlack: #00000080;
   --bc-linearColor: linear-gradient(90deg, var(--bc-activeColor), var(--bc-langColor));
   --bc-linearColor2: linear-gradient(75deg, var(--bc-noActiveColor) 42.49%, var(--bc-activeColor) 97.18%);
@@ -54,6 +55,7 @@ html {
   --bc-shadow2: 0 4px 4px #14141480;
   --bc-menuOpen: 240px;
   --bc-menuClose: 73px;
+  --bc-appDownloadHeight: 46px;
   --bc-pageColor: #3b4041;
   --bc-color18: #ffffff1f;
   --bc-color19: #0003;
@@ -629,4 +631,8 @@ html {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent !important;
+}
+
+.bg-color-linear-07 {
+  background: linear-gradient(90deg, #f90, #ec0039);
 }
