@@ -6,18 +6,9 @@ getRoulette()
 const show = defineModel<boolean>('show', {
   required: true,
 })
-const list = Array.from({ length: 1000 }, (_, index) => ({
-  id: index,
-  name: `Pawsome Xmas ${index}`,
-  phone: `${index}${index}${index}***523`,
-  bet: `${index},000.00`,
-  multiplier: `${index}.82x`,
-  profit: `+${index},650.00`,
-}))
 
 const close = defineEmit()
 const showWithdraw = ref<boolean>(false)
-const activeIndex = ref<number>(0)
 
 const showFriends = ref<boolean>(false)
 </script>
@@ -92,45 +83,7 @@ const showFriends = ref<boolean>(false)
             class="inline-block h-[max-content] w-[max-content] icon-n-info-circle-2 cursor-pointer text-[20px] text-[--bc-textColor100]"
           />
         </div>
-        <div class="flex-[1] flex flex-col gap-y-[8px] mt-[20px] overflow-hidden">
-          <div
-            class="h-[50px] text-[14px] font-bold text-white bg-color2 border-radius-1 flex justify-between items-center gap-[5px] overflow-hidden p-[5px] shrink-0"
-          >
-            <div
-              class="h-full flex-1 flex items-center justify-center border-radius-0 cursor-pointer"
-              :class="{ 'bg-[--bc-bgColor7]': activeIndex === 0 }" @click="() => {
-                activeIndex = 0
-              }"
-            >
-              Winner
-            </div>
-            <div
-              class="h-full flex-1 flex items-center justify-center border-radius-0 cursor-pointer"
-              :class="{ 'bg-[--bc-bgColor7]': activeIndex === 1 }" @click="() => {
-                activeIndex = 1
-              }"
-            >
-              My Reward
-            </div>
-          </div>
-          <div class="overflow-hidden text-[13px] bg-color2 border-radius-1 p-[15px] h-[160px]">
-            <BaseAutoScroll :list="list" :min-size="40" :item-gap="0">
-              <template #default="{ itemData }">
-                <div class="flex justify-between items-center h-[40px] font-semibold">
-                  <div class="flex-1">
-                    {{ itemData.phone }}
-                  </div>
-                  <div class="flex-1 text-center text-active">
-                    Received
-                  </div>
-                  <div class="text-active flex-1 text-right">
-                    <span class="whitespace-pre">{{ itemData.profit }}</span>
-                  </div>
-                </div>
-              </template>
-            </BaseAutoScroll>
-          </div>
-        </div>
+        <InviteWinner />
       </div>
     </div>
 

@@ -22,7 +22,7 @@ const close = defineEmit()
 </script>
 
 <template>
-  <Drawer v-model:open="open" should-scale-background>
+  <Drawer v-model:open="open" should-scale-background :modal="false">
     <DrawerContent :class="cn('bg-color p-[12px]', contentClass)" :overlay-class="overlayClass">
       <DrawerHeader v-if="!noHeader" class="flex justify-between items-center bg-[--bc-color-3] text-white" :class="headerClass">
         <DrawerTitle>

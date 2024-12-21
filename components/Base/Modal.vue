@@ -68,6 +68,7 @@ function closeModal() {
   <BaseDrawer
     v-else-if="useWap" v-model:open="show" :direction :content-class="wapContentClass"
     :header-class="wapHeaderClass" :overlay-class :no-header="noWapHeader"
+    :modal="false"
   >
     <template #title>
       <slot name="title" />

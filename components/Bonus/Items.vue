@@ -37,6 +37,7 @@ function handleRules(v: any) {
   <BaseTabs
     v-model="current" :list="currentList"
     class="!static rounded-b-[5px] [&>div:first-child]:rounded-bl-[5px] [&>div:last-child]:rounded-br-[5px] mb-[20px]"
+    item-class="w-[33%]"
   />
 
   <div
@@ -115,7 +116,6 @@ function handleRules(v: any) {
     </div>
   </div>
   <BaseEmpty v-else />
-
   <BaseModal
     v-model:show="showRules" content-class="!bg-[#F5F8FA] !rounded-[10px] z-[999]"
     close-class="!text-white bg-[--bc-alphaBlack] w-[28px] h-[28px] !rounded-full flex items-center justify-center "

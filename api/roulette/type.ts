@@ -24,3 +24,10 @@ export interface RouletteSpin {
   remBalance: number
   expirationDate: string
 }
+
+export interface WinnerReward {
+  spinName: string
+  spinDate: string
+  spinType: string
+  amount: number
+}
