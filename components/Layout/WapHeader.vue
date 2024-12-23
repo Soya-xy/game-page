@@ -24,7 +24,7 @@ function changeLang(lang: Locale) {
       'top-0': isShowTop,
     }"
   >
-    <WapDownload v-model:show="showTop" />
+    <WapDownload v-if="showTop" v-model:show="showTop" />
     <div class="h-[48px] flex items-center justify-between px-[10px] bg-[--bc-bgColor8]">
       <div class="flex items-center gap-[8px] h-full">
         <Image src="/images/logo.avif" class="!h-[30px]" @click="routerPush('/')" />

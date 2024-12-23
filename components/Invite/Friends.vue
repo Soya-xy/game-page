@@ -14,15 +14,15 @@ const { data } = useAPI<ResourceConfig[]>(resourceUrl, {
 </script>
 
 <template>
-  <BaseModal v-model:show="show" content-class="mx-auto min-w-[444px] max-w-[1414px] px-32px">
-    <div class="flex-1 flex flex-col overflow-y-auto text-center px-[12px] pb-[24px] bg-color">
-      <div class="font-bold text-white text-[20px] mb-[24px] mt-[40px]">
+  <BaseModal v-model:show="show" content-class="mx-auto min-w-[310px] md:min-w-[444px] rounded-[10px] max-w-[1414px] px-32px">
+    <div class="flex-1 flex flex-col overflow-y-auto text-center px-[12px] pb-[24px] bg-color w-[310px] md:w-[444px] rounded-[10px]">
+      <div class="font-bold text-white md:text-[20px] text-[16px] md:mb-[24px] mt-[40px]">
         Invite friends
       </div>
-      <div class="font-bold text-white text-[18px] mb-[24px]">
+      <div class="font-bold text-white md:text-[18px] text-[12px] mb-[24px]">
         <Image
           src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/share_icon.png"
-          alt="" importance="auto" class="mx-auto !h-[166px]"
+          alt="" importance="auto" class="mx-auto !h-[120px] md:!h-[166px]"
         />
         <div>
           Invite a friend to get spins.
@@ -38,12 +38,12 @@ const { data } = useAPI<ResourceConfig[]>(resourceUrl, {
         </div>
         <ul class="grid grid-cols-4 gap-y-[30px]">
           <li v-for="item in data" :key="item.id" class="text-center">
-            <Image :src="item.configValue" alt="" importance="auto" class="mx-auto !h-[56px]" />
+            <Image :src="item.configValue" alt="" importance="auto" class="mx-auto md:!h-[56px] h-[40px]" />
           </li>
         </ul>
       </div>
       <div class="flex flex-col text-left gap-y-[6px]">
-        <div class="text-[12px] text-e-g-color-20 text-[12px]">
+        <div class="text-[12px] text-icon">
           Share your referral link:
         </div>
         <div

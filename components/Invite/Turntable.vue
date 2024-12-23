@@ -59,9 +59,6 @@ const { nowRotate, spin, inviteWheel, buttonBg } = useRoulette(emit)
         />
         <div
           class="absolute top-0 bottom-0 left-0 right-0 m-auto w-[37.335%] h-[37.335%] bg-no-repeat bg-[length:100%] flex items-center justify-center invite-wheel2-button"
-          :style="{
-            backgroundImage: buttonBg,
-          }"
           @click="spin"
         >
           <div
@@ -93,7 +90,7 @@ const { nowRotate, spin, inviteWheel, buttonBg } = useRoulette(emit)
 }
 
 .invite-wheel2-button {
-  background-image: v-bind('inviteWheel.buttonBg');
+  background-image: v-bind('buttonBg');
   content: none;
 }
 

@@ -15,7 +15,7 @@ watch(status, (newVal) => {
 const userStore = useUserStore()
 const { token } = storeToRefs(userStore)
 const { isPageLoading } = useLoading()
-
+const { isPc } = useDevice()
 const show = ref(false)
 
 async function showTurnTable() {
@@ -26,7 +26,12 @@ async function showTurnTable() {
   isPageLoading.value = true
   await initRoulette()
   isPageLoading.value = false
-  show.value = true
+  if (isPc.value) {
+    show.value = true
+  }
+  else {
+    routerPush('/bonus/roulette')
+  }
 }
 </script>
 

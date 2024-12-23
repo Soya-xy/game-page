@@ -20,7 +20,7 @@ watch(rouletteInfo, (val) => {
 </script>
 
 <template>
-  <div class="flex-[1] flex flex-col gap-y-[8px] mt-[20px] overflow-hidden">
+  <div class="flex-[1] flex flex-col gap-y-[8px] mt-[20px] overflow-hidden w-full">
     <div
       class="h-[50px] text-[14px] font-bold text-white bg-color2 border-radius-1 flex justify-between items-center gap-[5px] overflow-hidden p-[5px] shrink-0"
     >

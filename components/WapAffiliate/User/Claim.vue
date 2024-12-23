@@ -1,5 +1,15 @@
 <script lang="ts" setup>
 const show = ref(false)
+const { isPc } = useDevice()
+
+function showTurnTable() {
+  if (isPc.value) {
+    show.value = true
+  }
+  else {
+    routerPush('/bonus/roulette')
+  }
+}
 </script>
 
 <template>
@@ -26,21 +36,14 @@ const show = ref(false)
         </div>
         <button
           class="h-[30px] min-w-[80px] px-[15px] font-bold text-font border-radius-0 bg-active relative"
-          @click="show = true"
+          @click="showTurnTable"
         >
           Claim
         </button>
       </div>
     </div>
   </div>
-  <BaseModal
-    v-model:show="show"
-    :use-wap="false"
-    content-class="mx-auto w-full max-w-[520px] h-[max-content] !min-w-[200px] !bg-transparent z-[555]"
-    no-close overlay-class="z-[550]"
-  >
-    <InviteWapTurntable class="!mx-auto" @close="show = false" />
-  </BaseModal>
+  <TurnTable v-model:show="show" />
 </template>
 
 <style></style>

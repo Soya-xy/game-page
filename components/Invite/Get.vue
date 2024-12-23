@@ -50,24 +50,23 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <BaseModal v-model:show="show" content-class="mx-auto min-w-[444px] max-w-[1414px] px-32px" no-close>
+  <BaseModal v-model:show="show" content-class="mx-auto min-w-[345px] md:min-w-[444px] max-w-[1414px] md:px-32px" no-close>
     <div
-      class="text-center flex flex-col justify-between absolute left-0 right-0 top-0 bottom-0 m-auto border-radius-1 bg-no-repeat bg-[length:100%] w-[520px] h-[422px] pt-[35px] px-[45px] pb-[37px]"
-      style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/bg2.png);"
+      class="text-center flex flex-col justify-between absolute left-0 right-0 top-0 bottom-0 m-auto border-radius-1 bg-no-repeat bg-[length:100%]  md:w-[520px] md:h-[422px] h-[280px] md:pt-[35px] pt-[23px] md:px-[45px] px-[30px] md:pb-[37px] pb-[23px] md:bg-[url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/bg2.png)] bg-color2"
     >
       <Image
         src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/award_title.png?t=20241121"
-        alt="" importance="auto" class="absolute left-0 right-0 mx-auto !h-[99px] top-[-51px]"
+        alt="" importance="auto" class="absolute left-0 right-0 mx-auto md:!h-[99px] !h-[66px] md:top-[-51px] top-[-39px]"
       />
       <div>
-        <h3 class="font-bold text-e-linear-color-10 italic text-[26px]">
+        <h3 class="font-bold text-e-linear-color-10 italic md:text-[26px] text-[18px]">
           Get {{ toCurrency(freeAmount) }} for free
         </h3>
         <Image
           src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/activity/inviteWheel2/award1.png"
-          alt="" importance="auto" class="-rotate-90 mx-auto !h-[91px]"
+          alt="" importance="auto" class="-rotate-90 mx-auto md:!h-[91px] !h-[56px]"
         />
-        <div class="mt-[20px]">
+        <div class="mt-[20px] hidden md:block">
           <div
             class="invite-wheel2-sum font-[800] relative text-[54px]"
             :data-text="toCurrency(number)"
@@ -75,15 +74,25 @@ onUnmounted(() => {
             {{ toCurrency(number) }}
           </div>
           <p class="text-white font-medium leading-[1] text-[24px]">
-            <span class="text-[--bc-bgColor10]">{{ toCurrency(freeAmount - (rouletteInfo?.totalSpinAmount ?? 0))
+            <span class="text-[--bc-bgColor10]">{{ toCurrency(freeAmount - (spinResult?.totalSpinAmount ?? 0))
             }}</span> more for withdrawal.
           </p>
         </div>
-      </div><button class="h-[69px] font-bold text-[--bc-textColor3] rounded-full bg-color-linear-24">
-        <h3 class="text-[21px]">
-          Convide amigos
+        <div class="bg-[--bc-bgColor12] md:hidden rounded-[8px] py-[10px] mt-[7px]">
+          <div class="invite-wheel2-sum font-[800] relative text-[36px]" :data-text="toCurrency(number)">
+            {{ toCurrency(number) }}
+          </div>
+          <p class="text-e-g-color-14 font-medium leading-[1] text-[16px]">
+            <span class="text-[--bc-bgColor10]">{{ toCurrency(freeAmount - (spinResult?.totalSpinAmount ?? 0)) }}</span> more for withdrawal.
+          </p>
+        </div>
+      </div>
+
+      <button class="md:h-[69px] h-[46px] font-bold text-[--bc-textColor3] rounded-full bg-color-linear-24 mt-[20px] md:mt-0">
+        <h3 class="md:text-[21px] text-[12px]">
+          Invite friends
         </h3>
-        <h4 class="text-[15px]">
+        <h4 class="md:text-[15px] text-[10px]">
           To help with withdrawals
         </h4>
       </button>
