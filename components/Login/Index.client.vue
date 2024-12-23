@@ -7,6 +7,7 @@ const remember = ref(false)
 const schema = {
   mobile: z.string().min(2).max(50).default(localStorage.getItem('mobile') || ''),
   password: z.string().optional().default(localStorage.getItem('password') || ''),
+
 }
 
 const userStore = useUserStore()

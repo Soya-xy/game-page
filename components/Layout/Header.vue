@@ -9,6 +9,8 @@ const { toggleMenu, isOpen } = useMenu()
 const showLanguageModal = ref<boolean>(false)
 const showSettingModel = ref<boolean>(false)
 const showWalletModel = ref<boolean>(false)
+const showBetsModel = ref<boolean>(false)
+const showTransModel = ref<boolean>(false)
 
 const open = defineEmit<{ (type: string): void }>()
 
@@ -17,8 +19,8 @@ const menuItems = [
   { label: 'Wallet', icon: 'icon-n-wallet', hash: '/wallet' },
   { label: 'Withdraw', icon: 'icon-n-withdraw', hash: '/wallet?type=1' },
   { label: 'Profile', icon: 'icon-n-personal', hash: '/profile' },
-  { label: 'Transaction', icon: 'icon-n-transaction-history' },
-  { label: 'Bets History', icon: 'icon-n-bet-history' },
+  { label: 'Transaction', icon: 'icon-n-transaction-history', onClick() { showTransModel.value = true } },
+  { label: 'Bets History', icon: 'icon-n-bet-history', onClick() { showBetsModel.value = true } },
   { label: 'Free bets', icon: 'icon-n-free' },
   { label: 'Setting', icon: 'icon-n-security-settings', onClick() { showSettingModel.value = true } },
   { label: 'Install', icon: 'icon-n-install' },
@@ -159,5 +161,23 @@ function changeLang(lang: Locale) {
         Wallet
       </div>
     </template>
+  </BaseModal>
+  <!-- Bets -->
+  <BaseModal v-model:show="showBetsModel" content-class="md:min-w-[800px] md:min-h-[86vh]">
+    <template #title>
+      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
+        Bets History
+      </div>
+    </template>
+    <Bets />
+  </BaseModal>
+  <!-- Transaction -->
+  <BaseModal v-model:show="showTransModel" content-class="md:min-w-[800px] md:min-h-[86vh]">
+    <template #title>
+      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
+        Transaction
+      </div>
+    </template>
+    <Transaction />
   </BaseModal>
 </template>

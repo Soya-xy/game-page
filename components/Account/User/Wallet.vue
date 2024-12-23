@@ -40,12 +40,12 @@
     </div>
     <div class="w-full h-[1px] bg-[--bc-bgColor9] shrink-0 my-[10px]" />
     <div class="flex space-x-[4px] pb-[5px]">
-      <button class="flex-1 flex flex-col items-center justify-center">
+      <button class="flex-1 flex flex-col items-center justify-center" @click="routerPush('/transaction')">
         <i
           class="inline-block h-[max-content] w-[max-content] icon-new-transaction-history text-[20px] mb-[4px] text-color"
         />
         <span class="text-white">Transaction</span>
-      </button><button class="flex-1 flex flex-col items-center justify-center">
+      </button><button class="flex-1 flex flex-col items-center justify-center" @click="routerPush('/history')">
         <i class="inline-block h-[max-content] w-[max-content] icon-new-bet-history text-[20px] mb-[4px] text-color" />
         <span class="text-white">History</span>
       </button>

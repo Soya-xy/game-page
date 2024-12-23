@@ -92,6 +92,7 @@ const menuList = computed(() => {
       {
         name: 'Account settings',
         icon: 'icon-new-setting',
+        href: '/setting',
       },
       {
         name: 'Install',
