@@ -50,7 +50,7 @@ function changeLang(lang: Locale) {
       <BaseToggleMenu :class="isOpen ? 'rotate-180' : ''" @click="toggleMenu" />
       <Image src="/images/logo.avif" class="!h-[44px] cursor-pointer" @click="routerPush('/')" />
     </div>
-    <div class="ml-[var(--bc-menuOpen)] w-full">
+    <div class="ml-[var(--bc-menuOpen)] w-full relative z-[2]">
       <div class="flex items-center px-[12px] gap-[12px] container @container justify-end w-full mx-auto min-w-[640px]">
         <LayoutSearch />
         <LayoutUserWallet v-if="token" />
