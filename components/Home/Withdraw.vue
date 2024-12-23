@@ -29,13 +29,13 @@ async function showTurnTable() {
   <div>
     <div class="bg-color2 rounded-[10px] overflow-hidden">
       <div
-        class="h-[130px] px-[36px] py-[15px] rounded-[inherit] font-extrabold bg-color3-linear textwhite flex items-center justify-between relative max-lg:flex-col max-lg:items-start max-lg:h-[180px]"
+        class="md:h-[130px] h-[165px] md:px-[36px] px-[15px] md:py-[15px] py-[12px] rounded-[inherit] font-extrabold bg-color3-linear textwhite flex items-center justify-between relative max-lg:flex-col max-lg:items-start max-lg:h-[180px]"
       >
         <Image
           src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/invite_wheel.png?2024112916"
           alt="" importance="auto" class="h-full absolute bottom-0 left-[47.1%] max-lg:h-[60%] max-lg:left-[55%]"
         />
-        <div class="z-[1] text-white">
+        <div class="z-[1] text-white w-full">
           <h4 v-if="!token" class="md:text-[26px] text-[16px]">
             Get <span class="text-linearColor md:text-[32px] text-[20px]">{{ toCurrency(freeAmount) }}</span> for free
           </h4>
@@ -46,7 +46,7 @@ async function showTurnTable() {
           <Progress
             v-if="token"
             :model-value="(rouletteInfo?.totalSpinAmount || 0) / (rouletteInfo?.freeAmount || 0) * 100"
-            class="h-[6px] rounded-full bg-[--bc-bgColor7] mt-[8px]" indicator-class="main-color-btn rounded-full"
+            class="h-[6px] rounded-full bg-[--bc-bgColor7] mt-[8px] md:w-[400px] w-full" indicator-class="main-color-btn rounded-full"
           />
           <p v-if="!token" class="text-color md:text-[18px] text-[14px] mt-[5px] font-normal">
             Click to spin to get your rewards.
