@@ -78,6 +78,7 @@ export const useUserStore = defineStore('user', () => {
     token.value = undefined
     localStorage.removeItem('user')
     localStorage.removeItem('token')
+    window.location.reload()
   }
 
   const getUserInfo = async () => {
