@@ -12,7 +12,7 @@ watch(
   show,
   (val) => {
     if (val) {
-      const targetAmount = rouletteInfo.value?.totalSpinAmount || 89.78
+      const targetAmount = spinResult.value?.spinAmount
       if (!targetAmount)
         return
       startTime.value = performance.now()

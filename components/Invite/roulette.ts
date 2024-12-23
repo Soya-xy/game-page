@@ -90,12 +90,17 @@ export function useRoulette(emit?: any) {
         return
       }
 
+      if (rouletteInfo.value.totalSpinAmount === rouletteInfo.value.freeAmount) {
+        return
+      }
+
       if (rouletteInfo.value.tickets <= 0) {
         emit('showInvite')
         return
       }
       const res = await spinRoulette()
-      await getRoulette()
+      spinResult.value = res
+      rouletteInfo.value.tickets -= 1
       const index = rouletteList.value.findIndex(item => item.id === res.spinId)
       startRotate(index)
     }

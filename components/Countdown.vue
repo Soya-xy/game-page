@@ -18,7 +18,7 @@ onUnmounted(() => {
 })
 
 const dd = computed(() => Math.floor(seconds.value / 86400))
-const hh = computed(() => Math.floor(seconds.value / 3600))
+const hh = computed(() => Math.floor((seconds.value % 86400) / 3600)) // 修改：计算剩余小时数
 const mm = computed(() => Math.floor((seconds.value % 3600) / 60))
 const ss = computed(() => seconds.value % 60)
 </script>

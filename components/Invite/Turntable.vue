@@ -68,7 +68,7 @@ const { nowRotate, spin, inviteWheel, buttonBg } = useRoulette(emit)
             class="w-[61.44%] h-[61.44%] text-[--bc-textColor3] leading-[1] text-center pt-[12.65%] relative cursor-pointer"
           >
             <div
-              v-if="rouletteInfo!.tickets > 0"
+              v-if="rouletteInfo!.tickets > 0 && rouletteInfo!.totalSpinAmount !== rouletteInfo!.freeAmount"
               class="absolute w-[71%] top-[45%] right-[-31%] pointer-events-none"
             >
               <!-- <i-svg-mouse /> -->

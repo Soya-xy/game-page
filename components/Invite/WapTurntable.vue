@@ -3,7 +3,7 @@ import { Vue3Lottie } from 'vue3-lottie'
 import { useRoulette } from './roulette'
 
 const emit = defineEmits(['spinEnd', 'close'])
-const { nowRotate, spin, inviteWheel } = useRoulette(emit)
+const { nowRotate, spin, inviteWheel, buttonBg } = useRoulette(emit)
 </script>
 
 <template>
@@ -104,7 +104,7 @@ const { nowRotate, spin, inviteWheel } = useRoulette(emit)
 }
 
 .invite-wheel2-button {
-  background-image: v-bind('inviteWheel.buttonBg');
+  background-image: v-bind('buttonBg');
   content: none;
 }
 

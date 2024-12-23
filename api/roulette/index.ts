@@ -1,3 +1,4 @@
+import type { ID } from '../type'
 import type { RouletteInfo, RouletteList, RouletteSpin, WinnerReward } from './type'
 
 const getRouletteInfoUrl = '/promotion/roulette-spin-record/get-roulette-info'
@@ -14,8 +15,10 @@ export async function spinRoulette() {
   return useNuxtApp().$clientApi<RouletteSpin>(spinRouletteUrl)
 }
 
-export async function redeemReward() {
-  return useNuxtApp().$clientApi<boolean>(redeemRewardUrl)
+export async function redeemReward(params: ID) {
+  return useNuxtApp().$clientApi<boolean>(redeemRewardUrl, {
+    params,
+  })
 }
 
 export async function getRouletteSpin() {

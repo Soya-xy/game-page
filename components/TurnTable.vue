@@ -6,14 +6,21 @@ const show = defineModel<boolean>('show', {
 })
 
 const close = defineEmit()
+
 const showWithdraw = ref<boolean>(false)
 const showGet = ref<boolean>(false)
 const showFriends = ref<boolean>(false)
+const showRules = ref<boolean>(false)
 
-function spinEnd(e: any) {
-  if (e.index === 6) {
-    showGet.value = true
+async function spinEnd(e: any) {
+  if (e.index === 2) {
+    return
   }
+  if (e.index === 7) {
+    return
+  }
+  await getRoulette()
+  showGet.value = true
 }
 </script>
 
@@ -29,6 +36,7 @@ function spinEnd(e: any) {
           <h3 class="flex items-center gap-x-[10px] text-[20px] font-bold text-white mt-[28px]">
             Invite wheel <i
               class="inline-block h-[max-content] w-[max-content] icon-new-wenhao cursor-pointer text-icon text-[17px]"
+              @click="showRules = true"
             />
           </h3>
         </section>
@@ -55,7 +63,12 @@ function spinEnd(e: any) {
               Withdraw
             </button>
             <div class="text-center font-medium text-white mt-[6px]">
-              <span class="text-[--bc-bgColor10] font-bold">{{ toCurrency(rouletteInfo!.freeAmount - rouletteInfo!.totalSpinAmount) }}</span> more for withdrawal.
+              <p v-if="rouletteInfo!.totalSpinAmount !== rouletteInfo!.freeAmount">
+                <span class="text-[--bc-bgColor10] font-bold">{{ toCurrency(rouletteInfo!.freeAmount - rouletteInfo!.totalSpinAmount) }}</span> more for withdrawal.
+              </p>
+              <p v-else>
+                You can withdrawal  <span class="text-[--bc-bgColor10] font-bold">{{ toCurrency(rouletteInfo!.freeAmount - rouletteInfo!.totalSpinAmount) }}</span> now.
+              </p>
             </div>
           </div>
         </div>
@@ -91,10 +104,25 @@ function spinEnd(e: any) {
       </div>
     </div>
 
-    <InviteWapTurntable v-else class="!mx-auto" @close="show = false" />
+    <InviteWapTurntable v-else class="!mx-auto" @close="show = false" @spin-end="spinEnd" />
   </BaseModal>
 
-  <InviteWithdraw v-model:show="showWithdraw" />
+  <InviteWithdraw v-model:show="showWithdraw" @show-friends="showFriends = true" @withdraw-success="show = false" />
   <InviteFriends v-model:show="showFriends" />
   <InviteGet v-model:show="showGet" />
+  <BaseModal
+    v-model:show="showRules" content-class="!bg-[#F5F8FA] !rounded-[10px] z-[999]"
+    close-class="!text-white bg-[--bc-alphaBlack] w-[28px] h-[28px] !rounded-full flex items-center justify-center "
+    overlay-class="z-[990]"
+    wap-content-class="z-[999] h-[max-content] p-0"
+    no-header
+  >
+    <div class="absolute top-0 right-0 px-[15px] py-[10px] z-[10] md:hidden" @click="showRules = false">
+      <div class="bg-[--bc-alphaBlack] w-[28px] h-[28px] rounded-full flex items-center justify-center font-bold">
+        <i class="inline-block h-[max-content] w-[max-content] icon-new-clean-3 text-white text-[12px]" />
+      </div>
+    </div>
+    <!-- <BonusModal /> -->
+    123
+  </BaseModal>
 </template>
