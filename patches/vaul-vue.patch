@@ -1,13 +1,78 @@
+diff --git a/dist/controls.d.ts b/dist/controls.d.ts
+index ff6159a705dcf57bd6af9999082a3b835996fe1d..33b057d9c46c455cab582dc62c781c102b880c91 100644
+--- a/dist/controls.d.ts
++++ b/dist/controls.d.ts
+@@ -25,6 +25,7 @@ export type DrawerRootProps = {
+     modal?: boolean;
+     open?: boolean;
+     defaultOpen?: boolean;
++    noBodyStyle?: boolean;
+     nested?: boolean;
+     direction?: DrawerDirection;
+ } & (WithFadeFromProps | WithoutFadeFromProps);
+@@ -40,6 +41,7 @@ export interface UseDrawerProps {
+     fadeFromIndex: Ref<number | undefined>;
+     closeThreshold: Ref<number>;
+     scrollLockTimeout: Ref<number>;
++    noBodyStyle: Ref<boolean>;
+     direction: Ref<DrawerDirection>;
+ }
+ export interface DrawerRootEmits {
 diff --git a/dist/index.js b/dist/index.js
-index ae1bfdbc06b328ffd7ebd2be2997b839408dc096..1c80f84ac7097295df85c20ee1ac5bd98d35ff16 100644
+index ae1bfdbc06b328ffd7ebd2be2997b839408dc096..032e19eaeab33e26dbc50bfa3cd4ebea6cd4be51 100644
 --- a/dist/index.js
 +++ b/dist/index.js
+@@ -229,7 +229,7 @@ function lt({
+ }
+ let Q = null;
+ function ot(t) {
+-  const { isOpen: n, modal: v, nested: s, hasBeenOpened: e } = t, b = P(typeof window < "u" ? window.location.href : ""), u = P(0);
++  const { isOpen: n, modal: v, nested: s, hasBeenOpened: e, noBodyStyle } = t, b = P(typeof window < "u" ? window.location.href : ""), u = P(0);
+   function O() {
+     if (Q === null && n.value) {
+       Q = {
 @@ -267,7 +267,7 @@ function ot(t) {
        window.removeEventListener("scroll", d);
      });
    }), Y([n, e, b], () => {
 -    s.value || !e.value || (n.value ? (!window.matchMedia("(display-mode: standalone)").matches && O(), v.value || setTimeout(() => {
-+    s.value || !e.value || (n.value ? (v.value && !window.matchMedia("(display-mode: standalone)").matches && O(), v.value || setTimeout(() => {
++    noBodyStyle.value || s.value || !e.value || (n.value ? (!window.matchMedia("(display-mode: standalone)").matches && O(), v.value || setTimeout(() => {
        x();
      }, 500)) : x());
    }), { restorePositionSetting: x };
+@@ -287,6 +287,7 @@ function ct(t) {
+     nested: O,
+     fixed: x,
+     modal: d,
++    noBodyStyle,
+     shouldScaleBackground: l,
+     scrollLockTimeout: w,
+     closeThreshold: R,
+@@ -326,7 +327,8 @@ function ct(t) {
+     isOpen: r,
+     modal: d,
+     nested: O,
+-    hasBeenOpened: o
++    hasBeenOpened: o,
++    noBodyStyle
+   });
+   function G() {
+     return (window.innerWidth - ut) / window.innerWidth;
+@@ -594,6 +596,7 @@ function ct(t) {
+     shouldFade: pe,
+     fadeFromIndex: y,
+     shouldScaleBackground: l,
++    noBodyStyle,
+     onPress: Be,
+     onDrag: He,
+     onRelease: Ue,
+@@ -623,7 +626,8 @@ const vt = /* @__PURE__ */ le({
+     nested: { type: Boolean, default: !1 },
+     direction: { default: "bottom" },
+     snapPoints: { default: void 0 },
+-    fadeFromIndex: { default: void 0 }
++    fadeFromIndex: { default: void 0 },
++    noBodyStyle: { type: Boolean, default: 0 }
+   },
+   emits: ["drag", "release", "close", "update:open", "update:activeSnapPoint"],
+   setup(t, { expose: n, emit: v }) {
