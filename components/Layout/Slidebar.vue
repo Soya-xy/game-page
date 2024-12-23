@@ -166,7 +166,7 @@ function changeLang(lang) {
   </div>
   <BaseModal v-model:show="showLanguageModal">
     <template #title>
-      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
+      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2  border-radius-0">
         Switch Language
       </div>
     </template>

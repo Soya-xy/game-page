@@ -7,21 +7,32 @@ import { formatTime } from '~/lib/dayjs'
 const page = ref(1)
 const data = ref<AffiliateInvite[]>([])
 const time = defineProp<string | Date>()
-
+const loaded = ref(false)
 async function load(e?: any) {
   const params = new URLSearchParams()
   params.append('pageNo', page.value.toString())
   params.append('pageSize', '10')
-  params.append('createTime[0]', formatTime(dayjs(time.value).startOf('day').toJSON()))
-  params.append('createTime[1]', formatTime(dayjs(time.value).endOf('day').toJSON()))
-
-  const res = await getAffiliateInvitePage(params)
-  if (data.value.length > res.total || !res.list.length) {
-    e?.complete()
+  if (time.value) {
+    params.append('createTime[0]', formatTime(dayjs(time.value).startOf('day').toJSON()))
+    params.append('createTime[1]', formatTime(dayjs(time.value).endOf('day').toJSON()))
   }
 
-  if (res.list) {
-    data.value.push(...res.list)
+  try {
+    const res = await getAffiliateInvitePage(params)
+    loaded.value = true
+
+    if (data.value.length > res.total || !res.list.length) {
+      return e?.complete()
+    }
+
+    if (res.list) {
+      data.value.push(...res.list)
+      e.loaded()
+      page.value++
+    }
+  }
+  catch {
+    e.error()
   }
 }
 
@@ -30,31 +41,32 @@ watch(time, () => {
   data.value = []
   load()
 }, {
-  immediate: true,
   deep: true,
 })
 </script>
 
 <template>
-  <div class="h-full flex flex-col">
-    <div class="bg-color2 border-[1px] border-solid border-[--bc-bgColor2] rounded-[8px] md:text-[14px] text-[12px]">
+  <div class="flex-1 flex flex-col">
+    <div
+      class="bg-color2 border-[1px] border-solid border-[--bc-bgColor2] rounded-[8px] md:text-[14px] text-[12px] h-[600px] overflow-y-auto"
+    >
       <div
         class="bg-[--bc-color-3] px-[5px] h-[40px] text-[--bc-color20] flex items-center justify-center sticky left-0 -top-[1px]"
       >
-        <div class="w-[20%] text-left">
+        <div class="w-[25%] text-left">
           ID
         </div>
         <div class="flex-1 text-center">
           Reward type
         </div>
-        <div class="w-[20%] text-right">
+        <div class="w-[25%] text-right">
           Time
         </div>
-        <div class="w-[20%] text-right">
+        <div class="w-[25%] text-right">
           Reward
         </div>
       </div>
-      <div v-if="data.length">
+      <template v-if="data.length || !loaded">
         <div v-for="item, idx in data" :key="idx" class="text-white px-[5px] h-[40px] flex items-center justify-center">
           <div class="w-[25%] text-left">
             {{ item.id }}
@@ -65,12 +77,12 @@ watch(time, () => {
           <div class="w-[25%] text-right text-color">
             {{ formatTime(item.createTime) }}
           </div>
-          <div class="w-[25%] text-left">
+          <div class="w-[25%] text-right">
             {{ item.price }}
           </div>
         </div>
         <LoadMore :load="load" />
-      </div>
+      </template>
       <BaseEmpty v-else />
     </div>
   </div>

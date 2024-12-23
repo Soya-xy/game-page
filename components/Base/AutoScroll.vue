@@ -1,9 +1,9 @@
-<script lang="ts" setup>
+<script lang="ts" setup generic="T">
 import { TransitionPresets, useTransition } from '@vueuse/core'
 import { VirtList } from 'vue-virt-list'
 
 withDefaults(defineProps<{
-  list: any[]
+  list: T[]
   idKey?: string
   fixed?: boolean
   minSize?: number
@@ -14,6 +14,10 @@ withDefaults(defineProps<{
   minSize: 20,
   itemGap: 20,
 })
+
+defineSlots<{
+  default: (props: { itemData: T }) => T
+}>()
 
 const el = ref<any>()
 

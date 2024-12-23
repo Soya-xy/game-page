@@ -3,6 +3,8 @@ import NumberFlow, { NumberFlowGroup } from '@number-flow/vue'
 import { computed } from 'vue'
 
 const time = defineProp<number>(undefined, true)
+const contentClass = defineProp<string>('')
+
 const seconds = ref()
 const i = ref<any>()
 onMounted(() => {
@@ -16,7 +18,7 @@ onUnmounted(() => {
 })
 
 const dd = computed(() => Math.floor(seconds.value / 86400))
-const hh = computed(() => Math.floor(seconds.value / 3600))
+const hh = computed(() => Math.floor((seconds.value % 86400) / 3600)) // 修改：计算剩余小时数
 const mm = computed(() => Math.floor((seconds.value % 3600) / 60))
 const ss = computed(() => seconds.value % 60)
 </script>
@@ -26,6 +28,7 @@ const ss = computed(() => seconds.value % 60)
     <div
       style="font-variant-numeric: tabular-nums; --number-flow-char-height: 0.85em"
       class="~text-3xl/4xl flex items-baseline font-semibold gap-x-[4px] text-white"
+      :class="contentClass"
     >
       <NumberFlow v-if="dd > 0" :suffix="`${dd > 0 ? 'D' : ''}`" :trend="-1" :value="dd" :format="{ minimumIntegerDigits: 1 }" />
       <NumberFlow

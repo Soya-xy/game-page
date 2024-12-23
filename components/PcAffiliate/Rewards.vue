@@ -9,7 +9,10 @@ const list = ref([
     desc: 'Invite users and get a <span class="text-white font-bold">R$100.00</span> cash reward.',
     url: 'https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/referAndEarn/22.png',
     onClick: () => {
-      show.value = true
+      if (isPc.value)
+        show.value = true
+      else
+        routerPush('/bonus/roulette')
     },
   },
   {
@@ -56,9 +59,8 @@ const list = ref([
       </div>
     </div>
   </div>
-  <BaseModal v-model:show="show" content-class="mx-auto w-full max-w-[520px] h-[max-content] !min-w-[200px] !bg-transparent z-[555]" no-close overlay-class="z-[550]">
-    <InviteWapTurntable class="!mx-auto" @close="show = false" />
-  </BaseModal>
+  <TurnTable v-model:show="show" />
+
   <BaseDrawer v-model:open="showDrawer" direction="right" content-class="z-[999] h-[100vh]" overlay-class="z-[999]">
     <template #title>
       Commission

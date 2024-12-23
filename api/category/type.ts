@@ -40,3 +40,9 @@ export interface CategoryListResponse {
   gamesRespVO: CategoryListDetailResponse
   providerList: CategoryListDetailResponse[]
 }
+
+export interface CategoryQuery {
+  id: string
+  name?: string
+  order?: string
+}

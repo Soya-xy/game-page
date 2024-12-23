@@ -4,7 +4,7 @@ export interface Page {
 }
 
 export interface ID {
-  id: string
+  id: string | number
 }
 
 export interface ParentId {

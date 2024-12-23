@@ -177,7 +177,7 @@ function showDetail() {
         Bonus Details
       </div>
     </template>
-    <div class="h-[max-content] overflow-auto">
+    <div class="h-[max-content] overflow-hidden">
       <BonusDetails />
     </div>
   </BaseModal>

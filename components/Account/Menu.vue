@@ -177,7 +177,7 @@ function handleClick(e: any) {
   </BaseModal>
   <BaseModal v-model:show="showLanguageModal" wap-content-class="p-0 z-[555]" overlay-class="z-[550]">
     <template #title>
-      <div class="flex justify-between items-center">
+      <div class="flex justify-between items-center border-radius-0">
         Switch Language
       </div>
     </template>

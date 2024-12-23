@@ -18,6 +18,7 @@ const menuItems = [
 
 const langModal = ref<boolean>(false)
 const { setLocale } = useI18n()
+const { isShowTop } = useMenu()
 
 function changeLang(lang: Locale) {
   setLocale(lang)
@@ -85,8 +86,11 @@ function changeLang(lang: Locale) {
         </div>
       </div>
     </div>
-    <Drawer v-model:open="isOpen" direction="left">
-      <DrawerContent class="h-[calc(100vh-90px)] mb-[50px] pb-[70px] bg-color">
+    <Drawer v-model:open="isOpen" direction="left" :modal="false">
+      <DrawerContent
+        class=" mb-[50px] pb-[70px] bg-color"
+        :class="!isShowTop ? 'h-[calc(100vh-90px)]' : 'h-[calc(100vh-90px-var(--bc-appDownloadHeight,0px))]' "
+      >
         <div class="flex flex-col pt-[10px] gap-[5px] mx-[3.3%] md:pt-[20px]">
           <BaseInvitation />
           <BaseSlideBarTab />

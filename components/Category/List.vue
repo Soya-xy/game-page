@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 import { ref } from 'vue'
 import { asyncCategoryList, asyncCategoryListDetail, getCategoryListDetailGame } from '~/api/category'
 
+const search = defineModel<string>('search')
 const { data } = await asyncCategoryList()
 const { makeTree } = useTree({
   id: 'id',
@@ -38,12 +39,12 @@ const option = ref([
 const providerOption = ref<Option[]>([])
 const loading = ref(false)
 const page = ref(1)
-const value = ref('Popular')
+const order = ref('Popular')
 const providerValue = ref<string[]>([])
 
 const type = ref<'game' | 'gameList' | 'provider'>()
 
-watch(activeIndex, async () => {
+watch([activeIndex, order], async () => {
   list.value = []
   page.value = 1
 
@@ -54,6 +55,16 @@ watch(activeIndex, async () => {
 }, {
   immediate: true,
 })
+
+watch(search, useDebounceFn(async () => {
+  list.value = []
+  page.value = 1
+
+  loading.value = true
+  await loadGames()
+
+  loading.value = false
+}, 300))
 
 const providerList = ref<any>([])
 
@@ -71,6 +82,8 @@ async function loadGames(e?: any) {
       id: item.id,
       pageNo: page.value,
       pageSize: 100,
+      name: search.value,
+      order: order.value,
     })
     page.value++
 
@@ -115,7 +128,11 @@ async function loadGames(e?: any) {
       picUrl: v.picUrl,
       count: v.count,
     }))
-  }))
+  })).catch(() => {
+    e?.error()
+  }).finally(() => {
+    loadGameing.value = false
+  })
 }
 
 async function getMore(id: number, opt: any) {
@@ -128,16 +145,6 @@ async function getMore(id: number, opt: any) {
 function changeHandler(e: string[]) {
   providerValue.value = e
 }
-
-// const target = ref<HTMLElement>()
-// useIntersectionObserver(
-//   target,
-//   ([entry]) => {
-//     if (entry?.isIntersecting) {
-//       loadGames()
-//     }
-//   },
-// )
 </script>
 
 <template>
@@ -153,8 +160,10 @@ function changeHandler(e: string[]) {
       )" @click="activeIndex = index"
     >
       <i
-        class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[16px] mr-[8px] text-icon group-hover:text-white"
-        :class="item.picUrl.replaceAll('sysicon-', 'icon-')"
+        class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[16px] mr-[8px]group-hover:text-white"
+        :class="`${item.picUrl.replaceAll('sysicon-', 'icon-')}
+        ${activeIndex === index ? 'text-active' : 'text-icon'}
+        `"
       />
       <div class="font-bold text-nowrap">
         {{ item.name }}
@@ -162,10 +171,10 @@ function changeHandler(e: string[]) {
     </button>
   </HScroll>
   <div v-if="type === 'game'" class="flex items-center gap-2">
-    <FilterSelect v-model="value" :option="option">
+    <FilterSelect v-model="order" :option="option">
       <template #placeholder>
         <div class="text-white">
-          Sort by: {{ value }}
+          Sort by: {{ order }}
         </div>
       </template>
     </FilterSelect>
@@ -180,13 +189,17 @@ function changeHandler(e: string[]) {
   </div>
   <Spin :loading="loading">
     <template v-if="type === 'gameList'">
-      <BaseGameList
-        v-for="(item, idx) in list" :key="idx" :list="item.data" :title="item.name"
-        :more-fetch="(opt: any) => getMore(item.id, opt)"
-      />
+      <template v-if="list.length">
+        <BaseGameList
+          v-for="(item, idx) in list" :key="idx" :list="item.data" :title="item.name"
+          :more-fetch="(opt: any) => getMore(item.id, opt)"
+        />
+      </template>
+      <BaseEmpty v-else />
     </template>
     <template v-if="type === 'game'">
-      <CategoryGame :data="list" />
+      <CategoryGame v-if="list.length" :data="list" />
+      <BaseEmpty v-else />
       <LoadMore :load="loadGames" />
     </template>
 

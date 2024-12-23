@@ -2,6 +2,8 @@
 import { cn } from '@/lib/utils'
 
 const activeIndex = ref(0)
+const route = useRoute()
+
 const list = [
   {
     name: '推荐',
@@ -22,22 +24,22 @@ const list = [
 
 function changeTab(path: string, idx: number) {
   activeIndex.value = idx
-  routerPush(path)
+  routerReplace(path)
 }
 </script>
 
 <template>
   <div class="w-full grid grid-cols-3 items-center gap-x-[5px]">
     <div
-      v-for="(item, index) in list" :key="item.path"
+      v-for="(item, index) in list" :key="index"
       class="h-[40px] text-[14px] font-semibold bg-tab cursor-pointer rounded-[10px] overflow-hidden"
       @click="changeTab(item.path, index)"
     >
-      <div class="h-full flex items-center relative  justify-center" :class="{ 'bg-linear-3': activeIndex === index }">
+      <div class="h-full flex items-center relative  justify-center" :class="{ 'bg-linear-3': route.fullPath.includes(item.path) }">
         <div class="w-[40px] h-[40px] flex items-center justify-center">
           <i
             class="inline-block h-[max-content] w-[max-content] cursor-pointer text-[22px]"
-            :class="cn(item.icon, { 'text-white': activeIndex === index })"
+            :class="cn(item.icon, { 'text-white': route.fullPath.includes(item.path) })"
           />
         </div>
       </div>

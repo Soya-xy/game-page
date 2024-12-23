@@ -8,13 +8,22 @@ export const useAffiliate = defineStore('affiliate', () => {
   const maxReward = ref<number>(0)
   const record = ref<AffiliateRecord>()
   const level = ref<AffiliateLevel[][]>()
+
+  const userStore = useUserStore()
+  const { token } = storeToRefs(userStore)
+
   async function init() {
     try {
+      const activityData = await getAffiliateActivity()
+      const recordData = await getAffiliateRecord()
+      record.value = recordData
+      activity.value = activityData
+
+      if (!token.value)
+        return
       const summaryData = await getAffiliateSummary()
       const codeData = await getAffiliateCode()
-      const activityData = await getAffiliateActivity()
       const maxRewardData = await getAffiliateMaxReward()
-      const recordData = await getAffiliateRecord()
       const levelData = await getAffiliateLevel()
 
       // 找出levelData中gameCategory一样的并合并成一个对象数组 and 按tier排序
@@ -32,12 +41,9 @@ export const useAffiliate = defineStore('affiliate', () => {
         item.sort((a, b) => a.tier - b.tier)
         return item
       })
-
       summary.value = summaryData
       code.value = codeData
-      activity.value = activityData
       maxReward.value = maxRewardData
-      record.value = recordData
       level.value = levelList
     }
     catch (error) {

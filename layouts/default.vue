@@ -57,7 +57,7 @@ function open(e: string) {
           </div>
           <LazyRight v-model:show="showRight" :type />
         </div>
-        <LayoutFooter v-if="route.meta.haveFooter" />
+        <LayoutFooter v-if="!route.meta.noFooter" />
       </main>
     </div>
     <Top :is-show="isShowTop" @top="scrollToTop" />

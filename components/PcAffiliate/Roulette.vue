@@ -1,7 +1,16 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+const { isPc } = useDevice()
 
 const show = ref<boolean>(false)
+
+function showTurnTable() {
+  if (isPc.value) {
+    show.value = true
+  }
+  else {
+    routerPush('/bonus/roulette')
+  }
+}
 </script>
 
 <template>
@@ -31,14 +40,12 @@ const show = ref<boolean>(false)
     </div>
     <button
       class="h-[46px] min-w-[130px] px-[15px] shrink-0 text-[14px] font-bold text-font border-radius-0 bg-active relative"
-      @click="show = true"
+      @click="showTurnTable"
     >
       Claim
     </button>
   </div>
-  <BaseModal v-model:show="show" content-class="mx-auto w-full max-w-[520px] h-[max-content] !min-w-[200px] !bg-transparent z-[555]" no-close overlay-class="z-[550]">
-    <InviteWapTurntable class="!mx-auto" @close="show = false" />
-  </BaseModal>
+  <TurnTable v-model:show="show" />
 </template>
 
 <style></style>

@@ -51,7 +51,7 @@ function showDetail() {
     direction="right" wap-content-class="h-[100vh] z-[999] p-0"
   >
     <template #title>
-      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color-pop-16 rounded-t-[10px] text-white">
+      <div class="flex justify-between items-center h-[54px] px-[20px] rounded-t-[10px] text-white">
         Bonus Details
       </div>
     </template>

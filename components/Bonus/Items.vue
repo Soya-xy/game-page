@@ -26,10 +26,29 @@ const currentList = ref<{
 
 const showRules = ref<boolean>(false)
 const currentRules = ref<any>(null)
+const currentItem = ref<any>(null)
+
+const showGachapon = ref<boolean>(false)
+const showTurnTable = ref<boolean>(false)
 
 function handleRules(v: any) {
   currentRules.value = v
   showRules.value = true
+}
+
+function handleItem(v: any) {
+  currentItem.value = v
+  if (v.id === 4) {
+    if (isPc.value) {
+      showTurnTable.value = true
+    }
+    else {
+      routerPush('/bonus/roulette')
+    }
+  }
+  if (v.id === 1) {
+    showGachapon.value = true
+  }
 }
 </script>
 
@@ -37,6 +56,7 @@ function handleRules(v: any) {
   <BaseTabs
     v-model="current" :list="currentList"
     class="!static rounded-b-[5px] [&>div:first-child]:rounded-bl-[5px] [&>div:last-child]:rounded-br-[5px] mb-[20px]"
+    item-class="w-[33%]"
   />
 
   <div
@@ -68,7 +88,7 @@ function handleRules(v: any) {
       <div
         class="w-full h-full px-[4px] pb-[4px] relative z-[1] rounded-[inherit] flex md:flex-col justify-between bg-contain bg-no-repeat"
       >
-        <div class="md:p-[10px] md:pt-[5px] flex items-center justify-center md:w-full md:h-[125px]  w-[100px]">
+        <div class="md:p-[10px] md:pt-[5px] md:w-full md:h-[125px] flex items-center justify-center w-[100px]">
           <Image :src="v.image" alt="" class="md:w-[110px] md:!h-auto w-[78px] !h-[78px]" />
         </div>
         <div class="flex flex-col flex-1 md:py-0 py-[13px]  ">
@@ -97,6 +117,7 @@ function handleRules(v: any) {
 
             <button
               class="shrink-0 h-[36px] text-font border-radius-0 font-bold md:w-full w-[max-content] min-w-[136px] flex items-center justify-center text-[13px] bg-active"
+              @click="handleItem(v)"
             >
               <div class="flex items-center justify-center">
                 Details
@@ -114,20 +135,25 @@ function handleRules(v: any) {
     </div>
   </div>
   <BaseEmpty v-else />
-
   <BaseModal
-    v-if="isPc"
-    v-model:show="showRules" content-class="!bg-[#F5F8FA] !rounded-[10px]"
-    close-class="!text-white bg-[--bc-alphaBlack] w-[28px] h-[28px] !rounded-full flex items-center justify-center"
+    v-model:show="showRules" content-class="!bg-[#F5F8FA] !rounded-[10px] z-[999]"
+    close-class="!text-white bg-[--bc-alphaBlack] w-[28px] h-[28px] !rounded-full flex items-center justify-center "
+    overlay-class="z-[990]" wap-content-class="z-[999] h-[max-content] p-0" no-header
   >
-    <BonusModal :info="currentRules" />
-  </BaseModal>
-  <BaseDrawer v-else v-model:open="showRules" content-class="z-[999] h-[max-content] p-0" overlay-class="z-[999]" no-header>
-    <div class="absolute top-0 right-0 px-[15px] py-[10px] z-[10]" @click="showRules = false">
+    <div class="absolute top-0 right-0 px-[15px] py-[10px] z-[10] md:hidden" @click="showRules = false">
       <div class="bg-[--bc-alphaBlack] w-[28px] h-[28px] rounded-full flex items-center justify-center font-bold">
         <i class="inline-block h-[max-content] w-[max-content] icon-new-clean-3 text-white text-[12px]" />
       </div>
     </div>
     <BonusModal :info="currentRules" />
-  </BaseDrawer>
+  </BaseModal>
+
+  <BaseModal
+    v-model:show="showGachapon" direction="right" wap-content-class="z-[555] h-[100vh] !p-0"
+    content-class="z-[555] w-[500px]" overlay-class="z-[550]" no-header no-close
+  >
+    <Gachapon @close="currentItem = null" />
+  </BaseModal>
+
+  <TurnTable v-model:show="showTurnTable" class="!mx-auto" @close="currentItem = null" />
 </template>

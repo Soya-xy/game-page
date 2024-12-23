@@ -46,100 +46,100 @@ function changeLang(lang: Locale) {
 <template>
   <header
     class="
-      h-[60px] fixed top-0 left-0 right-0 z-[100] w-full bg-inherit flex items-center justify-between shadow-[0_4px_20px_#00000060]
-
-    "
+      h-[60px] fixed top-0 left-0 right-0 z-[100] bg-inherit flex items-center justify-between shadow-[0_4px_20px_#00000060] transition-all duration-300 ease-in-out"
   >
-    <div class="flex items-center gap-[27px] ml-[22px]">
+    <div class="flex items-center gap-[27px] ml-[22px] w-full absolute">
       <BaseToggleMenu :class="isOpen ? 'rotate-180' : ''" @click="toggleMenu" />
-      <Image src="/images/logo.avif" class="!h-[44px]" @click="routerPush('/')" />
+      <Image src="/images/logo.avif" class="!h-[44px] cursor-pointer" @click="routerPush('/')" />
     </div>
-    <div class="flex items-center px-[12px] gap-[12px]">
-      <LayoutSearch />
-      <LayoutUserWallet v-if="token" />
-      <template v-else>
-        <BaseButton
-          class="px-[17px] h-[40px] min-w-[86px] font-extrabold flex items-center justify-center bg-button rounded-[8px] text-white"
-          @click="routerPush('/login')"
-        >
-          Sign in
-        </BaseButton>
-
-        <BaseButton
-          class="px-[17px] h-[40px] min-w-[86px] font-extrabold flex items-center justify-center rounded-[8px] text-white bg-button-linear"
-          @click="routerPush('/register')"
-        >
-          Sign Up
-        </BaseButton>
-      </template>
-
-      <div class="flex h-[40px] rounded-[8px] items-center bg-[--bc-buttonColor]">
-        <div
-          class="bg-button flex items-center justify-center  rounded-[8px] w-[40px] h-[40px] cursor-pointer !bg-transparent"
-          @click="open('Chat')"
-        >
-          <div class="relative">
-            <div class="flex items-center justify-center menu-svg" style="width: 25px; height: 24px; --89bcd300: 1;">
-              <i-svg-chat class="w-[25px] h-[24px]" />
-            </div>
-          </div>
-        </div>
-        <div
-          class="bg-button flex items-center justify-center  rounded-[8px] w-[40px] h-[40px] cursor-pointer !bg-transparent"
-          @click="open('Notification')"
-        >
-          <div class="relative">
-            <div class="flex items-center justify-center menu-svg">
-              <i-svg-notification class="w-[25px] h-[24px]" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <BaseIconButton @click="showLanguageModal = true">
-        <i class="i-carbon-earth w-[25px] h-[24px]" />
-      </BaseIconButton>
-      <template v-if="token">
-        <DropdownMenu>
-          <DropdownMenuTrigger>
-            <BaseAvatar :src="userInfo.avatar" :alt="userInfo.nickname" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            align="end"
-            class="bg-color2 text-color relative text-[14px] overflow-hidden border-radius-0 pt-[10px] min-w-[220px] flex flex-col shadow-[0_4px_20px_#00000060]"
+    <div class="ml-[var(--bc-menuOpen)] w-full relative z-[2]">
+      <div class="flex items-center px-[12px] gap-[12px] container @container justify-end w-full mx-auto min-w-[640px]">
+        <LayoutSearch />
+        <LayoutUserWallet v-if="token" />
+        <template v-else>
+          <BaseButton
+            class="px-[17px] h-[40px] min-w-[86px] font-extrabold flex items-center justify-center bg-button rounded-[8px] text-white"
+            @click="routerPush('/login')"
           >
-            <DropdownMenuItem
-              v-for="item in menuItems" :key="item.label"
-              class="hover:text-white hover:bg-page hover:font-bold    p-0" @click="handleClick(item)"
-            >
-              <div class="pl-[20px] pr-[10px] h-[46px] flex items-center cursor-pointer">
-                <i
-                  class="inline-block h-[max-content] w-[max-content] cursor-pointer mr-[14px] text-[20px] text-icon "
-                  :class="[
-                    item.icon,
-                  ]"
-                />
-                <p>{{ item.label }}</p>
-              </div>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator class="bg-button" />
+            Sign in
+          </BaseButton>
 
-            <DropdownMenuItem class="hover:text-white hover:bg-page hover:font-bold    p-0" @click="userStore.logout">
-              <div class="pl-[20px] pr-[10px] h-[46px] flex items-center cursor-pointer">
-                <i
-                  class="inline-block h-[max-content] w-[max-content] cursor-pointer mr-[14px] text-[20px] text-icon  icon-n-sign-out"
-                />
-                <p>Sign Out</p>
+          <BaseButton
+            class="px-[17px] h-[40px] min-w-[86px] font-extrabold flex items-center justify-center rounded-[8px] text-white bg-button-linear"
+            @click="routerPush('/register')"
+          >
+            Sign Up
+          </BaseButton>
+        </template>
+
+        <div class="flex h-[40px] rounded-[8px] items-center bg-[--bc-buttonColor]">
+          <div
+            class="bg-button flex items-center justify-center  rounded-[8px] w-[40px] h-[40px] cursor-pointer !bg-transparent"
+            @click="open('Chat')"
+          >
+            <div class="relative">
+              <div class="flex items-center justify-center menu-svg" style="width: 25px; height: 24px; --89bcd300: 1;">
+                <i-svg-chat class="w-[25px] h-[24px]" />
               </div>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </template>
+            </div>
+          </div>
+          <div
+            class="bg-button flex items-center justify-center  rounded-[8px] w-[40px] h-[40px] cursor-pointer !bg-transparent"
+            @click="open('Notification')"
+          >
+            <div class="relative">
+              <div class="flex items-center justify-center menu-svg">
+                <i-svg-notification class="w-[25px] h-[24px]" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <BaseIconButton @click="showLanguageModal = true">
+          <i class="i-carbon-earth w-[25px] h-[24px]" />
+        </BaseIconButton>
+        <template v-if="token">
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <BaseAvatar :src="userInfo.avatar" :alt="userInfo.nickname" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              align="end"
+              class="bg-color2 text-color relative text-[14px] overflow-hidden border-radius-0 pt-[10px] min-w-[220px] flex flex-col shadow-[0_4px_20px_#00000060]"
+            >
+              <DropdownMenuItem
+                v-for="item in menuItems" :key="item.label"
+                class="hover:text-white hover:bg-page hover:font-bold    p-0" @click="handleClick(item)"
+              >
+                <div class="pl-[20px] pr-[10px] h-[46px] flex items-center cursor-pointer">
+                  <i
+                    class="inline-block h-[max-content] w-[max-content] cursor-pointer mr-[14px] text-[20px] text-icon "
+                    :class="[
+                      item.icon,
+                    ]"
+                  />
+                  <p>{{ item.label }}</p>
+                </div>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator class="bg-button" />
+
+              <DropdownMenuItem class="hover:text-white hover:bg-page hover:font-bold    p-0" @click="userStore.logout">
+                <div class="pl-[20px] pr-[10px] h-[46px] flex items-center cursor-pointer">
+                  <i
+                    class="inline-block h-[max-content] w-[max-content] cursor-pointer mr-[14px] text-[20px] text-icon  icon-n-sign-out"
+                  />
+                  <p>Sign Out</p>
+                </div>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </template>
+      </div>
     </div>
   </header>
   <BaseModal v-model:show="showLanguageModal">
     <template #title>
-      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
+      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2  border-radius-0">
         Switch Language
       </div>
     </template>

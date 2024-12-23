@@ -6,11 +6,13 @@ const id = defineProp('')
 const type = defineProp('')
 const list = defineProp<any[]>([])
 const haveMore = defineProp(true)
+const havePage = defineProp(true)
 const title = defineProp('')
 const moreFetch = defineProp<(opt: any) => Promise<any[]>>()
 const containerRef = ref()
 const page = ref(1)
 const drawerOpen = ref(false)
+const { isPc } = useDevice()
 const swiper = useSwiper(containerRef, {
   slidesPerView: 3,
   slidesPerGroup: 3,
@@ -121,7 +123,7 @@ function next(type: 'up' | 'down') {
   <div class="w-full">
     <BaseTitle :name="title">
       <template #action>
-        <div class="flex items-center gap-2 h-full  ">
+        <div v-if="haveMore || havePage" class="flex items-center gap-2 h-full">
           <div
             v-if="haveMore" class="
               h-[32px] px-2 font-bold
@@ -132,7 +134,7 @@ function next(type: 'up' | 'down') {
             <span>More</span>
             <i class="i-mdi-chevron-right font-bold" />
           </div>
-          <div class="flex items-center gap-2">
+          <div v-if="havePage" class="flex items-center gap-2">
             <Button
               :disabled="progress === 0" class="bg-page w-[30px] h-[32px] rounded-[8px] hover:bg-page text-white"
               @click="next('up')"
@@ -157,10 +159,10 @@ function next(type: 'up' | 'down') {
       </swiper-container>
     </ClientOnly>
     <BaseModal
-      v-model:show="drawerOpen" wap-content-class="h-[100vh] z-[555] p-0" content-class="z-[555] pb-[15px]" overlay-class="z-[550]"
-      direction="right"
+      v-model:show="drawerOpen" wap-content-class="h-[100vh] z-[555] p-0" content-class="z-[555] pb-[15px]"
+      overlay-class="z-[550]" direction="right"
     >
-      <template #title>
+      <template v-if="!isPc" #title>
         {{ title }}
       </template>
       <BaseGameMore :get-data="getMoreFetch" :title="title" />

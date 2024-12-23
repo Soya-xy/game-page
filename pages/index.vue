@@ -7,13 +7,22 @@ import { PageIndexEnum } from '~/composables/page'
 
 definePageMeta({
   pageIndex: PageIndexEnum.home,
-  haveFooter: true,
+  noFooter: true,
 })
 
 const { data } = await asyncHomeData()
 
 const { isPc } = useDevice()
 
+// getChatList({
+//   pageNo: 1,
+//   pageSize: 10,
+// })
+
+// sendChat({
+//   contentType: '1',
+//   content: 'test',
+// })
 // if (error.value) {
 //   navigateTo('/error')
 // }

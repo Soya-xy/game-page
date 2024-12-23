@@ -4,10 +4,11 @@ import InfiniteLoading from 'v3-infinite-loading'
 import 'v3-infinite-loading/lib/style.css'
 
 const load = defineProp<(e: StateHandler) => void>(undefined, true)
+const firstLoad = defineProp<boolean>(true)
 </script>
 
 <template>
-  <InfiniteLoading :firstload="false" @infinite="load">
+  <InfiniteLoading :firstload="firstLoad" @infinite="load">
     <slot />
     <template #spinner>
       <div class="text-center py-4 text-sm text-gray-500">

@@ -22,7 +22,7 @@ const search = ref('')
       </template>
     </BaseInput>
     <!-- category -->
-    <CategoryList />
+    <CategoryList v-model:search="search" />
   </div>
 </template>
 

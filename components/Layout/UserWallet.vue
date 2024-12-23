@@ -6,7 +6,7 @@ const mobileOpen = ref<boolean>(false)
 const { isPc } = useDevice()
 const userStore = useUserStore()
 const { userInfo } = storeToRefs(userStore)
-
+const showBonus = ref<boolean>(false)
 function toggleOpen() {
   if (isPc.value) {
     open.value = !open.value
@@ -79,6 +79,7 @@ function toggleOpen() {
                           <div class="flex items-center px-[4px]">
                             <i
                               class="inline-block h-[max-content] w-[max-content] icon-new-wenhao cursor-pointer text-[--bc-color20]"
+                              @click="showBonus = true"
                             />
                           </div>
                           <div class="text-color mr-[10px]">
@@ -169,4 +170,12 @@ function toggleOpen() {
       </div>
     </div>
   </BaseDrawer>
+  <BaseModal v-model:show="showBonus" content-class="mx-auto min-w-[444px] w-[500px] max-w-[1414px] px-32px">
+    <template #title>
+      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
+        Wallet
+      </div>
+    </template>
+    <WalletRule />
+  </BaseModal>
 </template>

@@ -4,11 +4,13 @@ import { cn } from '@/lib/utils'
 const list = defineProp<string[] | { title: string, icon?: string, badge?: number, value?: string }[]>()
 const itemClass = defineProp<string>()
 const modelValue = defineModel<number>()
+const { isShowTop } = useMenu()
 </script>
 
 <template>
   <div
-    class="border-b-[1px] border-solid border-[--bc-bgColor9] flex fixed md:static top-[48px] w-full z-[20] bg-color2 md:h-[46px] h-[40px] overflow-x-auto"
+    class="border-b-[1px] border-solid border-[--bc-bgColor9] flex fixed md:static w-full z-[20] bg-color2 md:h-[46px] h-[40px] overflow-x-auto transition-all duration-300"
+    :class="!isShowTop ? 'top-[48px]' : 'top-[calc(48px+var(--bc-appDownloadHeight,0px))]'"
   >
     <div
       v-for="(item, index) in list" :key="index"

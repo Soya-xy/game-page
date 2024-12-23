@@ -37,6 +37,7 @@ async function loadGames(e?: any) {
   }
   catch (error) {
     console.error('Failed to load games:', error)
+    e?.error()
   }
   finally {
     isLoading.value = false

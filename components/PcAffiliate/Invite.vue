@@ -8,7 +8,7 @@ const user = useUserStore()
 const { token } = storeToRefs(user)
 const { copy } = useClipboard()
 const { toast } = useToast()
-const date = ref(new Date())
+const date = ref()
 function copyUrl(str: string | undefined) {
   if (!str)
     return
@@ -351,9 +351,9 @@ const showDetail = ref<boolean>(false)
         History
       </div>
     </template>
-    <div class="h-[max-content]  px-[15px] flex flex-col gap-[10px]">
+    <div class="h-[max-content] px-[15px] flex flex-col gap-[10px] overflow-hidden mb-[15px]">
       <div class="flex justify-between items-center gap-x-[10px] h-[40px] w-[200px]">
-        <BaseDatePicker v-model:date="date" />
+        <BaseDatePicker v-model:date="date" placeholder="Select date" />
       </div>
       <AffiliateTable :time="date" />
     </div>

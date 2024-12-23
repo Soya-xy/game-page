@@ -25,7 +25,7 @@ export default resolveConfig({
       padding: '10px',
       screens: {
         'xl': '1248px',
-        '2xl': '1248px',
+        '2xl': '1440px',
       },
     },
     extend: {

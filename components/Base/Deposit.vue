@@ -97,7 +97,7 @@ onMounted(() => {
               >1st Deposit</span>
               <div
                 class="w-[19px] h-[21.5px] text-[8px] text-e-g-color-5 font-extrabold text-center pt-[4px] absolute left-0 bg-no-repeat bg-cover"
-                style="background-image: url(&quot;https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/icon1.png&quot;);"
+                style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/icon1.png);"
               >
                 01
               </div>
@@ -120,7 +120,7 @@ onMounted(() => {
               >2nd Deposit</span>
               <div
                 class="w-[19px] h-[21.5px] text-[8px] text-e-g-color-5 font-extrabold text-center pt-[4px] absolute left-0 bg-no-repeat bg-cover"
-                style="background-image: url(&quot;https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/icon2.png&quot;);"
+                style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/icon2.png);"
               >
                 02
               </div>
@@ -143,7 +143,7 @@ onMounted(() => {
               >3rd Deposit</span>
               <div
                 class="w-[19px] h-[21.5px] text-[8px] text-e-g-color-5 font-extrabold text-center pt-[4px] absolute left-0 bg-no-repeat bg-cover"
-                style="background-image: url(&quot;https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/icon3.png&quot;);"
+                style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/icon3.png);"
               >
                 03
               </div>
@@ -166,7 +166,7 @@ onMounted(() => {
               >4th Deposit</span>
               <div
                 class="w-[19px] h-[21.5px] text-[8px] text-e-g-color-5 font-extrabold text-center pt-[4px] absolute left-0 bg-no-repeat bg-cover"
-                style="background-image: url(&quot;https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/icon4.png&quot;);"
+                style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/icon4.png);"
               >
                 04
               </div>
@@ -191,7 +191,7 @@ onMounted(() => {
                 >1st Deposit</span>
                 <div
                   class="w-[20px] h-[22.63px] text-[10px] text-e-g-color-5 font-extrabold text-center pt-[3px] absolute left-0 bg-no-repeat bg-cover"
-                  style="background-image: url(&quot;https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/icon1.png&quot;);"
+                  style="background-image: url(https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/depositBanner/icon1.png);"
                 >
                   01
                 </div>

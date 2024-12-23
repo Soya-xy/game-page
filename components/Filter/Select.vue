@@ -14,7 +14,7 @@ const option = defineProp<{
 }[]>(undefined, true)
 
 const placeholder = defineProp<string>('Select a fruit')
-const value = defineModel<string>('value')
+const value = defineModel<string>()
 const open = ref(false)
 const { isPc } = useDevice()
 const contentClass = defineProp<string>('')
@@ -47,7 +47,7 @@ const contentClass = defineProp<string>('')
     </SelectContent>
   </Select>
 
-  <BaseDrawer v-if="!isPc" v-model:open="open" content-class="z-[555]" overlay-class="z-[550]">
+  <BaseDrawer v-if="!isPc" v-model:open="open" content-class="z-[555]" overlay-class="z-[550]" header-class="bg-transparent">
     <template #title>
       Select
     </template>
@@ -59,6 +59,7 @@ const contentClass = defineProp<string>('')
         class="hover:bg-color6 min-h-[40px] h-[40px] text-[12px]"
         @click="() => {
           open = false
+          value = item.value
         }"
       >
         {{ item.label }}
