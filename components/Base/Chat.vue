@@ -26,20 +26,16 @@ async function getMoreList() {
 
   chatList.value = res.list.reverse().concat(chatList.value)
   await nextTick()
-  await nextTick()
-  await nextTick()
   virtListRef.value?.addedList2Top(res.list)
   loading.value = false
 }
 
 onMounted(async () => {
   try {
-    pageNo.value = 1
     const conversation = await getConversation()
     if (conversation.length > 0) {
       conversationList.value = conversation
       conversationId.value = conversation[0]!.id
-      await getMoreList()
     }
   }
   catch (error) {
@@ -47,6 +43,14 @@ onMounted(async () => {
   }
   finally {
     loading.value = false
+  }
+})
+
+watch(conversationId, async (val) => {
+  if (val) {
+    pageNo.value = 1
+    chatList.value = []
+    await getMoreList()
   }
 })
 
@@ -69,7 +73,7 @@ watch(data, (val) => {
     return
 
   const item = JSON.parse(val)
-  if (item?.type === 'kefu_message_type') {
+  if (item?.type === 'public_message') {
     const chat = JSON.parse(item.content)
 
     chatList.value.push(chat)
@@ -125,38 +129,41 @@ function toBottom() {
 }
 
 onUnmounted(() => {
+  conversationId.value = undefined
   close()
 })
 </script>
 
 <template>
   <div class="flex flex-col flex-1 overflow-y-auto">
-    <div class="flex flex-col-reverse overflow-x-hidden pb-[20px] flex-1 overflow-y-auto w-full relative z-[0] touch-pan-y overscroll-contain">
+    <div
+      class="flex flex-col-reverse overflow-x-hidden pb-[20px] flex-1 overflow-y-auto w-full relative z-[0] touch-pan-y overscroll-contain"
+    >
       <VirtList
-        ref="virtListRef"
-        :list="chatList"
-        item-key="id"
-        :min-size="80"
-        @to-top="toTop"
-        @to-bottom="showBottom = false"
-        @item-resize="itemResize"
-        @scroll="scroll"
+        ref="virtListRef" :list="chatList" item-key="id" :min-size="80" @to-top="toTop"
+        @to-bottom="showBottom = false" @item-resize="itemResize" @scroll="scroll"
       >
         <template #default="{ itemData, index }">
           <ChatMessage :item="itemData" :is-first="index === 0" :up-item="chatList[index - 1]" />
         </template>
       </VirtList>
       <Spin
-        :loading="loading" class="flex-1 flex flex-col overflow-y-auto absolute inset-0 bg-[#0000003d]"
-        :class="{
+        :loading="loading" class="flex-1 flex flex-col overflow-y-auto absolute inset-0 bg-[#0000003d]" :class="{
           'z-[-1]': !loading,
         }"
       />
     </div>
 
-    <div v-if="pageNo > 1 && showBottom" class="w-[155px] rounded-tl-[36px] rounded-bl-[36px] fixed bottom-[138px] right-[0px] z-[20] bg-[--bc-bgColor5] h-[42px]" @click="toBottom">
-      <div class="mx-[15px] text-white mt-[10px] text-[14px] h-[20px] flex whitespace-nowrap items-center overflow-hidden">
-        <i class="inline-block h-[max-content] w-[max-content] icon-new-down cursor-pointer mr-[10px]" /><p>
+    <div
+      v-if="pageNo > 1 && showBottom"
+      class="w-[155px] rounded-tl-[36px] rounded-bl-[36px] fixed bottom-[138px] right-[0px] z-[20] bg-[--bc-bgColor5] h-[42px]"
+      @click="toBottom"
+    >
+      <div
+        class="mx-[15px] text-white mt-[10px] text-[14px] h-[20px] flex whitespace-nowrap items-center overflow-hidden"
+      >
+        <i class="inline-block h-[max-content] w-[max-content] icon-new-down cursor-pointer mr-[10px]" />
+        <p>
           Back to Bottom
         </p>
       </div>

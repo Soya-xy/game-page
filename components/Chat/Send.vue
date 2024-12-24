@@ -2,6 +2,7 @@
 import { sendChat } from '~/api/chat'
 
 const msg = ref('')
+const showConversation = ref(false)
 
 function sendMsg() {
   if (!msg.value)
@@ -14,6 +15,11 @@ function sendMsg() {
   })
 
   msg.value = ''
+}
+
+function changeConversation(id: number) {
+  conversationId.value = id
+  showConversation.value = false
 }
 </script>
 
@@ -28,11 +34,9 @@ function sendMsg() {
             {{ msg }}
           </div>
           <textarea
-            id="editorId"
-            v-model="msg"
-            class="editorss w-full overflow-hidden block !resize-none bg-transparent text-[14px] absolute left-0 top-[16px] z-[11] text-white" spellcheck="false"
-            placeholder="Write a message..."
-            @keyup.enter="sendMsg"
+            id="editorId" v-model="msg"
+            class="editorss w-full overflow-hidden block !resize-none bg-transparent text-[14px] absolute left-0 top-[16px] text-white"
+            spellcheck="false" placeholder="Write a message..." @keyup.enter="sendMsg"
           />
         </div>
         <i
@@ -54,25 +58,40 @@ function sendMsg() {
       <div
         class="select-bg border-radius-0 relative overflow-visible text-[12px] text-color shrink-0 h-[36px] bg-color z-[10] w-[160px]  cursor-pointer"
       >
-        <div class="h-full flex items-center justify-between px-[10px]">
+        <div class="h-full flex items-center justify-between px-[10px]" @click="showConversation = !showConversation">
           <div class="flex items-center text-white font-medium">
             <i
               class="inline-block  w-[max-content] icon-new-lang cursor-pointer text-[20px] text-color mr-[14px] shrink-0 h-[20px]"
-            /><span>English</span>
+            /><span>{{
+              conversationList?.find(item => item.id === conversationId)?.sessionTitle }}</span>
           </div>
           <button class="text-[10px] transition-all duration-200 flex items-center -rotate-[90deg] text-[--bc-color20]">
             <i class="inline-block h-[max-content] w-[max-content] icon-new-back cursor-pointer" />
           </button>
         </div>
         <ul
-          class="bg-color2 border-radius-0 w-full absolute z-[15] left-0 top-[0] -translate-y-[100%] transition-all overflow-hidden box-shadow-02 max-h-0"
+          class="bg-color2 border-radius-0 w-full absolute z-[15] left-0 top-[0] -translate-y-[100%] transition-all overflow-hidden box-shadow-02 max-h-[300px] overflow-y-auto"
+          :class="{
+            '!max-h-[0]': !showConversation,
+          }"
         >
           <li
-            class="flex items-center justify-center px-[15px] relative cursor-pointer bg-[--bc-searchBtnColor] text-white font-bold min-h-[36px]"
+            v-for="item, idx in conversationList"
+            :key="idx"
+            class="flex items-center justify-center px-[15px] relative cursor-pointer  font-bold min-h-[36px]"
+            :class="{
+              'bg-[--bc-searchBtnColor] text-white': item.id === conversationId,
+            }"
+            @click="changeConversation(item.id)"
           >
-            <span>English</span>
-            <button class="absolute inset-y-0 right-[15px] flex items-center">
-              <i class="inline-block h-[max-content] w-[max-content] icon-new-hook cursor-pointer text-active" />
+            <span>{{ item.sessionTitle }}</span>
+            <button
+              class="absolute inset-y-0 right-[15px] flex items-center"
+            >
+              <i
+                v-if="item.id === conversationId"
+                class="inline-block h-[max-content] w-[max-content] icon-new-hook cursor-pointer text-active"
+              />
             </button>
           </li>
         </ul>
