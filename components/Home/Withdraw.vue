@@ -26,7 +26,7 @@ async function showTurnTable() {
 </script>
 
 <template>
-  <div>
+  <div v-if="token">
     <div class="bg-color2 rounded-[10px] overflow-hidden">
       <div
         class="md:h-[130px] h-[165px] md:px-[36px] px-[15px] md:py-[15px] py-[12px] rounded-[inherit] font-extrabold bg-color3-linear textwhite flex items-center justify-between relative max-lg:flex-col max-lg:items-start max-lg:h-[180px]"
@@ -46,7 +46,8 @@ async function showTurnTable() {
           <Progress
             v-if="token"
             :model-value="(rouletteInfo?.totalSpinAmount || 0) / (rouletteInfo?.freeAmount || 0) * 100"
-            class="h-[6px] rounded-full bg-[--bc-bgColor7] mt-[8px] md:w-[400px] w-full" indicator-class="main-color-btn rounded-full"
+            class="h-[6px] rounded-full bg-[--bc-bgColor7] mt-[8px] md:w-[400px] w-full"
+            indicator-class="main-color-btn rounded-full"
           />
           <p v-if="!token" class="text-color md:text-[18px] text-[14px] mt-[5px] font-normal">
             Click to spin to get your rewards.
@@ -72,6 +73,34 @@ async function showTurnTable() {
       </div>
     </div>
     <TurnTable v-if="token" v-model:show="show" />
+  </div>
+  <div v-else>
+    <div class="bg-color2 rounded-[10px] overflow-hidden">
+      <div
+        class="md:h-[130px] h-[165px] md:px-[36px] px-[15px] md:py-[15px] py-[12px] rounded-[inherit] font-extrabold bg-color3-linear  flex items-center justify-between relative max-lg:flex-col max-lg:items-start max-lg:h-[180px]"
+      >
+        <Image
+          alt="" loading="lazy" data-nuxt-img=""
+          class="max-w-full h-full h-full absolute bottom-0 left-[47.1%] max-lg:h-[60%] max-lg:left-[55%] h-full absolute bottom-0 left-[47.1%] max-lg:h-[60%] max-lg:left-[55%]"
+          importance="auto"
+          src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/invite_wheel.png?2024112916"
+          srcset="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/invite_wheel.png?2024112916 1x, https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/invite_wheel.png?2024112916 2x"
+        />
+        <div class="z-[1] text-white w-full">
+          <h4 class="md:text-[26px] text-[16px]">
+            Get <span class="text-linearColor md:text-[32px] text-[20px]">¥100.00</span> for free
+          </h4><!-- v-if -->
+          <p class="text-color md:text-[18px] text-[14px] mt-[5px] font-normal">
+            Click to spin to get your rewards.
+          </p>
+        </div><button
+          class="border-radius-0 w-[max-content] main-color-btn min-w-[152px] h-[42px] text-[15px] text-font flex items-center justify-center px-[15px] z-[1] hover:brightness-105"
+          @click="showTurnTable"
+        >
+          Sign up now
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
