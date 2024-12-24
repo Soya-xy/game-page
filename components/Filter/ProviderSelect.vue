@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
+import type { Option } from '~/api/type'
 
+import { Button } from '@/components/ui/button'
 import {
   Command,
   CommandGroup,
@@ -13,11 +14,7 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 
-const option = defineProp<{
-  value: string
-  label: string
-  [key: string]: any
-}[]>(undefined, true)
+const option = defineProp<Option[]>(undefined, true)
 
 const open = ref(false)
 const change = defineEmit<any>()

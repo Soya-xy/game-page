@@ -45,9 +45,8 @@ async function showTurnTable() {
 
           <Progress
             v-if="token"
-            :model-value="(rouletteInfo?.totalSpinAmount || 0) / (rouletteInfo?.freeAmount || 0) * 100"
-            class="h-[6px] rounded-full bg-[--bc-bgColor7] mt-[8px] md:w-[400px] w-full"
-            indicator-class="main-color-btn rounded-full"
+            :model-value="((rouletteInfo?.totalSpinAmount || 0) / (rouletteInfo?.freeAmount || 0) * 100 || 0)"
+            class="h-[6px] rounded-full bg-[--bc-bgColor7] mt-[8px] md:w-[400px] w-full" indicator-class="main-color-btn rounded-full"
           />
           <p v-if="!token" class="text-color md:text-[18px] text-[14px] mt-[5px] font-normal">
             Click to spin to get your rewards.

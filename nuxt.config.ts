@@ -65,6 +65,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       appUrl: process.env.NUXT_PUBLIC_APP_URL,
+      wsUrl: process.env.NUXT_PUBLIC_WS_URL,
     },
   },
   build: {

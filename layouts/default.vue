@@ -55,7 +55,7 @@ function open(e: string) {
               <slot />
             </div>
           </div>
-          <LazyRight v-model:show="showRight" :type />
+          <LazyRight v-if="showRight" v-model:show="showRight" :type />
         </div>
         <LayoutFooter v-if="!route.meta.noFooter" />
       </main>

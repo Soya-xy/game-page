@@ -23,7 +23,7 @@ const { summary } = storeToRefs(affiliate)
           </div>
           <div class="flex items-center">
             <div class="flex-1">
-              <div class="text-[10px] capitalize text-color-text-2 mb-[4px] whitespace-nowrap">
+              <div class="text-[10px] capitalize text-[--bc-color20] mb-[4px] whitespace-nowrap">
                 Exclusive Commission
               </div>
               <div class="text-color text-[12px] font-medium">

@@ -1,49 +1,20 @@
-export interface AffiliateSummary {
-  withdrawPrice: number
-  brokeragePrice: number
-  todayEffectiveInvestment: number
-  todayBrokerageUserCount: number
-  todayFirstDeposit: number
-  totalBrokerageUserCount: number
-  totalEffectiveInvestment: number
-  totalFirstDeposit: number
+export interface ChatList {
+  id: number
+  conversationId: number
+  senderId: number
+  senderAvatar: string
+  nickname: string
+  level: number
+  senderType: number
+  receiverId: number
+  receiverType: number
+  contentType: number // 1: text, 2: image, 3: audio, 4: video
+  content: string
+  readStatus: boolean
+  createTime: number
 }
 
-export interface AffiliateCode {
-  brokeragePosterUrls: string[]
-  brokeragePromotionUrl: string
-  brokeragePromotionCode: string
-}
-
-export interface AffiliateActivity {
-  maxParticipants: number
-  maxReward: number
-}
-
-export interface AffiliateRecord {
-  respVOList: {
-    avatar: string
-    phone: string
-    userName: string
-    price: number
-    level: number
-  }[]
-  totalCommission: number
-}
-
-export interface AffiliateLevel {
-  gameCategory: string
-  tier: number
-  rewardPercentage: number
-  wagerPercentage: number
-  remarks: string
-  createTime: string
-}
-
-export interface AffiliateInvite {
-  status: number
-  id: string
-  statusName: string
-  price: number
-  createTime: string
+export interface Conversation {
+  id: number
+  sessionTitle: string
 }

@@ -666,3 +666,29 @@ html {
   text-shadow: none;
   width: 100%;
 }
+
+.chat-item:hover .aite-reply {
+  visibility: visible;
+}
+
+.chat-height {
+  height: calc(100vh - 60px);
+  top: 60px;
+}
+
+.chat-bottom .new-message:after {
+  border: 0.5rem solid transparent;
+  border-top-color: #2dee88;
+  bottom: -15px;
+  content: '';
+  left: 17px;
+  position: absolute;
+}
+
+.chat-bottom .chat-content .editorss {
+  height: calc(100% - 20px);
+}
+
+.chat-bottom .chat-content :not(.editorss) {
+  -webkit-user-select: none;
+}

@@ -76,7 +76,7 @@ function clearHistory() {
             </BaseInput>
           </div>
         </div>
-        <div class="shrink-0 text-color-text-2 flex items-center justify-center text-[14px] mb-[10px]">
+        <div class="shrink-0 text-[--bc-color20] flex items-center justify-center text-[14px] mb-[10px]">
           Search requires at least 3 characters
         </div>
         <Spin :loading="isLoading" class="min-h-[300px]">
@@ -94,7 +94,7 @@ function clearHistory() {
                 <p class="truncate mr-[8px] leading-[1]">
                   {{ v }}
                 </p><i
-                  class="inline-block h-[max-content] w-[max-content] icon-new-clean-1 cursor-pointer text-color-text-2 text-[12px]"
+                  class="inline-block h-[max-content] w-[max-content] icon-new-clean-1 cursor-pointer text-[--bc-color20] text-[12px]"
                 />
               </button>
             </HScroll>

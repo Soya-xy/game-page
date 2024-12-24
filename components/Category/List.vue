@@ -123,7 +123,7 @@ async function loadGames(e?: any) {
     }
 
     providerOption.value = (data as CategoryListDetailResponse).providerData?.map(v => ({
-      value: v.id,
+      value: v.id as string,
       label: v.name,
       picUrl: v.picUrl,
       count: v.count,

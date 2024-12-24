@@ -105,7 +105,7 @@ function changeLang(lang: Locale) {
             </DropdownMenuTrigger>
             <DropdownMenuContent
               align="end"
-              class="bg-color2 text-color relative text-[14px] overflow-hidden border-radius-0 pt-[10px] min-w-[220px] flex flex-col shadow-[0_4px_20px_#00000060]"
+              class="bg-color2 text-color relative text-[14px] overflow-hidden border-radius-0 pt-[10px] min-w-[220px] flex flex-col shadow-[0_4px_20px_#00000060] z-[9999]"
             >
               <DropdownMenuItem
                 v-for="item in menuItems" :key="item.label"

@@ -49,7 +49,7 @@ const isFocus = ref(false)
       @click="clickIcon"
     >
       <i
-        class="inline-block h-[max-content] w-[max-content] cursor-pointer icon-new-clean-1 text-[12px] text-color-text-2"
+        class="inline-block h-[max-content] w-[max-content] cursor-pointer icon-new-clean-1 text-[12px] text-[--bc-color20]"
         @click="modelValue = ''"
       />
     </div>

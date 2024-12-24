@@ -33,7 +33,7 @@ const { summary } = storeToRefs(affiliate)
         <div class="text-[12px] w-full font-bold flex justify-between mt-[6px]">
           <span class="text-color-linear-20">{{ summary?.totalBrokerageUserCount }}</span>
           <Dropdown :distance="6" placement="bottom-end">
-            <i class="inline-block h-[max-content]  w-[max-content] icon-new-info-circle text-color-text-2" />
+            <i class="inline-block h-[max-content]  w-[max-content] icon-new-info-circle text-[--bc-color20]" />
 
             <template #popper>
               <div class="pointer-events-auto opacity-100 p-[10px] min-w-[160px] box-shadow-02 border-radius-0 z-10">

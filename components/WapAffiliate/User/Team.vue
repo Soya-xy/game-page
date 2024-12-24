@@ -11,7 +11,7 @@ const { summary } = storeToRefs(affiliate)
 
     <div class="flex flex-wrap gap-y-[10px] items-center py-[15px]">
       <div class="w-[50%] shrink-0 text-center">
-        <div class="text-color-text-2 text-[10px] mb-[2px]">
+        <div class="text-[--bc-color20] text-[10px] mb-[2px]">
           Sign Up
         </div>
         <div class="text-color font-semibold text-[12px]">
@@ -19,7 +19,7 @@ const { summary } = storeToRefs(affiliate)
         </div>
       </div>
       <div class="w-[50%] shrink-0 text-center">
-        <div class="text-color-text-2 text-[10px] mb-[2px]">
+        <div class="text-[--bc-color20] text-[10px] mb-[2px]">
           First Deposit
         </div>
         <div class="text-color font-semibold text-[12px]">
@@ -27,7 +27,7 @@ const { summary } = storeToRefs(affiliate)
         </div>
       </div>
       <div class="w-[50%] shrink-0 text-center">
-        <div class="text-color-text-2 text-[10px] mb-[2px]">
+        <div class="text-[--bc-color20] text-[10px] mb-[2px]">
           Valid bet
         </div>
         <div class="text-color font-semibold text-[12px]">
