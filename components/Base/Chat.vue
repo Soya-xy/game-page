@@ -6,7 +6,7 @@ import { getChatList, getConversation } from '~/api/chat'
 import { conversationList } from '~/composables/chat'
 
 const user = useUserStore()
-const { token } = storeToRefs(user)
+const { token, userInfo } = storeToRefs(user)
 
 const virtListRef = ref<any>(null)
 const loading = ref(true)
@@ -28,8 +28,7 @@ async function getMoreList() {
   await nextTick()
   await nextTick()
   await nextTick()
-  virtListRef.value.addedList2Top(res.list)
-  showBottom.value = true
+  virtListRef.value?.addedList2Top(res.list)
   loading.value = false
 }
 
@@ -51,7 +50,7 @@ onMounted(async () => {
   }
 })
 
-const { data } = useWebSocket(`${useRuntimeConfig().public.wsUrl}?token=${token.value}`, {
+const { data, close } = useWebSocket(`${useRuntimeConfig().public.wsUrl}?token=${token.value}`, {
   autoReconnect: true,
   heartbeat: {
     message: 'ping',
@@ -65,8 +64,19 @@ function toTop() {
   getMoreList()
 }
 
-watch(data, (newData) => {
-  console.log(newData)
+watch(data, (val) => {
+  if (val === 'pong')
+    return
+
+  const item = JSON.parse(val)
+  if (item?.type === 'kefu_message_type') {
+    const chat = JSON.parse(item.content)
+
+    chatList.value.push(chat)
+    if (chat.senderId === userInfo.value!.id) {
+      virtListRef.value.scrollToBottom()
+    }
+  }
 }, {
   immediate: true,
   deep: true,
@@ -80,6 +90,16 @@ function itemResize() {
 }
 
 const scrollPosition = ref(0)
+
+function scroll() {
+  const { inViewBegin: firstIndex, inViewEnd: lastIndex } = virtListRef.value?.reactiveData
+  if (firstIndex <= 10 || lastIndex >= 15) {
+    showBottom.value = true
+  }
+  else {
+    showBottom.value = false
+  }
+}
 
 function toBottom() {
   showBottom.value = false
@@ -103,6 +123,10 @@ function toBottom() {
     })
   })
 }
+
+onUnmounted(() => {
+  close()
+})
 </script>
 
 <template>
@@ -114,7 +138,9 @@ function toBottom() {
         item-key="id"
         :min-size="80"
         @to-top="toTop"
+        @to-bottom="showBottom = false"
         @item-resize="itemResize"
+        @scroll="scroll"
       >
         <template #default="{ itemData, index }">
           <ChatMessage :item="itemData" :is-first="index === 0" :up-item="chatList[index - 1]" />
