@@ -107,14 +107,14 @@ function selectEmoji(emoji: string) {
           </li>
         </ul>
       </div>
-      <div class="pl-[15px] space-x-[15px] flex items-center">
+      <!-- <div class="pl-[15px] space-x-[15px] flex items-center">
         <i
           class="inline-block h-[max-content] w-[max-content] icon-new-chat-giftmoney  text-[--bc-color20] text-[20px] cursor-pointer hover:text-white"
         />
         <i
           class="inline-block h-[max-content] w-[max-content] icon-new-chat-rank text-[--bc-color20] text-[20px] cursor-pointer hover:text-white"
         />
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

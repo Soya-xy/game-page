@@ -5,6 +5,7 @@ import { ref } from 'vue'
 const route = useRoute()
 const router = useRouter()
 const isOpen = ref(false)
+const showChat = ref(false)
 const menuItems = [
   { name: 'Casino', href: '/casino', icon: 'casino', iconType: 'svg' },
   { name: 'Sports', href: '/sports', icon: 'sport', iconType: 'svg' },
@@ -63,15 +64,12 @@ function changeLang(lang: Locale) {
           Affiliate
         </div>
       </div>
-      <div
-        class="flex-1 flex flex-col items-center justify-center text-[10px] space-y-[2px] "
-        @click="routerPush('/sports')"
-      >
+      <div class="flex-1 flex flex-col items-center justify-center text-[10px] space-y-[2px] " @click="showChat = true">
         <div class="flex items-center justify-center" style="width: 22px; height: 22px;">
           <i-svg-sport :class="{ active: route.path.includes('/sports') }" />
         </div>
         <div class="text-center whitespace-nowrap" :class="{ active: route.path.includes('/sports') }">
-          Sports
+          Chat
         </div>
       </div>
       <div
@@ -89,7 +87,7 @@ function changeLang(lang: Locale) {
     <Drawer v-model:open="isOpen" direction="left" :modal="false">
       <DrawerContent
         class=" mb-[50px] pb-[70px] bg-color"
-        :class="!isShowTop ? 'h-[calc(100vh-90px)]' : 'h-[calc(100vh-90px-var(--bc-appDownloadHeight,0px))]' "
+        :class="!isShowTop ? 'h-[calc(100vh-90px)]' : 'h-[calc(100vh-90px-var(--bc-appDownloadHeight,0px))]'"
       >
         <div class="flex flex-col pt-[10px] gap-[5px] mx-[3.3%] md:pt-[20px]">
           <BaseInvitation />
@@ -124,7 +122,10 @@ function changeLang(lang: Locale) {
                 </p>
               </div>
             </div>
-            <div class="h-[40px] text-white text-[14px] font-semibold bg-color2 cursor-pointer rounded overflow-hidden" @click="langModal = true">
+            <div
+              class="h-[40px] text-white text-[14px] font-semibold bg-color2 cursor-pointer rounded overflow-hidden"
+              @click="langModal = true"
+            >
               <div class="h-full flex items-center relative hover-bg-linear-3">
                 <div class="w-[40px] h-[40px] flex items-center justify-center">
                   <i
@@ -145,6 +146,19 @@ function changeLang(lang: Locale) {
         Switch Language
       </template>
       <BaseLang @change="changeLang" />
+    </BaseDrawer>
+    <BaseDrawer
+      v-model:open="showChat" direction="right" content-class="z-[999] h-[100vh] !p-0" overlay-class="z-[999]"
+      :dismissible="false"
+    >
+      <template #title>
+        <div class="flex items-center justify-center">
+          Chat
+          <i class="inline-block h-[max-content] w-[max-content] icon-new-personal text-[16px] mx-[8px] text-color" />
+          <span class="text-[16px] text-active">123</span>
+        </div>
+      </template>
+      <BaseChat />
     </BaseDrawer>
   </div>
 </template>

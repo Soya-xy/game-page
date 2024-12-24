@@ -14,6 +14,7 @@ const open = defineModel<boolean>('open', {
 })
 
 const haveClose = defineProp<boolean>(true)
+const dismissible = defineProp<boolean>(true)
 const noHeader = defineProp<boolean>()
 const contentClass = defineProp<string>('')
 const overlayClass = defineProp<string>('')
@@ -22,7 +23,7 @@ const close = defineEmit()
 </script>
 
 <template>
-  <Drawer v-model:open="open" should-scale-background no-body-style>
+  <Drawer v-model:open="open" should-scale-background :dismissible>
     <DrawerContent :class="cn('bg-color p-[12px]', contentClass)" :overlay-class="overlayClass">
       <DrawerHeader v-if="!noHeader" class="flex justify-between items-center bg-[--bc-color-3] text-white" :class="headerClass">
         <DrawerTitle>
