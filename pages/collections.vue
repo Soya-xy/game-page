@@ -77,7 +77,6 @@ function reload() {
 }
 
 function deleteFavorite(e: boolean, id: number) {
-  console.log('%c🤪 ~ file: /Users/soya/Desktop/game-page/pages/collections.vue:79 [deleteFavorite] -> e : ', 'color: #9b5cab', e)
   if (e) {
     data.value = data.value.filter(item => item.id !== id)
     count.value--

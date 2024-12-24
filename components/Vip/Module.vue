@@ -7,7 +7,6 @@ const levelList = inject<VipLevel[]>('levelList')
 const nowLevel = computed(() => {
   if (!levelList)
     return {} as VipLevel
-  console.log('%c🤪 ~ file: /Users/soya/Desktop/game-page/components/Vip/Module.vue:8 [nowLevel/computed] -> levelList : ', 'color: #d4efce', levelList)
 
   return levelList.find(level => level.id === currentLevel.value)!
 })

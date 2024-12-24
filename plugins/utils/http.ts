@@ -1,6 +1,6 @@
 import type { $Fetch, FetchContext, FetchOptions } from 'ofetch'
 import { useToast } from '@/components/ui/toast/use-toast'
-import { createConsola } from 'consola'
+import { createConsola } from 'consola/core'
 import dayjs from 'dayjs'
 
 function createLogger(logLevel: number) {
