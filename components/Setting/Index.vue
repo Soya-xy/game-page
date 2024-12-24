@@ -14,23 +14,23 @@ function closeHandle() {
 
 <template>
   <div
-    class="sticky top-0 z-[0] w-full flex items-center px-[30px] bg-linear-12 rounded-t-[10px] text-white h-[76px] shrink-0"
+    class="sticky top-0 z-[0] w-full flex items-center px-[30px] bg-linear-12 md:rounded-t-[10px] text-white md:h-[76px] shrink-0 h-[46px]"
   >
     <div class="flex-1 flex items-center">
       <i
         v-if="name !== 'Setting'"
-        class="inline-block h-[max-content] w-[max-content] icon-new-arrow cursor-pointer mr-[10px] text-[20px] -rotate-[180deg]"
+        class="inline-block h-[max-content] w-[max-content] icon-new-arrow cursor-pointer mr-[10px] md:text-[20px] text-[16px] -rotate-[180deg]"
         @click="() => {
           name = 'Setting'
           type = 0
         }"
       />
-      <div class="text-[20px] font-bold">
+      <div class="md:text-[20px] text-[16px] font-bold">
         {{ name }}
       </div>
     </div>
   </div>
-  <div class="px-[40px] pb-[20px] flex flex-col flex-1 relative text-[14px] mt-[30px] text-white">
+  <div class="md:px-[40px] px-[20px] pb-[20px] flex flex-col flex-1 relative text-[14px] mt-[30px] text-white">
     <template v-if="type === 0">
       <div class="mb-[10px]">
         <div
@@ -110,13 +110,13 @@ function closeHandle() {
     <SettingAccount v-if="type === 3" @close="closeHandle" />
     <SettingPassword v-if="type === 4" @close="closeHandle" />
   </div>
-  <BaseModal v-model:show="showCPF" content-class="h-[700px] overflow-y-scroll=">
+  <BaseModal v-model:show="showCPF" content-class="h-[700px] overflow-y-scroll" wap-content-class="!p-0 min-h-[600px]">
     <template #title>
-      <div class="w-full flex items-center px-[30px] bg-linear-12 rounded-t-[10px] text-white h-[76px] shrink-0">
+      <div class="w-full flex items-center px-[30px] md:bg-linear-12 rounded-t-[10px] text-white md:h-[76px] h-[46px] shrink-0">
         CPF
       </div>
     </template>
-    <div class="px-[20px] pb-[20px] flex flex-col flex-1 relative text-[14px] text-white">
+    <div class="px-[20px] pb-[20px] flex flex-col flex-1 relative text-[14px] text-white mt-[20px] md:mt-0">
       <SettingCPF @close="closeHandle" />
     </div>
   </BaseModal>

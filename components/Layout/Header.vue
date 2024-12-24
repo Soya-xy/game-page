@@ -23,7 +23,7 @@ const menuItems = [
   { label: 'Bets History', icon: 'icon-n-bet-history', onClick() { showBetsModel.value = true } },
   { label: 'Free bets', icon: 'icon-n-free' },
   { label: 'Setting', icon: 'icon-n-security-settings', onClick() { showSettingModel.value = true } },
-  { label: 'Install', icon: 'icon-n-install' },
+  { label: 'Install', icon: 'icon-n-install', hash: '/install' },
 ]
 
 function handleClick(e: any) {
@@ -146,12 +146,7 @@ function changeLang(lang: Locale) {
     <BaseLang @change="changeLang" />
   </BaseModal>
   <!-- Setting -->
-  <BaseModal v-model:show="showSettingModel" content-class="!min-h-[70vh] overflow-y-scroll=">
-    <template #title>
-      <div class="flex justify-between items-center h-[54px] px-[20px] bg-color2">
-        Setting
-      </div>
-    </template>
+  <BaseModal v-model:show="showSettingModel" content-class="!min-h-[70vh] overflow-y-scroll">
     <Setting />
   </BaseModal>
   <!-- Wallet -->

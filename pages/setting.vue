@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 definePageMeta({
   pageIndex: PageIndexEnum.setting,
-  noHeader: false,
+  noHeader: true,
 })
 const { isPc } = useDevice()
 watch(isPc, (newVal) => {

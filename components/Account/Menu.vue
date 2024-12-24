@@ -8,6 +8,7 @@ const { setLocale } = useI18n()
 const router = useRouter()
 const showLanguageModal = ref<boolean>(false)
 const showProfileHelp = ref<boolean>(false)
+const showNotice = ref<boolean>(false)
 
 function changeLang(lang: Locale) {
   setLocale(lang)
@@ -24,6 +25,9 @@ const userList = computed(() => {
       name: 'Notification',
       icon: 'icon-new-message',
       href: '',
+      onClick() {
+        showNotice.value = true
+      },
     },
     {
       name: 'Affiliate - Earn $5,000 Per Month',
@@ -118,7 +122,7 @@ function handleClick(e: any) {
   <div v-if="userList.length" class="text-color w-full border-radius-0 bg-color2 mt-[15px]">
     <button
       v-for="item in userList" :key="item.name" class="flex items-center pl-[15px] pr-[12px] h-[40px] w-full"
-      @click="item.href ? routerPush(item.href) : null"
+      @click="item.href ? routerPush(item.href) : item.onClick ? item.onClick() : null"
     >
       <div class="flex items-center flex-1 overflow-hidden mr-[14px] h-full">
         <i v-if="!item.url" class="inline-block h-[max-content] w-[max-content] text-[20px]" :class="cn(item?.icon)" />
@@ -191,6 +195,17 @@ function handleClick(e: any) {
     </template>
     <ProfileHelp />
   </BaseModal>
+  <BaseDrawer
+    v-model:open="showNotice" direction="right" content-class="z-[999] h-[100vh] !p-0" overlay-class="z-[999]"
+    :dismissible="false"
+  >
+    <template #title>
+      <div class="flex items-center justify-center">
+        Notification
+      </div>
+    </template>
+    <BaseNotification />
+  </BaseDrawer>
 </template>
 
 <style></style>

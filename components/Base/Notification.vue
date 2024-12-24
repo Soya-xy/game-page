@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { asyncNotifacationList } from '@/api/new/index'
+import { asyncNotificationList } from '@/api/new/index'
 
 const current = ref<number>(0)
 const currentList = ref<{
@@ -12,55 +12,23 @@ const currentList = ref<{
   title: 'Personal',
   badge: 0,
 }])
-const listData = ref([
-  {
-    title: '1',
-    img: 'https://img.engames.com/cdn-cgi/image/format=auto/afun/1727823327592450147.jpeg',
-    isShow: true,
-    time: '2024-11-04 15:43',
-    content: `1.Depósitos e retiradas devem ser feitos com a mesma conta de fundo de garantia. Insira informações reais.
 
-2.A conta CPF vinculada não pode ser alterada. Escolha com cuidado.
-
-3.Use o CPF vinculado para recarregar. Contas não vinculadas falharão, e a responsabilidade será do usuário. Verifique as informações antes de operar.`,
-  },
-  {
-    title: '2',
-    isShow: true,
-  },
-  {
-    title: '2',
-    isShow: true,
-  },
-  {
-    title: '2',
-    isShow: true,
-  },
-  {
-    title: '2',
-    isShow: true,
-  },
-  {
-    title: '2',
-    isShow: true,
-  },
-  {
-    title: '2',
-    isShow: true,
-  },
-  {
-    title: '2',
-    isShow: true,
-  },
-])
+const listData = ref<{
+  time: string
+  title: string
+  img?: string
+  content: string
+  isShow: boolean
+}[]>([])
 
 watch(current, (newval) => {
   getList(newval + 1)
 }, {
   immediate: true,
 })
+
 async function getList(type: number) {
-  const { list } = await asyncNotifacationList(type)
+  const { list } = await asyncNotificationList(type)
   listData.value = list
 }
 </script>
@@ -70,7 +38,7 @@ async function getList(type: number) {
     <BaseTabs
       v-model="current" :list="currentList"
       class="!static rounded-b-[5px] [&>div:first-child]:rounded-bl-[5px] [&>div:last-child]:rounded-br-[5px] mb-[20px]"
-      item-class="!w-[150px]"
+      item-class="w-[50%]"
     />
     <div class="p-[10px] md:p-0 h-[calc(100vh-75px-52px-40px-20px)] overflow-y-auto">
       <div
