@@ -81,7 +81,7 @@ async function showTurnTable() {
       >
         <Image
           alt="" loading="lazy" data-nuxt-img=""
-          class="max-w-full h-full h-full absolute bottom-0 left-[47.1%] max-lg:h-[60%] max-lg:left-[55%] h-full absolute bottom-0 left-[47.1%] max-lg:h-[60%] max-lg:left-[55%]"
+          class="max-w-full h-full absolute bottom-0 left-[47.1%] max-lg:h-[60%] max-lg:left-[55%]"
           importance="auto"
           src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/invite_wheel.png?2024112916"
           srcset="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/invite_wheel.png?2024112916 1x, https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/_E/home/invite_wheel.png?2024112916 2x"
