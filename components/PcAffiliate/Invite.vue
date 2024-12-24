@@ -97,7 +97,7 @@ const showDetail = ref<boolean>(false)
                   </div>
                   <div>
                     <div
-                      class="field-container w-full border-radius-0 flex items-center shrink-0 border-[--bc-bgColor5] border border-solid relative h-[46px]  text-[14px] px-[16px] gap-[8px] field-container-pc h-[46px] bg-[--bc-searchBtnColor]"
+                      class="field-container w-full border-radius-0 flex items-center shrink-0 border-[--bc-bgColor5] border border-solid relative h-[46px]  text-[14px] px-[16px] gap-[8px] field-container-pc bg-[--bc-searchBtnColor]"
                     >
                       <div class="text-color !w-[3em] shrink-0">
                         Code
@@ -163,7 +163,7 @@ const showDetail = ref<boolean>(false)
                     />
                     <template #popper>
                       <div
-                        class=" w-[280px] left-[24px]  p-[10px] box-shadow-02 border-radius-0 bg-[--bc-bgColor9] z-10"
+                        class="w-[280px] left-[24px] p-[10px] box-shadow-02 border-radius-0 bg-[--bc-bgColor9] z-[10]"
                       >
                         <ul class="text-[14px] list-disc list-outside text-color leading-[1.2] pl-[20px]">
                           <li>Sign up:Number of users who signed up today</li>

@@ -6,7 +6,7 @@ import Empty from '../Base/Empty.vue'
   <div>
     <div class="flex gap-[10px] px-[15px] md:px-[30px] shrink-0 mt-[10px] mb-[10px]">
       <div
-        class="select-bg rounded-sm relative overflow-visible text-[12px] text-[--bc-textColor] shrink-0 bg-[--bc-bgColor9] z-10 h-[46px] flex-1"
+        class="select-bg rounded-sm relative overflow-visible text-[12px] text-[--bc-textColor] shrink-0 bg-[--bc-bgColor9] z-[10]h-[46px] flex-1"
       >
         <div class="h-full flex items-center justify-between px-[12px] cursor-pointer">
           <div class="select-show-div flex items-center text-[--bc-textColor] font-medium">
@@ -69,7 +69,7 @@ import Empty from '../Base/Empty.vue'
         </ul>
       </div>
       <div
-        class="select-bg rounded-sm relative overflow-visible text-[12px] text-[--bc-textColor] shrink-0  bg-[--bc-bgColor9] z-10 h-[46px] flex-1"
+        class="select-bg rounded-sm relative overflow-visible text-[12px] text-[--bc-textColor] shrink-0 bg-[--bc-bgColor9] z-[10]h-[46px] flex-1"
       >
         <div class="h-full flex items-center justify-between px-[12px] cursor-pointer">
           <div class="select-show-div flex items-center text-[--bc-textColor] font-medium">
@@ -111,7 +111,7 @@ import Empty from '../Base/Empty.vue'
         </ul>
       </div>
       <div
-        class="select-bg rounded-sm relative overflow-visible text-[12px] text-[--bc-textColor] shrink-0 z-10 h-[40px] bg-[--bc-bgColor9] z-10 h-[46px] flex-1"
+        class="select-bg rounded-sm relative overflow-visible text-[12px] text-[--bc-textColor] shrink-0 z-[10]h-[40px] bg-[--bc-bgColor9] flex-1"
       >
         <div class="h-full flex items-center justify-between px-[12px] cursor-pointer">
           <div class="select-show-div flex items-center text-[--bc-textColor] font-medium">

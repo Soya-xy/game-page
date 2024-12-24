@@ -113,7 +113,7 @@ function toggleOpen() {
     @click="routerPush('/bonus')"
   >
     <div
-      class="rounded-full text-[11px] bg-[--bc-activeColor2] shrink-0 text-font flex items-center justify-center font-bold px-[2px] min-w-[16px] h-[14px] text-[11px] absolute -right-[4px] top-0"
+      class="rounded-full text-[11px] bg-[--bc-activeColor2] shrink-0 text-font flex items-center justify-center font-bold px-[2px] min-w-[16px] h-[14px]  absolute -right-[4px] top-0"
     >
       3
     </div>
