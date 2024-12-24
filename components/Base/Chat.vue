@@ -46,15 +46,7 @@ onMounted(async () => {
   }
 })
 
-watch(conversationId, async (val) => {
-  if (val) {
-    pageNo.value = 1
-    chatList.value = []
-    await getMoreList()
-  }
-})
-
-const { data, close } = useWebSocket(`${useRuntimeConfig().public.wsUrl}?token=${token.value}`, {
+const { data, close, send, status } = useWebSocket(`${useRuntimeConfig().public.wsUrl}?token=${token.value}`, {
   autoReconnect: true,
   heartbeat: {
     message: 'ping',
@@ -67,6 +59,25 @@ function toTop() {
   pageNo.value += 1
   getMoreList()
 }
+
+// 监听ws状态
+watch([status, conversationId], async ([s, val]) => {
+  // 首次建立ws连接发送
+  if (s === 'OPEN' && val && firstResize.value) {
+    send(JSON.stringify({
+      type: 'public_message',
+      channel: val,
+    }))
+  }
+
+  if (val) {
+    pageNo.value = 1
+    chatList.value = []
+    getMoreList()
+  }
+}, {
+  immediate: true,
+})
 
 watch(data, (val) => {
   if (val === 'pong')

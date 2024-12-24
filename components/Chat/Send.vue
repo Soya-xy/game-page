@@ -3,6 +3,13 @@ import { sendChat } from '~/api/chat'
 
 const msg = ref('')
 const showConversation = ref(false)
+const showEmoji = ref(false)
+const emojiRef = ref<HTMLElement | null>(null)
+const textareaRef = ref<HTMLElement | null>(null)
+
+onClickOutside(emojiRef, () => {
+  showEmoji.value = false
+})
 
 function sendMsg() {
   if (!msg.value)
@@ -21,6 +28,12 @@ function changeConversation(id: number) {
   conversationId.value = id
   showConversation.value = false
 }
+
+function selectEmoji(emoji: string) {
+  msg.value += emoji
+  showEmoji.value = false
+  textareaRef.value?.focus()
+}
 </script>
 
 <template>
@@ -34,7 +47,8 @@ function changeConversation(id: number) {
             {{ msg }}
           </div>
           <textarea
-            id="editorId" v-model="msg"
+            ref="textareaRef"
+            v-model="msg"
             class="editorss w-full overflow-hidden block !resize-none bg-transparent text-[14px] absolute left-0 top-[16px] text-white"
             spellcheck="false" placeholder="Write a message..." @keyup.enter="sendMsg"
           />
@@ -42,6 +56,7 @@ function changeConversation(id: number) {
         <i
           class="inline-block h-[max-content] w-[max-content] icon-new-chat-emoji cursor-pointer p-[8px] py-[14px] text-[24px] text-[--bc-color20]"
           tabindex="-1"
+          @click="showEmoji = !showEmoji"
         />
       </div>
       <div
@@ -53,6 +68,7 @@ function changeConversation(id: number) {
           ix-pos="upright" tabindex="-1"
         />
       </div>
+      <ChatEmoji v-if="showEmoji" ref="emojiRef" @select="selectEmoji" />
     </div>
     <div class="flex w-full mt-[10px] items-center">
       <div
@@ -76,18 +92,13 @@ function changeConversation(id: number) {
           }"
         >
           <li
-            v-for="item, idx in conversationList"
-            :key="idx"
-            class="flex items-center justify-center px-[15px] relative cursor-pointer  font-bold min-h-[36px]"
-            :class="{
+            v-for="item, idx in conversationList" :key="idx"
+            class="flex items-center justify-center px-[15px] relative cursor-pointer  font-bold min-h-[36px]" :class="{
               'bg-[--bc-searchBtnColor] text-white': item.id === conversationId,
-            }"
-            @click="changeConversation(item.id)"
+            }" @click="changeConversation(item.id)"
           >
             <span>{{ item.sessionTitle }}</span>
-            <button
-              class="absolute inset-y-0 right-[15px] flex items-center"
-            >
+            <button class="absolute inset-y-0 right-[15px] flex items-center">
               <i
                 v-if="item.id === conversationId"
                 class="inline-block h-[max-content] w-[max-content] icon-new-hook cursor-pointer text-active"
@@ -99,7 +110,8 @@ function changeConversation(id: number) {
       <div class="pl-[15px] space-x-[15px] flex items-center">
         <i
           class="inline-block h-[max-content] w-[max-content] icon-new-chat-giftmoney  text-[--bc-color20] text-[20px] cursor-pointer hover:text-white"
-        /><i
+        />
+        <i
           class="inline-block h-[max-content] w-[max-content] icon-new-chat-rank text-[--bc-color20] text-[20px] cursor-pointer hover:text-white"
         />
       </div>
