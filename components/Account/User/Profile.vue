@@ -47,7 +47,10 @@ async function save() {
 <template>
   <main v-if="!isEdit" class="overflow-y-auto overflow-x-hidden flex-1 p-[15px] mb-[20px]  relative">
     <div class="flex flex-col gap-[16px]">
-      <div class="flex items-center h-[90px] bg-color2 pl-[10px] pr-[15px] border-radius-0 mb-[10px]" @click="isEdit = true">
+      <div
+        class="flex items-center h-[90px] bg-color2 pl-[10px] pr-[15px] border-radius-0 mb-[10px]"
+        @click="isEdit = true"
+      >
         <div class="flex items-center mr-[10px] flex-1">
           <Image
             :src="avatar" alt="" importance="auto"
@@ -98,6 +101,44 @@ async function save() {
             <span class="whitespace-pre">R$0.00</span>
           </p>
         </div>
+      </div>
+
+      <div class="bg-color2 px-[10px] pt-[10px] pb-[6px] text-[12px] border-radius-0">
+        <h2 class="mb-[10px] font-medium text-white">
+          Favorite Games
+        </h2>
+        <div v-if="userInfo?.userFavoriteThreeGames.length" class="flex flex-col gap-[10px]">
+          <div v-for="item in userInfo?.userFavoriteThreeGames" :key="item.gid" class="flex flex-col gap-[10px]">
+            <div class="flex items-center gap-[6px] relative">
+              <div class="border-radius-gameicon w-[15.72vw] border-radius-0 shrink-0 pointer-events-none">
+                <div
+                  class="h-[0] relative bg-no-repeat bg-cover bg-center rounded-[inherit]  pb-[133.333333%] bg-linear-12"
+                >
+                  <Image :src="item.gimg" alt="" class="absolute top-[0] left-[0] w-full h-full rounded-[inherit]" />
+                  <div class="rounded-[inherit]">
+                    <div class="absolute top-0 left-0 right-0 bottom-0 rounded-[inherit]">
+                      <i
+                        class="inline-block h-[max-content] w-[max-content] icon-new-a-bonus text-[--bc-alphaBlack] text-[16px] absolute top-[4px] right-[4px]"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-color flex-1 mx-[6px]">
+                {{ item.gname }}
+              </div>
+              <div class="text-right">
+                <p class="text-color">
+                  Bet
+                </p>
+                <p class="text-white whitespace-break-spaces mt-[6px]">
+                  <span class="whitespace-pre">{{ toCurrency(item.betAmountPoint) }}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <BaseEmpty v-else />
       </div>
     </div>
   </main>

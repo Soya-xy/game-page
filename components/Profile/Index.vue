@@ -101,8 +101,8 @@ async function save() {
           <div class="text-white font-[500] text-[14px]">
             Favorite Games
           </div>
-          <div class="w-full h-full flex flex-col justify-center items-center">
-            <div class="flex flex-col items-center justify-center">
+          <div class="w-full h-full flex flex-col justify-center items-center gap-[10px]">
+            <div v-if="!userInfo?.userFavoriteThreeGames?.length" class="flex flex-col items-center justify-center">
               <Image
                 src="https://web-res-ccc.afunimg8.com/cdn-cgi/image/format=auto/C02/home/empty.png?t20231225"
                 alt="" importance="auto" class="shrink-0 w-[220px]"
@@ -111,6 +111,37 @@ async function save() {
                 <span>Oops! No data yet!</span>
               </p>
             </div>
+            <template v-else>
+              <div v-for="item, idx in userInfo?.userFavoriteThreeGames" :key="idx" class="flex items-center gap-[6px] w-full">
+                <div class="border-radius-gameicon w-[59px] border-radius-0 shrink-0 pointer-events-none">
+                  <div
+                    class="h-[0] relative bg-no-repeat bg-cover bg-center rounded-[inherit] game_cursor pb-[133.333333%] bg-linear-12 cursor-pointer"
+                  >
+                    <Image
+                      :src="item.gimg"
+                      alt="" class="absolute top-[0] left-[0] w-full h-full rounded-[inherit]"
+                    />
+                    <div class="rounded-[inherit]">
+                      <div class="absolute top-0 left-0 right-0 bottom-0 rounded-[inherit]">
+                        <i
+                          class="inline-block h-[max-content] w-[max-content] icon-new-a-bonus cursor-pointer text-[--bc-alphaBlack] text-[16px] absolute top-[5px] right-[5px]"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex flex-1 items-center justify-between text-[14px]">
+                  <div class="w-[150px]">
+                    {{ item.gname }}
+                  </div>
+                  <div class="flex flex-col gap-[6px] text-right">
+                    <span class="text-color">Bet</span><span class="text-white"><span
+                      class="whitespace-pre"
+                    >{{ toCurrency(item.betAmountPoint) }}</span></span>
+                  </div>
+                </div>
+              </div>
+            </template>
           </div>
         </div>
       </div>

@@ -38,7 +38,13 @@ export interface UserInfo {
   emailBind: boolean
   realName: string | null
   userVip: { vipLevel: number, vipCoin: number, nextCoin: number }
-  userFavoriteThreeGames: any
+  userFavoriteThreeGames: {
+    betAmountPoint: number
+    gid: number
+    gimg: string
+    gname: string
+    hitAmountPoint: number
+  }[]
 }
 
 export async function register(body: RegisterData) {
