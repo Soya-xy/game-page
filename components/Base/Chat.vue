@@ -15,6 +15,7 @@ const firstResize = ref(true)
 const pageNo = ref(1)
 const total = ref(0)
 const showBottom = ref(false)
+const haveNoRead = ref(false)
 
 async function getMoreList() {
   if (chatList.value.length >= total.value && chatList.value.length !== 0)
@@ -91,6 +92,9 @@ watch(data, (val) => {
     if (chat.senderId === userInfo.value!.id) {
       virtListRef.value.scrollToBottom()
     }
+    else {
+      haveNoRead.value = true
+    }
   }
 }, {
   immediate: true,
@@ -152,7 +156,10 @@ onUnmounted(() => {
     >
       <VirtList
         ref="virtListRef" :list="chatList" item-key="id" :min-size="80" @to-top="toTop"
-        @to-bottom="showBottom = false" @item-resize="itemResize" @scroll="scroll"
+        @to-bottom="() => {
+          showBottom = false
+          haveNoRead = false
+        }" @item-resize="itemResize" @scroll="scroll"
       >
         <template #default="{ itemData, index }">
           <ChatMessage :item="itemData" :is-first="index === 0" :up-item="chatList[index - 1]" />
@@ -166,7 +173,7 @@ onUnmounted(() => {
     </div>
 
     <div
-      v-if="pageNo > 1 && showBottom"
+      v-if="(pageNo > 1 && showBottom) || haveNoRead"
       class="w-[155px] rounded-tl-[36px] rounded-bl-[36px] fixed bottom-[138px] right-[0px] z-[20] bg-[--bc-bgColor5] h-[42px]"
       @click="toBottom"
     >

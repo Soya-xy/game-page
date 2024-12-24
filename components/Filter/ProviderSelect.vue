@@ -96,7 +96,7 @@ watch(open, (v) => {
       </Command>
     </PopoverContent>
   </Popover>
-  <BaseDrawer v-if="!isPc" v-model:open="open" content-class="z-[555]" overlay-class="z-[550]">
+  <BaseDrawer v-if="!isPc" v-model:open="open" content-class="z-[555]" overlay-class="z-[550]" header-class="bg-transparent">
     <template #title>
       Select
     </template>

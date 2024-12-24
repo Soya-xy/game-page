@@ -41,7 +41,7 @@ const loading = ref(false)
 const page = ref(1)
 const order = ref('Popular')
 const providerValue = ref<string[]>([])
-
+const providerGameList = ref<any[]>([])
 const type = ref<'game' | 'gameList' | 'provider'>()
 
 watch([activeIndex, order], async () => {
@@ -56,7 +56,7 @@ watch([activeIndex, order], async () => {
   immediate: true,
 })
 
-watch(search, useDebounceFn(async () => {
+watch([search, providerValue], useDebounceFn(async () => {
   list.value = []
   page.value = 1
 
@@ -84,6 +84,7 @@ async function loadGames(e?: any) {
       pageSize: 100,
       name: search.value,
       order: order.value,
+      brandId: providerValue.value.join(','),
     })
     page.value++
 
@@ -121,7 +122,6 @@ async function loadGames(e?: any) {
     if ((data as CategoryListDetailResponse).providerData?.length <= 0) {
       return
     }
-
     providerOption.value = (data as CategoryListDetailResponse).providerData?.map(v => ({
       value: v.id as string,
       label: v.name,
@@ -144,6 +144,16 @@ async function getMore(id: number, opt: any) {
 
 function changeHandler(e: string[]) {
   providerValue.value = e
+}
+
+async function providerClick(e: any) {
+  const gameList = await getCategoryListDetailGame({
+    id: 7,
+    brandId: e.id,
+    pageNo: 1,
+    pageSize: 100,
+  })
+  providerGameList.value = gameList.gamesRespVO?.pageResult?.list || []
 }
 </script>
 
@@ -207,7 +217,7 @@ function changeHandler(e: string[]) {
       <div
         class="grid gap-[12px] md:grid-cols-[repeat(auto-fill,minmax(180px,1fr))] grid-cols-[repeat(auto-fill,minmax(133px,1fr))]"
       >
-        <BaseGameProvider v-for="(item, idx) in providerList" :key="idx" :info="item" />
+        <BaseGameProvider v-for="(item, idx) in providerList" :key="idx" :info="item" @click="providerClick(item)" />
       </div>
     </template>
   </Spin>

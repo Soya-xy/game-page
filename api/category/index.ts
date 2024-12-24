@@ -11,13 +11,13 @@ export async function asyncCategoryList() {
   return useAPI<CategoryListProviderResponse[]>(categoryListUrl, undefined, true)
 }
 
-export async function asyncCategoryListDetail(params: CategoryQuery & Page) {
+export async function asyncCategoryListDetail(params: CategoryQuery & Page & { brandId?: string }) {
   return useAPI<CategoryListResponse>(categoryListDetailUrl, {
     params,
   }, true)
 }
 
-export async function getCategoryListDetailGame(params: { id: string } & Page) {
+export async function getCategoryListDetailGame(params: { id?: number | string, brandId?: string } & Page) {
   return useNuxtApp().$serverApi<CategoryListResponse>(categoryListDetailUrl, {
     params,
   })

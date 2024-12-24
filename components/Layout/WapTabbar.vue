@@ -141,7 +141,7 @@ function changeLang(lang: Locale) {
         </div>
       </DrawerContent>
     </Drawer>
-    <BaseDrawer v-model:open="langModal" direction="left" content-class="z-[999]" overlay-class="z-[999]">
+    <BaseDrawer v-model:open="langModal" direction="left" content-class="z-[999]" overlay-class="z-[999]" header-class="bg-transparent">
       <template #title>
         Switch Language
       </template>

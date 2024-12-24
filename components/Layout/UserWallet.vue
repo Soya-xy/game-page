@@ -120,7 +120,7 @@ function toggleOpen() {
     <Image src="https://web-res-ccc.afunimg8.com/C02/_E/home/bonus.gif" importance="auto" class="w-[28px] !h-[28px]" />
   </div>
   <!-- 手机端弹窗 -->
-  <BaseDrawer v-model:open="mobileOpen" content-class="z-[555]" overlay-class="z-[550]">
+  <BaseDrawer v-model:open="mobileOpen" content-class="z-[555]" overlay-class="z-[550]" header-class="bg-transparent">
     <template #title>
       Wallet
     </template>
