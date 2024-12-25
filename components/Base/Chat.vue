@@ -16,7 +16,7 @@ const pageNo = ref(1)
 const total = ref(0)
 const showBottom = ref(false)
 const haveNoRead = ref(false)
-
+const wsUrl = computed(() => `${useRuntimeConfig().public.wsUrl}?token=${token.value}&channel=${conversationId.value}`)
 async function getMoreList() {
   if (chatList.value.length >= total.value && chatList.value.length !== 0)
     return
@@ -31,23 +31,16 @@ async function getMoreList() {
   loading.value = false
 }
 
-onMounted(async () => {
-  try {
-    const conversation = await getConversation()
-    if (conversation.length > 0) {
-      conversationList.value = conversation
-      conversationId.value = conversation[0]!.id
-    }
-  }
-  catch (error) {
-    console.error(error)
-  }
-  finally {
-    loading.value = false
-  }
-})
+const conversation = await getConversation()
 
-const { data, close, send, status } = useWebSocket(`${useRuntimeConfig().public.wsUrl}?token=${token.value}`, {
+loading.value = false
+
+if (conversation.length > 0) {
+  conversationList.value = conversation
+  conversationId.value = conversation[0]!.id
+}
+
+const { data, close, send, status } = useWebSocket(wsUrl, {
   autoReconnect: true,
   heartbeat: {
     message: 'ping',
@@ -155,8 +148,7 @@ onUnmounted(() => {
       class="flex flex-col-reverse overflow-x-hidden pb-[20px] flex-1 overflow-y-auto w-full relative z-[0] touch-pan-y overscroll-contain"
     >
       <VirtList
-        ref="virtListRef" :list="chatList" item-key="id" :min-size="80" @to-top="toTop"
-        @to-bottom="() => {
+        ref="virtListRef" :list="chatList" item-key="id" :min-size="80" @to-top="toTop" @to-bottom="() => {
           showBottom = false
           haveNoRead = false
         }" @item-resize="itemResize" @scroll="scroll"
