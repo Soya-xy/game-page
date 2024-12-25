@@ -52,7 +52,7 @@ useSwiper(containerRef, {
   `,
   ],
 })
-const { data: games } = await asyncBannerList(1)
+const { data: games } = await asyncBannerList()
 
 const eventHandler = useTrack((id: number) => {
   addBrowser(id)
@@ -67,7 +67,7 @@ const eventHandler = useTrack((id: number) => {
           <div class="bg-no-repeat bg-cover rounded-[10px] cursor-pointer" @click="() => eventHandler(game.id)">
             <Image
               :src="game.picUrl"
-              loading="lazy" class="rounded w-full"
+              loading="lazy" class="rounded w-full !h-auto"
               :alt="game.title"
             />
           </div>

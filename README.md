@@ -73,3 +73,13 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+```bash
+# NUXT_PUBLIC_APP_URL=http://192.168.1.17:48080/app-api/
+# VITE_APP_URL=http://192.168.1.17:48080
+# NUXT_PUBLIC_WS_URL=ws://192.168.1.17:48080/infra/ws
+
+NUXT_PUBLIC_APP_URL=http://frp.xiaoyio.com:8990/app-api/
+VITE_APP_URL=http://frp.xiaoyio.com:8990
+NUXT_PUBLIC_WS_URL=ws://frp.xiaoyio.com:8990/infra/ws
+```
