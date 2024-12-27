@@ -8,13 +8,12 @@ const upItem = defineProp<ChatList>(undefined)
 const isFirst = defineProp<boolean>(false)
 const sameDay = computed(() => isSameDay(new Date(item.value.createTime), new Date(upItem.value?.createTime || 0)))
 const isSelf = computed(() => item.value.senderId === userInfo.value!.id)
-// watch(
-//   [item, upItem],
-//   ([item, upItem]) => {
-//     console.log(item, upItem)
-//   },
-//   { deep: true, immediate: true },
-// )
+const content = computed(() => {
+  if (!item.value.content || !item.value.content.startsWith('{'))
+    return null
+
+  return JSON.parse(item.value.content)
+})
 </script>
 
 <template>
@@ -49,16 +48,15 @@ const isSelf = computed(() => item.value.senderId === userInfo.value!.id)
             <div v-if="!isSelf" class="text-[12px] text-[--bc-color20] whitespace-nowrap">
               {{ getAPMTime(item.createTime) }}
             </div>
-            <div v-if="!isSelf" class="invisible aite-reply flex justify-end flex-1 items-center ml-[8px]">
+            <!-- <div v-if="!isSelf" class="invisible aite-reply flex justify-end flex-1 items-center ml-[8px]">
               <i
                 class="inline-block h-[max-content] w-[max-content] icon-new-aite cursor-pointer text-[15px] text-[--bc-color20] hover:text-color"
               />
-              <!--
               引用
               <i
                 class="inline-block h-[max-content] w-[max-content] icon-new-reply cursor-pointer text-[15px] text-[--bc-color20] hover:text-color ml-[8px]"
-              /> -->
-            </div>
+              />
+            </div> -->
           </div>
           <div
             class="select-none relative" :class="{
@@ -72,9 +70,10 @@ const isSelf = computed(() => item.value.senderId === userInfo.value!.id)
                 'bg-[--bc-bgColor11] !text-white': isSelf,
               }"
             >
-              <div class="whitespace-pre-wrap break-words overflow-hidden w-full">
-                {{ item.content }}
+              <div v-if="content?.text" class="whitespace-pre-wrap break-words overflow-hidden w-full">
+                {{ content.text }}
               </div>
+              <img v-else-if="content?.picUrl" :src="content.picUrl" alt="" class="w-full">
             </div>
           </div>
         </div>

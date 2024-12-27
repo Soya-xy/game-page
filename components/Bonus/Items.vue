@@ -1,35 +1,25 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { activityTypeMap } from './VipActivityEnum'
+import { getPromotionRewardsList } from '~/api/promotion'
 
 const current = ref<number>(0)
+const currentList = ref<any[]>([])
 const { isPc } = useDevice()
-const currentList = ref<{
-  title: string
-  icon: string
-  badge?: number
-  children: any[]
-}[]>([{
-  title: 'General Bonus',
-  icon: 'icon-new-bonus',
-  badge: 3,
-  children: Object.values(activityTypeMap).filter(v => [1, 2, 3, 4].includes(v.id)) || [],
-}, {
-  title: 'VIP Bonus',
-  icon: 'icon-new-bonus-vip',
-  children: Object.values(activityTypeMap).filter(v => [5, 6, 7, 8].includes(v.id)) || [],
-}, {
-  title: 'Special Bonus',
-  icon: 'icon-new-bonus-special ',
-  children: Object.values(activityTypeMap).filter(v => [9, 10, 11, 12].includes(v.id)) || [],
-}])
-
 const showRules = ref<boolean>(false)
 const currentRules = ref<any>(null)
 const currentItem = ref<any>(null)
 
 const showGachapon = ref<boolean>(false)
 const showTurnTable = ref<boolean>(false)
+
+const res = await getPromotionRewardsList()
+currentList.value = res.map((v) => {
+  return {
+    id: v.id,
+    title: v.name,
+    icon: v.picUrl.replaceAll('sysicon-', 'icon-'),
+    children: v.listRewards,
+  }
+})
 
 function handleRules(v: any) {
   currentRules.value = v
@@ -89,7 +79,7 @@ function handleItem(v: any) {
         class="w-full h-full px-[4px] pb-[4px] relative z-[1] rounded-[inherit] flex md:flex-col justify-between bg-contain bg-no-repeat"
       >
         <div class="md:p-[10px] md:pt-[5px] md:w-full md:h-[125px] flex items-center justify-center w-[100px]">
-          <Image :src="v.image" alt="" class="md:w-[110px] md:!h-auto w-[78px] !h-[78px]" />
+          <Image :src="v.picUrl" alt="" class="md:w-[110px] md:!h-auto w-[78px] !h-[78px]" />
         </div>
         <div class="flex flex-col flex-1 md:py-0 py-[13px]  ">
           <div
@@ -102,16 +92,18 @@ function handleItem(v: any) {
             class="bg-[--bc-alphaBlack01] backdrop-blur-[10px] rounded-[8px] md:p-[10px] md:h-[137px] shrink-0 flex flex-col  pr-[10px] flex-1 md:flex-[0_auto] md:items-center items-end"
           >
             <div class="flex flex-col space-y-[8px] md:text-[14px] text-[12px] flex-1 w-full">
-              <div class="flex text-color shrink-0 justify-between items-center">
-                <span>Wager</span>
-                <div>
-                  <span class="whitespace-pre text-white">$0.00</span> /
-                  <span class="whitespace-pre">200.00</span>
-                </div>
-              </div>
-              <div class="flex text-color shrink-0 justify-between items-center">
-                <span>Daily
-                  Bonus</span><span class="whitespace-pre text-white">$1.00</span>
+              <div
+                v-for="item, key of v?.rewardInfo || {}" :key="key"
+                class="flex text-color shrink-0 justify-between items-center"
+              >
+                <template v-if="(key as unknown as string) !== 'Lock'">
+                  <span>{{ key }}</span>
+                  <div v-if="item && item.includes('/')">
+                    <span class="whitespace-pre text-white">{{ item.split('/')[0] }}</span> /
+                    <span class="whitespace-pre">{{ item.split('/')[1] }}</span>
+                  </div>
+                  <span v-else class="whitespace-pre text-white">{{ item }}</span>
+                </template>
               </div>
             </div>
 

@@ -154,8 +154,7 @@ function changeLang(lang: Locale) {
       <template #title>
         <div class="flex items-center justify-center">
           Chat
-          <i class="inline-block h-[max-content] w-[max-content] icon-new-personal text-[16px] mx-[8px] text-color" />
-          <span class="text-[16px] text-active">123</span>
+          <ChatCount />
         </div>
       </template>
       <BaseChat />

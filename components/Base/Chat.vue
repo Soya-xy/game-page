@@ -4,6 +4,7 @@ import { TransitionPresets } from '@vueuse/core'
 import { VirtList } from 'vue-virt-list'
 import { getChatList, getConversation } from '~/api/chat'
 import { conversationList } from '~/composables/chat'
+import { formatTime } from '~/lib/dayjs'
 
 const user = useUserStore()
 const { token, userInfo } = storeToRefs(user)
@@ -13,21 +14,33 @@ const loading = ref(true)
 const chatList = ref<ChatList[]>([])
 const firstResize = ref(true)
 const pageNo = ref(1)
-const total = ref(0)
+const isOver = ref(false)
+// const total = ref(0)
 const showBottom = ref(false)
 const haveNoRead = ref(false)
 const wsUrl = computed(() => `${useRuntimeConfig().public.wsUrl}?token=${token.value}&channel=${conversationId.value}`)
 async function getMoreList() {
-  if (chatList.value.length >= total.value && chatList.value.length !== 0)
+  if (isOver.value)
     return
 
   loading.value = true
-  const res = await getChatList({ conversationId: conversationId.value, pageNo: pageNo.value, pageSize: 10 })
-  total.value = res.total
+  const params: any = {
+    conversationId: conversationId.value,
+    limit: 20,
+  }
+  if (chatList.value.length > 0) {
+    params.createTime = formatTime(chatList.value.at(0)!.createTime)
+  }
+  const res = await getChatList(params)
+  if (res.length === 0) {
+    isOver.value = true
+    return
+  }
+  // total.value = res.total
 
-  chatList.value = res.list.reverse().concat(chatList.value)
+  chatList.value = res.reverse().concat(chatList.value)
   await nextTick()
-  virtListRef.value?.addedList2Top(res.list)
+  virtListRef.value?.addedList2Top(res)
   loading.value = false
 }
 

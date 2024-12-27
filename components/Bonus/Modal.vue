@@ -8,7 +8,7 @@ const info = defineProp<any>()
       <div class="w-full h-full relative shrink-0">
         <div class="w-[110px] h-[110px] absolute left-0 top-0 py-[13px] px-[15px]">
           <Image
-            :src="info.image"
+            :src="info.picUrl"
             alt="" importance="auto" class="w-full"
           />
         </div>
@@ -27,7 +27,7 @@ const info = defineProp<any>()
     </div>
     <div class="rounded-t-[13px] p-[20px] -mt-[130px] z-[5] relative">
       <div class="text-[--bc-fontActivity]">
-        <div v-html="info.description" />
+        <div v-html="info.content" />
       </div>
     </div>
   </div>

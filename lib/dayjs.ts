@@ -9,7 +9,7 @@ export function initializeDayjs() {
   dayjs.extend(localizedFormat)
 }
 
-export function formatTime(time: string) {
+export function formatTime(time: string | number | Date) {
   return dayjs(time).format('YYYY-MM-DD HH:mm:ss')
 }
 

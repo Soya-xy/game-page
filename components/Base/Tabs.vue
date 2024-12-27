@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { cn } from '@/lib/utils'
 
-const list = defineProp<string[] | { title: string, icon?: string, badge?: number, value?: string }[]>()
+const list = defineProp<string[] | { title: string, icon?: string, badge?: number, value?: string, [key: string]: any }[]>()
 const itemClass = defineProp<string>()
 const modelValue = defineModel<number>()
 const { isShowTop } = useMenu()

@@ -10,3 +10,17 @@ export interface PromotionArticleResponse {
   browseCount: number
   spuId: number
 }
+
+export interface PromotionRewardsResponse {
+  id: number
+  name: string
+  picUrl: string
+  listRewards: {
+    id: number
+    bonusCode: number
+    title: string
+    path: string
+    categoryId: number
+    picUrl: string
+  }[]
+}

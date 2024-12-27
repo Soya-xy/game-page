@@ -17,7 +17,7 @@ function sendMsg() {
 
   sendChat({
     contentType: 1,
-    content: msg.value,
+    content: JSON.stringify({ text: msg.value }),
     conversationId: conversationId.value,
   })
 

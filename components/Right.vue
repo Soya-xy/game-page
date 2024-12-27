@@ -38,6 +38,7 @@ const components = computed(() => {
         <div class="color-linear-12 px-[15px] bg-linear-12 flex items-center justify-between h-[52px] shrink-0 sticky top-0">
           <div class="text-[16px] text-white font-bold">
             {{ type }}
+            <ChatCount v-if="type === 'Chat'" />
           </div>
           <i
             class="inline-block h-[max-content] w-[max-content] icon-new-clean-1 cursor-pointer text-[--bc-color20] text-[12px]"
