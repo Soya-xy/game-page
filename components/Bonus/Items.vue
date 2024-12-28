@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { getPromotionRewardsList } from '~/api/promotion'
+import { getActivityDetail } from './VipActivityEnum'
 
 const current = ref<number>(0)
 const currentList = ref<any[]>([])
@@ -12,6 +13,7 @@ const showGachapon = ref<boolean>(false)
 const showTurnTable = ref<boolean>(false)
 
 const res = await getPromotionRewardsList()
+
 currentList.value = res.map((v) => {
   return {
     id: v.id,
@@ -91,21 +93,10 @@ function handleItem(v: any) {
           <div
             class="bg-[--bc-alphaBlack01] backdrop-blur-[10px] rounded-[8px] md:p-[10px] md:h-[137px] shrink-0 flex flex-col  pr-[10px] flex-1 md:flex-[0_auto] md:items-center items-end"
           >
-            <div class="flex flex-col space-y-[8px] md:text-[14px] text-[12px] flex-1 w-full">
-              <div
-                v-for="item, key of v?.rewardInfo || {}" :key="key"
-                class="flex text-color shrink-0 justify-between items-center"
-              >
-                <template v-if="(key as unknown as string) !== 'Lock'">
-                  <span>{{ key }}</span>
-                  <div v-if="item && item.includes('/')">
-                    <span class="whitespace-pre text-white">{{ item.split('/')[0] }}</span> /
-                    <span class="whitespace-pre">{{ item.split('/')[1] }}</span>
-                  </div>
-                  <span v-else class="whitespace-pre text-white">{{ item }}</span>
-                </template>
-              </div>
-            </div>
+            <div
+              class="flex flex-col space-y-[8px] md:text-[14px] text-[12px] flex-1 w-full"
+              v-html="getActivityDetail(v.bonusCode, v?.rewardInfo)"
+            />
 
             <button
               class="shrink-0 h-[36px] text-font border-radius-0 font-bold md:w-full w-[max-content] min-w-[136px] flex items-center justify-center text-[13px] bg-active"
@@ -119,7 +110,7 @@ function handleItem(v: any) {
         </div>
       </div>
       <div
-        class="px-[10px] z-[4] py-[5px] absolute right-0 top-0 bg-[--bc-buttonColor] rounded-bl-[inherit] rounded-tr-[inherit] text-white text-[14px] z-[6] cursor-pointer"
+        class="px-[10px]  py-[5px] absolute right-0 top-0 bg-[--bc-buttonColor] rounded-bl-[inherit] rounded-tr-[inherit] text-white text-[14px] z-[6] cursor-pointer"
         @click="handleRules(v)"
       >
         Rules
@@ -127,6 +118,7 @@ function handleItem(v: any) {
     </div>
   </div>
   <BaseEmpty v-else />
+
   <BaseModal
     v-model:show="showRules" content-class="!bg-[#F5F8FA] !rounded-[10px] z-[999]"
     close-class="!text-white bg-[--bc-alphaBlack] w-[28px] h-[28px] !rounded-full flex items-center justify-center "

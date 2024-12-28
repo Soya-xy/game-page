@@ -1,7 +1,6 @@
 import type { RouteLocationAsRelativeI18n } from 'vue-router'
 import type { RouteNamedMapI18n } from 'vue-router/auto-routes'
 import { isClient } from '@vueuse/core'
-import { isEmpty } from 'ramda'
 import { joinURL } from 'ufo'
 import { currencyMap } from '~/@types/constants'
 
@@ -54,7 +53,7 @@ export function http2ws(url: string) {
 
 // 根据i18n转换货币符号
 export function toCurrency(value: number | string | undefined, color?: string) {
-  if (isEmpty(value)) {
+  if (!value) {
     value = 0
   }
   const { locale } = useI18n()
