@@ -42,7 +42,7 @@ function getComponent(type: ModuleType) {
           <HomeInviteWheel />
         </div>
       </div>
-      <RedPacket />
+      <!-- <RedPacket /> -->
     </ClientOnly>
   </div>
 </template>
