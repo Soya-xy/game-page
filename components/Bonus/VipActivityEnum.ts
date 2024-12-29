@@ -15,15 +15,21 @@ export const ActivityType = {
 export type ActivityTypeKeys = keyof typeof ActivityType
 export type ActivityTypeValues = (typeof ActivityType)[ActivityTypeKeys]
 
-function getNextLevel(): string {
+function getUserLevel() {
   if (isClient) {
     const userInfo = localStorage.getItem('userInfo')
     const level = userInfo ? JSON.parse(userInfo).userVip.vipLevel : 0
-    const nextLevel = level + 1
-    return `XP to VIP${nextLevel}`
+    return level
   }
-  return ''
+  return 1
 }
+
+function getNextLevel(): string {
+  const level = getUserLevel()
+  const nextLevel = level + 1
+  return `XP to VIP${nextLevel}`
+}
+
 export const activityTypeMap = {
   [ActivityType.CrazyGachapon]: {
     id: ActivityType.CrazyGachapon,
@@ -138,4 +144,50 @@ export function getActivityDetail(id: ActivityTypeValues, data: any) {
   `
   })
   return html
+}
+
+// 转盘按钮
+export function getSpinButton(data: any) {
+  if (!data)
+    return ''
+  if (data?.inviteWheel?.spinsAvailable > 0) {
+    return {
+      type: 'details',
+      text: 'Spin Now',
+    }
+  }
+  else {
+    return {
+      type: 'details',
+      text: 'Invite friends',
+    }
+  }
+}
+
+// 签到按钮
+export function getCheckInButton(data: any) {
+  if (!data)
+    return ''
+  return {
+    type: 'details',
+    text: 'Check In',
+  }
+}
+
+// 月度奖励按钮
+export function getMonthlyRewardButton(data: any) {
+  if (!data)
+    return ''
+  if (data.unLockLv > getUserLevel()) {
+    return {
+      type: 'lock',
+      text: `VIP${data.unLockLv} Unlocked`,
+    }
+  }
+  else {
+    return {
+      type: 'claim',
+      text: 'Claim',
+    }
+  }
 }

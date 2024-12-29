@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { getPromotionRewardsReady } from '~/api/promotion'
 
 const open = ref<boolean>(false)
 const mobileOpen = ref<boolean>(false)
@@ -7,6 +8,14 @@ const { isPc } = useDevice()
 const userStore = useUserStore()
 const { userInfo } = storeToRefs(userStore)
 const showBonus = ref<boolean>(false)
+const total = ref<number>(0)
+
+getPromotionRewardsReady().then((res) => {
+  res.forEach((v) => {
+    total.value += v.listRewards.length
+  })
+})
+
 function toggleOpen() {
   if (isPc.value) {
     open.value = !open.value
@@ -115,7 +124,7 @@ function toggleOpen() {
     <div
       class="rounded-full text-[11px] bg-[--bc-activeColor2] shrink-0 text-font flex items-center justify-center font-bold px-[2px] min-w-[16px] h-[14px]  absolute -right-[4px] top-0"
     >
-      3
+      {{ total }}
     </div>
     <Image src="https://web-res-ccc.afunimg8.com/C02/_E/home/bonus.gif" importance="auto" class="w-[28px] !h-[28px]" />
   </div>

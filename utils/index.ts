@@ -56,6 +56,11 @@ export function toCurrency(value: number | string | undefined, color?: string) {
   if (!value) {
     value = 0
   }
+
+  if (typeof value === 'string') {
+    value = Number(value)
+  }
+
   const { locale } = useI18n()
 
   const currency = currencyMap[locale.value]

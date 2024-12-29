@@ -20,6 +20,7 @@ async function handleFavorite() {
   toast({
     title: isFavorite.value ? 'Bookmarked' : 'UnBookmarked!',
     class: 'my-toast bg-green',
+    duration: 2000,
   })
 }
 onMounted(async () => {

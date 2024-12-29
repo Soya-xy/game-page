@@ -1,18 +1,33 @@
 <script lang="ts" setup>
-import { getPromotionRewardsList } from '~/api/promotion'
-import { getActivityDetail } from './VipActivityEnum'
+import { ref } from 'vue'
+import { getPromotionRewardsClaim, getPromotionRewardsList, getPromotionRewardsReady } from '~/api/promotion'
+import { useToast } from '../ui/toast'
+import { ActivityType, getActivityDetail } from './VipActivityEnum'
+
+const { isPc } = useDevice()
+const { toast } = useToast()
 
 const current = ref<number>(0)
 const currentList = ref<any[]>([])
-const { isPc } = useDevice()
 const showRules = ref<boolean>(false)
+const loading = ref<boolean>(false)
 const currentRules = ref<any>(null)
 const currentItem = ref<any>(null)
-
 const showGachapon = ref<boolean>(false)
 const showTurnTable = ref<boolean>(false)
+const showCheckIn = ref<boolean>(false)
 
+const total = ref<any[]>([])
 const res = await getPromotionRewardsList()
+
+// 获取每个活动的奖励数量
+const listRewards = await getPromotionRewardsReady()
+listRewards.forEach((v) => {
+  total.value.push({
+    id: v.id,
+    count: v.listRewards.length,
+  })
+})
 
 currentList.value = res.map((v) => {
   return {
@@ -20,6 +35,7 @@ currentList.value = res.map((v) => {
     title: v.name,
     icon: v.picUrl.replaceAll('sysicon-', 'icon-'),
     children: v.listRewards,
+    badge: total.value.find(item => item.id === v.id)?.count,
   }
 })
 
@@ -28,18 +44,66 @@ function handleRules(v: any) {
   showRules.value = true
 }
 
-function handleItem(v: any) {
-  currentItem.value = v
-  if (v.id === 4) {
+// 活动处理映射
+const BONUS_HANDLERS: any = {
+  [ActivityType.InviteWheel]: () => {
     if (isPc.value) {
       showTurnTable.value = true
     }
     else {
       routerPush('/bonus/roulette')
     }
-  }
-  if (v.id === 1) {
+  },
+
+  [ActivityType.CrazyGachapon]: () => {
     showGachapon.value = true
+  },
+
+  [ActivityType.CheckIn]: () => {
+    showCheckIn.value = true
+  },
+
+  [ActivityType.LevelReward]: () => {
+    routerPush('/vip')
+  },
+
+  [ActivityType.WeeklyReward]: async () => {
+    try {
+      loading.value = true
+      await getPromotionRewardsClaim(currentItem.value.id)
+
+      toast({
+        title: 'Claim Success',
+        class: 'my-toast',
+        duration: 2000,
+      })
+    }
+    catch (error) {
+      console.error('处理奖励项目时出错:', error)
+    }
+    finally {
+      loading.value = false
+    }
+  },
+} as const
+
+function handleItem(item: any) {
+  try {
+    currentItem.value = item
+    const handler = BONUS_HANDLERS[item.bonusCode]
+    loading.value = true
+    if (handler) {
+      handler(item)
+    }
+    else {
+      console.warn(`未找到对应的处理方法: ${item.bonusCode}`)
+    }
+  }
+  catch (error) {
+    console.error('处理奖励项目时出错:', error)
+  }
+  finally {
+    loading.value = false
   }
 }
 </script>
@@ -48,7 +112,7 @@ function handleItem(v: any) {
   <BaseTabs
     v-model="current" :list="currentList"
     class="!static rounded-b-[5px] [&>div:first-child]:rounded-bl-[5px] [&>div:last-child]:rounded-br-[5px] mb-[20px]"
-    item-class="w-[33%]"
+    item-class="w-[33%] !whitespace-nowrap"
   />
 
   <div
@@ -87,25 +151,18 @@ function handleItem(v: any) {
           <div
             class="pb-[10px] text-center md:text-[18px] text-[16px] font-bold flex items-center md:justify-center justify-start"
           >
-            {{ v.title }}
+            {{ v?.title }}
           </div>
 
           <div
-            class="bg-[--bc-alphaBlack01] backdrop-blur-[10px] rounded-[8px] md:p-[10px] md:h-[137px] shrink-0 flex flex-col  pr-[10px] flex-1 md:flex-[0_auto] md:items-center items-end"
+            class="bg-[--bc-alphaBlack1a] backdrop-blur-[10px] rounded-[8px] md:p-[10px] md:h-[137px] shrink-0 flex flex-col  pr-[10px] flex-1 md:flex-[0_auto] md:items-center items-end"
           >
             <div
               class="flex flex-col space-y-[8px] md:text-[14px] text-[12px] flex-1 w-full"
-              v-html="getActivityDetail(v.bonusCode, v?.rewardInfo)"
+              v-html="getActivityDetail(v?.bonusCode, v?.rewardInfo)"
             />
 
-            <button
-              class="shrink-0 h-[36px] text-font border-radius-0 font-bold md:w-full w-[max-content] min-w-[136px] flex items-center justify-center text-[13px] bg-active"
-              @click="handleItem(v)"
-            >
-              <div class="flex items-center justify-center">
-                Details
-              </div>
-            </button>
+            <BonusButton :data="v" :loading="loading" @handle="handleItem" />
           </div>
         </div>
       </div>
@@ -136,7 +193,30 @@ function handleItem(v: any) {
     v-model:show="showGachapon" direction="right" wap-content-class="z-[555] h-[100vh] !p-0"
     content-class="z-[555] w-[500px]" overlay-class="z-[550]" no-header no-close
   >
-    <Gachapon @close="currentItem = null" />
+    <Gachapon
+      @close="() => {
+        showGachapon = false
+        currentItem = null
+      }"
+    />
+  </BaseModal>
+
+  <BaseModal
+    v-model:show="showCheckIn" content-class=" !rounded-[10px] z-[999]"
+    close-class="w-[28px] h-[28px] !rounded-full flex items-center justify-center " overlay-class="z-[990]"
+    wap-content-class="z-[999] h-[max-content] p-0" no-header
+  >
+    <template #title>
+      <div class="flex justify-between items-center h-[76px] px-[20px] bg-color-pop-16 text-white rounded-[10px]">
+        Check In
+      </div>
+    </template>
+    <div class="absolute top-0 right-0 px-[15px] py-[10px] z-[10] md:hidden" @click="showCheckIn = false">
+      <div class="bg-[--bc-alphaBlack] w-[28px] h-[28px] rounded-full flex items-center justify-center font-bold">
+        <i class="inline-block h-[max-content] w-[max-content] icon-new-clean-3 text-white text-[12px]" />
+      </div>
+    </div>
+    <BonusCheckIn />
   </BaseModal>
 
   <TurnTable v-model:show="showTurnTable" class="!mx-auto" @close="currentItem = null" />

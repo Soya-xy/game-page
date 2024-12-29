@@ -26,6 +26,8 @@ async function withdraw() {
       toast({
         title: 'Withdrawal successful',
         class: 'my-toast',
+        duration: 2000,
+
       })
     }
     show.value = false

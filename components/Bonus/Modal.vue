@@ -23,7 +23,7 @@ const info = defineProp<any>()
       class="w-full h-[130px] shrink-0 relative z-[3] -mt-[130px] bg-linear-gradient(rgba(var(--bc-activityWhite) bg-0)0% bg-[rgb(var(--bc-activityWhite))100%)]"
     />
     <div class="h-[130px] shrink-0 w-full px-[12px] pt-[15px] relative z-[4] -mt-[130px]">
-      <div class="w-full h-full rounded-[10px] overflow-hidden bg-[rgba(var(--bc-activityWhite),0.6)]" />
+      <div class="w-full h-full rounded-t-[10px] overflow-hidden bg-[rgba(var(--bc-activityWhite),0.6)]" />
     </div>
     <div class="rounded-t-[13px] p-[20px] -mt-[130px] z-[5] relative">
       <div class="text-[--bc-fontActivity]">
